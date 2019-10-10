@@ -1,0 +1,14 @@
+mod.wizards.newContentElement.wizardItems.plugins {
+    elements {
+        nsnewsslider {
+            iconIdentifier = ns_news_slider-plugin-nsnewsslider
+            title = LLL:EXT:ns_news_slider/Resources/Private/Language/locallang_db.xlf:tx_ns_news_slider_domain_model_nsnewsslider
+            description = LLL:EXT:ns_news_slider/Resources/Private/Language/locallang_db.xlf:tx_ns_news_slider_domain_model_nsnewsslider.description
+            tt_content_defValues {
+                CType = list
+                list_type = nsnewsslider_nsnewsslider
+            }
+        }
+    }
+    show = *
+}

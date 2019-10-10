@@ -1,0 +1,44 @@
+<html data-namespace-typo3-fluid="true"
+      data-namespace-typo3-fluid="true" xmlns:f="http://typo3.org/ns/TYPO3/CMS/Fluid/ViewHelpers"
+      xmlns:n="http://typo3.org/ns/GeorgRinger/News/ViewHelpers">
+
+<f:layout name="Default"/>
+<f:section name="main">
+    <f:flashMessages />
+    <f:if condition="{news}">
+        <div class="slider-wrapper theme-{settings.theme}" data-arrow="{settings.navagation_arrow}" >
+            <div class="{settings.sliderType}-{contentObjectData.uid}" id="{settings.sliderType}-{contentObjectData.uid}">
+                <f:for each="{news}" as="newsItem" iteration="i">
+                    <n:excludeDisplayedNews newsItem="{newsItem}"/>
+                    <f:render partial="Nivoslider/Items" arguments="{_all}" />
+                </f:for>
+            </div>
+            <f:for as="newsItem" each="{news}" iteration="i">
+                <f:if condition="{newsItem.title}">
+                    <div class="nivo-html-caption" id="caption-{newsItem.uid}">
+                        <n:link newsItem="{newsItem}" settings="{settings}" title="{newsItem.title}">
+                            <span itemprop="headline">{newsItem.title}</span>
+                        </n:link>
+                        <div class="teaser-text">
+                            <n:removeMediaTags>
+                                <f:if condition="{newsItem.teaser}">
+                                    <f:then>
+                                        <div itemprop="description">{newsItem.teaser -> f:format.crop(maxCharacters: '{f:if(condition:settings.cropMaxCharacters, then:settings.cropMaxCharacters, else:100)}', respectWordBoundaries:'1') -> f:format.html()}</div>
+                                    </f:then>
+                                    <f:else>
+                                        <div itemprop="description">{newsItem.bodytext -> f:format.crop(maxCharacters: '{f:if(condition:settings.cropMaxCharacters, then:settings.cropMaxCharacters, else:100)}', respectWordBoundaries:'1') -> f:format.html()}</div>
+                                    </f:else>
+                                </f:if>
+                            </n:removeMediaTags>
+
+                            <n:link newsItem="{newsItem}" settings="{settings}" class="more" title="{newsItem.title}">
+                                <f:translate key="more-link"/>
+                            </n:link>
+                        </div>
+                    </div>
+                </f:if>
+            </f:for>
+        </div>
+    </f:if>
+</f:section>
+</html>
