@@ -59,78 +59,10 @@ class NewsSliderController extends \GeorgRinger\News\Controller\NewsController
     }
 
     /**
-     * Function: nivoSlider
-     * Output a flexslider view of news
-     */
-    public function nivoSliderAction()
-    {
-        $news = $this->findNews();
-
-        // Get settings.
-        $settings = $this->settings;
-        $settings['sliderType'] = $this->sliderName;
-
-        $this->view->assignMultiple([
-            'news' => $news,
-            'settings' => $settings
-        ]);
-    }
-
-    /**
-     * @return void string the Rendered view
-     */
-    public function owlcarouselSliderAction()
-    {
-        // Get settings.
-        $settings = $this->settings;
-        $settings['sliderType'] = $this->sliderName;
-        $news = $this->findNews();
-
-        $this->view->assignMultiple([
-            'news' => $news,
-            'settings' => $settings
-        ]);
-    }
-
-    /**
      * @param array $overwriteDemand
      * @return return string the Rendered view
      */
     public function royalSliderAction()
-    {
-        // Get settings.
-        $settings = $this->settings;
-        $settings['sliderType'] = $this->sliderName;
-        $news = $this->findNews();
-
-        $this->view->assignMultiple([
-            'news' => $news,
-            'settings' => $settings
-        ]);
-    }
-
-    /**
-     * @param array $overwriteDemand
-     * @return return string the Rendered view
-     */
-    public function slidejsSliderAction()
-    {
-        // Get settings.
-        $settings = $this->settings;
-        $settings['sliderType'] = $this->sliderName;
-        $news = $this->findNews();
-
-        $this->view->assignMultiple([
-            'news' => $news,
-            'settings' => $settings
-        ]);
-    }
-
-/**
-     * @param array $overwriteDemand
-     * @return return string the Rendered view
-     */
-    public function slickSliderAction()
     {
         // Get settings.
         $settings = $this->settings;

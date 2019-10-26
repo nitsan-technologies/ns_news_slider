@@ -5,7 +5,7 @@ defined('TYPO3_MODE') || die('Access denied.');
     'NITSAN.NsNewsSlider',
     'Nsnewsslider',
     [
-        'NewsSlider' => 'nivoSlider, owlcarouselSlider, royalSlider, slidejsSlider, slickSlider'
+        'NewsSlider' => 'royalSlider'
     ],
     // non-cacheable actions
     [
