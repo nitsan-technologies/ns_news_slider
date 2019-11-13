@@ -1,4 +1,4 @@
-# [NITSAN]  News Slider
+# ns_news_slider
 
-This extension allow you to create beautiful news slider for your website. This extension has come up with number of popular JQuery slider plugins like Nivo Slider, Owlcarousel Slider, Royal Slider, Slidejs Slider, Slick Slider.
-News slider for easy and handy use!
+- FREE version: You can download FREE version with basic-features at https://extensions.typo3.org/extension/ns_news_slider/
+- PRO version: You can download PRO version with more-features & free-support at https://t3terminal.com/news-slider-pro/
