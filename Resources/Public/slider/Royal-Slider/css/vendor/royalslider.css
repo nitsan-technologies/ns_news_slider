@@ -1,18 +1,16 @@
-/* v1.0.5 */
+/* v1.0.7 */
 /* Core RS CSS file. 95% of time you shouldn't change anything here. */
 .royalSlider {
 	width: 600px;
 	height: 400px;
 	position: relative;
 	direction: ltr;
+	touch-action: pan-y pinch-zoom;
 }
 .royalSlider > * {
 	float: left;
 }
 
-.rsWebkit3d .rsSlide {
-	-webkit-transform: translateZ(0);
-}
 .rsWebkit3d .rsSlide,
 .rsWebkit3d .rsContainer,
 .rsWebkit3d .rsThumbs,
@@ -28,7 +26,7 @@
 .rsFade.rsWebkit3d .rsSlide,
 .rsFade.rsWebkit3d img,
 .rsFade.rsWebkit3d .rsContainer {
-    -webkit-transform: none;
+  -webkit-transform: none;
 }
 .rsOverflow {
 	width: 100%;
@@ -51,7 +49,6 @@
 	position: absolute;
 	left: 0;
 	top: 0;
-
 }
 .rsContainer {
 	position: relative;
@@ -125,7 +122,6 @@
 	top: 0;
 	display: block;
 	overflow: hidden;
-	cursor: pointer;
 	
 	height: 100%;
 	width: 100%;
@@ -175,15 +171,6 @@
 
 
 .rsVideoContainer {
-	/*left: 0;
-	top: 0;
-	position: absolute;*/
-	/*width: 100%;
-	height: 100%;
-	position: absolute;
-	left: 0;
-	top: 0;
-	float: left;*/
 	width: auto;
 	height: auto;
 	line-height: 0;
@@ -234,11 +221,16 @@ img.rsImg {
 }
 
 .grab-cursor {
-	cursor:url(grab.jpg) 8 8, move; 
+	cursor: move;
+	cursor: grab;
+	cursor: -moz-grab;
+	cursor: -webkit-grab;
 }
 
 .grabbing-cursor{ 
-	cursor:url(grabbing.jpg) 8 8, move;
+	cursor: grabbing;
+	cursor: -moz-grabbing;
+	cursor: -webkit-grabbing;
 }
 
 .rsNoDrag {
@@ -253,5 +245,5 @@ img.rsImg {
 	height:100%;
 	display:block;	
 	z-index: 20;
-	/*background: url(blank.gif);*/
+	background: rgba(0,0,0,0);
 }

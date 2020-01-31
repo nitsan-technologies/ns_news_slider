@@ -8,14 +8,16 @@
 
             <f:if condition="{mediaElement}">
                 <f:then>
-                    <f:image image="{mediaElement}" class="rsImg" title="{newsItem.title}" alt="{mediaElement.alternative}" />
+                    <f:image width="{settings.imgWidth}" height="{settings.imgHeight}" image="{mediaElement}" class="rsImg" title="{newsItem.title}" alt="{mediaElement.alternative}" />
+                    <f:image  class="rsTmb" src="{mediaElement.originalResource.publicUrl}" alt="{mediaElement.originalResource.alternative}" title="{picture.originalResource.title}" width="{settings.slidethumbwidth}" height="{settings.slidthumbeheight}" />
                 </f:then>
                 <f:else>
-                    <f:image src="{f:if(condition: settings.list.media.dummyImage, then: settings.list.media.dummyImage, else: 'EXT:ns_news_slider/Resources/Public/Img/no-image.jpg')}"
+                    <f:image width="{settings.imgWidth}" height="{settings.imgHeight}" src="{f:if(condition: settings.list.media.dummyImage, then: settings.list.media.dummyImage, else: 'EXT:ns_news_slider/Resources/Public/Img/no-image.jpg')}"
                              title="{newsItem.title}" alt="{mediaElement.alternative}"
                              class="rsImg"
                              maxWidth="{f:if(condition: settings.media.maxWidth, then: settings.media.maxWidth, else: settings.list.media.image.maxWidth)}"
                              maxHeight="{f:if(condition: settings.media.maxHeight, then: settings.media.maxHeight, else: settings.list.media.image.maxHeight)}"/>
+                     <f:image  class="rsTmb" src="{mediaElement.originalResource.publicUrl}" alt="{mediaElement.originalResource.alternative}" title="{picture.originalResource.title}" width="{settings.slidethumbwidth}" height="{settings.slidthumbeheight}" />
                 </f:else>
             </f:if>
 
@@ -23,7 +25,7 @@
                 <div class="rsTmb">
                     <f:if condition="{mediaElement}">
                         <f:then>
-                            <f:image image="{mediaElement}" />
+                            <f:image class="rsTmb" image="{mediaElement}" />
                         </f:then>
                         <f:else>
                             <f:image src="{f:if(condition: settings.list.media.dummyImage, then: settings.list.media.dummyImage, else: 'EXT:ns_news_slider/Resources/Public/Img/no-image.jpg')}"
@@ -31,6 +33,7 @@
                                      class="rsImg"
                                      maxWidth="{f:if(condition: settings.media.maxWidth, then: settings.media.maxWidth, else: settings.list.media.image.maxWidth)}"
                                      maxHeight="{f:if(condition: settings.media.maxHeight, then: settings.media.maxHeight, else: settings.list.media.image.maxHeight)}"/>
+                             <f:image  class="rsTmb" src="{mediaElement.originalResource.publicUrl}" alt="{mediaElement.originalResource.alternative}" title="{picture.originalResource.title}" width="{settings.slidethumbwidth}" height="{settings.slidthumbeheight}" />
                         </f:else>
                     </f:if>
                 </div>
