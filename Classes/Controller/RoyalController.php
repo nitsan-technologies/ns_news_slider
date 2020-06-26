@@ -1,6 +1,7 @@
 <?php
 namespace NITSAN\NsNewsSlider\Controller;
 
+use TYPO3\CMS\Extbase\Annotation\Inject as inject;
 use TYPO3\CMS\Extbase\Configuration\ConfigurationManagerInterface;
 use TYPO3\CMS\Extbase\Utility\LocalizationUtility;
 
@@ -66,22 +67,21 @@ class RoyalController extends \GeorgRinger\News\Controller\NewsController
         // Set constant settings for the news
         if (is_array($tsSettings['settings'][$this->sliderName])) {
             foreach ($tsSettings['settings'][$this->sliderName] as $key=>$css) {
-                if ( !$this->settings[$this->sliderName][$key] ) {
+                if (!$this->settings[$this->sliderName][$key]) {
                     $this->settings[$this->sliderName][$key] = $css;
                 }
             }
         }
     }
 
-
     /**
      * action list
      *
+     * @param array|null $overwriteDemand
      * @return void
      */
-    public function listAction()
-    {       
-
+    public function listAction(array $overwriteDemand = null)
+    {
         $settings = $this->settings;
         $settings['sliderType'] = $this->sliderName;
         $news = $this->findNews();
@@ -92,38 +92,41 @@ class RoyalController extends \GeorgRinger\News\Controller\NewsController
         ]);
 
         $pluginName = $this->request->getPluginName();
-        $extpath = \TYPO3\CMS\Core\Utility\ExtensionManagementUtility::siteRelPath($this->request->getControllerExtensionKey());
+        if (version_compare(TYPO3_branch, '9.0', '>')) {
+            $extpath = \TYPO3\CMS\Core\Utility\PathUtility::stripPathSitePrefix(\TYPO3\CMS\Core\Utility\ExtensionManagementUtility::extPath($this->request->getControllerExtensionKey()));
+        } else {
+            $extpath = \TYPO3\CMS\Core\Utility\ExtensionManagementUtility::siteRelPath($this->request->getControllerExtensionKey());
+        }
         $pageRenderer = \TYPO3\CMS\Core\Utility\GeneralUtility::makeInstance(\TYPO3\CMS\Core\Page\PageRenderer::class);
         $getContentId = $this->configurationManager->getContentObject()->data['uid'];
 
-        
-            // add css js in header
-            $GLOBALS['TSFE']->additionalHeaderData[$this->request->getControllerExtensionKey() . 'CSS1'] = '<link rel="stylesheet" type="text/css" href="' . $extpath . 'Resources/Public/slider/Royal-Slider/css/style.css" />';
-            $GLOBALS['TSFE']->additionalHeaderData[$this->request->getControllerExtensionKey() . 'CSS2'] = '<link rel="stylesheet" type="text/css" href="' . $extpath . 'Resources/Public/slider/Royal-Slider/css/vendor/royalslider.css" />';
-            $GLOBALS['TSFE']->additionalHeaderData[$this->request->getControllerExtensionKey() . 'CSS3'] = '<link rel="stylesheet" type="text/css" href="' . $extpath . 'Resources/Public/slider/Royal-Slider/css/vendor/skins/minimal-white/rs-minimal-white.css" />';
+        // add css js in header
+        $GLOBALS['TSFE']->additionalHeaderData[$this->request->getControllerExtensionKey() . 'CSS1'] = '<link rel="stylesheet" type="text/css" href="' . $extpath . 'Resources/Public/slider/Royal-Slider/css/style.css" />';
+        $GLOBALS['TSFE']->additionalHeaderData[$this->request->getControllerExtensionKey() . 'CSS2'] = '<link rel="stylesheet" type="text/css" href="' . $extpath . 'Resources/Public/slider/Royal-Slider/css/vendor/royalslider.css" />';
+        $GLOBALS['TSFE']->additionalHeaderData[$this->request->getControllerExtensionKey() . 'CSS3'] = '<link rel="stylesheet" type="text/css" href="' . $extpath . 'Resources/Public/slider/Royal-Slider/css/vendor/skins/minimal-white/rs-minimal-white.css" />';
 
-            // set js value for slider
-            $constant = $GLOBALS['TSFE']->tmpl->setup['plugin.']['tx_nsnewsslider_royalslider.']['settings.'];
+        // set js value for slider
+        $constant = $GLOBALS['TSFE']->tmpl->setup['plugin.']['tx_nsnewsslider_royalslider.']['settings.'];
 
-            if ($constant['jQuery']) {
-                $ajax1 = $extpath . 'Resources/Public/slider/Royal-Slider/js/vendor/jquery-1.8.3.min.js';
-                $pageRenderer->addJsFooterFile($ajax1, 'text/javascript', false, false, '');
-            }
+        if ($constant['jQuery']) {
+            $ajax1 = $extpath . 'Resources/Public/slider/Royal-Slider/js/vendor/jquery-1.8.3.min.js';
+            $pageRenderer->addJsFooterFile($ajax1, 'text/javascript', false, false, '');
+        }
 
-            $ajax2 = $extpath . 'Resources/Public/slider/Royal-Slider/js/vendor/jquery.royalslider.min.js';
-            $ajax3 = $extpath . 'Resources/Public/slider/Royal-Slider/js/vendor/jquery.easing-1.3.js';
-            $pageRenderer->addJsFooterFile($ajax2, 'text/javascript', false, false, '');
-            $pageRenderer->addJsFooterFile($ajax3, 'text/javascript', false, false, '');
+        $ajax2 = $extpath . 'Resources/Public/slider/Royal-Slider/js/vendor/jquery.royalslider.min.js';
+        $ajax3 = $extpath . 'Resources/Public/slider/Royal-Slider/js/vendor/jquery.easing-1.3.js';
+        $pageRenderer->addJsFooterFile($ajax2, 'text/javascript', false, false, '');
+        $pageRenderer->addJsFooterFile($ajax3, 'text/javascript', false, false, '');
 
-            $slider_type = $this->settings['slider_type_royal'];
-            //\TYPO3\CMS\Extbase\Utility\DebuggerUtility::var_dump($slider_type);die;
-            $this->view->assign('slider_type', $slider_type);
+        $slider_type = $this->settings['slider_type_royal'];
+        //\TYPO3\CMS\Extbase\Utility\DebuggerUtility::var_dump($slider_type);die;
+        $this->view->assign('slider_type', $slider_type);
 
-            if ($slider_type == 'fullwidth') {
-                $id = "
+        if ($slider_type == 'fullwidth') {
+            $id = "
                 (function($) {
-                    $('#full-width-slider-".$getContentId."').royalSlider({";
-                        $type = '
+                    $('#full-width-slider-" . $getContentId . "').royalSlider({";
+            $type = '
                         deeplinking: {
                            enabled: ' . (isset($this->settings['deeplinking_enabled']) && $this->settings['deeplinking_enabled'] !='' ? $this->settings['deeplinking_enabled'] : $constant['deeplinking_enabled']) . ',
                            change: ' . (isset($this->settings['deeplinking_change']) && $this->settings['deeplinking_change'] != '' ? $this->settings['deeplinking_change'] : $constant['deeplinking_change']) . ",
@@ -160,11 +163,11 @@ class RoyalController extends \GeorgRinger\News\Controller\NewsController
                         }
 
                         ';
-                    } elseif ($slider_type == 'fullscreen') {
-                        $id = "(function($) { $('#full-width-slider-".$getContentId."').royalSlider({";
-                        $type = '
+        } elseif ($slider_type == 'fullscreen') {
+            $id = "(function($) { $('#full-width-slider-" . $getContentId . "').royalSlider({";
+            $type = '
                         imgWidth: ' . (isset($this->settings['imgWidth']) && $this->settings['imgWidth'] !='' ? $this->settings['imgWidth'] : $constant['imgWidth']) . ',
-                        imgHeight: '. (isset($this->settings['imgHeight']) && $this->settings['imgHeight'] !='' ? $this->settings['imgHeight'] : $constant['imgHeight']) .',
+                        imgHeight: ' . (isset($this->settings['imgHeight']) && $this->settings['imgHeight'] !='' ? $this->settings['imgHeight'] : $constant['imgHeight']) . ',
                         arrowsNavHideOnTouch: ' . (isset($this->settings['arrowsNavHideOnTouch']) && $this->settings['arrowsNavHideOnTouch'] != '' ? $this->settings['arrowsNavHideOnTouch'] : $constant['arrowsNavHideOnTouch']) . ',
                         fullscreen:{
                             enabled : ' . (isset($this->settings['fullScreen_enabled']) && $this->settings['fullScreen_enabled'] != '' ? $this->settings['fullScreen_enabled'] : $constant['fullScreen_enabled']) . ',
@@ -199,9 +202,9 @@ class RoyalController extends \GeorgRinger\News\Controller\NewsController
                             arrowRight: ' . (isset($this->settings['thumb_arrowRight']) && $this->settings['thumb_arrowRight'] != '' ? $this->settings['thumb_arrowRight'] : $constant['thumb_arrowRight']) . ',
 
                         }';
-                    }
+        }
 
-                    $GLOBALS['TSFE']->additionalFooterData[$this->extKey] .= '<script>
+        $GLOBALS['TSFE']->additionalFooterData[$this->extKey] .= '<script>
                     ' . $id . '
                         arrowsNav: ' . (isset($this->settings['arrowsNav']) && $this->settings['arrowsNav'] !='' ? $this->settings['arrowsNav'] : $constant['arrowsNav']) . ',
                         loop: ' . (isset($this->settings['loop']) && $this->settings['loop'] !='' ? $this->settings['loop'] : $constant['loop']) . ',
@@ -235,7 +238,7 @@ class RoyalController extends \GeorgRinger\News\Controller\NewsController
                         allowCSS3: ' . (isset($this->settings['allowCSS3']) && $this->settings['allowCSS3'] !='' ? $this->settings['allowCSS3'] : $constant['allowCSS3']) . ',
                         addActiveClass: ' . (isset($this->settings['addActiveClass']) && $this->settings['addActiveClass'] !='' ? $this->settings['addActiveClass'] : $constant['addActiveClass']) . ',
                         minSlideOffset: ' . (isset($this->settings['minSlideOffset']) && $this->settings['minSlideOffset'] !='' ? $this->settings['minSlideOffset'] : $constant['minSlideOffset']) . ',
-                        autoHeight: ' . (isset($this->settings['autoHeight']) && $this->settings['autoHeight'] !='' ? $this->settings['autoHeight'] : $constant['autoHeight']) . ',                
+                        autoHeight: ' . (isset($this->settings['autoHeight']) && $this->settings['autoHeight'] !='' ? $this->settings['autoHeight'] : $constant['autoHeight']) . ',
 
                         autoPlay: {
                             enabled: ' . (isset($this->settings['autoPlay']) && $this->settings['autoPlay'] !='' ? $this->settings['autoPlay'] : $constant['autoPlay']) . ',
@@ -250,8 +253,8 @@ class RoyalController extends \GeorgRinger\News\Controller\NewsController
             </script>';
 
         //variable saved in flexform
-        $this->view->assign('settings', $this->settings);        
-       
+        $this->view->assign('settings', $this->settings);
+
         // show pluging name
         $this->view->assign('pluginName', $pluginName);
     }
@@ -260,19 +263,17 @@ class RoyalController extends \GeorgRinger\News\Controller\NewsController
      * @param array $overwriteDemand
      * @return void string the Rendered view
      */
-    public function findNews(array $overwriteDemand = NULL)
+    public function findNews(array $overwriteDemand = null)
     {
-
         $demand = parent::createDemandObjectFromSettings($this->settings);
 
-        if ($this->settings['disableOverrideDemand'] != 1 && $overwriteDemand !== NULL) {
+        if ($this->settings['disableOverrideDemand'] != 1 && $overwriteDemand !== null) {
             $demand = parent::overwriteDemandObject($demand, $overwriteDemand);
         }
 
         $news = $this->newsRepository->findDemanded($demand);
 
-        if (!count($news)){
-
+        if (!count($news)) {
             $this->addFlashMessage(
                 LocalizationUtility::translate('fe.nonews', 'ns_news_slider'),
                 LocalizationUtility::translate('fe.nonewsTitle', 'ns_news_slider'),

@@ -17,4 +17,4 @@ namespace NITSAN\NsNewsSlider\Domain\Model;
  */
 class NewsSlider extends \TYPO3\CMS\Extbase\DomainObject\AbstractEntity
 {
-    }
+}
