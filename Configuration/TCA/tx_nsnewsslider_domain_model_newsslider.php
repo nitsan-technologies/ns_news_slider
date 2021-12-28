@@ -1,4 +1,10 @@
 <?php
+
+if (version_compare(TYPO3_branch, '8.7', '>')) {
+    $lang = 'LLL:EXT:core/Resources/Private/Language/locallang_general.xlf:';
+} else {
+    $lang = 'LLL:EXT:lang/locallang_general.xlf:';
+}
 return [
     'ctrl' => [
         'title' => 'LLL:EXT:ns_news_slider/Resources/Private/Language/locallang_db.xlf:tx_nsnewsslider_domain_model_newsslider',
@@ -29,14 +35,14 @@ return [
     'columns' => [
         'sys_language_uid' => [
             'exclude' => true,
-            'label' => 'LLL:EXT:lang/locallang_general.xlf:LGL.language',
+            'label' => $lang.'LGL.language',
             'config' => [
                 'type' => 'select',
                 'renderType' => 'selectSingle',
                 'special' => 'languages',
                 'items' => [
                     [
-                        'LLL:EXT:lang/locallang_general.xlf:LGL.allLanguages',
+                        $lang.'LGL.allLanguages',
                         -1,
                         'flags-multiple'
                     ]
@@ -47,7 +53,7 @@ return [
         'l10n_parent' => [
             'displayCond' => 'FIELD:sys_language_uid:>:0',
             'exclude' => true,
-            'label' => 'LLL:EXT:lang/locallang_general.xlf:LGL.l18n_parent',
+            'label' => $lang.'LGL.l18n_parent',
             'config' => [
                 'type' => 'select',
                 'renderType' => 'selectSingle',
@@ -64,7 +70,7 @@ return [
             ],
         ],
         't3ver_label' => [
-            'label' => 'LLL:EXT:lang/locallang_general.xlf:LGL.versionLabel',
+            'label' => $lang.'LGL.versionLabel',
             'config' => [
                 'type' => 'input',
                 'size' => 30,
@@ -73,12 +79,12 @@ return [
         ],
         'hidden' => [
             'exclude' => true,
-            'label' => 'LLL:EXT:lang/locallang_general.xlf:LGL.hidden',
+            'label' => $lang.'LGL.hidden',
             'config' => [
                 'type' => 'check',
                 'items' => [
                     '1' => [
-                        '0' => 'LLL:EXT:lang/locallang_core.xlf:labels.enabled'
+                        '0' => $lang.'labels.enabled'
                     ]
                 ],
             ],
@@ -86,7 +92,7 @@ return [
         'starttime' => [
             'exclude' => true,
             'l10n_mode' => 'mergeIfNotBlank',
-            'label' => 'LLL:EXT:lang/locallang_general.xlf:LGL.starttime',
+            'label' => $lang.'LGL.starttime',
             'config' => [
                 'type' => 'input',
                 'size' => 13,
@@ -97,7 +103,7 @@ return [
         'endtime' => [
             'exclude' => true,
             'l10n_mode' => 'mergeIfNotBlank',
-            'label' => 'LLL:EXT:lang/locallang_general.xlf:LGL.endtime',
+            'label' => $lang.'LGL.endtime',
             'config' => [
                 'type' => 'input',
                 'size' => 13,

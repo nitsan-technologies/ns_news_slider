@@ -36,14 +36,6 @@ use TYPO3\CMS\Extbase\Utility\LocalizationUtility;
 class RoyalController extends \GeorgRinger\News\Controller\NewsController
 {
 
-     /**
-     * newsSliderRepository
-     *
-     * @var \NITSAN\NsNewsSlider\Domain\Repository\NewsSliderRepository
-     * @inject
-     */
-    protected $newsSliderRepository = null;
-
     /**
      * @var \GeorgRinger\News\Domain\Repository\NewsRepository
      */
