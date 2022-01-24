@@ -24,7 +24,7 @@
     }
   },
   "replace": {
-    "nitsan/ns-news-slider": "self.version"
+    "typo3-ter/ns-news-slider": "self.version"
   },
   "extra": {
     "typo3/cms": {
