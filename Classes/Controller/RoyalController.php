@@ -101,7 +101,7 @@ class RoyalController extends \GeorgRinger\News\Controller\NewsController
         $constant = $GLOBALS['TSFE']->tmpl->setup['plugin.']['tx_nsnewsslider_royalslider.']['settings.'];
 
         if ($constant['jQuery']) {
-            $ajax1 = $extpath . 'Resources/Public/slider/Royal-Slider/js/vendor/jquery-1.8.3.min.js';
+            $ajax1 = $extpath . 'Resources/Public/slider/Royal-Slider/js/vendor/jquery.min.js';
             $pageRenderer->addJsFooterFile($ajax1, 'text/javascript', false, false, '');
         }
 
