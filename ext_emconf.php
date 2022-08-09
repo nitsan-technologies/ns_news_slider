@@ -2,7 +2,7 @@
 
 $EM_CONF['ns_news_slider'] = [
     'title' => '[NITSAN] News Slider Plugin',
-    'description' => 'Do you want cool sliders for most popular TYPO3 EXT:news? This extension includes nivo-slider, owlcarousel, royal-slider, slidejs, slick-slider etc. Demo: https://demo.t3terminal.com/t3t-extensions/news-slider/ You can download PRO version for more-features & free-support at https://t3terminal.com/news-slider-typo3-extension',
+    'description' => 'Do you want cool sliders for most popular TYPO3 EXT:news? This extension includes nivo-slider, owlcarousel, royal-slider, slidejs, slick-slider etc. Demo: https://demo.t3planet.com/t3t-extensions/news-slider/ You can download PRO version for more-features & free-support at https://t3planet.com/news-slider-typo3-extension',
     'category' => 'plugin',
     'author' => 'Team NITSAN',
     'author_email' => 'sanjay@nitsan.in',
