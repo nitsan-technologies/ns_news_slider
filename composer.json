@@ -1,8 +1,8 @@
 {
   "name": "nitsan/ns-news-slider",
   "type": "typo3-cms-extension",
-  "description": "Do you want cool sliders for most popular TYPO3 EXT:news? This extension includes nivo-slider, owlcarousel, royal-slider, slidejs, slick-slider etc. Demo: https://demo.t3terminal.com/t3t-extensions/news-slider/ You can download PRO version for more-features & free-support at https://t3terminal.com/news-slider-typo3-extension",
-  "homepage": "https://t3terminal.com/news-slider-pro/",
+  "description": "Do you want cool sliders for most popular TYPO3 EXT:news? This extension includes nivo-slider, owlcarousel, royal-slider, slidejs, slick-slider etc. Demo: https://demo.t3planet.com/t3t-extensions/news-slider/ You can download PRO version for more-features & free-support at https://t3planet.com/news-slider-typo3-extension",
+  "homepage": "https://t3planet.com/typo3-news-slider-extension",
   "license": "GPL-2.0+",
   "keywords": [
     "TYPO3 CMS",
