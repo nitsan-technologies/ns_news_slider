@@ -57,6 +57,7 @@ class RoyalController extends \GeorgRinger\News\Controller\NewsController
         );
 
         // Set constant settings for the news
+        $tsSettings['settings'][$this->sliderName] = isset($tsSettings['settings'][$this->sliderName]) ? $tsSettings['settings'][$this->sliderName] : '';
         if (is_array($tsSettings['settings'][$this->sliderName])) {
             foreach ($tsSettings['settings'][$this->sliderName] as $key=>$css) {
                 if (!$this->settings[$this->sliderName][$key]) {
@@ -101,7 +102,7 @@ class RoyalController extends \GeorgRinger\News\Controller\NewsController
         $constant = $GLOBALS['TSFE']->tmpl->setup['plugin.']['tx_nsnewsslider_royalslider.']['settings.'];
 
         if ($constant['jQuery']) {
-            $ajax1 = $extpath . 'Resources/Public/slider/Royal-Slider/js/vendor/jquery-1.8.3.min.js';
+            $ajax1 = $extpath . 'Resources/Public/slider/Royal-Slider/js/vendor/jquery.min.js';
             $pageRenderer->addJsFooterFile($ajax1, 'text/javascript', false, false, '');
         }
 
@@ -110,7 +111,7 @@ class RoyalController extends \GeorgRinger\News\Controller\NewsController
         $pageRenderer->addJsFooterFile($ajax2, 'text/javascript', false, false, '');
         $pageRenderer->addJsFooterFile($ajax3, 'text/javascript', false, false, '');
 
-        $slider_type = $this->settings['slider_type_royal'];
+        $slider_type = isset($this->settings['slider_type_royal']) ? $this->settings['slider_type_royal'] : '';
         //\TYPO3\CMS\Extbase\Utility\DebuggerUtility::var_dump($slider_type);die;
         $this->view->assign('slider_type', $slider_type);
 
@@ -196,6 +197,10 @@ class RoyalController extends \GeorgRinger\News\Controller\NewsController
                         }';
         }
 
+        $id = isset($id) ? $id : '';
+        $type = isset($type) ? $type : '';
+        $this->extKey = isset($this->extKey) ? $this->extKey : '';
+        $GLOBALS['TSFE']->additionalFooterData[$this->extKey] = isset($GLOBALS['TSFE']->additionalFooterData[$this->extKey]) ? $GLOBALS['TSFE']->additionalFooterData[$this->extKey] : '';
         $GLOBALS['TSFE']->additionalFooterData[$this->extKey] .= '<script>
                     ' . $id . '
                         arrowsNav: ' . (isset($this->settings['arrowsNav']) && $this->settings['arrowsNav'] !='' ? $this->settings['arrowsNav'] : $constant['arrowsNav']) . ',

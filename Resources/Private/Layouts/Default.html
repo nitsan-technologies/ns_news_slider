@@ -1,8 +1,20 @@
 {namespace resource=NITSAN\NsNewsSlider\ViewHelpers}
 
 
-<div class="container">
-	<div class="tx-ns-news-slider">
-		<f:render section="main" />
-	</div>
-</div>
+<f:if condition="{settings.slider_type_royal} == fullwidth">
+	<f:then>
+		<div class="container-fluid">
+			<div class="tx-ns-news-slider">
+				<f:render section="main" />
+			</div>
+		</div>
+	</f:then>
+	<f:else>
+		<div class="container">
+			<div class="tx-ns-news-slider">
+				<f:render section="main" />
+			</div>
+		</div>
+	</f:else>
+</f:if>
+
