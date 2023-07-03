@@ -13,7 +13,7 @@
 				</TCEforms>
 				<type>array</type>
 				<el>
-					<switchableControllerActions>
+					<settings.type>
 						<TCEforms>
 							<label>jQuery Slider Plugin</label>
 							<onChange>reload</onChange>
@@ -28,7 +28,7 @@
 								</items>
 							</config>
 						</TCEforms>
-					</switchableControllerActions>
+					</settings.type>
 
 					<!-- order -->
 					<settings.orderBy>
@@ -526,7 +526,7 @@
 			<ROOT>
 				<TCEforms>
 					<sheetTitle>LLL:EXT:ns_news_slider/Resources/Private/Language/locallang_db.xlf:flexforms_tab.royalSlider</sheetTitle>
-					<displayCond>FIELD:sDEF.switchableControllerActions:=:Royal->list</displayCond>
+					<displayCond>FIELD:sDEF.settings.type:=:Royal->list</displayCond>
 				</TCEforms>
 				<type>array</type>
 				<el>

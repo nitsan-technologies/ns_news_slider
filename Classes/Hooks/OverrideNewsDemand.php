@@ -1,4 +1,5 @@
 <?php
+
 namespace NITSAN\NsNewsSlider\Hooks;
 
 use GeorgRinger\News\Domain\Repository\NewsRepository;

@@ -1,4 +1,5 @@
 <?php
+
 namespace NITSAN\NsNewsSlider\Domain\Repository;
 
 /***
@@ -18,7 +19,7 @@ namespace NITSAN\NsNewsSlider\Domain\Repository;
 class NewsSliderRepository extends \TYPO3\CMS\Extbase\Persistence\Repository
 {
     /**
-     * @var array
+     * @var  array<non-empty-string, 'ASC'|'DESC'>
      */
     protected $defaultOrderings = [
         'sorting' => \TYPO3\CMS\Extbase\Persistence\QueryInterface::ORDER_ASCENDING
