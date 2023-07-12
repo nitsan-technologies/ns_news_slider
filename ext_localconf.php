@@ -2,6 +2,7 @@
 
 defined('TYPO3') || die('Access denied.');
 
+
 \TYPO3\CMS\Extbase\Utility\ExtensionUtility::configurePlugin(
     'NsNewsSlider',
     'Nsnewsslider',
@@ -22,9 +23,5 @@ $iconRegistry->registerIcon(
 );
 
 // Hook for override news demand.
-$GLOBALS['TYPO3_CONF_VARS']
-        ['EXT']
-        ['news']
-        ['Domain/Repository/AbstractDemandedRepository.php']
-        ['findDemanded']
-        ['ns_news_slider'] = 'NITSAN\\NsNewsSlider\\Hooks\\OverrideNewsDemand->modify';
+$GLOBALS['TYPO3_CONF_VARS']['EXT']['news']['Domain/Repository/AbstractDemandedRepository.php']['findDemanded']['ns_news_slider'] =
+    'NITSAN\\NsNewsSlider\\Hooks\\OverrideNewsDemand->modify';

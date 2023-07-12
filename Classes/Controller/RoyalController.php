@@ -10,7 +10,8 @@ use TYPO3\CMS\Extbase\Persistence\QueryResultInterface;
 use TYPO3\CMS\Extbase\Utility\LocalizationUtility;
 use TYPO3\CMS\Core\Utility\ExtensionManagementUtility;
 use TYPO3\CMS\Extbase\Configuration\ConfigurationManagerInterface;
-
+use TYPO3\CMS\Core\Page\PageRenderer;
+use TYPO3\CMS\Core\Type\ContextualFeedbackSeverity;
 /***************************************************************
  *
  *  Copyright notice
@@ -46,8 +47,16 @@ class RoyalController extends \GeorgRinger\News\Controller\NewsController
      */
     protected $newsRepository;
 
-    protected $sliderName;
-    protected $extKey;
+
+    /**
+     * @var string
+     */
+    protected string $sliderName = '';
+
+    /**
+     * @var string
+     */
+    protected string $extKey = '';
 
     /**
      * Initializes the current action
@@ -63,7 +72,7 @@ class RoyalController extends \GeorgRinger\News\Controller\NewsController
         );
 
         // Set constant settings for the news
-        $tsSettings['settings'][$this->sliderName] = isset($tsSettings['settings'][$this->sliderName]) ? $tsSettings['settings'][$this->sliderName] : '';
+        $tsSettings['settings'][$this->sliderName] = $tsSettings['settings'][$this->sliderName] ?? '';
         if (is_array($tsSettings['settings'][$this->sliderName])) {
             foreach ($tsSettings['settings'][$this->sliderName] as $key=>$css) {
                 if (!$this->settings[$this->sliderName][$key]) {
@@ -81,9 +90,11 @@ class RoyalController extends \GeorgRinger\News\Controller\NewsController
      */
     public function listAction(array $overwriteDemand = null): ResponseInterface
     {
-        $settings = $this->settings;
+        $settings =  $this->configurationManager->getConfiguration(ConfigurationManagerInterface::CONFIGURATION_TYPE_FULL_TYPOSCRIPT);
         $settings['sliderType'] = $this->sliderName;
         $news = $this->findNews();
+        $id = $id ?? '';
+        $type = $type ?? '';
 
         $this->view->assignMultiple([
             'news' => $news,
@@ -97,7 +108,7 @@ class RoyalController extends \GeorgRinger\News\Controller\NewsController
         }
         $pluginName = $this->request->getPluginName();
 
-        $pageRenderer = GeneralUtility::makeInstance(\TYPO3\CMS\Core\Page\PageRenderer::class);
+        $pageRenderer = GeneralUtility::makeInstance(PageRenderer::class);
         $getContentId = $this->configurationManager->getContentObject()->data['uid'];
 
         // add css js in header
@@ -201,9 +212,8 @@ class RoyalController extends \GeorgRinger\News\Controller\NewsController
                         }';
         }
 
-        $id = $id ?? '';
-        $type = $type ?? '';
         $this->extKey = $this->extKey ?? '';
+
         $GLOBALS['TSFE']->additionalFooterData[$this->extKey] = $GLOBALS['TSFE']->additionalFooterData[$this->extKey] ?? '';
 
         $GLOBALS['TSFE']->additionalFooterData[$this->extKey] .= '<script>
@@ -276,7 +286,7 @@ class RoyalController extends \GeorgRinger\News\Controller\NewsController
             $this->addFlashMessage(
                 LocalizationUtility::translate('fe.nonews', 'ns_news_slider'),
                 LocalizationUtility::translate('fe.nonewsTitle', 'ns_news_slider'),
-                \TYPO3\CMS\Core\Type\ContextualFeedbackSeverity::WARNING
+                ContextualFeedbackSeverity::WARNING
             );
         }
         return $news;

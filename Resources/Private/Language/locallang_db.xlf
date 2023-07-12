@@ -29,6 +29,12 @@
 				<source>Disable</source>
 			</trans-unit>
 
+			<trans-unit id="flexform.jQueryplugin">
+				<source>jQuery Slider Plugin</source>
+			</trans-unit>
+			<trans-unit id="flexform.Royal">
+				<source>Royal Slider</source>
+			</trans-unit>
 			<trans-unit id="flexform.selectimage">
 				<source>Select storage folder of Images</source>
 			</trans-unit>
