@@ -1,16 +1,17 @@
 <?php
-defined('TYPO3_MODE') or die();
+
+defined('TYPO3') or die();
 
 /**
  * Plugin register
  */
 \TYPO3\CMS\Extbase\Utility\ExtensionUtility::registerPlugin(
-    'NITSAN.NsNewsSlider',
+    'NsNewsSlider',
     'Nsnewsslider',
     'NS News Slider'
 );
 
-\TYPO3\CMS\Core\Utility\ExtensionManagementUtility::makeCategorizable(
+\TYPO3\CMS\Core\Utility\ExtensionManagementUtility::addToAllTCAtypes(
     'ns_news_slider',
     'tx_nsnewsslider_domain_model_newsslider'
 );

@@ -1,10 +1,7 @@
 <?php
 
-if (version_compare(TYPO3_branch, '8.7', '>')) {
-    $lang = 'LLL:EXT:core/Resources/Private/Language/locallang_general.xlf:';
-} else {
-    $lang = 'LLL:EXT:lang/locallang_general.xlf:';
-}
+$lang = 'LLL:EXT:core/Resources/Private/Language/locallang_general.xlf:';
+
 return [
     'ctrl' => [
         'title' => 'LLL:EXT:ns_news_slider/Resources/Private/Language/locallang_db.xlf:tx_nsnewsslider_domain_model_newsslider',
@@ -15,7 +12,6 @@ return [
         'sortby' => 'sorting',
         'versioningWS' => true,
         'languageField' => 'sys_language_uid',
-        'transOrigPointerField' => 'l10n_parent',
         'transOrigDiffSourceField' => 'l10n_diffsource',
         'delete' => 'deleted',
         'enablecolumns' => [
@@ -24,10 +20,10 @@ return [
             'endtime' => 'endtime',
         ],
         'searchFields' => '',
-        'iconfile' => 'EXT:ns_news_slider/Resources/Public/Icons/tx_nsnewsslider_domain_model_newsslider.gif'
-    ],
-    'interface' => [
-        'showRecordFieldList' => 'sys_language_uid, l10n_parent, l10n_diffsource, hidden, ',
+        'iconfile' => 'EXT:ns_news_slider/Resources/Public/Icons/tx_nsnewsslider_domain_model_newsslider.gif',
+        'security' => [
+            'ignorePageTypeRestriction' => true,
+        ],
     ],
     'types' => [
         '1' => ['showitem' => 'sys_language_uid, l10n_parent, l10n_diffsource, hidden, , --div--;LLL:EXT:frontend/Resources/Private/Language/locallang_ttc.xlf:tabs.access, starttime, endtime'],
@@ -35,33 +31,9 @@ return [
     'columns' => [
         'sys_language_uid' => [
             'exclude' => true,
-            'label' => $lang.'LGL.language',
+            'label' => 'LLL:EXT:core/Resources/Private/Language/locallang_general.xlf:LGL.language',
             'config' => [
-                'type' => 'select',
-                'renderType' => 'selectSingle',
-                'special' => 'languages',
-                'items' => [
-                    [
-                        $lang.'LGL.allLanguages',
-                        -1,
-                        'flags-multiple'
-                    ]
-                ],
-                'default' => 0,
-            ],
-        ],
-        'l10n_parent' => [
-            'displayCond' => 'FIELD:sys_language_uid:>:0',
-            'exclude' => true,
-            'label' => $lang.'LGL.l18n_parent',
-            'config' => [
-                'type' => 'select',
-                'renderType' => 'selectSingle',
-                'items' => [
-                    ['', 0],
-                ],
-                'foreign_table' => 'tx_nsnewsslider_domain_model_newsslider',
-                'foreign_table_where' => 'AND tx_nsnewsslider_domain_model_newsslider.pid=###CURRENT_PID### AND tx_nsnewsslider_domain_model_newsslider.sys_language_uid IN (-1,0)',
+                'type' => 'language',
             ],
         ],
         'l10n_diffsource' => [
@@ -70,7 +42,7 @@ return [
             ],
         ],
         't3ver_label' => [
-            'label' => $lang.'LGL.versionLabel',
+            'label' => $lang . 'LGL.versionLabel',
             'config' => [
                 'type' => 'input',
                 'size' => 30,
@@ -79,20 +51,22 @@ return [
         ],
         'hidden' => [
             'exclude' => true,
-            'label' => $lang.'LGL.hidden',
+            'label' => $lang . 'LGL.hidden',
             'config' => [
                 'type' => 'check',
+                'renderType' => 'checkboxToggle',
                 'items' => [
-                    '1' => [
-                        '0' => $lang.'labels.enabled'
-                    ]
+                    [
+                        'label' => '1',
+                        'value' => 0,
+                    ],
                 ],
             ],
         ],
         'starttime' => [
             'exclude' => true,
             'l10n_mode' => 'mergeIfNotBlank',
-            'label' => $lang.'LGL.starttime',
+            'label' => $lang . 'LGL.starttime',
             'config' => [
                 'type' => 'input',
                 'size' => 13,
@@ -103,7 +77,7 @@ return [
         'endtime' => [
             'exclude' => true,
             'l10n_mode' => 'mergeIfNotBlank',
-            'label' => $lang.'LGL.endtime',
+            'label' => $lang . 'LGL.endtime',
             'config' => [
                 'type' => 'input',
                 'size' => 13,

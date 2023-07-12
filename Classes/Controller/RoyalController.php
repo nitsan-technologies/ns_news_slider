@@ -1,15 +1,22 @@
 <?php
+
 namespace NITSAN\NsNewsSlider\Controller;
 
-use TYPO3\CMS\Extbase\Annotation\Inject as inject;
-use TYPO3\CMS\Extbase\Configuration\ConfigurationManagerInterface;
+use TYPO3\CMS\Core\Core\Environment;
+use Psr\Http\Message\ResponseInterface;
+use TYPO3\CMS\Core\Utility\PathUtility;
+use TYPO3\CMS\Core\Utility\GeneralUtility;
+use TYPO3\CMS\Extbase\Persistence\QueryResultInterface;
 use TYPO3\CMS\Extbase\Utility\LocalizationUtility;
-
+use TYPO3\CMS\Core\Utility\ExtensionManagementUtility;
+use TYPO3\CMS\Extbase\Configuration\ConfigurationManagerInterface;
+use TYPO3\CMS\Core\Page\PageRenderer;
+use TYPO3\CMS\Core\Type\ContextualFeedbackSeverity;
 /***************************************************************
  *
  *  Copyright notice
  *
- *  (c) 2016
+ *  (c) 2023
  *
  *  All rights reserved
  *
@@ -35,13 +42,21 @@ use TYPO3\CMS\Extbase\Utility\LocalizationUtility;
  */
 class RoyalController extends \GeorgRinger\News\Controller\NewsController
 {
-
     /**
      * @var \GeorgRinger\News\Domain\Repository\NewsRepository
      */
     protected $newsRepository;
 
-    protected $sliderName;
+
+    /**
+     * @var string
+     */
+    protected string $sliderName = '';
+
+    /**
+     * @var string
+     */
+    protected string $extKey = '';
 
     /**
      * Initializes the current action
@@ -57,7 +72,7 @@ class RoyalController extends \GeorgRinger\News\Controller\NewsController
         );
 
         // Set constant settings for the news
-        $tsSettings['settings'][$this->sliderName] = isset($tsSettings['settings'][$this->sliderName]) ? $tsSettings['settings'][$this->sliderName] : '';
+        $tsSettings['settings'][$this->sliderName] = $tsSettings['settings'][$this->sliderName] ?? '';
         if (is_array($tsSettings['settings'][$this->sliderName])) {
             foreach ($tsSettings['settings'][$this->sliderName] as $key=>$css) {
                 if (!$this->settings[$this->sliderName][$key]) {
@@ -71,50 +86,50 @@ class RoyalController extends \GeorgRinger\News\Controller\NewsController
      * action list
      *
      * @param array|null $overwriteDemand
-     * @return void
+     * @return \Psr\Http\Message\ResponseInterface
      */
-    public function listAction(array $overwriteDemand = null)
+    public function listAction(array $overwriteDemand = null): ResponseInterface
     {
-        $settings = $this->settings;
+        $settings =  $this->configurationManager->getConfiguration(ConfigurationManagerInterface::CONFIGURATION_TYPE_FULL_TYPOSCRIPT);
         $settings['sliderType'] = $this->sliderName;
         $news = $this->findNews();
+        $id = $id ?? '';
+        $type = $type ?? '';
 
         $this->view->assignMultiple([
             'news' => $news,
             'settings' => $settings
         ]);
-
-        $pluginName = $this->request->getPluginName();
-        if (version_compare(TYPO3_branch, '9.0', '>')) {
-            $extpath = \TYPO3\CMS\Core\Utility\PathUtility::stripPathSitePrefix(\TYPO3\CMS\Core\Utility\ExtensionManagementUtility::extPath($this->request->getControllerExtensionKey()));
+        if (Environment::isComposerMode()) {
+            $assetPath = $this->getPath('/', 'ns_news_slider');
+            $extpath = GeneralUtility::getIndpEnv('TYPO3_SITE_URL') . $assetPath;
         } else {
-            $extpath = \TYPO3\CMS\Core\Utility\ExtensionManagementUtility::siteRelPath($this->request->getControllerExtensionKey());
+            $extpath = PathUtility::stripPathSitePrefix(ExtensionManagementUtility::extPath('ns_news_slider')).'Resources/Public/';
         }
-        $pageRenderer = \TYPO3\CMS\Core\Utility\GeneralUtility::makeInstance(\TYPO3\CMS\Core\Page\PageRenderer::class);
+        $pluginName = $this->request->getPluginName();
+
+        $pageRenderer = GeneralUtility::makeInstance(PageRenderer::class);
         $getContentId = $this->configurationManager->getContentObject()->data['uid'];
 
         // add css js in header
-        $GLOBALS['TSFE']->additionalHeaderData[$this->request->getControllerExtensionKey() . 'CSS1'] = '<link rel="stylesheet" type="text/css" href="' . $extpath . 'Resources/Public/slider/Royal-Slider/css/style.css" />';
-        $GLOBALS['TSFE']->additionalHeaderData[$this->request->getControllerExtensionKey() . 'CSS2'] = '<link rel="stylesheet" type="text/css" href="' . $extpath . 'Resources/Public/slider/Royal-Slider/css/vendor/royalslider.css" />';
-        $GLOBALS['TSFE']->additionalHeaderData[$this->request->getControllerExtensionKey() . 'CSS3'] = '<link rel="stylesheet" type="text/css" href="' . $extpath . 'Resources/Public/slider/Royal-Slider/css/vendor/skins/minimal-white/rs-minimal-white.css" />';
+        $GLOBALS['TSFE']->additionalHeaderData[$this->request->getControllerExtensionKey() . 'CSS1'] = '<link rel="stylesheet" type="text/css" href="' . $extpath . 'slider/Royal-Slider/css/style.css" />';
+        $GLOBALS['TSFE']->additionalHeaderData[$this->request->getControllerExtensionKey() . 'CSS2'] = '<link rel="stylesheet" type="text/css" href="' . $extpath . 'slider/Royal-Slider/css/vendor/royalslider.css" />';
+        $GLOBALS['TSFE']->additionalHeaderData[$this->request->getControllerExtensionKey() . 'CSS3'] = '<link rel="stylesheet" type="text/css" href="' . $extpath . 'slider/Royal-Slider/css/vendor/skins/minimal-white/rs-minimal-white.css" />';
 
         // set js value for slider
         $constant = $GLOBALS['TSFE']->tmpl->setup['plugin.']['tx_nsnewsslider_royalslider.']['settings.'];
 
         if ($constant['jQuery']) {
-            $ajax1 = $extpath . 'Resources/Public/slider/Royal-Slider/js/vendor/jquery.min.js';
+            $ajax1 = $extpath . 'slider/Royal-Slider/js/vendor/jquery.min.js';
             $pageRenderer->addJsFooterFile($ajax1, 'text/javascript', false, false, '');
         }
-
-        $ajax2 = $extpath . 'Resources/Public/slider/Royal-Slider/js/vendor/jquery.royalslider.min.js';
-        $ajax3 = $extpath . 'Resources/Public/slider/Royal-Slider/js/vendor/jquery.easing-1.3.js';
+        $ajax2 = $extpath . 'slider/Royal-Slider/js/vendor/jquery.royalslider.min.js';
+        $ajax3 = $extpath . 'slider/Royal-Slider/js/vendor/jquery.easing-1.3.js';
         $pageRenderer->addJsFooterFile($ajax2, 'text/javascript', false, false, '');
         $pageRenderer->addJsFooterFile($ajax3, 'text/javascript', false, false, '');
 
-        $slider_type = isset($this->settings['slider_type_royal']) ? $this->settings['slider_type_royal'] : '';
-        //\TYPO3\CMS\Extbase\Utility\DebuggerUtility::var_dump($slider_type);die;
+        $slider_type = $this->settings['slider_type_royal'] ?? '';
         $this->view->assign('slider_type', $slider_type);
-
         if ($slider_type == 'fullwidth') {
             $id = "
                 (function($) {
@@ -197,10 +212,10 @@ class RoyalController extends \GeorgRinger\News\Controller\NewsController
                         }';
         }
 
-        $id = isset($id) ? $id : '';
-        $type = isset($type) ? $type : '';
-        $this->extKey = isset($this->extKey) ? $this->extKey : '';
-        $GLOBALS['TSFE']->additionalFooterData[$this->extKey] = isset($GLOBALS['TSFE']->additionalFooterData[$this->extKey]) ? $GLOBALS['TSFE']->additionalFooterData[$this->extKey] : '';
+        $this->extKey = $this->extKey ?? '';
+
+        $GLOBALS['TSFE']->additionalFooterData[$this->extKey] = $GLOBALS['TSFE']->additionalFooterData[$this->extKey] ?? '';
+
         $GLOBALS['TSFE']->additionalFooterData[$this->extKey] .= '<script>
                     ' . $id . '
                         arrowsNav: ' . (isset($this->settings['arrowsNav']) && $this->settings['arrowsNav'] !='' ? $this->settings['arrowsNav'] : $constant['arrowsNav']) . ',
@@ -248,35 +263,48 @@ class RoyalController extends \GeorgRinger\News\Controller\NewsController
                     });
                 })(jQuery);
             </script>';
-
         //variable saved in flexform
         $this->view->assign('settings', $this->settings);
 
         // show pluging name
         $this->view->assign('pluginName', $pluginName);
+        return $this->htmlResponse();
     }
 
     /**
-     * @param array $overwriteDemand
-     * @return void string the Rendered view
+     * @param array|null $overwriteDemand
+     * @return QueryResultInterface|array
      */
-    public function findNews(array $overwriteDemand = null)
+    public function findNews(array $overwriteDemand = null): QueryResultInterface|array
     {
         $demand = parent::createDemandObjectFromSettings($this->settings);
-
         if ($this->settings['disableOverrideDemand'] != 1 && $overwriteDemand !== null) {
             $demand = parent::overwriteDemandObject($demand, $overwriteDemand);
         }
-
         $news = $this->newsRepository->findDemanded($demand);
-
         if (!count($news)) {
             $this->addFlashMessage(
                 LocalizationUtility::translate('fe.nonews', 'ns_news_slider'),
                 LocalizationUtility::translate('fe.nonewsTitle', 'ns_news_slider'),
-                \TYPO3\CMS\Core\Messaging\AbstractMessage::WARNING
+                ContextualFeedbackSeverity::WARNING
             );
         }
         return $news;
+    }
+
+    /**
+    * getPath for composer based setup
+    * @param mixed $path
+    * @param mixed $extName
+    * @return string
+    */
+    public function getPath($path, $extName): string
+    {
+        $arguments = ['path' => $path, 'extensionName' => $extName];
+        $path = $arguments['path'];
+        $publicPath = sprintf('EXT:%s/Resources/Public/%s', $arguments['extensionName'], ltrim($path, '/'));
+        $uri = PathUtility::getPublicResourceWebPath($publicPath);
+        $assetPath = substr($uri, 1);
+        return $assetPath;
     }
 }

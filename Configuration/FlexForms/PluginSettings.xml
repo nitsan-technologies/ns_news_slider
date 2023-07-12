@@ -13,22 +13,22 @@
 				</TCEforms>
 				<type>array</type>
 				<el>
-					<switchableControllerActions>
+					<settings.type>
 						<TCEforms>
-							<label>jQuery Slider Plugin</label>
+							<label>LLL:EXT:ns_news_slider/Resources/Private/Language/locallang_db.xlf:flexform.jQueryplugin</label>
 							<onChange>reload</onChange>
 							<config>
 								<type>select</type>
 								<renderType>selectSingle</renderType>
 								<items>
 									<numIndex index="1">
-										<numIndex index="0">Royal Slider</numIndex>
+										<numIndex index="0">LLL:EXT:ns_news_slider/Resources/Private/Language/locallang_db.xlf:flexform.Royal</numIndex>
 										<numIndex index="1">Royal->list</numIndex>
 									</numIndex>
 								</items>
 							</config>
 						</TCEforms>
-					</switchableControllerActions>
+					</settings.type>
 
 					<!-- order -->
 					<settings.orderBy>
@@ -526,7 +526,7 @@
 			<ROOT>
 				<TCEforms>
 					<sheetTitle>LLL:EXT:ns_news_slider/Resources/Private/Language/locallang_db.xlf:flexforms_tab.royalSlider</sheetTitle>
-					<displayCond>FIELD:sDEF.switchableControllerActions:=:Royal->list</displayCond>
+					<displayCond>FIELD:sDEF.settings.type:=:Royal->list</displayCond>
 				</TCEforms>
 				<type>array</type>
 				<el>
