@@ -17,10 +17,9 @@
                              class="rsImg"
                              maxWidth="{f:if(condition: settings.media.maxWidth, then: settings.media.maxWidth, else: settings.list.media.image.maxWidth)}"
                              maxHeight="{f:if(condition: settings.media.maxHeight, then: settings.media.maxHeight, else: settings.list.media.image.maxHeight)}"/>
-                     <f:image  class="rsTmb" src="{mediaElement.originalResource.publicUrl}" alt="{mediaElement.originalResource.alternative}" title="{picture.originalResource.title}" width="{settings.slidethumbwidth}" height="{settings.slidthumbeheight}" />
+                    <f:image  class="rsTmb" src="{f:if(condition: settings.list.media.dummyImage, then: settings.list.media.dummyImage, else: 'EXT:ns_news_slider/Resources/Public/Img/no-image.jpg')}" alt="{mediaElement.originalResource.alternative}" title="{picture.originalResource.title}" width="{settings.slidethumbwidth}" height="{settings.slidthumbeheight}" />
                 </f:else>
             </f:if>
-
             <f:if condition="{settings.controlNavigation} =='thumbnails' ">
                 <div class="rsTmb">
                     <f:if condition="{mediaElement}">
@@ -33,7 +32,7 @@
                                      class="rsImg"
                                      maxWidth="{f:if(condition: settings.media.maxWidth, then: settings.media.maxWidth, else: settings.list.media.image.maxWidth)}"
                                      maxHeight="{f:if(condition: settings.media.maxHeight, then: settings.media.maxHeight, else: settings.list.media.image.maxHeight)}"/>
-                             <f:image  class="rsTmb" src="{mediaElement.originalResource.publicUrl}" alt="{mediaElement.originalResource.alternative}" title="{picture.originalResource.title}" width="{settings.slidethumbwidth}" height="{settings.slidthumbeheight}" />
+                            <f:image  class="rsTmb" src="{f:if(condition: settings.list.media.dummyImage, then: settings.list.media.dummyImage, else: 'EXT:ns_news_slider/Resources/Public/Img/no-image.jpg')}" alt="{mediaElement.originalResource.alternative}" title="{picture.originalResource.title}" width="{settings.slidethumbwidth}" height="{settings.slidthumbeheight}" />
                         </f:else>
                     </f:if>
                 </div>

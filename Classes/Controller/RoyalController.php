@@ -1,9 +1,10 @@
 <?php
 namespace NITSAN\NsNewsSlider\Controller;
 
+use Psr\Http\Message\ResponseInterface;
 use TYPO3\CMS\Extbase\Annotation\Inject as inject;
-use TYPO3\CMS\Extbase\Configuration\ConfigurationManagerInterface;
 use TYPO3\CMS\Extbase\Utility\LocalizationUtility;
+use TYPO3\CMS\Extbase\Configuration\ConfigurationManagerInterface;
 
 /***************************************************************
  *
@@ -41,6 +42,11 @@ class RoyalController extends \GeorgRinger\News\Controller\NewsController
      */
     protected $newsRepository;
 
+    /**
+     * extKey
+     */
+    protected string $extKey = '';
+
     protected $sliderName;
 
     /**
@@ -73,7 +79,7 @@ class RoyalController extends \GeorgRinger\News\Controller\NewsController
      * @param array|null $overwriteDemand
      * @return void
      */
-    public function listAction(array $overwriteDemand = null)
+    public function listAction(array $overwriteDemand = null): ResponseInterface
     {
         $settings = $this->settings;
         $settings['sliderType'] = $this->sliderName;
@@ -112,7 +118,6 @@ class RoyalController extends \GeorgRinger\News\Controller\NewsController
         $pageRenderer->addJsFooterFile($ajax3, 'text/javascript', false, false, '');
 
         $slider_type = isset($this->settings['slider_type_royal']) ? $this->settings['slider_type_royal'] : '';
-        //\TYPO3\CMS\Extbase\Utility\DebuggerUtility::var_dump($slider_type);die;
         $this->view->assign('slider_type', $slider_type);
 
         if ($slider_type == 'fullwidth') {
@@ -254,11 +259,13 @@ class RoyalController extends \GeorgRinger\News\Controller\NewsController
 
         // show pluging name
         $this->view->assign('pluginName', $pluginName);
+        return $this->htmlResponse();
     }
 
     /**
+     * findNews
      * @param array $overwriteDemand
-     * @return void string the Rendered view
+     * @return \TYPO3\CMS\Extbase\Persistence\QueryResultInterface|array
      */
     public function findNews(array $overwriteDemand = null)
     {

@@ -12,11 +12,11 @@ $EM_CONF['ns_news_slider'] = [
     'uploadfolder' => '0',
     'createDirs' => '',
     'clearCacheOnLoad' => 0,
-    'version' => '4.1.0',
+    'version' => '4.1.1',
     'constraints' => [
         'depends' => [
             'typo3' => '6.2.0-11.5.99',
-            'news' => '3.0.0-9.9.99',
+            'news' => '3.0.0-11.9.99',
         ],
         'conflicts' => [],
         'suggests' => [],
