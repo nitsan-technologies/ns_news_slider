@@ -1,4 +1,5 @@
 <?php
+
 namespace NITSAN\NsNewsSlider\Controller;
 
 use Psr\Http\Message\ResponseInterface;
@@ -36,7 +37,6 @@ use TYPO3\CMS\Extbase\Configuration\ConfigurationManagerInterface;
  */
 class RoyalController extends \GeorgRinger\News\Controller\NewsController
 {
-
     /**
      * @var \GeorgRinger\News\Domain\Repository\NewsRepository
      */
@@ -45,7 +45,7 @@ class RoyalController extends \GeorgRinger\News\Controller\NewsController
     /**
      * extKey
      */
-    protected string $extKey = '';
+    protected $extKey = '';
 
     protected $sliderName;
 
@@ -65,7 +65,7 @@ class RoyalController extends \GeorgRinger\News\Controller\NewsController
         // Set constant settings for the news
         $tsSettings['settings'][$this->sliderName] = isset($tsSettings['settings'][$this->sliderName]) ? $tsSettings['settings'][$this->sliderName] : '';
         if (is_array($tsSettings['settings'][$this->sliderName])) {
-            foreach ($tsSettings['settings'][$this->sliderName] as $key=>$css) {
+            foreach ($tsSettings['settings'][$this->sliderName] as $key => $css) {
                 if (!$this->settings[$this->sliderName][$key]) {
                     $this->settings[$this->sliderName][$key] = $css;
                 }
@@ -79,7 +79,7 @@ class RoyalController extends \GeorgRinger\News\Controller\NewsController
      * @param array|null $overwriteDemand
      * @return void
      */
-    public function listAction(array $overwriteDemand = null): ResponseInterface
+    public function listAction(array $overwriteDemand = null)
     {
         $settings = $this->settings;
         $settings['sliderType'] = $this->sliderName;
@@ -126,12 +126,12 @@ class RoyalController extends \GeorgRinger\News\Controller\NewsController
                     $('#full-width-slider-" . $getContentId . "').royalSlider({";
             $type = '
                         deeplinking: {
-                           enabled: ' . (isset($this->settings['deeplinking_enabled']) && $this->settings['deeplinking_enabled'] !='' ? $this->settings['deeplinking_enabled'] : $constant['deeplinking_enabled']) . ',
+                           enabled: ' . (isset($this->settings['deeplinking_enabled']) && $this->settings['deeplinking_enabled'] != '' ? $this->settings['deeplinking_enabled'] : $constant['deeplinking_enabled']) . ',
                            change: ' . (isset($this->settings['deeplinking_change']) && $this->settings['deeplinking_change'] != '' ? $this->settings['deeplinking_change'] : $constant['deeplinking_change']) . ",
                            prefix: '" . (isset($this->settings['deeplinking_prefix']) && $this->settings['deeplinking_prefix'] != '' ? $this->settings['deeplinking_prefix'] : $constant['deeplinking_prefix']) . "'
                         },
-                        imgWidth: " . (isset($this->settings['imgWidth']) && $this->settings['imgWidth'] !='' ? $this->settings['imgWidth'] : $constant['imgWidth']) . ',
-                        imgHeight: ' . (isset($this->settings['imgHeight']) && $this->settings['imgHeight'] !='' ? $this->settings['imgHeight'] : $constant['imgHeight']) . ',
+                        imgWidth: " . (isset($this->settings['imgWidth']) && $this->settings['imgWidth'] != '' ? $this->settings['imgWidth'] : $constant['imgWidth']) . ',
+                        imgHeight: ' . (isset($this->settings['imgHeight']) && $this->settings['imgHeight'] != '' ? $this->settings['imgHeight'] : $constant['imgHeight']) . ',
                         thumbs: {
                             appendSpan: ' . (isset($this->settings['thumbs_appendSpan']) && $this->settings['thumbs_appendSpan'] != '' ? $this->settings['thumbs_appendSpan'] : $constant['thumbs_appendSpan']) . ',
                             firstMargin: ' . (isset($this->settings['thumbs_firstMargin']) && $this->settings['thumbs_firstMargin'] != '' ? $this->settings['thumbs_firstMargin'] : $constant['thumbs_firstMargin']) . ',
@@ -164,8 +164,8 @@ class RoyalController extends \GeorgRinger\News\Controller\NewsController
         } elseif ($slider_type == 'fullscreen') {
             $id = "(function($) { $('#full-width-slider-" . $getContentId . "').royalSlider({";
             $type = '
-                        imgWidth: ' . (isset($this->settings['imgWidth']) && $this->settings['imgWidth'] !='' ? $this->settings['imgWidth'] : $constant['imgWidth']) . ',
-                        imgHeight: ' . (isset($this->settings['imgHeight']) && $this->settings['imgHeight'] !='' ? $this->settings['imgHeight'] : $constant['imgHeight']) . ',
+                        imgWidth: ' . (isset($this->settings['imgWidth']) && $this->settings['imgWidth'] != '' ? $this->settings['imgWidth'] : $constant['imgWidth']) . ',
+                        imgHeight: ' . (isset($this->settings['imgHeight']) && $this->settings['imgHeight'] != '' ? $this->settings['imgHeight'] : $constant['imgHeight']) . ',
                         arrowsNavHideOnTouch: ' . (isset($this->settings['arrowsNavHideOnTouch']) && $this->settings['arrowsNavHideOnTouch'] != '' ? $this->settings['arrowsNavHideOnTouch'] : $constant['arrowsNavHideOnTouch']) . ',
                         fullscreen:{
                             enabled : ' . (isset($this->settings['fullScreen_enabled']) && $this->settings['fullScreen_enabled'] != '' ? $this->settings['fullScreen_enabled'] : $constant['fullScreen_enabled']) . ',
@@ -208,45 +208,45 @@ class RoyalController extends \GeorgRinger\News\Controller\NewsController
         $GLOBALS['TSFE']->additionalFooterData[$this->extKey] = isset($GLOBALS['TSFE']->additionalFooterData[$this->extKey]) ? $GLOBALS['TSFE']->additionalFooterData[$this->extKey] : '';
         $GLOBALS['TSFE']->additionalFooterData[$this->extKey] .= '<script>
                     ' . $id . '
-                        arrowsNav: ' . (isset($this->settings['arrowsNav']) && $this->settings['arrowsNav'] !='' ? $this->settings['arrowsNav'] : $constant['arrowsNav']) . ',
-                        loop: ' . (isset($this->settings['loop']) && $this->settings['loop'] !='' ? $this->settings['loop'] : $constant['loop']) . ',
-                        keyboardNavEnabled: ' . (isset($this->settings['keyboardNavEnabled']) && $this->settings['keyboardNavEnabled'] !='' ? $this->settings['keyboardNavEnabled'] : $constant['keyboardNavEnabled']) . ',
-                        controlsInside: ' . (isset($this->settings['controlsInside']) && $this->settings['controlsInside'] !='' ? $this->settings['controlsInside'] : $constant['controlsInside']) . ",
-                        imageScaleMode: '" . (isset($this->settings['imageScaleMode']) && $this->settings['imageScaleMode'] !='' ? $this->settings['imageScaleMode'] : $constant['imageScaleMode']) . "',
-                        arrowsNavAutoHide: " . (isset($this->settings['arrowsNavAutoHide']) && $this->settings['arrowsNavAutoHide'] !='' ? $this->settings['arrowsNavAutoHide'] : $constant['arrowsNavAutoHide']) . ',
+                        arrowsNav: ' . (isset($this->settings['arrowsNav']) && $this->settings['arrowsNav'] != '' ? $this->settings['arrowsNav'] : $constant['arrowsNav']) . ',
+                        loop: ' . (isset($this->settings['loop']) && $this->settings['loop'] != '' ? $this->settings['loop'] : $constant['loop']) . ',
+                        keyboardNavEnabled: ' . (isset($this->settings['keyboardNavEnabled']) && $this->settings['keyboardNavEnabled'] != '' ? $this->settings['keyboardNavEnabled'] : $constant['keyboardNavEnabled']) . ',
+                        controlsInside: ' . (isset($this->settings['controlsInside']) && $this->settings['controlsInside'] != '' ? $this->settings['controlsInside'] : $constant['controlsInside']) . ",
+                        imageScaleMode: '" . (isset($this->settings['imageScaleMode']) && $this->settings['imageScaleMode'] != '' ? $this->settings['imageScaleMode'] : $constant['imageScaleMode']) . "',
+                        arrowsNavAutoHide: " . (isset($this->settings['arrowsNavAutoHide']) && $this->settings['arrowsNavAutoHide'] != '' ? $this->settings['arrowsNavAutoHide'] : $constant['arrowsNavAutoHide']) . ',
 
 
-                        autoScaleSlider: ' . (isset($this->settings['autoScaleSlider']) && $this->settings['autoScaleSlider'] !='' ? $this->settings['autoScaleSlider'] : $constant['autoScaleSlider']) . ',
-                        autoScaleSliderWidth: ' . (isset($this->settings['autoScaleSliderWidth']) && $this->settings['autoScaleSliderWidth'] !='' ? $this->settings['autoScaleSliderWidth'] : $constant['autoScaleSliderWidth']) . ',
-                        autoScaleSliderHeight: ' . (isset($this->settings['autoScaleSliderHeight']) && $this->settings['autoScaleSliderHeight'] !='' ? $this->settings['autoScaleSliderHeight'] : $constant['autoScaleSliderHeight']) . ",
-                        controlNavigation: '" . (isset($this->settings['controlNavigation']) && $this->settings['controlNavigation'] !='' ? $this->settings['controlNavigation'] : $constant['controlNavigation']) . "',
-                        navigateByClick: " . (isset($this->settings['navigateByClick']) && $this->settings['navigateByClick'] !='' ? $this->settings['navigateByClick'] : $constant['navigateByClick']) . ',
-                        startSlideId: ' . (isset($this->settings['startSlideId'])  && $this->settings['startSlideId'] !='' ? $this->settings['startSlideId'] : $constant['startSlideId']) . ",
-                        transitionType: '" . (isset($this->settings['transitionType']) && $this->settings['transitionType'] !='' ? $this->settings['transitionType'] : $constant['transitionType']) . "',
-                        globalCaption: " . (isset($this->settings['globalCaption']) && $this->settings['globalCaption'] !='' ? $this->settings['globalCaption'] : $constant['globalCaption']) . ',
+                        autoScaleSlider: ' . (isset($this->settings['autoScaleSlider']) && $this->settings['autoScaleSlider'] != '' ? $this->settings['autoScaleSlider'] : $constant['autoScaleSlider']) . ',
+                        autoScaleSliderWidth: ' . (isset($this->settings['autoScaleSliderWidth']) && $this->settings['autoScaleSliderWidth'] != '' ? $this->settings['autoScaleSliderWidth'] : $constant['autoScaleSliderWidth']) . ',
+                        autoScaleSliderHeight: ' . (isset($this->settings['autoScaleSliderHeight']) && $this->settings['autoScaleSliderHeight'] != '' ? $this->settings['autoScaleSliderHeight'] : $constant['autoScaleSliderHeight']) . ",
+                        controlNavigation: '" . (isset($this->settings['controlNavigation']) && $this->settings['controlNavigation'] != '' ? $this->settings['controlNavigation'] : $constant['controlNavigation']) . "',
+                        navigateByClick: " . (isset($this->settings['navigateByClick']) && $this->settings['navigateByClick'] != '' ? $this->settings['navigateByClick'] : $constant['navigateByClick']) . ',
+                        startSlideId: ' . (isset($this->settings['startSlideId'])  && $this->settings['startSlideId'] != '' ? $this->settings['startSlideId'] : $constant['startSlideId']) . ",
+                        transitionType: '" . (isset($this->settings['transitionType']) && $this->settings['transitionType'] != '' ? $this->settings['transitionType'] : $constant['transitionType']) . "',
+                        globalCaption: " . (isset($this->settings['globalCaption']) && $this->settings['globalCaption'] != '' ? $this->settings['globalCaption'] : $constant['globalCaption']) . ',
 
-                        imageAlignCenter: ' . (isset($this->settings['imageAlignCenter']) && $this->settings['imageAlignCenter'] !='' ? $this->settings['imageAlignCenter'] : $constant['imageAlignCenter']) . ',
-                        slidesSpacing: ' . (isset($this->settings['slidesSpacing']) && $this->settings['slidesSpacing'] !='' ? $this->settings['slidesSpacing'] : $constant['slidesSpacing']) . ',
-                        loopRewind: ' . (isset($this->settings['loopRewind']) && $this->settings['loopRewind'] !='' ? $this->settings['loopRewind'] : $constant['loopRewind']) . ',
-                        randomizeSlides: ' . (isset($this->settings['randomizeSlides']) && $this->settings['randomizeSlides'] !='' ? $this->settings['randomizeSlides'] : $constant['randomizeSlides']) . ',
-                        numImagesToPreload: ' . (isset($this->settings['numImagesToPreload']) && $this->settings['numImagesToPreload'] !='' ? $this->settings['numImagesToPreload'] : $constant['numImagesToPreload']) . ',
-                        usePreloader: ' . (isset($this->settings['usePreloader']) && $this->settings['usePreloader'] !='' ? $this->settings['usePreloader'] : $constant['usePreloader']) . ",
-                        slidesOrientation: '" . (isset($this->settings['slidesOrientation']) && $this->settings['slidesOrientation'] !='' ? $this->settings['slidesOrientation'] : $constant['slidesOrientation']) . "',
+                        imageAlignCenter: ' . (isset($this->settings['imageAlignCenter']) && $this->settings['imageAlignCenter'] != '' ? $this->settings['imageAlignCenter'] : $constant['imageAlignCenter']) . ',
+                        slidesSpacing: ' . (isset($this->settings['slidesSpacing']) && $this->settings['slidesSpacing'] != '' ? $this->settings['slidesSpacing'] : $constant['slidesSpacing']) . ',
+                        loopRewind: ' . (isset($this->settings['loopRewind']) && $this->settings['loopRewind'] != '' ? $this->settings['loopRewind'] : $constant['loopRewind']) . ',
+                        randomizeSlides: ' . (isset($this->settings['randomizeSlides']) && $this->settings['randomizeSlides'] != '' ? $this->settings['randomizeSlides'] : $constant['randomizeSlides']) . ',
+                        numImagesToPreload: ' . (isset($this->settings['numImagesToPreload']) && $this->settings['numImagesToPreload'] != '' ? $this->settings['numImagesToPreload'] : $constant['numImagesToPreload']) . ',
+                        usePreloader: ' . (isset($this->settings['usePreloader']) && $this->settings['usePreloader'] != '' ? $this->settings['usePreloader'] : $constant['usePreloader']) . ",
+                        slidesOrientation: '" . (isset($this->settings['slidesOrientation']) && $this->settings['slidesOrientation'] != '' ? $this->settings['slidesOrientation'] : $constant['slidesOrientation']) . "',
                         transitionSpeed: " . (isset($this->settings['transitionSpeed']) && $this->settings['transitionSpeed'] > 0 ? $this->settings['transitionSpeed'] : $constant['transitionSpeed']) . ",
-                        easeInOut: '" . (isset($this->settings['easeInOut']) && $this->settings['easeInOut'] !='' ? $this->settings['easeInOut'] : $constant['easeInOut']) . "',
-                        easeOut: '" . (isset($this->settings['easeOut']) && $this->settings['easeOut'] !='' ? $this->settings['easeOut'] : $constant['easeOut']) . "',
-                        sliderDrag: " . (isset($this->settings['sliderDrag']) && $this->settings['sliderDrag'] !='' ? $this->settings['sliderDrag'] : $constant['sliderDrag']) . ',
-                        sliderTouch: ' . (isset($this->settings['sliderTouch']) && $this->settings['sliderTouch'] !='' ? $this->settings['sliderTouch'] : $constant['sliderTouch']) . ',
-                        allowCSS3: ' . (isset($this->settings['allowCSS3']) && $this->settings['allowCSS3'] !='' ? $this->settings['allowCSS3'] : $constant['allowCSS3']) . ',
-                        addActiveClass: ' . (isset($this->settings['addActiveClass']) && $this->settings['addActiveClass'] !='' ? $this->settings['addActiveClass'] : $constant['addActiveClass']) . ',
-                        minSlideOffset: ' . (isset($this->settings['minSlideOffset']) && $this->settings['minSlideOffset'] !='' ? $this->settings['minSlideOffset'] : $constant['minSlideOffset']) . ',
-                        autoHeight: ' . (isset($this->settings['autoHeight']) && $this->settings['autoHeight'] !='' ? $this->settings['autoHeight'] : $constant['autoHeight']) . ',
+                        easeInOut: '" . (isset($this->settings['easeInOut']) && $this->settings['easeInOut'] != '' ? $this->settings['easeInOut'] : $constant['easeInOut']) . "',
+                        easeOut: '" . (isset($this->settings['easeOut']) && $this->settings['easeOut'] != '' ? $this->settings['easeOut'] : $constant['easeOut']) . "',
+                        sliderDrag: " . (isset($this->settings['sliderDrag']) && $this->settings['sliderDrag'] != '' ? $this->settings['sliderDrag'] : $constant['sliderDrag']) . ',
+                        sliderTouch: ' . (isset($this->settings['sliderTouch']) && $this->settings['sliderTouch'] != '' ? $this->settings['sliderTouch'] : $constant['sliderTouch']) . ',
+                        allowCSS3: ' . (isset($this->settings['allowCSS3']) && $this->settings['allowCSS3'] != '' ? $this->settings['allowCSS3'] : $constant['allowCSS3']) . ',
+                        addActiveClass: ' . (isset($this->settings['addActiveClass']) && $this->settings['addActiveClass'] != '' ? $this->settings['addActiveClass'] : $constant['addActiveClass']) . ',
+                        minSlideOffset: ' . (isset($this->settings['minSlideOffset']) && $this->settings['minSlideOffset'] != '' ? $this->settings['minSlideOffset'] : $constant['minSlideOffset']) . ',
+                        autoHeight: ' . (isset($this->settings['autoHeight']) && $this->settings['autoHeight'] != '' ? $this->settings['autoHeight'] : $constant['autoHeight']) . ',
 
                         autoPlay: {
-                            enabled: ' . (isset($this->settings['autoPlay']) && $this->settings['autoPlay'] !='' ? $this->settings['autoPlay'] : $constant['autoPlay']) . ',
-                            stopAtAction: ' . (isset($this->settings['autoPlay_stopAtAction']) && $this->settings['autoPlay_stopAtAction'] !='' ? $this->settings['autoPlay_stopAtAction'] : $constant['autoPlay_stopAtAction']) . ',
-                            pauseOnHover: ' . (isset($this->settings['autoPlay_pauseOnHover']) && $this->settings['autoPlay_pauseOnHover'] !='' ? $this->settings['autoPlay_pauseOnHover'] : $constant['autoPlay_pauseOnHover']) . ',
-                            delay: ' . (isset($this->settings['autoPlay_delay']) && $this->settings['autoPlay_delay'] !='' ? $this->settings['autoPlay_delay'] : $constant['autoPlay_delay']) . ',
+                            enabled: ' . (isset($this->settings['autoPlay']) && $this->settings['autoPlay'] != '' ? $this->settings['autoPlay'] : $constant['autoPlay']) . ',
+                            stopAtAction: ' . (isset($this->settings['autoPlay_stopAtAction']) && $this->settings['autoPlay_stopAtAction'] != '' ? $this->settings['autoPlay_stopAtAction'] : $constant['autoPlay_stopAtAction']) . ',
+                            pauseOnHover: ' . (isset($this->settings['autoPlay_pauseOnHover']) && $this->settings['autoPlay_pauseOnHover'] != '' ? $this->settings['autoPlay_pauseOnHover'] : $constant['autoPlay_pauseOnHover']) . ',
+                            delay: ' . (isset($this->settings['autoPlay_delay']) && $this->settings['autoPlay_delay'] != '' ? $this->settings['autoPlay_delay'] : $constant['autoPlay_delay']) . ',
                         },
 
                         ' . $type . '
@@ -259,7 +259,7 @@ class RoyalController extends \GeorgRinger\News\Controller\NewsController
 
         // show pluging name
         $this->view->assign('pluginName', $pluginName);
-        return $this->htmlResponse();
+
     }
 
     /**
