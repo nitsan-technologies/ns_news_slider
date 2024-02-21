@@ -2,6 +2,7 @@
 
 namespace NITSAN\NsNewsSlider\Controller;
 
+use TYPO3\CMS\Extbase\Annotation\Inject as inject;
 use TYPO3\CMS\Core\Core\Environment;
 use Psr\Http\Message\ResponseInterface;
 use TYPO3\CMS\Core\Utility\PathUtility;
@@ -46,7 +47,6 @@ class RoyalController extends \GeorgRinger\News\Controller\NewsController
      * @var \GeorgRinger\News\Domain\Repository\NewsRepository
      */
     protected $newsRepository;
-
 
     /**
      * @var string
@@ -127,7 +127,6 @@ class RoyalController extends \GeorgRinger\News\Controller\NewsController
         $ajax3 = $extpath . 'slider/Royal-Slider/js/vendor/jquery.easing-1.3.js';
         $pageRenderer->addJsFooterFile($ajax2, 'text/javascript', false, false, '');
         $pageRenderer->addJsFooterFile($ajax3, 'text/javascript', false, false, '');
-
         $slider_type = $this->settings['slider_type_royal'] ?? '';
         $this->view->assign('slider_type', $slider_type);
         if ($slider_type == 'fullwidth') {
