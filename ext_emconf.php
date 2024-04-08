@@ -1,12 +1,14 @@
 <?php
 
 $EM_CONF['ns_news_slider'] = [
-    'title' => '[NITSAN] News Slider Plugin',
-    'description' => 'Do you want cool sliders for most popular TYPO3 EXT:news? This extension includes nivo-slider, owlcarousel, royal-slider, slidejs, slick-slider etc. Demo: https://demo.t3planet.com/t3t-extensions/news-slider/ You can download PRO version for more-features & free-support at https://t3planet.com/news-slider-typo3-extension',
+    'title' => 'News Slider',
+    'description' => 'The TYPO3 News Slider extension lets you create an attractive news slider for your website. It offers several popular JQuery slider plugins like Owlcarousel Slider, Royal Slider, Slidejs Slider, and Slick Slider. It\'s an easy and convenient way to add a news slider to your site!
+
+    *** Live Demo: https://demo.t3planet.com/t3-extensions/news-slider *** Premium Version, Documentation & Free Support: https://t3planet.com/typo3-news-slider-extension',
     'category' => 'plugin',
-    'author' => 'Team NITSAN',
+    'author' => 'T3: Himanshu Ramavat, QA: Krishna Dhapa',
     'author_email' => 'sanjay@nitsan.in',
-    'author_company' => 'NITSAN Technologies Pvt Ltd',
+    'author_company' => 'T3Planet // NITSAN',
     'state' => 'stable',
     'internal' => '',
     'uploadfolder' => '0',
