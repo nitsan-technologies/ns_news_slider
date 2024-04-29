@@ -10,26 +10,19 @@ plugin.tx_nsnewsslider_nsnewsslider {
   }
   persistence {
     storagePid = {$plugin.tx_nsnewsslider_nsnewsslider.persistence.storagePid}
-    #recursive = 1
   }
     settings < plugin.tx_news.settings
     settings {
         list.media.image.maxWidth = 100
         list.media.image.maxHeigh = 100
-    # If using multiple JS-Libraries.
-            jqueryNoConflict = 0
-    # Move the JS to the Footer if set.
-            moveJsFromHeaderToFooter = 1
-            # Move the inlineJS to the Footer if set.
-            moveInlineJsFromHeaderToFooter = 1
-            # Shows only news from type=0 in the slider (no internal- and no external links) ... clear all cache!
-        newsOnly = 0        
-  }
-  features {
-    #skipDefaultArguments = 1
-  }
-  mvc {
-    #callDefaultActionIfActionCantBeResolved = 1
+        # If using multiple JS-Libraries.
+        jqueryNoConflict = 0
+        # Move the JS to the Footer if set.
+        moveJsFromHeaderToFooter = 1
+        # Move the inlineJS to the Footer if set.
+        moveInlineJsFromHeaderToFooter = 1
+        # Shows only news from type=0 in the slider (no internal- and no external links) ... clear all cache!
+        newsOnly = 0
   }
 }
 

@@ -2,6 +2,8 @@
 
 namespace NITSAN\NsNewsSlider\Domain\Model;
 
+use TYPO3\CMS\Extbase\DomainObject\AbstractEntity;
+
 /***
  *
  * This file is part of the "[NITSAN]  News Slider" Extension for TYPO3 CMS.
@@ -16,6 +18,6 @@ namespace NITSAN\NsNewsSlider\Domain\Model;
 /**
  * NewsSlider
  */
-class NewsSlider extends \TYPO3\CMS\Extbase\DomainObject\AbstractEntity
+class NewsSlider extends AbstractEntity
 {
 }

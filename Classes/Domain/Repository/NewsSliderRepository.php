@@ -2,6 +2,9 @@
 
 namespace NITSAN\NsNewsSlider\Domain\Repository;
 
+use TYPO3\CMS\Extbase\Persistence\QueryInterface;
+use TYPO3\CMS\Extbase\Persistence\Repository;
+
 /***
  *
  * This file is part of the "[NITSAN]  News Slider" Extension for TYPO3 CMS.
@@ -16,12 +19,12 @@ namespace NITSAN\NsNewsSlider\Domain\Repository;
 /**
  * The repository for NewsSliders
  */
-class NewsSliderRepository extends \TYPO3\CMS\Extbase\Persistence\Repository
+class NewsSliderRepository extends Repository
 {
     /**
      * @var  array<non-empty-string, 'ASC'|'DESC'>
      */
     protected $defaultOrderings = [
-        'sorting' => \TYPO3\CMS\Extbase\Persistence\QueryInterface::ORDER_ASCENDING
+        'sorting' => QueryInterface::ORDER_ASCENDING
     ];
 }

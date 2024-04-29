@@ -561,6 +561,27 @@
 							</config>
 						</TCEforms>
 					</settings.slider_type_royal>
+					<settings.slidesOrientation>
+						<label>LLL:EXT:ns_news_slider/Resources/Private/Language/locallang_db.xlf:flexform.slidesOrientation</label>
+						<config>
+							<type>select</type>
+							<renderType>selectSingle</renderType>
+							<items>
+								<numIndex index="0">
+									<numIndex index="0">LLL:EXT:ns_news_slider/Resources/Private/Language/locallang_db.xlf:flexform.slidesOrientation</numIndex>
+									<numIndex index="1"></numIndex>
+								</numIndex>
+								<numIndex index="1">
+									<numIndex index="0">Horizontal</numIndex>
+									<numIndex index="1">horizontal</numIndex>
+								</numIndex>
+								<numIndex index="2">
+									<numIndex index="0">Vertical</numIndex>
+									<numIndex index="1">vertical</numIndex>
+								</numIndex>
+							</items>
+						</config>
+					</settings.slidesOrientation>
 					<settings.slidethumbwidth>
 						<TCEforms>
 							<displayCond>FIELD:settings.slider_type_royal:=:fullscreen</displayCond>
