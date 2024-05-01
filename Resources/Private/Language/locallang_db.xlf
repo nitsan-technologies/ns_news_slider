@@ -13,22 +13,6 @@
 				<source>News Slider</source>
 			</trans-unit>
 
-			<trans-unit id="tx_nsallsliders_domain_model_gallery">
-				<source>Gallery</source>
-			</trans-unit>
-			<trans-unit id="tx_nsallsliders_domain_model_gallery.image">
-				<source>Image</source>
-			</trans-unit>
-			<trans-unit id="tx_nsallsliders_domain_model_gallery.title">
-				<source>Title</source>
-			</trans-unit>
-			<trans-unit id="tx_nsallsliders_domain_model_gallery.description">
-				<source>Description</source>
-			</trans-unit>
-			<trans-unit id="tx_nsallsliders_domain_model_gallery.disable">
-				<source>Disable</source>
-			</trans-unit>
-
 			<trans-unit id="flexform.jQueryplugin">
 				<source>jQuery Slider Plugin</source>
 			</trans-unit>
@@ -40,12 +24,6 @@
 			</trans-unit>
 			<trans-unit id="flexform.effect">
 				<source>Slider Effect</source>
-			</trans-unit>
-			<trans-unit id="flexform.yes">
-				<source>Yes</source>
-			</trans-unit>
-			<trans-unit id="flexform.no">
-				<source>No</source>
 			</trans-unit>
 			<trans-unit id="flexform.true">
 				<source>True</source>
@@ -75,10 +53,6 @@
 			</trans-unit>
 			<trans-unit id="flexform.standard">
 				<source>Standard</source>
-			</trans-unit>
-
-			<trans-unit id="flexforms_tab.nivoSlider">
-				<source>Nivo Slider Configuration</source>
 			</trans-unit>
 
 			<!-- Owlcarousel  -->
@@ -695,62 +669,7 @@
 
 
 			<!-- Royalslider -->
-			
 
-			<!-- slider js -->
-			<trans-unit id="flexform.slidewidth">
-				<source>Slide Width</source>
-			</trans-unit>
-			<trans-unit id="flexform.slideheight">
-				<source>Slide Height</source>
-			</trans-unit>
-			<trans-unit id="flexform.navigation_effect">
-				<source>Navigation Effect</source>
-			</trans-unit>
-			<trans-unit id="flexform.pagination_effect">
-				<source>Pagination Effect</source>
-			</trans-unit>
-			<trans-unit id="flexform.effect_fade_speed">
-				<source>Effect Fade Speed</source>
-			</trans-unit>
-			<trans-unit id="flexform.play_active">
-				<source>Play Active</source>
-			</trans-unit>
-			<trans-unit id="flexform.play_auto">
-				<source>Play Auto</source>
-			</trans-unit>
-			<trans-unit id="flexform.play_swap">
-				<source>Play Swap</source>
-			</trans-unit>
-			<trans-unit id="flexform.play_interval">
-				<source>Play Interval</source>
-			</trans-unit>
-			<trans-unit id="flexform.play_pauseOnHover">
-				<source>Pause on hover</source>
-			</trans-unit>
-			<trans-unit id="flexform.play_restartDelay">
-				<source>Restart delay</source>
-			</trans-unit>
-			<trans-unit id="flexform.start">
-				<source>Start</source>
-			</trans-unit>
-			<trans-unit id="flexform.pagination">
-				<source>Pagination</source>
-			</trans-unit>
-			<trans-unit id="flexform.crossFade">
-				<source>Cross fade</source>
-			</trans-unit>
-			<trans-unit id="flexform.play_effect">
-				<source>Playing effect</source>
-			</trans-unit>
-			<trans-unit id="flexform.navigationActive">
-				<source>Eneble navigation</source>
-			</trans-unit>
-			<trans-unit id="flexform.ConeffectSlideSpeed">
-				<source>Slide effect speed</source>
-			</trans-unit>
-
-			<!-- slider js -->
 
 			<trans-unit id="configuration.jquery">
                 <source>Enable Jquery: If this option is set, then it adds jquery in this site!</source>
@@ -785,109 +704,7 @@
 				<source>Autoplay Speed</source>
 			</trans-unit>
 
-			<!-- slider js -->
-			<trans-unit id="flexform.nivo.arrow">
-				<source>Navigation arrow (Next/Prev navigation)</source>
-			</trans-unit>
-			<trans-unit id="flexform.nivo.effect">
-				<source>Effect ( Specify sets like: 'fold,fade,sliceDown' )</source>
-			</trans-unit>
-			<trans-unit id="flexform.nivo.effect.sliceDown">
-				<source>Slice Down</source>
-			</trans-unit>
-			<trans-unit id="flexform.nivo.effect.sliceDownLeft">
-				<source>Slice Down Left</source>
-			</trans-unit>
-			<trans-unit id="flexform.nivo.effect.sliceUp">
-				<source>Slice Up</source>
-			</trans-unit>
-			<trans-unit id="flexform.nivo.effect.sliceUpLeft">
-				<source>Slice Up Left</source>
-			</trans-unit>
-			<trans-unit id="flexform.nivo.effect.sliceUpDownLeft">
-				<source>Slice Up-Down Left</source>
-			</trans-unit>
-			<trans-unit id="flexform.nivo.effect.fold">
-				<source>Fold</source>
-			</trans-unit>
-			<trans-unit id="flexform.nivo.effect.fade">
-				<source>Fade</source>
-			</trans-unit>
-			<trans-unit id="flexform.nivo.effect.random">
-				<source>Random</source>
-			</trans-unit>
-			<trans-unit id="flexform.nivo.effect.slideInRight">
-				<source>Slide In Right</source>
-			</trans-unit>
-			<trans-unit id="flexform.nivo.effect.slideInLeft">
-				<source>Slide In Left</source>
-			</trans-unit>
-			<trans-unit id="flexform.nivo.effect.boxRandom">
-				<source>Box Random</source>
-			</trans-unit>
-			<trans-unit id="flexform.nivo.effect.boxRain">
-				<source>Box Rain</source>
-			</trans-unit>
-			<trans-unit id="flexform.nivo.effect.boxRainReverse">
-				<source>Box Rain Reverse</source>
-			</trans-unit>
-			<trans-unit id="flexform.nivo.effect.boxRainGrow">
-				<source>Box Rain Grow</source>
-			</trans-unit>
-			<trans-unit id="flexform.nivo.effect.boxRainGrowReverse">
-				<source>Box Rain Grow Reverse</source>
-			</trans-unit>
-			<trans-unit id="flexform.nivo.slices">
-				<source>Slices (For slice animations)</source>
-			</trans-unit>
-			<trans-unit id="flexform.nivo.boxCols">
-				<source>Box cols (For box animations)</source>
-			</trans-unit>
-			<trans-unit id="flexform.nivo.boxRows">
-				<source>Box rows (For box animations)</source>
-			</trans-unit>
-			<trans-unit id="flexform.nivo.animSpeed">
-				<source>Animations speed (Slide transition speed)</source>
-			</trans-unit>
-			<trans-unit id="flexform.nivo.pauseTime">
-				<source>Pause time (How long each slide will show)</source>
-			</trans-unit>
-			<trans-unit id="flexform.nivo.startSlide">
-				<source>Start slide (Set starting Slide [0 index])</source>
-			</trans-unit>
-			<trans-unit id="flexform.nivo.controlNav">
-				<source>Control Nav(1,2,3... navigation)</source>
-			</trans-unit>
-			<trans-unit id="flexform.nivo.controlNavThumbs">
-				<source>Thumbnails for Control Nav (Use thumbnails for Control Nav)</source>
-			</trans-unit>
-			<trans-unit id="flexform.nivo.pauseOnHover">
-				<source>Pause on hover (Stop animation while hovering )</source>
-			</trans-unit>
-			<trans-unit id="flexform.nivo.manualAdvance">
-				<source>Manual advance (Force manual transitions)</source>
-			</trans-unit>
-			<trans-unit id="flexform.nivo.prevText">
-				<source>Preview text (Prev directionNav text)</source>
-			</trans-unit>
-			<trans-unit id="flexform.nivo.nextText">
-				<source>Next text (Next directionNav text)</source>
-			</trans-unit>
-			<trans-unit id="flexform.nivo.randomStart">
-				<source>Random start (Start on a random slide)</source>
-			</trans-unit>
-			<trans-unit id="flexform.nivo.imageWidth">
-				<source>Image width</source>
-			</trans-unit>
-			<trans-unit id="flexform.nivo.height">
-				<source>Slider Height (Image height)</source>
-			</trans-unit>
-			<trans-unit id="flexform.accessibility">
-				<source>Accessibility</source>
-			</trans-unit>
-			<trans-unit id="flexform.adaptiveHeight">
-				<source>Adaptive height</source>
-			</trans-unit>
+
 			<trans-unit id="flexform.arrows">
 				<source>Arrows</source>
 			</trans-unit>
@@ -1028,10 +845,6 @@
 			</trans-unit>
 			<!-- -->
 
-			<!-- Owlcarousel  -->
-			<trans-unit id="flexforms_tab.sliderJs">
-				<source>SlideJs Slider Configuration</source>
-			</trans-unit>
 		</body>
 	</file>
 </xliff>

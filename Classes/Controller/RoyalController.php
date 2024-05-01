@@ -239,7 +239,6 @@ class RoyalController extends NewsController
         $path = $arguments['path'];
         $publicPath = sprintf('EXT:%s/Resources/Public/%s', $arguments['extensionName'], ltrim($path, '/'));
         $uri = PathUtility::getPublicResourceWebPath($publicPath);
-        $assetPath = substr($uri, 1);
-        return $assetPath;
+        return substr($uri, 1);
     }
 }
