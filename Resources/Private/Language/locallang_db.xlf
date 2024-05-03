@@ -634,8 +634,9 @@
 				<source>Enables spinning preloader, you may style it via CSS.</source>
 			</trans-unit>
 			<trans-unit id="flexform.slidesOrientation">
-				<source>Slides orientation.</source>
+				<source>Slides orientation</source>
 			</trans-unit>
+
 			<trans-unit id="flexform.transitionSpeed">
 				<source>Slider transition speed, in ms.</source>
 			</trans-unit>
