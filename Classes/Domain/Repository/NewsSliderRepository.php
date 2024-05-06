@@ -19,7 +19,7 @@ namespace NITSAN\NsNewsSlider\Domain\Repository;
 class NewsSliderRepository extends \TYPO3\CMS\Extbase\Persistence\Repository
 {
     /**
-     * @var  array<non-empty-string, 'ASC'|'DESC'>
+     * @var array
      */
     protected $defaultOrderings = [
         'sorting' => \TYPO3\CMS\Extbase\Persistence\QueryInterface::ORDER_ASCENDING

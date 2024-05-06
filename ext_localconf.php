@@ -1,17 +1,21 @@
 <?php
 
-defined('TYPO3') || die('Access denied.');
+defined('TYPO3_MODE') || die('Access denied.');
 
-
+if (version_compare(TYPO3_branch, '10.0', '>=')) {
+    $moduleClass = \NITSAN\NsNewsSlider\Controller\RoyalController::class;
+} else {
+    $moduleClass = 'Royal';
+}
 \TYPO3\CMS\Extbase\Utility\ExtensionUtility::configurePlugin(
-    'NsNewsSlider',
+    'NITSAN.NsNewsSlider',
     'Nsnewsslider',
     [
-        \NITSAN\NsNewsSlider\Controller\RoyalController::class => 'list',
+        $moduleClass => 'list',
     ],
     // non-cacheable actions
     [
-        \NITSAN\NsNewsSlider\Controller\RoyalController::class => ''
+        $moduleClass => ''
     ]
 );
 
@@ -23,5 +27,9 @@ $iconRegistry->registerIcon(
 );
 
 // Hook for override news demand.
-$GLOBALS['TYPO3_CONF_VARS']['EXT']['news']['Domain/Repository/AbstractDemandedRepository.php']['findDemanded']['ns_news_slider'] =
-    'NITSAN\\NsNewsSlider\\Hooks\\OverrideNewsDemand->modify';
+$GLOBALS['TYPO3_CONF_VARS']
+        ['EXT']
+        ['news']
+        ['Domain/Repository/AbstractDemandedRepository.php']
+        ['findDemanded']
+        ['ns_news_slider'] = 'NITSAN\\NsNewsSlider\\Hooks\\OverrideNewsDemand->modify';

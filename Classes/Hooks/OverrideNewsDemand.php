@@ -2,34 +2,25 @@
 
 namespace NITSAN\NsNewsSlider\Hooks;
 
-use GeorgRinger\News\Domain\Model\Dto\NewsDemand;
 use GeorgRinger\News\Domain\Repository\NewsRepository;
-use TYPO3\CMS\Extbase\Persistence\QueryInterface;
 
 class OverrideNewsDemand
 {
-    /**
-     * Summary of modify
-     * @param array $params
-     * @param NewsRepository $newsRepository
-     * @return void
-     */
-    public function modify(array $params, NewsRepository $newsRepository): void
+    public function modify(array $params, NewsRepository $newsRepository)
     {
         $this->updateConstraints($params['demand'], $params['respectEnableFields'], $params['query'], $params['constraints']);
     }
 
     /**
-     * @param NewsDemand $demand
+     * @param \GeorgRinger\News\Domain\Model\Dto\NewsDemand $demand
      * @param bool $respectEnableFields
-     * @param QueryInterface $query
+     * @param \TYPO3\CMS\Extbase\Persistence\QueryInterface $query
      * @param array $constraints
-     * @return void
      */
-    protected function updateConstraints(NewsDemand $demand,bool $respectEnableFields, QueryInterface $query, array &$constraints): void
+    protected function updateConstraints($demand, $respectEnableFields, \TYPO3\CMS\Extbase\Persistence\QueryInterface $query, array &$constraints)
     {
         $newsOnly = intval($GLOBALS['TSFE']->tmpl->setup['plugin.']['tx_nsnewsslider_nsnewsslider.']['settings.']['newsOnly']);
-        if ($newsOnly) {
+        if ($newsOnly == 1) {
             $constraints[] = $query->equals('type', 0);
         }
     }
