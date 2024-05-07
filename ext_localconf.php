@@ -26,6 +26,8 @@ $iconRegistry->registerIcon(
     ['source' => 'EXT:ns_news_slider/Resources/Public/Icons/user_plugin_nsnewsslider.svg']
 );
 
+\TYPO3\CMS\Core\Utility\ExtensionManagementUtility::addPageTSConfig('<INCLUDE_TYPOSCRIPT: source="FILE:EXT:ns_news_slider/Configuration/TSconfig/ContentElementWizard.tsconfig">');
+
 // Hook for override news demand.
 $GLOBALS['TYPO3_CONF_VARS']
         ['EXT']
