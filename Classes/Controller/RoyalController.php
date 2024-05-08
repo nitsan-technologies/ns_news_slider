@@ -3,7 +3,9 @@
 namespace NITSAN\NsNewsSlider\Controller;
 
 use TYPO3\CMS\Extbase\Utility\LocalizationUtility;
-
+use TYPO3\CMS\Core\Utility\GeneralUtility;
+use TYPO3\CMS\Core\Page\PageRenderer;
+use TYPO3\CMS\Core\Messaging\AbstractMessage;
 /***************************************************************
  *
  *  Copyright notice
@@ -61,7 +63,7 @@ class RoyalController extends \GeorgRinger\News\Controller\NewsController
         } else {
             $extpath = \TYPO3\CMS\Core\Utility\ExtensionManagementUtility::siteRelPath($this->extKey);
         }
-        $pageRenderer = \TYPO3\CMS\Core\Utility\GeneralUtility::makeInstance(\TYPO3\CMS\Core\Page\PageRenderer::class);
+        $pageRenderer = GeneralUtility::makeInstance(PageRenderer::class);
         $getContentId = $this->configurationManager->getContentObject()->data['uid'];
 
         // add css js in header
@@ -206,7 +208,7 @@ class RoyalController extends \GeorgRinger\News\Controller\NewsController
             $this->addFlashMessage(
                 LocalizationUtility::translate('fe.nonews', 'ns_news_slider'),
                 LocalizationUtility::translate('fe.nonewsTitle', 'ns_news_slider'),
-                \TYPO3\CMS\Core\Messaging\AbstractMessage::WARNING
+                AbstractMessage::WARNING
             );
         }
         return $news;

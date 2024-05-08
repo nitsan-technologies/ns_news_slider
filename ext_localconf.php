@@ -29,9 +29,4 @@ $iconRegistry->registerIcon(
 \TYPO3\CMS\Core\Utility\ExtensionManagementUtility::addPageTSConfig('<INCLUDE_TYPOSCRIPT: source="FILE:EXT:ns_news_slider/Configuration/TSconfig/ContentElementWizard.tsconfig">');
 
 // Hook for override news demand.
-$GLOBALS['TYPO3_CONF_VARS']
-        ['EXT']
-        ['news']
-        ['Domain/Repository/AbstractDemandedRepository.php']
-        ['findDemanded']
-        ['ns_news_slider'] = 'NITSAN\\NsNewsSlider\\Hooks\\OverrideNewsDemand->modify';
+$GLOBALS['TYPO3_CONF_VARS']['EXT']['news']['Domain/Repository/AbstractDemandedRepository.php']['findDemanded']['ns_news_slider'] = 'NITSAN\\NsNewsSlider\\Hooks\\OverrideNewsDemand->modify';

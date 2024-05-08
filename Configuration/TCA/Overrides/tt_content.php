@@ -8,7 +8,7 @@ defined('TYPO3_MODE') or die();
 \TYPO3\CMS\Extbase\Utility\ExtensionUtility::registerPlugin(
     'NITSAN.NsNewsSlider',
     'Nsnewsslider',
-    'NS News Slider'
+    'News Slider'
 );
 
 /* Flexform configuration for the slider : START */
