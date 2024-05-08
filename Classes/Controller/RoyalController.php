@@ -2,7 +2,6 @@
 
 namespace NITSAN\NsNewsSlider\Controller;
 
-use Psr\Http\Message\ResponseInterface;
 use TYPO3\CMS\Extbase\Utility\LocalizationUtility;
 
 /***************************************************************
@@ -52,7 +51,7 @@ class RoyalController extends \GeorgRinger\News\Controller\NewsController
      * @param array|null $overwriteDemand
      * @return void
      */
-    public function listAction(array $overwriteDemand = null): ResponseInterface
+    public function listAction(array $overwriteDemand = null)
     {
         $this->extKey = $this->request->getControllerExtensionKey();
         $news = $this->findNews();
@@ -189,7 +188,6 @@ class RoyalController extends \GeorgRinger\News\Controller\NewsController
                 'news' => $news
             ]
         );
-        return $this->htmlResponse();
     }
 
     /**
