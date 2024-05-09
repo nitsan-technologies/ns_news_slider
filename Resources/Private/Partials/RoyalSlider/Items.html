@@ -1,64 +1,45 @@
 <html data-namespace-typo3-fluid="true"
       data-namespace-typo3-fluid="true" xmlns:f="http://typo3.org/ns/TYPO3/CMS/Fluid/ViewHelpers"
-      xmlns:n="http://typo3.org/ns/GeorgRinger/News/ViewHelpers"
-      xmlns:F="http://typo3.org/ns/TYPO3/CMS/Fluid/ViewHelpers">
+      xmlns:n="http://typo3.org/ns/GeorgRinger/News/ViewHelpers">
 
-      
-    <f:alias map="{mediaElement: newsItem.falMedia.0}">
-        <div class="rsContent">
+    <f:for each="{newsItem.falMedia}" as="media" iteration="i" reverse="true">
+        <f:if condition="{media.originalResource.properties.type}==2">
+            <f:variable name="mediaElement" value="{media}"/>
+        </f:if>
+    </f:for>
+    <div class="rsContent">
+        <f:if condition="{mediaElement}">
+            <f:then>
+                <f:image width="{settings.imgWidth}" height="{settings.imgHeight}" image="{mediaElement}" class="rsImg" title="{newsItem.title}" alt="{mediaElement.alternative}" />
+                <f:image  class="rsTmb" src="{mediaElement.originalResource.publicUrl}" alt="{mediaElement.originalResource.alternative}" title="{picture.originalResource.title}" width="{settings.slidethumbwidth}" height="{settings.slidthumbeheight}" />
+            </f:then>
+            <f:else>
+                <f:image width="{settings.imgWidth}" height="{settings.imgHeight}" src="{f:if(condition: settings.list.media.dummyImage, then: settings.list.media.dummyImage, else: 'EXT:ns_news_slider/Resources/Public/Img/no-image.jpg')}"
+                         title="{newsItem.title}" alt="{mediaElement.alternative}"
+                         class="rsImg"
+                         maxWidth="{f:if(condition: settings.media.maxWidth, then: settings.media.maxWidth, else: settings.list.media.image.maxWidth)}"
+                         maxHeight="{f:if(condition: settings.media.maxHeight, then: settings.media.maxHeight, else: settings.list.media.image.maxHeight)}"/>
+                <f:image  class="rsTmb" src="{f:if(condition: settings.list.media.dummyImage, then: settings.list.media.dummyImage, else: 'EXT:ns_news_slider/Resources/Public/Img/no-image.jpg')}" alt="{mediaElement.originalResource.alternative}" title="{picture.originalResource.title}" width="{settings.slidethumbwidth}" height="{settings.slidthumbeheight}" />
+            </f:else>
+        </f:if>
+        <div class="infoBlock infoBlockLeftBlack rsABlock" data-fade-effect="" data-move-offset="10" data-move-effect="bottom" data-speed="200">
+            <n:link newsItem="{newsItem}" settings="{settings}" title="{newsItem.title}">
+                <span itemprop="headline">{newsItem.title}</span>
+            </n:link>
+            <n:removeMediaTags>
+                <f:if condition="{newsItem.teaser}">
+                    <f:then>
+                        {newsItem.teaser -> f:format.crop(maxCharacters: '{f:if(condition:settings.cropMaxCharacters, then:settings.cropMaxCharacters, else:100)}', respectWordBoundaries:'1') -> f:format.html()}
+                    </f:then>
+                    <f:else>
+                        {newsItem.bodytext -> f:format.crop(maxCharacters: '{f:if(condition:settings.cropMaxCharacters, then:settings.cropMaxCharacters, else:100)}', respectWordBoundaries:'1') -> f:format.html()}
+                    </f:else>
+                </f:if>
+            </n:removeMediaTags>
 
-            <f:if condition="{mediaElement}">
-                <f:then>
-                    <f:image width="{settings.imgWidth}" height="{settings.imgHeight}" image="{mediaElement}" class="rsImg" title="{newsItem.title}" alt="{mediaElement.alternative}" />
-                    <f:image  class="rsTmb" src="{mediaElement.originalResource.publicUrl}" alt="{mediaElement.originalResource.alternative}" title="{picture.originalResource.title}" width="{settings.slidethumbwidth}" height="{settings.slidthumbeheight}" />
-                </f:then>
-                <f:else>
-                    <f:image width="{settings.imgWidth}" height="{settings.imgHeight}" src="{f:if(condition: settings.list.media.dummyImage, then: settings.list.media.dummyImage, else: 'EXT:ns_news_slider/Resources/Public/Img/no-image.jpg')}"
-                             title="{newsItem.title}" alt="{mediaElement.alternative}"
-                             class="rsImg"
-                             maxWidth="{f:if(condition: settings.media.maxWidth, then: settings.media.maxWidth, else: settings.list.media.image.maxWidth)}"
-                             maxHeight="{f:if(condition: settings.media.maxHeight, then: settings.media.maxHeight, else: settings.list.media.image.maxHeight)}"/>
-                    <f:image  class="rsTmb" src="{f:if(condition: settings.list.media.dummyImage, then: settings.list.media.dummyImage, else: 'EXT:ns_news_slider/Resources/Public/Img/no-image.jpg')}" alt="{mediaElement.originalResource.alternative}" title="{picture.originalResource.title}" width="{settings.slidethumbwidth}" height="{settings.slidthumbeheight}" />
-                </f:else>
-            </f:if>
-            <f:if condition="{settings.controlNavigation} =='thumbnails' ">
-                <div class="rsTmb">
-                    <f:if condition="{mediaElement}">
-                        <f:then>
-                            <f:image class="rsTmb" image="{mediaElement}" />
-                        </f:then>
-                        <f:else>
-                            <f:image src="{f:if(condition: settings.list.media.dummyImage, then: settings.list.media.dummyImage, else: 'EXT:ns_news_slider/Resources/Public/Img/no-image.jpg')}"
-                                     title="{newsItem.title}" alt="{mediaElement.alternative}"
-                                     class="rsImg"
-                                     maxWidth="{f:if(condition: settings.media.maxWidth, then: settings.media.maxWidth, else: settings.list.media.image.maxWidth)}"
-                                     maxHeight="{f:if(condition: settings.media.maxHeight, then: settings.media.maxHeight, else: settings.list.media.image.maxHeight)}"/>
-                            <f:image  class="rsTmb" src="{f:if(condition: settings.list.media.dummyImage, then: settings.list.media.dummyImage, else: 'EXT:ns_news_slider/Resources/Public/Img/no-image.jpg')}" alt="{mediaElement.originalResource.alternative}" title="{picture.originalResource.title}" width="{settings.slidethumbwidth}" height="{settings.slidthumbeheight}" />
-                        </f:else>
-                    </f:if>
-                </div>
-            </f:if>
-
-            <div class="infoBlock infoBlockLeftBlack rsABlock" data-fade-effect="" data-move-offset="10" data-move-effect="bottom" data-speed="200">
-                <n:link newsItem="{newsItem}" settings="{settings}" title="{newsItem.title}">
-                    <span itemprop="headline">{newsItem.title}</span>
-                </n:link>
-
-                <n:removeMediaTags>
-                    <f:if condition="{newsItem.teaser}">
-                        <f:then>
-                            {newsItem.teaser -> f:format.crop(maxCharacters: '{f:if(condition:settings.cropMaxCharacters, then:settings.cropMaxCharacters, else:100)}', respectWordBoundaries:'1') -> f:format.html()}
-                        </f:then>
-                        <f:else>
-                            {newsItem.bodytext -> f:format.crop(maxCharacters: '{f:if(condition:settings.cropMaxCharacters, then:settings.cropMaxCharacters, else:100)}', respectWordBoundaries:'1') -> f:format.html()}
-                        </f:else>
-                    </f:if>
-                </n:removeMediaTags>
-
-                <n:link newsItem="{newsItem}" settings="{settings}" class="more" title="{newsItem.title}">
-                    <f:translate key="more-link"/>
-                </n:link>
-            </div>
+            <n:link newsItem="{newsItem}" settings="{settings}" class="more" title="{newsItem.title}">
+                <f:translate key="more-link"/>
+            </n:link>
         </div>
-    </f:alias>
+    </div>
 </html>

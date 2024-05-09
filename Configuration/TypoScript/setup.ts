@@ -10,7 +10,6 @@ plugin.tx_nsnewsslider_nsnewsslider {
   }
   persistence {
     storagePid = {$plugin.tx_nsnewsslider_nsnewsslider.persistence.storagePid}
-    #recursive = 1
   }
     settings < plugin.tx_news.settings
     settings {
@@ -24,12 +23,6 @@ plugin.tx_nsnewsslider_nsnewsslider {
             moveInlineJsFromHeaderToFooter = 1
             # Shows only news from type=0 in the slider (no internal- and no external links) ... clear all cache!
         newsOnly = 0        
-  }
-  features {
-    #skipDefaultArguments = 1
-  }
-  mvc {
-    #callDefaultActionIfActionCantBeResolved = 1
   }
 }
 
