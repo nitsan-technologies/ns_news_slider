@@ -1,25 +1,23 @@
 <?php
 
+use TYPO3\CMS\Core\Utility\ExtensionManagementUtility;
+use TYPO3\CMS\Extbase\Utility\ExtensionUtility;
+
 defined('TYPO3') or die();
 
 /**
  * Plugin register
  */
-\TYPO3\CMS\Extbase\Utility\ExtensionUtility::registerPlugin(
+ExtensionUtility::registerPlugin(
     'NsNewsSlider',
     'Nsnewsslider',
-    'NS News Slider'
-);
-
-\TYPO3\CMS\Core\Utility\ExtensionManagementUtility::addToAllTCAtypes(
-    'ns_news_slider',
-    'tx_nsnewsslider_domain_model_newsslider'
+    'News Slider'
 );
 
 /* Flexform configuration for the slider : START */
-$GLOBALS['TCA']['tt_content']['types']['list']['subtypes_excludelist']['nsnewsslider_nsnewsslider']='layout,select_key,pages,recursive';
+$GLOBALS['TCA']['tt_content']['types']['list']['subtypes_excludelist']['nsnewsslider_nsnewsslider'] = 'layout,select_key,pages,recursive';
 $GLOBALS['TCA']['tt_content']['types']['list']['subtypes_addlist']['nsnewsslider_nsnewsslider'] = 'pi_flexform';
-\TYPO3\CMS\Core\Utility\ExtensionManagementUtility::addPiFlexFormValue(
+ExtensionManagementUtility::addPiFlexFormValue(
     'nsnewsslider_nsnewsslider',
     'FILE:EXT:ns_news_slider/Configuration/FlexForms/PluginSettings.xml'
 );
