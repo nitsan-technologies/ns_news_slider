@@ -11,7 +11,9 @@ defined('TYPO3') or die();
 ExtensionUtility::registerPlugin(
     'NsNewsSlider',
     'Nsnewsslider',
-    'News Slider'
+    'News Slider',
+    'ns_news_slider-plugin-nsnewsslider',
+    'plugins',
 );
 
 /* Flexform configuration for the slider : START */

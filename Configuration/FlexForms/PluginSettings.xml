@@ -8,31 +8,15 @@
 			################################-->
 		<sDEF>
 			<ROOT>
-				<TCEforms>
+
 					<sheetTitle>LLL:EXT:news/Resources/Private/Language/locallang_be.xlf:flexforms_tab.settings</sheetTitle>
-				</TCEforms>
+
 				<type>array</type>
 				<el>
-					<settings.type>
-						<TCEforms>
-							<label>LLL:EXT:ns_news_slider/Resources/Private/Language/locallang_db.xlf:flexform.jQueryplugin</label>
-							<onChange>reload</onChange>
-							<config>
-								<type>select</type>
-								<renderType>selectSingle</renderType>
-								<items>
-									<numIndex index="1">
-										<numIndex index="0">LLL:EXT:ns_news_slider/Resources/Private/Language/locallang_db.xlf:flexform.Royal</numIndex>
-										<numIndex index="1">Royal->list</numIndex>
-									</numIndex>
-								</items>
-							</config>
-						</TCEforms>
-					</settings.type>
 
 					<!-- order -->
 					<settings.orderBy>
-						<TCEforms>
+
 							<label>LLL:EXT:news/Resources/Private/Language/locallang_be.xlf:flexforms_general.orderBy</label>
 							<config>
 								<type>select</type>
@@ -61,12 +45,12 @@
 									</numIndex>
 								</items>
 							</config>
-						</TCEforms>
+
 					</settings.orderBy>
 
 					<!-- order direction  -->
 					<settings.orderDirection>
-						<TCEforms>
+
 							<label>LLL:EXT:news/Resources/Private/Language/locallang_be.xlf:flexforms_general.orderDirection</label>
 							<config>
 								<type>select</type>
@@ -86,12 +70,10 @@
 									</numIndex>
 								</items>
 							</config>
-						</TCEforms>
 					</settings.orderDirection>
 
 					<!-- datefield: select relevant file dateMenu  -->
 					<settings.dateField>
-						<TCEforms>
 							<label>LLL:EXT:news/Resources/Private/Language/locallang_be.xlf:flexforms_general.dateField</label>
 							<config>
 								<type>select</type>
@@ -111,12 +93,10 @@
 									</numIndex>
 								</items>
 							</config>
-						</TCEforms>
 					</settings.dateField>
 
 					<!-- Category Mode -->
 					<settings.categoryConjunction>
-						<TCEforms>
 							<label>LLL:EXT:news/Resources/Private/Language/locallang_be.xlf:flexforms_general.categoryConjunction</label>
 							<config>
 								<type>select</type>
@@ -144,12 +124,10 @@
 									</numIndex>
 								</items>
 							</config>
-						</TCEforms>
 					</settings.categoryConjunction>
 
 					<!-- Category -->
 					<settings.categories>
-						<TCEforms>
 							<label>LLL:EXT:news/Resources/Private/Language/locallang_be.xlf:flexforms_general.categories</label>
 							<config>
 								<type>select</type>
@@ -170,22 +148,18 @@
 								<minitems>0</minitems>
 								<maxitems>99</maxitems>
 							</config>
-						</TCEforms>
 					</settings.categories>
 
 					<!-- Include sub categories -->
 					<settings.includeSubCategories>
-						<TCEforms>
 							<label>LLL:EXT:news/Resources/Private/Language/locallang_be.xlf:flexforms_general.includeSubCategories</label>
 							<config>
 								<type>check</type>
 							</config>
-						</TCEforms>
 					</settings.includeSubCategories>
 
 					<!-- Archive -->
 					<settings.archiveRestriction>
-						<TCEforms>
 							<label>LLL:EXT:news/Resources/Private/Language/locallang_be.xlf:flexforms_general.archiveRestriction</label>
 							<config>
 								<type>select</type>
@@ -205,12 +179,10 @@
 									</numIndex>
 								</items>
 							</config>
-						</TCEforms>
 					</settings.archiveRestriction>
 
 					<!-- Time limit Low -->
 					<settings.timeRestriction>
-						<TCEforms>
 							<label>LLL:EXT:news/Resources/Private/Language/locallang_be.xlf:flexforms_general.timeRestriction</label>
 							<config>
 								<checkbox>1</checkbox>
@@ -218,12 +190,10 @@
 								<type>input</type>
 								<size>15</size>
 							</config>
-						</TCEforms>
 					</settings.timeRestriction>
 
 					<!-- Time limit High -->
 					<settings.timeRestrictionHigh>
-						<TCEforms>
 							<label>LLL:EXT:news/Resources/Private/Language/locallang_be.xlf:flexforms_general.timeRestrictionHigh</label>
 							<config>
 								<checkbox>1</checkbox>
@@ -231,12 +201,10 @@
 								<type>input</type>
 								<size>15</size>
 							</config>
-						</TCEforms>
 					</settings.timeRestrictionHigh>
 
 					<!-- Top News -->
 					<settings.topNewsRestriction>
-						<TCEforms>
 							<label>LLL:EXT:news/Resources/Private/Language/locallang_be.xlf:flexforms_general.topNewsRestriction</label>
 							<config>
 								<type>select</type>
@@ -256,12 +224,10 @@
 									</numIndex>
 								</items>
 							</config>
-						</TCEforms>
 					</settings.topNewsRestriction>
 
 					<!-- startingpoint -->
 					<settings.startingpoint>
-						<TCEforms>
 							<label>LLL:EXT:ns_news_slider/Resources/Private/Language/locallang_db.xlf:flexform.startingPoint</label>
 							<config>
 								<type>group</type>
@@ -271,12 +237,10 @@
 								<maxitems>50</maxitems>
 								<minitems>0</minitems>
 							</config>
-						</TCEforms>
 					</settings.startingpoint>
 
 					<!-- recursive -->
 					<settings.recursive>
-						<TCEforms>
 							<label>LLL:EXT:ns_news_slider/Resources/Private/Language/locallang_db.xlf:flexform.recursive</label>
 							<config>
 								<type>select</type>
@@ -312,12 +276,10 @@
 									</numIndex>
 								</items>
 							</config>
-						</TCEforms>
 					</settings.recursive>
 
 					<!-- selectedList -->
 					<settings.selectedList>
-						<TCEforms>
 							<label>LLL:EXT:news/Resources/Private/Language/locallang_be.xlf:flexforms_general.selectedList</label>
 							<config>
 								<type>group</type>
@@ -328,7 +290,6 @@
 								<minitems>0</minitems>
 
 							</config>
-						</TCEforms>
 					</settings.selectedList>
 				</el>
 			</ROOT>
@@ -339,14 +300,11 @@
 			################################-->
 		<additional>
 			<ROOT>
-				<TCEforms>
 					<sheetTitle>LLL:EXT:news/Resources/Private/Language/locallang_be.xlf:flexforms_tab.additional</sheetTitle>
-				</TCEforms>
 				<type>array</type>
 				<el>
 					<!-- PID Single Page -->
 					<settings.detailPid>
-						<TCEforms>
 							<label>LLL:EXT:news/Resources/Private/Language/locallang_be.xlf:flexforms_additional.detailPid</label>
 							<config>
 								<type>group</type>
@@ -365,36 +323,30 @@
 									</suggest>
 								</wizards>
 							</config>
-						</TCEforms>
 					</settings.detailPid>
 
 					<!-- Limit Start -->
 					<settings.limit>
-						<TCEforms>
 							<label>LLL:EXT:news/Resources/Private/Language/locallang_be.xlf:flexforms_additional.limit</label>
 							<config>
 								<type>input</type>
 								<size>5</size>
 								<eval>num</eval>
 							</config>
-						</TCEforms>
 					</settings.limit>
 
 					<!-- Offset -->
 					<settings.offset>
-						<TCEforms>
 							<label>LLL:EXT:news/Resources/Private/Language/locallang_be.xlf:flexforms_additional.offset</label>
 							<config>
 								<type>input</type>
 								<size>5</size>
 								<eval>num</eval>
 							</config>
-						</TCEforms>
 					</settings.offset>
 
 					<!-- Tags -->
 					<settings.tags>
-						<TCEforms>
 							<label>LLL:EXT:news/Resources/Private/Language/locallang_be.xlf:flexforms_additional.tags</label>
 							<config>
 								<type>group</type>
@@ -412,38 +364,31 @@
 									</suggest>
 								</wizards>
 							</config>
-						</TCEforms>
 					</settings.tags>
 
 					<!-- topNewsFirst -->
 					<settings.topNewsFirst>
-						<TCEforms>
 							<label>LLL:EXT:news/Resources/Private/Language/locallang_be.xlf:flexforms_additional.topNewsFirst</label>
 							<config>
 								<type>check</type>
 							</config>
-						</TCEforms>
 					</settings.topNewsFirst>
 
 					<!-- only not displayed news -->
 					<settings.excludeAlreadyDisplayedNews>
-						<TCEforms>
 							<label>LLL:EXT:news/Resources/Private/Language/locallang_be.xlf:flexforms_additional.excludeAlreadyDisplayedNews</label>
 							<config>
 								<type>check</type>
 							</config>
-						</TCEforms>
 					</settings.excludeAlreadyDisplayedNews>
 
 					<!-- disable overrideDemand -->
 					<settings.disableOverrideDemand>
-						<TCEforms>
 							<label>LLL:EXT:news/Resources/Private/Language/locallang_be.xlf:flexforms_additional.disableOverrideDemand</label>
 							<config>
 								<type>check</type>
 								<default>1</default>
 							</config>
-						</TCEforms>
 					</settings.disableOverrideDemand>
 				</el>
 			</ROOT>
@@ -456,51 +401,42 @@
 		-->
 		<template>
 			<ROOT>
-				<TCEforms>
 					<sheetTitle>LLL:EXT:news/Resources/Private/Language/locallang_be.xlf:flexforms_tab.template</sheetTitle>
-				</TCEforms>
 				<type>array</type>
 				<el>
 
 					<!-- Image Width -->
 					<settings.media.maxWidth>
-						<TCEforms>
 							<label>LLL:EXT:news/Resources/Private/Language/locallang_be.xlf:flexforms_template.mediaMaxWidth</label>
 							<config>
 								<type>input</type>
 								<size>5</size>
 								<eval>num</eval>
 							</config>
-						</TCEforms>
 					</settings.media.maxWidth>
 
 					<!-- Image Height -->
 					<settings.media.maxHeight>
-						<TCEforms>
 							<label>LLL:EXT:news/Resources/Private/Language/locallang_be.xlf:flexforms_template.mediaMaxHeight</label>
 							<config>
 								<type>input</type>
 								<size>5</size>
 								<eval>num</eval>
 							</config>
-						</TCEforms>
 					</settings.media.maxHeight>
 
 					<!-- crop length Teaser -->
 					<settings.cropMaxCharacters>
-						<TCEforms>
 							<label>LLL:EXT:news/Resources/Private/Language/locallang_be.xlf:flexforms_template.cropMaxCharacters</label>
 							<config>
 								<type>input</type>
 								<size>5</size>
 								<eval>num</eval>
 							</config>
-						</TCEforms>
 					</settings.cropMaxCharacters>
 
 					<!-- Template Layout -->
 					<settings.templateLayout>
-						<TCEforms>
 							<label>LLL:EXT:news/Resources/Private/Language/locallang_be.xlf:flexforms_template.templateLayout</label>
 							<config>
 								<type>select</type>
@@ -513,7 +449,6 @@
 									</numIndex>
 								</items>
 							</config>
-						</TCEforms>
 					</settings.templateLayout>
 				</el>
 			</ROOT>
@@ -524,14 +459,10 @@
 			########################################-->
 		<royalSlider>
 			<ROOT>
-				<TCEforms>
 					<sheetTitle>LLL:EXT:ns_news_slider/Resources/Private/Language/locallang_db.xlf:flexforms_tab.royalSlider</sheetTitle>
-					<displayCond>FIELD:sDEF.settings.type:=:Royal->list</displayCond>
-				</TCEforms>
 				<type>array</type>
 				<el>
 					<settings.refLink>
-						<TCEforms>
 							<label>LLL:EXT:ns_news_slider/Resources/Private/Language/locallang_db.xlf:flexform.refLink</label>
 							<config>
 								<type>input</type>
@@ -539,10 +470,8 @@
 								<default>https://dimsemenov.com/plugins/royal-slider/documentation/</default>
 								<readOnly>1</readOnly>
 							</config>
-						</TCEforms>
 					</settings.refLink>
 					<settings.slider_type_royal>
-						<TCEforms>
 							<label>LLL:EXT:ns_news_slider/Resources/Private/Language/locallang_db.xlf:flexform.type</label>
 							<onChange>reload</onChange>
 							<config>
@@ -559,7 +488,6 @@
 									</numIndex>
 								</items>
 							</config>
-						</TCEforms>
 					</settings.slider_type_royal>
 					<settings.slidesOrientation>
 						<label>LLL:EXT:ns_news_slider/Resources/Private/Language/locallang_db.xlf:flexform.slidesOrientation</label>
@@ -583,7 +511,6 @@
 						</config>
 					</settings.slidesOrientation>
 					<settings.slidethumbwidth>
-						<TCEforms>
 							<displayCond>FIELD:settings.slider_type_royal:=:fullscreen</displayCond>
 							<label>LLL:EXT:ns_news_slider/Resources/Private/Language/locallang_db.xlf:flexform.slidethumbwidth</label>
 							<config>
@@ -592,10 +519,8 @@
 								<default>80</default>
 								<size>5</size>
 							</config>
-						</TCEforms>
 					</settings.slidethumbwidth>
 					<settings.slidthumbeheight>
-						<TCEforms>
 							<displayCond>FIELD:settings.slider_type_royal:=:fullscreen</displayCond>
 							<label>LLL:EXT:ns_news_slider/Resources/Private/Language/locallang_db.xlf:flexform.slidthumbeheight</label>
 							<config>
@@ -604,11 +529,9 @@
 								<default>80</default>
 								<size>5</size>
 							</config>
-						</TCEforms>
 					</settings.slidthumbeheight>
 
 					<settings.thumbs_appendSpan>
-						<TCEforms>
 							<label>LLL:EXT:ns_news_slider/Resources/Private/Language/locallang_db.xlf:flexform.thumbs_appendSpan</label>
 							<config>
 								<type>select</type>
@@ -628,10 +551,8 @@
 									</numIndex>
 								</items>
 							</config>
-						</TCEforms>
 					</settings.thumbs_appendSpan>
 					<settings.thumbs_firstMargin>
-						<TCEforms>
 							<label>LLL:EXT:ns_news_slider/Resources/Private/Language/locallang_db.xlf:flexform.thumbs_firstMargin</label>
 							<config>
 								<type>select</type>
@@ -651,7 +572,6 @@
 									</numIndex>
 								</items>
 							</config>
-						</TCEforms>
 					</settings.thumbs_firstMargin>
 
 					<settings.thumb_drag>
@@ -927,13 +847,7 @@
 						</config>
 					</settings.fullScreen_nativeFS>
 
-
-
-
-
-
 					<settings.deeplinking_enabled>
-						<TCEforms>
 							<displayCond>FIELD:settings.slider_type_royal:=:fullwidth</displayCond>
 							<label>LLL:EXT:ns_news_slider/Resources/Private/Language/locallang_db.xlf:flexform.deeplinking_enabled</label>
 							<config>
@@ -954,10 +868,8 @@
 									</numIndex>
 								</items>
 							</config>
-						</TCEforms>
 					</settings.deeplinking_enabled>
 					<settings.deeplinking_change>
-						<TCEforms>
 							<displayCond>FIELD:settings.slider_type_royal:=:fullwidth</displayCond>
 							<label>LLL:EXT:ns_news_slider/Resources/Private/Language/locallang_db.xlf:flexform.deeplinking_change</label>
 							<config>
@@ -978,7 +890,6 @@
 									</numIndex>
 								</items>
 							</config>
-						</TCEforms>
 					</settings.deeplinking_change>
 					<settings.deeplinking_prefix>
 						<label>LLL:EXT:ns_news_slider/Resources/Private/Language/locallang_db.xlf:flexform.deeplinking_prefix</label>
@@ -992,7 +903,6 @@
 
 					<!-- common start-->
 					<settings.arrowsNav>
-						<TCEforms>
 							<label>LLL:EXT:ns_news_slider/Resources/Private/Language/locallang_db.xlf:flexform.arrowsNav</label>
 							<config>
 								<type>select</type>
@@ -1012,10 +922,8 @@
 									</numIndex>
 								</items>
 							</config>
-						</TCEforms>
 					</settings.arrowsNav>
 					<settings.loop>
-						<TCEforms>
 							<label>LLL:EXT:ns_news_slider/Resources/Private/Language/locallang_db.xlf:flexform.loop</label>
 							<config>
 								<type>select</type>
@@ -1035,10 +943,8 @@
 									</numIndex>
 								</items>
 							</config>
-						</TCEforms>
 					</settings.loop>
 					<settings.loopRewind>
-						<TCEforms>
 							<label>LLL:EXT:ns_news_slider/Resources/Private/Language/locallang_db.xlf:flexform.loopRewind</label>
 							<config>
 								<type>select</type>
@@ -1058,10 +964,8 @@
 									</numIndex>
 								</items>
 							</config>
-						</TCEforms>
 					</settings.loopRewind>
 					<settings.randomizeSlides>
-						<TCEforms>
 							<label>LLL:EXT:ns_news_slider/Resources/Private/Language/locallang_db.xlf:flexform.randomizeSlides</label>
 							<config>
 								<type>select</type>
@@ -1081,10 +985,8 @@
 									</numIndex>
 								</items>
 							</config>
-						</TCEforms>
 					</settings.randomizeSlides>
 					<settings.numImagesToPreload>
-						<TCEforms>
 							<displayCond>FIELD:settings.slider_type_royal:=:fullscreen</displayCond>
 							<label>LLL:EXT:ns_news_slider/Resources/Private/Language/locallang_db.xlf:flexform.numImagesToPreload</label>
 							<config>
@@ -1093,10 +995,8 @@
 								<placeholder>4</placeholder>
 								<size>5</size>
 							</config>
-						</TCEforms>
 					</settings.numImagesToPreload>
 					<settings.usePreloader>
-						<TCEforms>
 							<label>LLL:EXT:ns_news_slider/Resources/Private/Language/locallang_db.xlf:flexform.usePreloader</label>
 							<config>
 								<type>select</type>
@@ -1116,10 +1016,8 @@
 									</numIndex>
 								</items>
 							</config>
-						</TCEforms>
 					</settings.usePreloader>
 					<settings.keyboardNavEnabled>
-						<TCEforms>
 							<label>LLL:EXT:ns_news_slider/Resources/Private/Language/locallang_db.xlf:flexform.keyboardNavEnabled</label>
 							<config>
 								<type>select</type>
@@ -1139,10 +1037,8 @@
 									</numIndex>
 								</items>
 							</config>
-						</TCEforms>
 					</settings.keyboardNavEnabled>
 					<settings.controlsInside>
-						<TCEforms>
 							<label>LLL:EXT:ns_news_slider/Resources/Private/Language/locallang_db.xlf:flexform.controlsInside</label>
 							<config>
 								<type>select</type>
@@ -1162,10 +1058,8 @@
 									</numIndex>
 								</items>
 							</config>
-						</TCEforms>
 					</settings.controlsInside>
 					<settings.arrowsNavAutoHide>
-						<TCEforms>
 							<label>LLL:EXT:ns_news_slider/Resources/Private/Language/locallang_db.xlf:flexform.arrowsNavAutoHide</label>
 							<config>
 								<type>select</type>
@@ -1185,10 +1079,8 @@
 									</numIndex>
 								</items>
 							</config>
-						</TCEforms>
 					</settings.arrowsNavAutoHide>
 					<settings.autoScaleSlider>
-						<TCEforms>
 							<label>LLL:EXT:ns_news_slider/Resources/Private/Language/locallang_db.xlf:flexform.autoScaleSlider</label>
 							<config>
 								<type>select</type>
@@ -1208,10 +1100,8 @@
 									</numIndex>
 								</items>
 							</config>
-						</TCEforms>
 					</settings.autoScaleSlider>
 					<settings.navigateByClick>
-						<TCEforms>
 							<label>LLL:EXT:ns_news_slider/Resources/Private/Language/locallang_db.xlf:flexform.navigateByClick</label>
 							<config>
 								<type>select</type>
@@ -1231,12 +1121,10 @@
 									</numIndex>
 								</items>
 							</config>
-						</TCEforms>
 					</settings.navigateByClick>
 
 
 					<settings.autoPlay>
-						<TCEforms>
 							<label>LLL:EXT:ns_news_slider/Resources/Private/Language/locallang_db.xlf:flexform.autoPlay</label>
 							<config>
 								<type>select</type>
@@ -1256,7 +1144,6 @@
 									</numIndex>
 								</items>
 							</config>
-						</TCEforms>
 					</settings.autoPlay>
 
 					<settings.autoPlay_stopAtAction>
@@ -1313,7 +1200,6 @@
 
 
 					<settings.globalCaption>
-						<TCEforms>
 							<label>LLL:EXT:ns_news_slider/Resources/Private/Language/locallang_db.xlf:flexform.globalCaption</label>
 							<config>
 								<type>select</type>
@@ -1333,10 +1219,8 @@
 									</numIndex>
 								</items>
 							</config>
-						</TCEforms>
 					</settings.globalCaption>
 					<settings.addActiveClass>
-						<TCEforms>
 							<label>LLL:EXT:ns_news_slider/Resources/Private/Language/locallang_db.xlf:flexform.addActiveClass</label>
 							<config>
 								<type>select</type>
@@ -1356,10 +1240,8 @@
 									</numIndex>
 								</items>
 							</config>
-						</TCEforms>
 					</settings.addActiveClass>
 					<settings.arrowsNavHideOnTouch>
-						<TCEforms>
 							<label>LLL:EXT:ns_news_slider/Resources/Private/Language/locallang_db.xlf:flexform.arrowsNavHideOnTouch</label>
 							<config>
 								<type>select</type>
@@ -1379,10 +1261,8 @@
 									</numIndex>
 								</items>
 							</config>
-						</TCEforms>
 					</settings.arrowsNavHideOnTouch>
 					<settings.minSlideOffset>
-						<TCEforms>
 							<label>LLL:EXT:ns_news_slider/Resources/Private/Language/locallang_db.xlf:flexform.minSlideOffset</label>
 							<config>
 								<type>input</type>
@@ -1390,10 +1270,8 @@
 								<placeholder>10</placeholder>
 								<size>5</size>
 							</config>
-						</TCEforms>
 					</settings.minSlideOffset>
 					<settings.autoHeight>
-						<TCEforms>
 							<label>LLL:EXT:ns_news_slider/Resources/Private/Language/locallang_db.xlf:flexform.autoHeight</label>
 							<config>
 								<type>select</type>
@@ -1413,10 +1291,8 @@
 									</numIndex>
 								</items>
 							</config>
-						</TCEforms>
 					</settings.autoHeight>
 					<settings.autoScaleSliderWidth>
-						<TCEforms>
 							<label>LLL:EXT:ns_news_slider/Resources/Private/Language/locallang_db.xlf:flexform.autoScaleSliderWidth</label>
 							<config>
 								<type>input</type>
@@ -1424,10 +1300,8 @@
 								<placeholder>960</placeholder>
 								<size>5</size>
 							</config>
-						</TCEforms>
 					</settings.autoScaleSliderWidth>
 					<settings.autoScaleSliderHeight>
-						<TCEforms>
 							<label>LLL:EXT:ns_news_slider/Resources/Private/Language/locallang_db.xlf:flexform.autoScaleSliderHeight</label>
 							<config>
 								<type>input</type>
@@ -1435,10 +1309,8 @@
 								<placeholder>350</placeholder>
 								<size>5</size>
 							</config>
-						</TCEforms>
 					</settings.autoScaleSliderHeight>
 					<settings.startSlideId>
-						<TCEforms>
 							<label>LLL:EXT:ns_news_slider/Resources/Private/Language/locallang_db.xlf:flexform.startSlideId</label>
 							<config>
 								<type>input</type>
@@ -1446,10 +1318,8 @@
 								<placeholder>1</placeholder>
 								<size>5</size>
 							</config>
-						</TCEforms>
 					</settings.startSlideId>
 					<settings.imageScaleMode>
-						<TCEforms>
 							<label>LLL:EXT:ns_news_slider/Resources/Private/Language/locallang_db.xlf:flexform.imageScaleMode</label>
 							<config>
 								<type>select</type>
@@ -1473,10 +1343,8 @@
 									</numIndex>
 								</items>
 							</config>
-						</TCEforms>
 					</settings.imageScaleMode>
 					<settings.imageAlignCenter>
-						<TCEforms>
 							<label>LLL:EXT:ns_news_slider/Resources/Private/Language/locallang_db.xlf:flexform.imageAlignCenter</label>
 							<config>
 								<type>select</type>
@@ -1496,10 +1364,8 @@
 									</numIndex>
 								</items>
 							</config>
-						</TCEforms>
 					</settings.imageAlignCenter>
 					<settings.sliderDrag>
-						<TCEforms>
 							<label>LLL:EXT:ns_news_slider/Resources/Private/Language/locallang_db.xlf:flexform.sliderDrag</label>
 							<config>
 								<type>select</type>
@@ -1519,10 +1385,8 @@
 									</numIndex>
 								</items>
 							</config>
-						</TCEforms>
 					</settings.sliderDrag>
 					<settings.sliderTouch>
-						<TCEforms>
 							<label>LLL:EXT:ns_news_slider/Resources/Private/Language/locallang_db.xlf:flexform.sliderTouch</label>
 							<config>
 								<type>select</type>
@@ -1542,10 +1406,8 @@
 									</numIndex>
 								</items>
 							</config>
-						</TCEforms>
 					</settings.sliderTouch>
 					<settings.fadeinLoadedSlide>
-						<TCEforms>
 							<label>LLL:EXT:ns_news_slider/Resources/Private/Language/locallang_db.xlf:flexform.fadeinLoadedSlide</label>
 							<config>
 								<type>select</type>
@@ -1565,10 +1427,8 @@
 									</numIndex>
 								</items>
 							</config>
-						</TCEforms>
 					</settings.fadeinLoadedSlide>
 					<settings.allowCSS3>
-						<TCEforms>
 							<label>LLL:EXT:ns_news_slider/Resources/Private/Language/locallang_db.xlf:flexform.allowCSS3</label>
 							<config>
 								<type>select</type>
@@ -1588,10 +1448,8 @@
 									</numIndex>
 								</items>
 							</config>
-						</TCEforms>
 					</settings.allowCSS3>
 					<settings.imgWidth>
-						<TCEforms>
 							<label>LLL:EXT:ns_news_slider/Resources/Private/Language/locallang_db.xlf:flexform.imgWidth</label>
 							<config>
 								<type>input</type>
@@ -1599,10 +1457,8 @@
 								<placeholder>800</placeholder>
 								<size>5</size>
 							</config>
-						</TCEforms>
 					</settings.imgWidth>
 					<settings.imgHeight>
-						<TCEforms>
 							<label>LLL:EXT:ns_news_slider/Resources/Private/Language/locallang_db.xlf:flexform.imgHeight</label>
 							<config>
 								<type>input</type>
@@ -1610,10 +1466,8 @@
 								<placeholder>500</placeholder>
 								<size>5</size>
 							</config>
-						</TCEforms>
 					</settings.imgHeight>
 					<settings.slidesSpacing>
-						<TCEforms>
 							<label>LLL:EXT:ns_news_slider/Resources/Private/Language/locallang_db.xlf:flexform.slidesSpacing</label>
 							<config>
 								<type>input</type>
@@ -1621,11 +1475,9 @@
 								<placeholder>8</placeholder>
 								<size>5</size>
 							</config>
-						</TCEforms>
 					</settings.slidesSpacing>
 
 					<settings.controlNavigation>
-						<TCEforms>
 							<label>LLL:EXT:ns_news_slider/Resources/Private/Language/locallang_db.xlf:flexform.controlNavigation</label>
 							<config>
 								<type>select</type>
@@ -1645,10 +1497,8 @@
 									</numIndex>
 								</items>
 							</config>
-						</TCEforms>
 					</settings.controlNavigation>
 					<settings.transitionType>
-						<TCEforms>
 							<label>LLL:EXT:ns_news_slider/Resources/Private/Language/locallang_db.xlf:flexform.transitionType</label>
 							<config>
 								<type>select</type>
@@ -1668,10 +1518,8 @@
 									</numIndex>
 								</items>
 							</config>
-						</TCEforms>
 					</settings.transitionType>
 					<settings.transitionSpeed>
-						<TCEforms>
 							<label>LLL:EXT:ns_news_slider/Resources/Private/Language/locallang_db.xlf:flexform.transitionSpeed</label>
 							<config>
 								<type>input</type>
@@ -1679,10 +1527,8 @@
 								<placeholder>600</placeholder>
 								<size>5</size>
 							</config>
-						</TCEforms>
 					</settings.transitionSpeed>
 					<settings.easeInOut>
-						<TCEforms>
 							<label>LLL:EXT:ns_news_slider/Resources/Private/Language/locallang_db.xlf:flexform.easeInOut</label>
 							<config>
 								<type>select</type>
@@ -1706,10 +1552,8 @@
 									</numIndex>
 								</items>
 							</config>
-						</TCEforms>
 					</settings.easeInOut>
 					<settings.easeOut>
-						<TCEforms>
 							<label>LLL:EXT:ns_news_slider/Resources/Private/Language/locallang_db.xlf:flexform.easeOut</label>
 							<config>
 								<type>select</type>
@@ -1733,7 +1577,6 @@
 									</numIndex>
 								</items>
 							</config>
-						</TCEforms>
 					</settings.easeOut>
 					<!-- common end-->
 
