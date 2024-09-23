@@ -4,7 +4,7 @@
 		<header/>
 		<body>
 			<trans-unit id="tx_ns_news_slider_domain_model_nsnewsslider">
-				<source>NS News Slider</source>
+				<source>News Slider</source>
 			</trans-unit>
 			<trans-unit id="tx_ns_news_slider_domain_model_nsnewsslider.description">
 				<source>This extension allow you to create beautiful news slider for your website!</source>

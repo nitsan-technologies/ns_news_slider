@@ -14,10 +14,6 @@ ExtensionUtility::configurePlugin(
     'Nsnewsslider',
     [
         RoyalController::class => 'list',
-    ],
-    // non-cacheable actions
-    [
-        RoyalController::class => ''
     ]
 );
 
