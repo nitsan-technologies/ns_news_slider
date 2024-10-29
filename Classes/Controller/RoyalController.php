@@ -140,6 +140,11 @@ class RoyalController extends NewsController
                     arrowLeft: ' . (isset($this->settings['thumb_arrowLeft']) && $this->settings['thumb_arrowLeft'] != '' ? $this->settings['thumb_arrowLeft'] : $constant['thumb_arrowLeft']) . ',
                     arrowRight: ' . (isset($this->settings['thumb_arrowRight']) && $this->settings['thumb_arrowRight'] != '' ? $this->settings['thumb_arrowRight'] : $constant['thumb_arrowRight']) . '}';
         $GLOBALS['TSFE']->additionalFooterData[$this->extKey] = $GLOBALS['TSFE']->additionalFooterData[$this->extKey] ?? '';
+        $GLOBALS['TSFE']->additionalFooterData[$this->extKey] .= "<script>
+            if (typeof jQuery == 'undefined') {
+                alert('Please include Jquery library first!');
+            }
+        </script>";
 
         $GLOBALS['TSFE']->additionalFooterData[$this->extKey] .= '<script>
                     ' . $id . '
