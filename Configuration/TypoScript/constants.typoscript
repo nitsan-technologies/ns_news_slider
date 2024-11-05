@@ -36,7 +36,7 @@ plugin {
             keyboardNavEnabled = true
             # cat=plugin.tx_nsnewsslider_royalslider/3333/010; type=options[false,true]; label=LLL:EXT:ns_news_slider/Resources/Private/Language/locallang_db.xlf:flexform.controlsInside
             controlsInside = false
-            # cat=plugin.tx_nsnewsslider_royalslider/3333/011; type=string; label=LLL:EXT:ns_news_slider/Resources/Private/Language/locallang_db.xlf:flexform.imageScaleMode
+            # cat=plugin.tx_nsnewsslider_royalslider/3333/011; type=options[Fill=fill,None=none,Fit if smaller=fit-if-smaller]; label=LLL:EXT:ns_news_slider/Resources/Private/Language/locallang_db.xlf:flexform.imageScaleMode
             imageScaleMode = fit-if-smaller
             # cat=plugin.tx_nsnewsslider_royalslider/3333/012; type=options[false,true]; label=LLL:EXT:ns_news_slider/Resources/Private/Language/locallang_db.xlf:flexform.arrowsNavAutoHide
             arrowsNavAutoHide = true
@@ -54,7 +54,7 @@ plugin {
             startSlideId = 1
             # cat=plugin.tx_nsnewsslider_royalslider/3333/019; type=options[false,true]; label=LLL:EXT:ns_news_slider/Resources/Private/Language/locallang_db.xlf:flexform.autoPlay
             autoPlay = false
-            # cat=plugin.tx_nsnewsslider_royalslider/3333/020; type=string; label=LLL:EXT:ns_news_slider/Resources/Private/Language/locallang_db.xlf:flexform.transitionType
+            # cat=plugin.tx_nsnewsslider_royalslider/3333/020; type=options[Move=move,Fade=fade];; label=LLL:EXT:ns_news_slider/Resources/Private/Language/locallang_db.xlf:flexform.transitionType
             transitionType = move
             # cat=plugin.tx_nsnewsslider_royalslider/3333/021; type=options[false,true]; label=LLL:EXT:ns_news_slider/Resources/Private/Language/locallang_db.xlf:flexform.globalCaption
             globalCaption = true
