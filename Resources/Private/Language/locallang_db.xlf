@@ -4,7 +4,7 @@
 		<header/>
 		<body>
 			<trans-unit id="tx_ns_news_slider_domain_model_nsnewsslider">
-				<source>NS News Slider</source>
+				<source>News Slider</source>
 			</trans-unit>
 			<trans-unit id="tx_ns_news_slider_domain_model_nsnewsslider.description">
 				<source>This extension allow you to create beautiful news slider for your website!</source>
@@ -818,7 +818,7 @@
 				<source>Use Custom Left Arrow</source>
 			</trans-unit>
 			<trans-unit id="flexform.thumb_arrowRight">
-				<source>Use Custom Left Arrow</source>
+				<source>Use Custom Right Arrow</source>
 			</trans-unit>
 			<trans-unit id="flexform.fullScreen_enabled">
 				<source>Fullscreen functions enabled</source>

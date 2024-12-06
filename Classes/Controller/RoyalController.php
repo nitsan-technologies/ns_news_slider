@@ -9,6 +9,7 @@ use Psr\Http\Message\ResponseInterface;
 use TYPO3\CMS\Core\Resource\Exception\InvalidFileException;
 use TYPO3\CMS\Core\Utility\PathUtility;
 use TYPO3\CMS\Core\Utility\GeneralUtility;
+use TYPO3\CMS\Extbase\Configuration\ConfigurationManagerInterface;
 use TYPO3\CMS\Extbase\Persistence\QueryResultInterface;
 use TYPO3\CMS\Extbase\Utility\LocalizationUtility;
 use TYPO3\CMS\Core\Utility\ExtensionManagementUtility;
@@ -48,7 +49,7 @@ class RoyalController extends NewsController
     /**
      * @var NewsRepository
      */
-    protected $newsRepository;
+    protected NewsRepository $newsRepository;
 
     /**
      * @var string
@@ -82,11 +83,15 @@ class RoyalController extends NewsController
         $GLOBALS['TSFE']->additionalHeaderData[$this->extKey . 'CSS3'] = '<link rel="stylesheet" type="text/css" href="' . $extpath . 'slider/Royal-Slider/css/vendor/skins/minimal-white/rs-minimal-white.css" />';
 
         // set js value for slider
-        $constant = $GLOBALS['TSFE']->tmpl->setup['plugin.']['tx_nsnewsslider_royalslider.']['settings.'];
+
+        $configurationManager = GeneralUtility::makeInstance(ConfigurationManagerInterface::class);
+        $typoScriptSetup = $configurationManager->getConfiguration(ConfigurationManagerInterface::CONFIGURATION_TYPE_FULL_TYPOSCRIPT);
+        $constant = $typoScriptSetup['plugin.']['tx_nsnewsslider_royalslider.']['settings.'] ?? [];
+
         //vendar js file path
         $extvendorjspath = $extpath . 'slider/Royal-Slider/js/vendor/';
 
-        if ($constant['jQuery']) {
+        if ($constant['jQuery'] ?? 0) {
             $ajax1 = $extvendorjspath .'jquery.min.js';
             $pageRenderer->addJsFooterFile($ajax1, 'text/javascript', false, false, '');
         }
@@ -96,7 +101,7 @@ class RoyalController extends NewsController
         $pageRenderer->addJsFooterFile($ajax3, 'text/javascript', false, false, '');
 
         $slider_type = $this->settings['slider_type_royal'] ?? '';
-
+        $type = '';
         $id = "(function($) { $('#full-width-slider-" . $getContentId . "').royalSlider({";
         if ($slider_type == 'fullwidth') {
             $type = '
@@ -122,33 +127,24 @@ class RoyalController extends NewsController
                 arrowsNavHideOnTouch: ' . (isset($this->settings['arrowsNavHideOnTouch']) && $this->settings['arrowsNavHideOnTouch'] != '' ? $this->settings['arrowsNavHideOnTouch'] : $constant['arrowsNavHideOnTouch']) . ',
                 thumbs: {
                     appendSpan: ' . (isset($this->settings['thumbs_appendSpan']) && $this->settings['thumbs_appendSpan'] != '' ? $this->settings['thumbs_appendSpan'] : $constant['thumbs_appendSpan']) . ',
-                    
                     firstMargin: ' . (isset($this->settings['thumbs_firstMargin']) && $this->settings['thumbs_firstMargin'] != '' ? $this->settings['thumbs_firstMargin'] : $constant['thumbs_firstMargin']) . ',
-                    
                     drag: ' . (isset($this->settings['thumb_drag']) && $this->settings['thumb_drag'] != '' ? $this->settings['thumb_drag'] : $constant['thumb_drag']) . ',
-
                     touch: ' . (isset($this->settings['thumb_touch']) && $this->settings['thumb_touch'] != '' ? $this->settings['thumb_touch'] : $constant['thumb_touch']) . ",
-
                     orientation: '" . (isset($this->settings['thumb_orientation']) && $this->settings['thumb_orientation'] != '' ? $this->settings['thumb_orientation'] : $constant['thumb_orientation']) . "',
-
                     arrows: " . (isset($this->settings['thumb_arrows']) && $this->settings['thumb_arrows'] != '' ? $this->settings['thumb_arrows'] : $constant['thumb_arrows']) . ',
-
                     spacing: ' . (isset($this->settings['thumb_spacing']) && $this->settings['thumb_spacing'] != '' ? $this->settings['thumb_spacing'] : $constant['thumb_spacing']) . ',
-
                     arrowsAutoHide: ' . (isset($this->settings['thumb_arrowsAutoHide']) && $this->settings['thumb_arrowsAutoHide'] != '' ? $this->settings['thumb_arrowsAutoHide'] : $constant['thumb_arrowsAutoHide']) . ',
-
                     autoCenter: ' . (isset($this->settings['thumb_autoCenter']) && $this->settings['thumb_autoCenter'] != '' ? $this->settings['thumb_autoCenter'] : $constant['thumb_autoCenter']) . ',
-
                     transitionSpeed: ' . (isset($this->settings['thumb_transitionSpeed']) && $this->settings['thumb_transitionSpeed'] != '' ? $this->settings['thumb_transitionSpeed'] : $constant['thumb_transitionSpeed']) . ',
-
                     fitInViewport: ' . (isset($this->settings['thumb_fitInViewport']) && $this->settings['thumb_fitInViewport'] != '' ? $this->settings['thumb_fitInViewport'] : $constant['thumb_fitInViewport']) . ',
-
                     arrowLeft: ' . (isset($this->settings['thumb_arrowLeft']) && $this->settings['thumb_arrowLeft'] != '' ? $this->settings['thumb_arrowLeft'] : $constant['thumb_arrowLeft']) . ',
-
-                    arrowRight: ' . (isset($this->settings['thumb_arrowRight']) && $this->settings['thumb_arrowRight'] != '' ? $this->settings['thumb_arrowRight'] : $constant['thumb_arrowRight']) . ',
-
-                }';
+                    arrowRight: ' . (isset($this->settings['thumb_arrowRight']) && $this->settings['thumb_arrowRight'] != '' ? $this->settings['thumb_arrowRight'] : $constant['thumb_arrowRight']) . '}';
         $GLOBALS['TSFE']->additionalFooterData[$this->extKey] = $GLOBALS['TSFE']->additionalFooterData[$this->extKey] ?? '';
+        $GLOBALS['TSFE']->additionalFooterData[$this->extKey] .= "<script>
+            if (typeof jQuery == 'undefined') {
+                alert('Please include Jquery library first!');
+            }
+        </script>";
 
         $GLOBALS['TSFE']->additionalFooterData[$this->extKey] .= '<script>
                     ' . $id . '
