@@ -1,14 +1,13 @@
 <?php
 
 $EM_CONF['ns_news_slider'] = [
-    'title' => 'News Slider',
-    'description' => 'The TYPO3 News Slider extension lets you create an attractive news slider for your website. It offers several popular JQuery slider plugins like Owlcarousel Slider, Royal Slider, Slidejs Slider, and Slick Slider. It\'s an easy and convenient way to add a news slider to your site!
+    'title' => 'TYPO3 News Slider',
+    'description' => 'Easily showcase news items in an interactive and visually appealing slider. This extension supports multiple jQuery sliders including OwlCarousel, RoyalSlider, SlideJS, and Slick Slider—making it simple to integrate a modern news carousel into your TYPO3 website.',
 
-    *** Live Demo: https://demo.t3planet.com/t3-extensions/news-slider *** Premium Version, Documentation & Free Support: https://t3planet.com/typo3-news-slider-extension',
     'category' => 'plugin',
-    'author' => 'T3: Himanshu Ramavat, QA: Krishna Dhapa',
-    'author_email' => 'sanjay@nitsan.in',
-    'author_company' => 'T3Planet // NITSAN',
+    'author' => 'Team T3Planet',
+    'author_email' => 'info@t3planet.de',
+    'author_company' => 'T3Planet',
     'state' => 'stable',
     'internal' => '',
     'uploadfolder' => '0',
