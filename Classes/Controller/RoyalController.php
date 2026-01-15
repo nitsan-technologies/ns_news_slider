@@ -1,20 +1,16 @@
 <?php
 
+declare(strict_types=1);
+
 namespace NITSAN\NsNewsSlider\Controller;
 
-use GeorgRinger\News\Controller\NewsController;
-use GeorgRinger\News\Domain\Repository\NewsRepository;
 use TYPO3\CMS\Core\Core\Environment;
+use TYPO3\CMS\Core\Page\PageRenderer;
 use Psr\Http\Message\ResponseInterface;
-use TYPO3\CMS\Core\Resource\Exception\InvalidFileException;
 use TYPO3\CMS\Core\Utility\PathUtility;
 use TYPO3\CMS\Core\Utility\GeneralUtility;
-use TYPO3\CMS\Extbase\Configuration\ConfigurationManagerInterface;
-use TYPO3\CMS\Extbase\Persistence\QueryResultInterface;
-use TYPO3\CMS\Extbase\Utility\LocalizationUtility;
 use TYPO3\CMS\Core\Utility\ExtensionManagementUtility;
-use TYPO3\CMS\Core\Page\PageRenderer;
-use TYPO3\CMS\Core\Type\ContextualFeedbackSeverity;
+use TYPO3\CMS\Extbase\Configuration\ConfigurationManagerInterface;
 
 /***************************************************************
  *
@@ -44,12 +40,12 @@ use TYPO3\CMS\Core\Type\ContextualFeedbackSeverity;
 /**
  * RoyalController
  */
-class RoyalController extends NewsController
+class RoyalController extends SliderBaseController
 {
     /**
-     * @var NewsRepository
+     * @var string
      */
-    protected NewsRepository $newsRepository;
+    protected string $sliderName = '';
 
     /**
      * @var string
@@ -61,91 +57,150 @@ class RoyalController extends NewsController
      *
      * @param array|null $overwriteDemand
      * @return ResponseInterface
-     * @throws InvalidFileException
      */
-    public function listAction(array $overwriteDemand = null): ResponseInterface
+    public function listAction(?array $overwriteDemand = null): ResponseInterface
     {
-        $this->extKey = $this->request->getControllerExtensionKey();
+        $settings = $this->settings;
+        $settings['sliderType'] = $this->sliderName;
         $news = $this->findNews();
+        $id = '';
+        $type = '';
+        $this->view->assignMultiple([
+            'news' => $news,
+            'settings' => $settings
+        ]);
+
+        $extensionKey = $this->request->getControllerExtensionKey();
+        $additionalHeaderData = &$GLOBALS['TSFE']->additionalHeaderData;
+
         if (Environment::isComposerMode()) {
             $assetPath = $this->getPath('/', 'ns_news_slider');
             $extpath = GeneralUtility::getIndpEnv('TYPO3_SITE_URL') . $assetPath;
+            $cssPath = 'slider/Royal-Slider/css/';
+            $jsPath = 'slider/Royal-Slider/js/vendor/';
         } else {
-            $extpath = PathUtility::stripPathSitePrefix(ExtensionManagementUtility::extPath('ns_news_slider')).'Resources/Public/';
+            $extpath = PathUtility::stripPathSitePrefix(ExtensionManagementUtility::extPath('ns_news_slider'));
+            $cssPath = 'Resources/Public/slider/Royal-Slider/css/';
+            $jsPath = 'Resources/Public/slider/Royal-Slider/js/vendor/';
         }
+
+        $additionalHeaderData[$extensionKey . 'CSS1'] = '<link rel="stylesheet" type="text/css" href="' . $extpath . $cssPath . 'style.css" />';
+        $additionalHeaderData[$extensionKey . 'CSS2'] = '<link rel="stylesheet" type="text/css" href="' . $extpath . $cssPath . 'vendor/royalslider.css" />';
+        $additionalHeaderData[$extensionKey . 'CSS3'] = '<link rel="stylesheet" type="text/css" href="' . $extpath . $cssPath . 'vendor/skins/minimal-white/rs-minimal-white.css" />';
+
+        $ajax2 = $extpath . $jsPath . 'jquery.royalslider.min.js';
+        $ajax3 = $extpath . $jsPath . 'jquery.easing.js';
+
         $pluginName = $this->request->getPluginName();
+
         $pageRenderer = GeneralUtility::makeInstance(PageRenderer::class);
-        $currentContentObject = $this->request->getAttribute('currentContentObject');
-        $getContentId = $currentContentObject->data['uid'];
-        // add css js in header
-        $GLOBALS['TSFE']->additionalHeaderData[$this->extKey . 'CSS1'] = '<link rel="stylesheet" type="text/css" href="' . $extpath . 'slider/Royal-Slider/css/style.css" />';
-        $GLOBALS['TSFE']->additionalHeaderData[$this->extKey . 'CSS2'] = '<link rel="stylesheet" type="text/css" href="' . $extpath . 'slider/Royal-Slider/css/vendor/royalslider.css" />';
-        $GLOBALS['TSFE']->additionalHeaderData[$this->extKey . 'CSS3'] = '<link rel="stylesheet" type="text/css" href="' . $extpath . 'slider/Royal-Slider/css/vendor/skins/minimal-white/rs-minimal-white.css" />';
+        $getContentId = $this->request->getAttribute('currentContentObject')->data['uid'];
 
         // set js value for slider
-
         $configurationManager = GeneralUtility::makeInstance(ConfigurationManagerInterface::class);
         $typoScriptSetup = $configurationManager->getConfiguration(ConfigurationManagerInterface::CONFIGURATION_TYPE_FULL_TYPOSCRIPT);
-        $constant = $typoScriptSetup['plugin.']['tx_nsnewsslider_royalslider.']['settings.'] ?? [];
+        $constant = $typoScriptSetup['plugin.']['tx_nsnewsslider_royalslider.']['settings.'];
 
-        //vendar js file path
-        $extvendorjspath = $extpath . 'slider/Royal-Slider/js/vendor/';
-
-        if ($constant['jQuery'] ?? 0) {
-            $ajax1 = $extvendorjspath .'jquery.min.js';
+        if ($constant['jQuery']) {
+            $ajax1 = 'EXT:ns_news_slider/Resources/Public/Js/jquery-3.6.0.min.js';
             $pageRenderer->addJsFooterFile($ajax1, 'text/javascript', false, false, '');
         }
-        $ajax2 = $extvendorjspath . 'jquery.royalslider.min.js';
-        $ajax3 = $extvendorjspath . 'jquery.easing-1.3.js';
+
         $pageRenderer->addJsFooterFile($ajax2, 'text/javascript', false, false, '');
         $pageRenderer->addJsFooterFile($ajax3, 'text/javascript', false, false, '');
 
-        $slider_type = $this->settings['slider_type_royal'] ?? '';
-        $type = '';
-        $id = "(function($) { $('#full-width-slider-" . $getContentId . "').royalSlider({";
+        $slider_type = $this->settings['slider_type_royal'];
+
+        $this->view->assign('slider_type', $slider_type);
         if ($slider_type == 'fullwidth') {
+            $id = "
+                (function($) {
+                    $('#full-width-slider-" . $getContentId . "').royalSlider({";
             $type = '
-                deeplinking: {
-                   enabled: ' . (isset($this->settings['deeplinking_enabled']) && $this->settings['deeplinking_enabled'] != '' ? $this->settings['deeplinking_enabled'] : $constant['deeplinking_enabled']) . ',
-                   change: ' . (isset($this->settings['deeplinking_change']) && $this->settings['deeplinking_change'] != '' ? $this->settings['deeplinking_change'] : $constant['deeplinking_change']) . ',
-                   prefix: "' . (isset($this->settings['deeplinking_prefix']) && $this->settings['deeplinking_prefix'] != '' ? $this->settings['deeplinking_prefix'] : $constant['deeplinking_prefix']) . '"
-                },
-                ';
+                        deeplinking: {
+                           enabled: ' . (isset($this->settings['deeplinking_enabled']) && $this->settings['deeplinking_enabled'] != '' ? $this->settings['deeplinking_enabled'] : $constant['deeplinking_enabled']) . ',
+                           change: ' . (isset($this->settings['deeplinking_change']) && $this->settings['deeplinking_change'] != '' ? $this->settings['deeplinking_change'] : $constant['deeplinking_change']) . ",
+                           prefix: '" . (isset($this->settings['deeplinking_prefix']) && $this->settings['deeplinking_prefix'] != '' ? $this->settings['deeplinking_prefix'] : $constant['deeplinking_prefix']) . "'
+                        },
+                        imgWidth: " . (isset($this->settings['imgWidth']) && $this->settings['imgWidth'] != '' ? $this->settings['imgWidth'] : $constant['imgWidth']) . ',
+                        imgHeight: ' . (isset($this->settings['imgHeight']) && $this->settings['imgHeight'] != '' ? $this->settings['imgHeight'] : $constant['imgHeight']) . ',
+                        thumbs: {
+                            appendSpan: ' . (isset($this->settings['thumbs_appendSpan']) && $this->settings['thumbs_appendSpan'] != '' ? $this->settings['thumbs_appendSpan'] : $constant['thumbs_appendSpan']) . ',
+                            firstMargin: ' . (isset($this->settings['thumbs_firstMargin']) && $this->settings['thumbs_firstMargin'] != '' ? $this->settings['thumbs_firstMargin'] : $constant['thumbs_firstMargin']) . ',
+
+                            drag: ' . (isset($this->settings['thumb_drag']) && $this->settings['thumb_drag'] != '' ? $this->settings['thumb_drag'] : $constant['thumb_drag']) . ',
+
+                            touch: ' . (isset($this->settings['thumb_touch']) && $this->settings['thumb_touch'] != '' ? $this->settings['thumb_touch'] : $constant['thumb_touch']) . ",
+
+                            orientation: '" . (isset($this->settings['thumb_orientation']) && $this->settings['thumb_orientation'] != '' ? $this->settings['thumb_orientation'] : $constant['thumb_orientation']) . "',
+
+                            arrows: " . (isset($this->settings['thumb_arrows']) && $this->settings['thumb_arrows'] != '' ? $this->settings['thumb_arrows'] : $constant['thumb_arrows']) . ',
+
+                            spacing: ' . (isset($this->settings['thumb_spacing']) && $this->settings['thumb_spacing'] != '' ? $this->settings['thumb_spacing'] : $constant['thumb_spacing']) . ',
+
+                            arrowsAutoHide: ' . (isset($this->settings['thumb_arrowsAutoHide']) && $this->settings['thumb_arrowsAutoHide'] != '' ? $this->settings['thumb_arrowsAutoHide'] : $constant['thumb_arrowsAutoHide']) . ',
+
+                            autoCenter: ' . (isset($this->settings['thumb_autoCenter']) && $this->settings['thumb_autoCenter'] != '' ? $this->settings['thumb_autoCenter'] : $constant['thumb_autoCenter']) . ',
+
+                            transitionSpeed: ' . (isset($this->settings['thumb_transitionSpeed']) && $this->settings['thumb_transitionSpeed'] != '' ? $this->settings['thumb_transitionSpeed'] : $constant['thumb_transitionSpeed']) . ',
+
+                            fitInViewport: ' . (isset($this->settings['thumb_fitInViewport']) && $this->settings['thumb_fitInViewport'] != '' ? $this->settings['thumb_fitInViewport'] : $constant['thumb_fitInViewport']) . ',
+
+                            arrowLeft: ' . (isset($this->settings['thumb_arrowLeft']) && $this->settings['thumb_arrowLeft'] != '' ? "$('" . $this->settings['thumb_arrowLeft'] . "')" : $constant['thumb_arrowLeft']) . ',
+
+                            arrowRight: ' . (isset($this->settings['thumb_arrowRight']) && $this->settings['thumb_arrowRight'] != '' ? "$('" . $this->settings['thumb_arrowRight'] . "')" : $constant['thumb_arrowRight']) . ',
+
+                        }
+
+                        ';
         } elseif ($slider_type == 'fullscreen') {
+            $id = "(function($) { $('#full-width-slider-" . $getContentId . "').royalSlider({";
             $type = '
-                fullscreen:{
-                    enabled : ' . (isset($this->settings['fullScreen_enabled']) && $this->settings['fullScreen_enabled'] != '' ? $this->settings['fullScreen_enabled'] : $constant['fullScreen_enabled']) . ',
-                    keyboardNav : ' . (isset($this->settings['fullScreen_keyboardNav']) && $this->settings['fullScreen_keyboardNav'] != '' ? $this->settings['fullScreen_keyboardNav'] : $constant['fullScreen_keyboardNav']) . ',
-                    buttonFS : ' . (isset($this->settings['fullScreen_buttonFS']) && $this->settings['fullScreen_buttonFS'] != '' ? $this->settings['fullScreen_buttonFS'] : $constant['fullScreen_buttonFS']) . ',
-                    nativeFS : ' . (isset($this->settings['fullScreen_nativeFS']) && $this->settings['fullScreen_nativeFS'] != '' ? $this->settings['fullScreen_nativeFS'] : $constant['fullScreen_nativeFS']) . ',
-                },
-                ';
+                        imgWidth: ' . (isset($this->settings['imgWidth']) && $this->settings['imgWidth'] != '' ? $this->settings['imgWidth'] : $constant['imgWidth']) . ',
+                        imgHeight: ' . (isset($this->settings['imgHeight']) && $this->settings['imgHeight'] != '' ? $this->settings['imgHeight'] : $constant['imgHeight']) . ',
+                        arrowsNavHideOnTouch: ' . (isset($this->settings['arrowsNavHideOnTouch']) && $this->settings['arrowsNavHideOnTouch'] != '' ? $this->settings['arrowsNavHideOnTouch'] : $constant['arrowsNavHideOnTouch']) . ',
+                        fullscreen:{
+                            enabled : ' . (isset($this->settings['fullScreen_enabled']) && $this->settings['fullScreen_enabled'] != '' ? $this->settings['fullScreen_enabled'] : $constant['fullScreen_enabled']) . ',
+                            keyboardNav : ' . (isset($this->settings['fullScreen_keyboardNav']) && $this->settings['fullScreen_keyboardNav'] != '' ? $this->settings['fullScreen_keyboardNav'] : $constant['fullScreen_keyboardNav']) . ',
+                            buttonFS : ' . (isset($this->settings['fullScreen_buttonFS']) && $this->settings['fullScreen_buttonFS'] != '' ? $this->settings['fullScreen_buttonFS'] : $constant['fullScreen_buttonFS']) . ',
+                            nativeFS : ' . (isset($this->settings['fullScreen_nativeFS']) && $this->settings['fullScreen_nativeFS'] != '' ? $this->settings['fullScreen_nativeFS'] : $constant['fullScreen_nativeFS']) . ',
+                        },
+                        thumbs: {
+                            appendSpan: ' . (isset($this->settings['thumbs_appendSpan']) && $this->settings['thumbs_appendSpan'] != '' ? $this->settings['thumbs_appendSpan'] : $constant['thumbs_appendSpan']) . ',
+                            firstMargin: ' . (isset($this->settings['thumbs_firstMargin']) && $this->settings['thumbs_firstMargin'] != '' ? $this->settings['thumbs_firstMargin'] : $constant['thumbs_firstMargin']) . ',
+
+                            drag: ' . (isset($this->settings['thumb_drag']) && $this->settings['thumb_drag'] != '' ? $this->settings['thumb_drag'] : $constant['thumb_drag']) . ',
+
+                            touch: ' . (isset($this->settings['thumb_touch']) && $this->settings['thumb_touch'] != '' ? $this->settings['thumb_touch'] : $constant['thumb_touch']) . ",
+
+                            orientation: '" . (isset($this->settings['thumb_orientation']) && $this->settings['thumb_orientation'] != '' ? $this->settings['thumb_orientation'] : $constant['thumb_orientation']) . "',
+
+                            arrows: " . (isset($this->settings['thumb_arrows']) && $this->settings['thumb_arrows'] != '' ? $this->settings['thumb_arrows'] : $constant['thumb_arrows']) . ',
+
+                            spacing: ' . (isset($this->settings['thumb_spacing']) && $this->settings['thumb_spacing'] != '' ? $this->settings['thumb_spacing'] : $constant['thumb_spacing']) . ',
+
+                            arrowsAutoHide: ' . (isset($this->settings['thumb_arrowsAutoHide']) && $this->settings['thumb_arrowsAutoHide'] != '' ? $this->settings['thumb_arrowsAutoHide'] : $constant['thumb_arrowsAutoHide']) . ',
+
+                            autoCenter: ' . (isset($this->settings['thumb_autoCenter']) && $this->settings['thumb_autoCenter'] != '' ? $this->settings['thumb_autoCenter'] : $constant['thumb_autoCenter']) . ',
+
+                            transitionSpeed: ' . (isset($this->settings['thumb_transitionSpeed']) && $this->settings['thumb_transitionSpeed'] != '' ? $this->settings['thumb_transitionSpeed'] : $constant['thumb_transitionSpeed']) . ',
+
+                            fitInViewport: ' . (isset($this->settings['thumb_fitInViewport']) && $this->settings['thumb_fitInViewport'] != '' ? $this->settings['thumb_fitInViewport'] : $constant['thumb_fitInViewport']) . ',
+
+                            arrowLeft: ' . (isset($this->settings['thumb_arrowLeft']) && $this->settings['thumb_arrowLeft'] != '' ? "$('" . $this->settings['thumb_arrowLeft'] . "')" : $constant['thumb_arrowLeft']) . ',
+
+                            arrowRight: ' . (isset($this->settings['thumb_arrowRight']) && $this->settings['thumb_arrowRight'] != '' ? "$('" . $this->settings['thumb_arrowRight'] . "')" : $constant['thumb_arrowRight']) . ',
+
+                        }';
         }
-        $type .= '
-                imgWidth: ' . (isset($this->settings['imgWidth']) && $this->settings['imgWidth'] != '' ? $this->settings['imgWidth'] : $constant['imgWidth']) . ',
-                imgHeight: ' . (isset($this->settings['imgHeight']) && $this->settings['imgHeight'] != '' ? $this->settings['imgHeight'] : $constant['imgHeight']) . ',
-                arrowsNavHideOnTouch: ' . (isset($this->settings['arrowsNavHideOnTouch']) && $this->settings['arrowsNavHideOnTouch'] != '' ? $this->settings['arrowsNavHideOnTouch'] : $constant['arrowsNavHideOnTouch']) . ',
-                thumbs: {
-                    appendSpan: ' . (isset($this->settings['thumbs_appendSpan']) && $this->settings['thumbs_appendSpan'] != '' ? $this->settings['thumbs_appendSpan'] : $constant['thumbs_appendSpan']) . ',
-                    firstMargin: ' . (isset($this->settings['thumbs_firstMargin']) && $this->settings['thumbs_firstMargin'] != '' ? $this->settings['thumbs_firstMargin'] : $constant['thumbs_firstMargin']) . ',
-                    drag: ' . (isset($this->settings['thumb_drag']) && $this->settings['thumb_drag'] != '' ? $this->settings['thumb_drag'] : $constant['thumb_drag']) . ',
-                    touch: ' . (isset($this->settings['thumb_touch']) && $this->settings['thumb_touch'] != '' ? $this->settings['thumb_touch'] : $constant['thumb_touch']) . ",
-                    orientation: '" . (isset($this->settings['thumb_orientation']) && $this->settings['thumb_orientation'] != '' ? $this->settings['thumb_orientation'] : $constant['thumb_orientation']) . "',
-                    arrows: " . (isset($this->settings['thumb_arrows']) && $this->settings['thumb_arrows'] != '' ? $this->settings['thumb_arrows'] : $constant['thumb_arrows']) . ',
-                    spacing: ' . (isset($this->settings['thumb_spacing']) && $this->settings['thumb_spacing'] != '' ? $this->settings['thumb_spacing'] : $constant['thumb_spacing']) . ',
-                    arrowsAutoHide: ' . (isset($this->settings['thumb_arrowsAutoHide']) && $this->settings['thumb_arrowsAutoHide'] != '' ? $this->settings['thumb_arrowsAutoHide'] : $constant['thumb_arrowsAutoHide']) . ',
-                    autoCenter: ' . (isset($this->settings['thumb_autoCenter']) && $this->settings['thumb_autoCenter'] != '' ? $this->settings['thumb_autoCenter'] : $constant['thumb_autoCenter']) . ',
-                    transitionSpeed: ' . (isset($this->settings['thumb_transitionSpeed']) && $this->settings['thumb_transitionSpeed'] != '' ? $this->settings['thumb_transitionSpeed'] : $constant['thumb_transitionSpeed']) . ',
-                    fitInViewport: ' . (isset($this->settings['thumb_fitInViewport']) && $this->settings['thumb_fitInViewport'] != '' ? $this->settings['thumb_fitInViewport'] : $constant['thumb_fitInViewport']) . ',
-                    arrowLeft: ' . (isset($this->settings['thumb_arrowLeft']) && $this->settings['thumb_arrowLeft'] != '' ? $this->settings['thumb_arrowLeft'] : $constant['thumb_arrowLeft']) . ',
-                    arrowRight: ' . (isset($this->settings['thumb_arrowRight']) && $this->settings['thumb_arrowRight'] != '' ? $this->settings['thumb_arrowRight'] : $constant['thumb_arrowRight']) . '}';
+
+        $this->extKey = $this->extKey ?? '';
         $GLOBALS['TSFE']->additionalFooterData[$this->extKey] = $GLOBALS['TSFE']->additionalFooterData[$this->extKey] ?? '';
         $GLOBALS['TSFE']->additionalFooterData[$this->extKey] .= "<script>
             if (typeof jQuery == 'undefined') {
                 alert('Please include Jquery library first!');
             }
         </script>";
-
         $GLOBALS['TSFE']->additionalFooterData[$this->extKey] .= '<script>
                     ' . $id . '
                         arrowsNav: ' . (isset($this->settings['arrowsNav']) && $this->settings['arrowsNav'] != '' ? $this->settings['arrowsNav'] : $constant['arrowsNav']) . ',
@@ -154,6 +209,8 @@ class RoyalController extends NewsController
                         controlsInside: ' . (isset($this->settings['controlsInside']) && $this->settings['controlsInside'] != '' ? $this->settings['controlsInside'] : $constant['controlsInside']) . ",
                         imageScaleMode: '" . (isset($this->settings['imageScaleMode']) && $this->settings['imageScaleMode'] != '' ? $this->settings['imageScaleMode'] : $constant['imageScaleMode']) . "',
                         arrowsNavAutoHide: " . (isset($this->settings['arrowsNavAutoHide']) && $this->settings['arrowsNavAutoHide'] != '' ? $this->settings['arrowsNavAutoHide'] : $constant['arrowsNavAutoHide']) . ',
+
+
                         autoScaleSlider: ' . (isset($this->settings['autoScaleSlider']) && $this->settings['autoScaleSlider'] != '' ? $this->settings['autoScaleSlider'] : $constant['autoScaleSlider']) . ',
                         autoScaleSliderWidth: ' . (isset($this->settings['autoScaleSliderWidth']) && $this->settings['autoScaleSliderWidth'] != '' ? $this->settings['autoScaleSliderWidth'] : $constant['autoScaleSliderWidth']) . ',
                         autoScaleSliderHeight: ' . (isset($this->settings['autoScaleSliderHeight']) && $this->settings['autoScaleSliderHeight'] != '' ? $this->settings['autoScaleSliderHeight'] : $constant['autoScaleSliderHeight']) . ",
@@ -162,6 +219,7 @@ class RoyalController extends NewsController
                         startSlideId: ' . (isset($this->settings['startSlideId'])  && $this->settings['startSlideId'] != '' ? $this->settings['startSlideId'] : $constant['startSlideId']) . ",
                         transitionType: '" . (isset($this->settings['transitionType']) && $this->settings['transitionType'] != '' ? $this->settings['transitionType'] : $constant['transitionType']) . "',
                         globalCaption: " . (isset($this->settings['globalCaption']) && $this->settings['globalCaption'] != '' ? $this->settings['globalCaption'] : $constant['globalCaption']) . ',
+
                         imageAlignCenter: ' . (isset($this->settings['imageAlignCenter']) && $this->settings['imageAlignCenter'] != '' ? $this->settings['imageAlignCenter'] : $constant['imageAlignCenter']) . ',
                         slidesSpacing: ' . (isset($this->settings['slidesSpacing']) && $this->settings['slidesSpacing'] != '' ? $this->settings['slidesSpacing'] : $constant['slidesSpacing']) . ',
                         loopRewind: ' . (isset($this->settings['loopRewind']) && $this->settings['loopRewind'] != '' ? $this->settings['loopRewind'] : $constant['loopRewind']) . ',
@@ -178,6 +236,7 @@ class RoyalController extends NewsController
                         addActiveClass: ' . (isset($this->settings['addActiveClass']) && $this->settings['addActiveClass'] != '' ? $this->settings['addActiveClass'] : $constant['addActiveClass']) . ',
                         minSlideOffset: ' . (isset($this->settings['minSlideOffset']) && $this->settings['minSlideOffset'] != '' ? $this->settings['minSlideOffset'] : $constant['minSlideOffset']) . ',
                         autoHeight: ' . (isset($this->settings['autoHeight']) && $this->settings['autoHeight'] != '' ? $this->settings['autoHeight'] : $constant['autoHeight']) . ',
+
                         autoPlay: {
                             enabled: ' . (isset($this->settings['autoPlay']) && $this->settings['autoPlay'] != '' ? $this->settings['autoPlay'] : $constant['autoPlay']) . ',
                             stopAtAction: ' . (isset($this->settings['autoPlay_stopAtAction']) && $this->settings['autoPlay_stopAtAction'] != '' ? $this->settings['autoPlay_stopAtAction'] : $constant['autoPlay_stopAtAction']) . ',
@@ -190,51 +249,12 @@ class RoyalController extends NewsController
                 })(jQuery);
             </script>';
 
-        $this->view->assignMultiple(
-            [
-                'pluginName' => $pluginName,
-                'settings' => $this->settings,
-                'slider_type' => $slider_type,
-                'news' => $news
-            ]
-        );
+
+        //variable saved in flexform
+        $this->view->assign('settings', $this->settings);
+
+        // show pluging name
+        $this->view->assign('pluginName', $pluginName);
         return $this->htmlResponse();
-    }
-
-    /**
-     * @param array|null $overwriteDemand
-     * @return QueryResultInterface|array
-     */
-    public function findNews(array $overwriteDemand = null): QueryResultInterface|array
-    {
-        $demand = parent::createDemandObjectFromSettings($this->settings);
-        if ($this->settings['disableOverrideDemand'] != 1 && $overwriteDemand !== null) {
-            $demand = parent::overwriteDemandObject($demand, $overwriteDemand);
-        }
-        $news = $this->newsRepository->findDemanded($demand);
-        if (!count($news)) {
-            $this->addFlashMessage(
-                LocalizationUtility::translate('fe.nonews', 'ns_news_slider'),
-                LocalizationUtility::translate('fe.nonewsTitle', 'ns_news_slider'),
-                ContextualFeedbackSeverity::WARNING
-            );
-        }
-        return $news;
-    }
-
-    /**
-     * getPath for composer based setup
-     * @param string $path
-     * @param string $extName
-     * @return string
-     * @throws InvalidFileException
-     */
-    public function getPath(string $path, string $extName): string
-    {
-        $arguments = ['path' => $path, 'extensionName' => $extName];
-        $path = $arguments['path'];
-        $publicPath = sprintf('EXT:%s/Resources/Public/%s', $arguments['extensionName'], ltrim($path, '/'));
-        $uri = PathUtility::getPublicResourceWebPath($publicPath);
-        return substr($uri, 1);
     }
 }

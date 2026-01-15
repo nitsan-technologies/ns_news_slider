@@ -5,23 +5,32 @@ plugin {
                 0 = EXT:ns_news_slider/Resources/Private/Templates/
                 1 = {$plugin.tx_nsnewsslider_nsnewsslider.view.templateRootPath}
             }
+
             partialRootPaths {
                 0 = EXT:ns_news_slider/Resources/Private/Partials/
                 1 = {$plugin.tx_nsnewsslider_nsnewsslider.view.partialRootPath}
             }
+
             layoutRootPaths {
                 0 = EXT:ns_news_slider/Resources/Private/Layouts/
                 1 = {$plugin.tx_nsnewsslider_nsnewsslider.view.layoutRootPath}
             }
         }
+
         persistence {
             storagePid = {$plugin.tx_nsnewsslider_nsnewsslider.persistence.storagePid}
+            #recursive = 1
         }
+
         settings < plugin.tx_news.settings
         settings {
-            list.media.image {
-                maxWidth = 100
-                maxHeigh = 100
+            list {
+                media {
+                    image {
+                        maxWidth = 100
+                        maxHeigh = 100
+                    }
+                }
             }
             # If using multiple JS-Libraries.
             jqueryNoConflict = 0
@@ -33,6 +42,73 @@ plugin {
             newsOnly = 0
         }
     }
+    tx_nsnewsslider_owlcarousel {
+        settings {
+            jQuery = {$plugin.tx_nsnewsslider_owlcarousel.settings.jQuery}
+            ConAutoPlay = {$plugin.tx_nsnewsslider_owlcarousel.settings.ConAutoPlay}
+            Connavigation = {$plugin.tx_nsnewsslider_owlcarousel.settings.Connavigation}
+            Conitems = {$plugin.tx_nsnewsslider_owlcarousel.settings.Conitems}
+            ConlazyLoad = {$plugin.tx_nsnewsslider_owlcarousel.settings.ConlazyLoad}
+            ConmouseDrag = {$plugin.tx_nsnewsslider_owlcarousel.settings.ConmouseDrag}
+            ContouchDrag = {$plugin.tx_nsnewsslider_owlcarousel.settings.ContouchDrag}
+            Conmargin = {$plugin.tx_nsnewsslider_owlcarousel.settings.Conmargin}
+            Conloop = {$plugin.tx_nsnewsslider_owlcarousel.settings.Conloop}
+            Concenter = {$plugin.tx_nsnewsslider_owlcarousel.settings.Concenter}
+            ConpullDrag = {$plugin.tx_nsnewsslider_owlcarousel.settings.ConpullDrag}
+            ConfreeDrag = {$plugin.tx_nsnewsslider_owlcarousel.settings.ConfreeDrag}
+            ConstagePadding = {$plugin.tx_nsnewsslider_owlcarousel.settings.ConstagePadding}
+            Conmerge = {$plugin.tx_nsnewsslider_owlcarousel.settings.Conmerge}
+            ConmergeFit = {$plugin.tx_nsnewsslider_owlcarousel.settings.ConmergeFit}
+            ConautoWidth = {$plugin.tx_nsnewsslider_owlcarousel.settings.ConautoWidth}
+            ConstartPosition = {$plugin.tx_nsnewsslider_owlcarousel.settings.ConstartPosition}
+            ConURLhashListener = {$plugin.tx_nsnewsslider_owlcarousel.settings.ConURLhashListener}
+            Conrewind = {$plugin.tx_nsnewsslider_owlcarousel.settings.Conrewind}
+            ConnavElement = {$plugin.tx_nsnewsslider_owlcarousel.settings.ConnavElement}
+            ConslideBy = {$plugin.tx_nsnewsslider_owlcarousel.settings.ConslideBy}
+            ConslideTransition = {$plugin.tx_nsnewsslider_owlcarousel.settings.ConslideTransition}
+            Condots = {$plugin.tx_nsnewsslider_owlcarousel.settings.Condots}
+            CondotsEach = {$plugin.tx_nsnewsslider_owlcarousel.settings.CondotsEach}
+            CondotsData = {$plugin.tx_nsnewsslider_owlcarousel.settings.CondotsData}
+            ConlazyLoadEager = {$plugin.tx_nsnewsslider_owlcarousel.settings.ConlazyLoadEager}
+            ConautoplayTimeout = {$plugin.tx_nsnewsslider_owlcarousel.settings.ConautoplayTimeout}
+            ConautoplayHoverPause = {$plugin.tx_nsnewsslider_owlcarousel.settings.ConautoplayHoverPause}
+            ConautoplaySpeed = {$plugin.tx_nsnewsslider_owlcarousel.settings.ConautoplaySpeed}
+            ConnavSpeed = {$plugin.tx_nsnewsslider_owlcarousel.settings.ConnavSpeed}
+            CondotsSpeed = {$plugin.tx_nsnewsslider_owlcarousel.settings.CondotsSpeed}
+            CondragEndSpeed = {$plugin.tx_nsnewsslider_owlcarousel.settings.CondragEndSpeed}
+            ConanimateOut = {$plugin.tx_nsnewsslider_owlcarousel.settings.ConanimateOut}
+            ConanimateIn = {$plugin.tx_nsnewsslider_owlcarousel.settings.ConanimateIn}
+            ConfallbackEasing = {$plugin.tx_nsnewsslider_owlcarousel.settings.ConfallbackEasing}
+            Coninfo = {$plugin.tx_nsnewsslider_owlcarousel.settings.Coninfo}
+            ConnestedItemSelector = {$plugin.tx_nsnewsslider_owlcarousel.settings.ConnestedItemSelector}
+            ConitemElement = {$plugin.tx_nsnewsslider_owlcarousel.settings.ConitemElement}
+            ConnavContainer = {$plugin.tx_nsnewsslider_owlcarousel.settings.ConnavContainer}
+            CondotsContainer = {$plugin.tx_nsnewsslider_owlcarousel.settings.CondotsContainer}
+            ConcheckVisible = {$plugin.tx_nsnewsslider_owlcarousel.settings.ConcheckVisible}
+        }
+    }
+
+    tx_nsnewsslider_nivoslider {
+        settings {
+            jQuery = {$plugin.tx_nsnewsslider_nivoslider.settings.jQuery}
+            nivonavagation_arrow = {$plugin.tx_nsnewsslider_nivoslider.settings.nivonavagation_arrow}
+            height = {$plugin.tx_nsnewsslider_nivoslider.settings.height}
+            imageWidth = {$plugin.tx_nsnewsslider_nivoslider.settings.imageWidth}
+            effect = {$plugin.tx_nsnewsslider_nivoslider.settings.effect}
+            slices = {$plugin.tx_nsnewsslider_nivoslider.settings.slices}
+            boxCols = {$plugin.tx_nsnewsslider_nivoslider.settings.boxCols}
+            boxRows = {$plugin.tx_nsnewsslider_nivoslider.settings.boxRows}
+            animSpeed = {$plugin.tx_nsnewsslider_nivoslider.settings.animSpeed}
+            pauseTime = {$plugin.tx_nsnewsslider_nivoslider.settings.pauseTime}
+            startSlide = {$plugin.tx_nsnewsslider_nivoslider.settings.startSlide}
+            controlNav = {$plugin.tx_nsnewsslider_nivoslider.settings.controlNav}
+            controlNavThumbs = {$plugin.tx_nsnewsslider_nivoslider.settings.controlNavThumbs}
+            pauseOnHover = {$plugin.tx_nsnewsslider_nivoslider.settings.pauseOnHover}
+            manualAdvance = {$plugin.tx_nsnewsslider_nivoslider.settings.manualAdvance}
+            randomStart = {$plugin.tx_nsnewsslider_nivoslider.settings.randomStart}
+        }
+    }
+
     tx_nsnewsslider_royalslider {
         settings {
             jQuery = {$plugin.tx_nsnewsslider_royalslider.settings.jQuery}
@@ -94,6 +170,71 @@ plugin {
             autoPlay_stopAtAction = {$plugin.tx_nsnewsslider_royalslider.settings.autoPlay_stopAtAction}
             autoPlay_pauseOnHover = {$plugin.tx_nsnewsslider_royalslider.settings.autoPlay_pauseOnHover}
             autoPlay_delay = {$plugin.tx_nsnewsslider_royalslider.settings.autoPlay_delay}
+        }
+    }
+
+    tx_nsnewsslider_slickslider {
+        settings {
+            jQuery = {$plugin.tx_nsnewsslider_slickslider.settings.jQuery}
+            slideWidth = {$plugin.tx_nsnewsslider_slickslider.settings.slideWidth}
+            dots = {$plugin.tx_nsnewsslider_slickslider.settings.dots}
+            speed = {$plugin.tx_nsnewsslider_slickslider.settings.speed}
+            autoplay = {$plugin.tx_nsnewsslider_slickslider.settings.autoplay}
+            autoplaySpeed = {$plugin.tx_nsnewsslider_slickslider.settings.autoplaySpeed}
+            accessibility = {$plugin.tx_nsnewsslider_slickslider.settings.accessibility}
+            adaptiveHeight = {$plugin.tx_nsnewsslider_slickslider.settings.adaptiveHeight}
+            arrows = {$plugin.tx_nsnewsslider_slickslider.settings.arrows}
+            centerPadding = {$plugin.tx_nsnewsslider_slickslider.settings.centerPadding}
+            cssEase = {$plugin.tx_nsnewsslider_slickslider.settings.cssEase}
+            draggable = {$plugin.tx_nsnewsslider_slickslider.settings.draggable}
+            fade = {$plugin.tx_nsnewsslider_slickslider.settings.fade}
+            focusOnSelect = {$plugin.tx_nsnewsslider_slickslider.settings.focusOnSelect}
+            infinite = {$plugin.tx_nsnewsslider_slickslider.settings.infinite}
+            initialSlide = {$plugin.tx_nsnewsslider_slickslider.settings.initialSlide}
+            mobileFirst = {$plugin.tx_nsnewsslider_slickslider.settings.mobileFirst}
+            pauseOnFocus = {$plugin.tx_nsnewsslider_slickslider.settings.pauseOnFocus}
+            pauseOnHover = {$plugin.tx_nsnewsslider_slickslider.settings.pauseOnHover}
+            pauseOnDotsHover = {$plugin.tx_nsnewsslider_slickslider.settings.pauseOnDotsHover}
+            slidesToShow = {$plugin.tx_nsnewsslider_slickslider.settings.slidesToShow}
+            slidesToScroll = {$plugin.tx_nsnewsslider_slickslider.settings.slidesToScroll}
+            swipe = {$plugin.tx_nsnewsslider_slickslider.settings.swipe}
+            swipeToSlide = {$plugin.tx_nsnewsslider_slickslider.settings.swipeToSlide}
+            touchMove = {$plugin.tx_nsnewsslider_slickslider.settings.touchMove}
+            touchThreshold = {$plugin.tx_nsnewsslider_slickslider.settings.touchThreshold}
+            useCSS = {$plugin.tx_nsnewsslider_slickslider.settings.useCSS}
+            useTransform = {$plugin.tx_nsnewsslider_slickslider.settings.useTransform}
+            variableWidth = {$plugin.tx_nsnewsslider_slickslider.settings.variableWidth}
+            rtl = {$plugin.tx_nsnewsslider_slickslider.settings.rtl}
+            waitForAnimate = {$plugin.tx_nsnewsslider_slickslider.settings.waitForAnimate}
+            vertical = {$plugin.tx_nsnewsslider_slickslider.settings.vertical}
+            verticalSwiping = {$plugin.tx_nsnewsslider_slickslider.settings.verticalSwiping}
+            centerMode = {$plugin.tx_nsnewsslider_slickslider.settings.centerMode}
+            lazyLoad = {$plugin.tx_nsnewsslider_slickslider.settings.lazyLoad}
+        }
+    }
+
+    tx_nsnewsslider_sliderjs {
+        settings {
+            jQuery = {$plugin.tx_nsnewsslider_sliderjs.settings.jQuery}
+            Conslidewidth = {$plugin.tx_nsnewsslider_sliderjs.settings.Conslidewidth}
+            Conslideheight = {$plugin.tx_nsnewsslider_sliderjs.settings.Conslideheight}
+            ConnavigationActive = {$plugin.tx_nsnewsslider_sliderjs.settings.ConnavigationActive}
+            Connavigation_effect = {$plugin.tx_nsnewsslider_sliderjs.settings.Connavigation_effect}
+            Conpagination_effect = {$plugin.tx_nsnewsslider_sliderjs.settings.Conpagination_effect}
+            Coneffect_cross_fade = {$plugin.tx_nsnewsslider_sliderjs.settings.Coneffect_cross_fade}
+            Coneffect_fade_speed = {$plugin.tx_nsnewsslider_sliderjs.settings.Coneffect_fade_speed}
+            Conplay_active = {$plugin.tx_nsnewsslider_sliderjs.settings.Conplay_active}
+            Conplay_auto = {$plugin.tx_nsnewsslider_sliderjs.settings.Conplay_auto}
+            Conplay_swap = {$plugin.tx_nsnewsslider_sliderjs.settings.Conplay_swap}
+            Conplay_interval = {$plugin.tx_nsnewsslider_sliderjs.settings.Conplay_interval}
+
+            Constart = {$plugin.tx_nsnewsslider_sliderjs.settings.Constart}
+            ConpaginationActive = {$plugin.tx_nsnewsslider_sliderjs.settings.ConpaginationActive}
+            ConeffectSlideSpeed = {$plugin.tx_nsnewsslider_sliderjs.settings.ConeffectSlideSpeed}
+            ConplayPauseOnHover = {$plugin.tx_nsnewsslider_sliderjs.settings.ConplayPauseOnHover}
+            ConplayEffect = {$plugin.tx_nsnewsslider_sliderjs.settings.ConplayEffect}
+            ConrestartDelay = {$plugin.tx_nsnewsslider_sliderjs.settings.ConrestartDelay}
+            Conplay_effect = {$plugin.tx_nsnewsslider_sliderjs.settings.Conplay_effect}
         }
     }
 }

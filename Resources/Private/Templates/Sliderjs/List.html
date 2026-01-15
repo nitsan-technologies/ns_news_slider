@@ -1,0 +1,21 @@
+<html data-namespace-typo3-fluid="true"
+      data-namespace-typo3-fluid="true" xmlns:f="http://typo3.org/ns/TYPO3/CMS/Fluid/ViewHelpers"
+      xmlns:n="http://typo3.org/ns/GeorgRinger/News/ViewHelpers">
+
+<f:layout name="Default"/>
+<f:section name="main">
+    <f:flashMessages />
+
+    <f:if condition="{news}">
+        <style>.slick-prev:before,.slick-next:before {color: black;}</style>
+        <div id="slides-{contentObjectData.uid}" class="{settings.sliderType} slider vertical-center-4" style="width:{settings.slidewidth}px;" >
+            <f:for as="newsItem" each="{news}" iteration="i">
+                <div>
+                    <n:excludeDisplayedNews newsItem="{newsItem}"/>
+                    <f:render partial="Sliderjs/Items" arguments="{_all}" />
+                </div>
+            </f:for>
+        </div>
+    </f:if>
+</f:section>
+</html>

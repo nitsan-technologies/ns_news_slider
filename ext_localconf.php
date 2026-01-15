@@ -1,27 +1,72 @@
 <?php
 
-use NITSAN\NsNewsSlider\Controller\RoyalController;
-use TYPO3\CMS\Core\Imaging\IconProvider\SvgIconProvider;
-use TYPO3\CMS\Core\Imaging\IconRegistry;
-use TYPO3\CMS\Core\Utility\GeneralUtility;
-use TYPO3\CMS\Extbase\Utility\ExtensionUtility;
-
 defined('TYPO3') || die('Access denied.');
 
+use TYPO3\CMS\Extbase\Utility\ExtensionUtility;
+use NITSAN\NsNewsSlider\Controller\NivoController;
+use NITSAN\NsNewsSlider\Controller\OwlController;
+use NITSAN\NsNewsSlider\Controller\SlickController;
+use NITSAN\NsNewsSlider\Controller\RoyalController;
+use NITSAN\NsNewsSlider\Controller\SliderjsController;
 
 ExtensionUtility::configurePlugin(
     'NsNewsSlider',
-    'Nsnewsslider',
+    'NivoSlider',
+    [
+        NivoController::class => 'list',
+    ],
+    // non-cacheable actions
+    [
+        NivoController::class => 'list',
+    ]
+);
+
+ExtensionUtility::configurePlugin(
+    'NsNewsSlider',
+    'OwlcarouselSlider',
+    [
+        OwlController::class => 'list',
+    ],
+    // non-cacheable actions
+    [
+        OwlController::class => 'list',
+    ]
+);
+
+ExtensionUtility::configurePlugin(
+    'NsNewsSlider',
+    'RoyalSlider',
+    [
+        RoyalController::class => 'list',
+    ],
+    // non-cacheable actions
     [
         RoyalController::class => 'list',
     ]
 );
 
-$iconRegistry = GeneralUtility::makeInstance(IconRegistry::class);
-$iconRegistry->registerIcon(
-    'ns_news_slider-plugin-nsnewsslider',
-    SvgIconProvider::class,
-    ['source' => 'EXT:ns_news_slider/Resources/Public/Icons/user_plugin_nsnewsslider.svg']
+ExtensionUtility::configurePlugin(
+    'NsNewsSlider',
+    'SliderjsSlider',
+    [
+        SliderjsController::class => 'list',
+    ],
+    // non-cacheable actions
+    [
+        SliderjsController::class => 'list',
+    ]
+);
+
+ExtensionUtility::configurePlugin(
+    'NsNewsSlider',
+    'SlickSlider',
+    [
+        SlickController::class => 'list',
+    ],
+    // non-cacheable actions
+    [
+        SlickController::class => 'list',
+    ]
 );
 
 // Hook for override news demand.

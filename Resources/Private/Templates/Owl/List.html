@@ -1,0 +1,161 @@
+<html data-namespace-typo3-fluid="true"
+      data-namespace-typo3-fluid="true" xmlns:f="http://typo3.org/ns/TYPO3/CMS/Fluid/ViewHelpers"
+      xmlns:n="http://typo3.org/ns/GeorgRinger/News/ViewHelpers">
+
+
+<f:layout name="Default"/>
+
+<f:section name="main">
+    <script>
+        var owldomain = window.location.hostname.indexOf('owlgraphic');
+        if (owldomain !== -1) {
+            !function (d, s, id) {
+                var js, fjs = d.getElementsByTagName(s)[0], p = /^http:/.test(d.location) ? 'http' : 'https';
+                if (!d.getElementById(id)) {
+                    js = d.createElement(s);
+                    js.id = id;
+                    js.src = p + '://platform.twitter.com/widgets.js';
+                    fjs.parentNode.insertBefore(js, fjs);
+                }
+            }(document, 'script', 'twitter-wjs');
+        }
+    </script>
+    <style>
+        * {
+            -webkit-box-sizing: border-box; /* Safari 3.0 - 5.0, Chrome 1 - 9, Android 2.1 - 3.x */
+            -moz-box-sizing: border-box; /* Firefox 1 - 28 */
+            box-sizing: border-box;
+        }
+
+        body, html {
+            height: 100%;
+        }
+
+        img {
+            vertical-align: middle;
+        }
+
+        .owl-carousel {
+            height: 100%;
+        }
+
+        .owl-carousel .owl-item, .owl-carousel .item {
+            height: 100%;
+            min-height: 100vh;
+        }
+
+        .owl-carousel .owl-item img {
+            transform-style: initial;
+            height: 100%;
+            object-fit: cover;
+        }
+
+        .owl-thumb-item img {
+            width: 150px;
+            height: auto;
+        }
+
+        .owl-thumbs {
+            position: relative;
+            bottom: 0;
+            left: 0;
+            display: table;
+            width: 100%;
+            text-align: center;
+            padding: 1%;
+        }
+
+        .owl-thumb-item {
+            display: table-cell;
+            border: none;
+            background: none;
+            padding: 0;
+            opacity: .4;
+        }
+
+        .owl-thumb-item.active {
+            opacity: 1;
+        }
+        .owl-thumbs .owl-thumb-item {
+            margin: 2px !important;
+        }
+        .label {
+            position: absolute;
+            top: 20px;
+            right: 20px;
+            background-color: #0a6cff;
+            color: white;
+            padding: 10px 20px;
+            z-index: 5;
+            text-align: center;
+        }
+
+        @media (min-width: 300px) and (max-width: 1400px) {
+            .owl-thumbs {
+                padding: 1%;
+            }
+
+            .owl-carousel .owl-item, .owl-carousel .item {
+                 height: auto;
+            }
+        }
+
+    </style>
+    <f:if condition="{settings.owlheight}">
+        <f:then>
+            <f:variable name="styleHeight" value="height: {settings.owlheight}px !important;"/>
+            <f:variable name="height" value="{settings.owlheight}c"/>
+        </f:then>
+    </f:if>
+    <f:if condition="{settings.owlimageWidth}">
+        <f:then>
+            <f:variable name="width" value="{settings.owlimageWidth}c"/>
+        </f:then>
+    </f:if>
+    <f:if condition="{news}">
+        <div id="demo">
+            <div id="owl-demo"
+                 class="owl-carousel owl-demo-{contentObjectData.uid} owl-theme{f:if(condition: settings.thumbs, then: 'owl-carousel-thumbs')}">
+                <f:for as="newsItem" each="{news}" iteration="i">
+                    <f:if condition="{newsItem.title}">
+                        <div class="item">
+                            <f:render arguments="{_all}" partial="Owl/Owlcarousel"/>
+                            <div class="caption">
+                                <n:link newsItem="{newsItem}" settings="{settings}" title="{newsItem.title}">
+                                    <span itemprop="headline">{newsItem.title}</span>
+                                </n:link>
+                                <div class="teaser-text">
+                                    <n:removeMediaTags>
+                                        <f:if condition="{newsItem.teaser}">
+                                            <f:then>
+                                                <div itemprop="description">{newsItem.teaser ->
+                                                    f:format.crop(maxCharacters:
+                                                    '{f:if(condition:settings.cropMaxCharacters,
+                                                    then:settings.cropMaxCharacters, else:100)}',
+                                                    respectWordBoundaries:'1') -> f:format.html()}
+                                                </div>
+                                            </f:then>
+                                            <f:else>
+                                                <div itemprop="description">{newsItem.bodytext ->
+                                                    f:format.crop(maxCharacters:
+                                                    '{f:if(condition:settings.cropMaxCharacters,
+                                                    then:settings.cropMaxCharacters, else:100)}',
+                                                    respectWordBoundaries:'1') -> f:format.html()}
+                                                </div>
+                                            </f:else>
+                                        </f:if>
+                                    </n:removeMediaTags>
+                                    <n:link newsItem="{newsItem}" settings="{settings}" class="more"
+                                            title="{newsItem.title}">
+                                        <f:translate key="more-link"/>
+                                    </n:link>
+                                </div>
+                            </div>
+                        </div>
+                    </f:if>
+                </f:for>
+            </div>
+        </div>
+    </f:if>
+</f:section>
+</html>

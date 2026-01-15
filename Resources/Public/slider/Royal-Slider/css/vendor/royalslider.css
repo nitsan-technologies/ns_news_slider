@@ -247,3 +247,9 @@ img.rsImg {
 	z-index: 20;
 	background: rgba(0,0,0,0);
 }
+
+@media (max-width: 767px) {
+  .royalSlider {
+    width: 100%;
+  }
+}

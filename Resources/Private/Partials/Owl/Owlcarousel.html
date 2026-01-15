@@ -1,0 +1,88 @@
+<html xmlns:f="http://typo3.org/ns/TYPO3/CMS/Fluid/ViewHelpers"
+      xmlns:n="http://typo3.org/ns/GeorgRinger/News/ViewHelpers" data-namespace-typo3-fluid="true">
+
+<f:if condition="{settings.height}">
+    <f:then>
+        <f:variable name="styleHeight" value="height: {settings.height}px !important;" />
+        <f:variable name="height" value="{settings.height}c" />
+    </f:then>
+</f:if>
+ <f:if condition="{settings.imageWidth}">
+    <f:then>
+        <f:variable name="width" value="{settings.imageWidth}c" />
+    </f:then>
+</f:if>
+    <f:alias map="{medias: newsItem.mediaPreviews}">
+        <f:for each="{medias}" as="media" iteration="i" reverse="true">
+            <f:if condition="{media.originalResource.properties.type}==2">
+                <f:variable name="mediaElement" value="{media}"/>
+            </f:if>
+        </f:for>
+        <f:if condition="{settings.nivoslider.imageLink}">
+            <f:then>
+                <n:link newsItem="{newsItem}" settings="{settings}" title="{newsItem.title}">
+                    <f:render section="media" arguments="{_all}" />
+                </n:link>
+            </f:then>
+            <f:else>
+                <f:render section="media" arguments="{_all}" />
+            </f:else>
+        </f:if>
+    </f:alias>
+
+<f:section name="media">
+    <f:if condition="{settings.owllazyLoad}">
+        <f:then>
+            <f:if condition="{mediaElement}">
+                <f:then>
+                    <f:if condition="{settings.owllightbox}">
+                        <f:then>
+                            <f:link.typolink parameter="{mediaElement.originalResource.publicUrl}" title="{newsItem.title}" additionalAttributes="{'data-fancybox':'gallery'}">
+                                <f:image image="{mediaElement}"
+                                     title="{newsItem.title}"
+                                     class="lazyOwl 123"
+                                     alt="{mediaElement.alternative}"
+                                     height="{height}"
+                                     width="{width}"
+                                     additionalAttributes="{
+                                        data-thumb:mediaElement.originalResource.publicUrl,
+                                        data-src:mediaElement.originalResource.publicUrl}" />
+                             </f:link.typolink>
+                        </f:then>
+                        <f:else>
+                            <f:image image="{mediaElement}"
+                                 title="{newsItem.title}"
+                                 class="lazyOwl"
+                                 alt="{mediaElement.alternative}"
+                                height="{height}"
+                                width="{width}"
+                                 additionalAttributes="{
+                                    data-thumb:mediaElement.originalResource.publicUrl,
+                                    data-src:mediaElement.originalResource.publicUrl}" />
+                        </f:else>
+                    </f:if>
+                </f:then>
+                <f:else>
+                    <f:image src="{f:if(condition: settings.list.media.dummyImage, then: settings.list.media.dummyImage, else: 'EXT:ns_news_slider/Resources/Public/Img/no-image.jpg')}" title="#caption-{newsItem.uid}" alt="" height="{height}" width="{width}"/>
+                </f:else>
+            </f:if>
+        </f:then>
+        <f:else>
+            <f:if condition="{mediaElement}">
+                <f:then>
+                    <f:image image="{mediaElement}"
+                         title="{newsItem.title}"
+                         alt="{mediaElement.alternative}"
+                         height="{height}"
+                        width="{width}" />
+                </f:then>
+                <f:else>
+                    <f:image src="{f:if(condition: settings.list.media.dummyImage, then: settings.list.media.dummyImage, else: 'EXT:ns_news_slider/Resources/Public/Img/no-image.jpg')}" title="#caption-{newsItem.uid}" alt=""
+                        height="{height}"
+                        width="{width}"/>
+                </f:else>
+            </f:if>
+        </f:else>
+    </f:if>
+</f:section>
+</html>
