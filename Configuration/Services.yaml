@@ -6,13 +6,6 @@ services:
 
   NITSAN\NsNewsSlider\:
     resource: '../Classes/*'
-
-  NITSAN\NsNewsSlider\Event\Setup:
-    tags:
-      - name: event.listener
-        identifier: 'ns-news-slider'
-        method: 'executeOnSignal'
-        event: TYPO3\CMS\Core\Package\Event\AfterPackageActivationEvent
   
   NITSAN\NsNewsSlider\Event\BackendUserLogin:
     tags:

@@ -2,7 +2,7 @@
       data-namespace-typo3-fluid="true" xmlns:f="http://typo3.org/ns/TYPO3/CMS/Fluid/ViewHelpers"
       xmlns:n="http://typo3.org/ns/GeorgRinger/News/ViewHelpers"
       xmlns:F="http://typo3.org/ns/TYPO3/CMS/Fluid/ViewHelpers">
-
+      
     <f:alias map="{medias: newsItem.mediaPreviews}">
         <f:for each="{medias}" as="media" iteration="i" reverse="true">
             <f:if condition="{media.originalResource.properties.type}==2">
