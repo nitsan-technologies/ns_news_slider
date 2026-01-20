@@ -1,14 +1,61 @@
-mod.wizards.newContentElement.wizardItems.plugins {
+mod.wizards.newContentElement.wizardItems.NsNewsSlider {
+    header = LLL:EXT:ns_news_slider/Resources/Private/Language/locallang_db.xlf:tx_ns_news_slider_domain_model_nsnewsslider
     elements {
-        nsnewsslider_nsnewsslider {
+        nsnewsslider_nivoslider {
             iconIdentifier = ns_news_slider-plugin-nsnewsslider
-            title = LLL:EXT:ns_news_slider/Resources/Private/Language/locallang_db.xlf:tx_ns_news_slider_domain_model_nsnewsslider
+            title = LLL:EXT:ns_news_slider/Resources/Private/Language/locallang_db.xlf:tx_ns_news_slider_domain_model_nsnewsslider.nivoslider
             description = LLL:EXT:ns_news_slider/Resources/Private/Language/locallang_db.xlf:tx_ns_news_slider_domain_model_nsnewsslider.description
             tt_content_defValues {
                 CType = list
-                list_type = nsnewsslider_nsnewsslider
+                list_type = nsnewsslider_nivoslider
+            }
+        }
+
+        nsnewsslider_owlcarouselslider {
+            iconIdentifier = ns_news_slider-plugin-nsnewsslider
+            title = LLL:EXT:ns_news_slider/Resources/Private/Language/locallang_db.xlf:tx_ns_news_slider_domain_model_nsnewsslider.owlcarouselSlider
+            description = LLL:EXT:ns_news_slider/Resources/Private/Language/locallang_db.xlf:tx_ns_news_slider_domain_model_nsnewsslider.description
+            tt_content_defValues {
+                CType = list
+                list_type = nsnewsslider_owlcarouselslider
+            }
+        }
+
+        nsnewsslider_royalslider {
+            iconIdentifier = ns_news_slider-plugin-nsnewsslider
+            title = LLL:EXT:ns_news_slider/Resources/Private/Language/locallang_db.xlf:tx_ns_news_slider_domain_model_nsnewsslider.royalSlider
+            description = LLL:EXT:ns_news_slider/Resources/Private/Language/locallang_db.xlf:tx_ns_news_slider_domain_model_nsnewsslider.description
+            tt_content_defValues {
+                CType = list
+                list_type = nsnewsslider_royalslider
+            }
+        }
+
+        nsnewsslider_sliderjsslider {
+            iconIdentifier = ns_news_slider-plugin-nsnewsslider
+            title = LLL:EXT:ns_news_slider/Resources/Private/Language/locallang_db.xlf:tx_ns_news_slider_domain_model_nsnewsslider.slidejsSlider
+            description = LLL:EXT:ns_news_slider/Resources/Private/Language/locallang_db.xlf:tx_ns_news_slider_domain_model_nsnewsslider.description
+            tt_content_defValues {
+                CType = list
+                list_type = nsnewsslider_sliderjsslider
+            }
+        }
+
+        nsnewsslider_slickslider {
+            iconIdentifier = ns_news_slider-plugin-nsnewsslider
+            title = LLL:EXT:ns_news_slider/Resources/Private/Language/locallang_db.xlf:tx_ns_news_slider_domain_model_nsnewsslider.slickSlider
+            description = LLL:EXT:ns_news_slider/Resources/Private/Language/locallang_db.xlf:tx_ns_news_slider_domain_model_nsnewsslider.description
+            tt_content_defValues {
+                CType = list
+                list_type = nsnewsslider_slickslider
             }
         }
     }
     show = *
 }
+
+mod.web_layout.tt_content.preview.list.nsnewsslider_nivoslider = EXT:ns_news_slider/Resources/Private/Templates/Backend/NivoSlider.html
+mod.web_layout.tt_content.preview.list.nsnewsslider_owlcarouselslider = EXT:ns_news_slider/Resources/Private/Templates/Backend/OwlCarouselSlider.html
+mod.web_layout.tt_content.preview.list.nsnewsslider_royalslider = EXT:ns_news_slider/Resources/Private/Templates/Backend/RoyalSlider.html
+mod.web_layout.tt_content.preview.list.nsnewsslider_sliderjsslider = EXT:ns_news_slider/Resources/Private/Templates/Backend/SliderjsSlider.html
+mod.web_layout.tt_content.preview.list.nsnewsslider_slickslider = EXT:ns_news_slider/Resources/Private/Templates/Backend/SlickSlider.html

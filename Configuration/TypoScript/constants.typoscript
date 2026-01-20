@@ -12,7 +12,131 @@ plugin {
             # cat=plugin.tx_nsnewsslider_nsnewsslider//a; type=string; label=Default storage PID
             storagePid =
         }
+    }
+    tx_nsnewsslider_owlcarousel {
+        settings {
+            # cat=plugin.tx_nsnewsslider_owlcarousel/1111/001; type=boolean; label=LLL:EXT:ns_news_slider/Resources/Private/Language/locallang_db.xlf:flexform.jQuery
+            jQuery = 0
+            # cat=plugin.tx_nsnewsslider_owlcarousel/1111/002; type=options[true,false]; label=LLL:EXT:ns_news_slider/Resources/Private/Language/locallang_db.xlf:flexform.navigation
+            Connavigation = true
+            # cat=plugin.tx_nsnewsslider_owlcarousel/1111/003; type=options[true,false]; label=LLL:EXT:ns_news_slider/Resources/Private/Language/locallang_db.xlf:flexform.autoPlay
+            ConAutoPlay = true
+            # cat=plugin.tx_nsnewsslider_owlcarousel/1111/004; type=options[true,false]; label=LLL:EXT:ns_news_slider/Resources/Private/Language/locallang_db.xlf:flexform.singleItem
+            ConsingleItem = true
+            # cat=plugin.tx_nsnewsslider_owlcarousel/1111/005; type=string; label=LLL:EXT:ns_news_slider/Resources/Private/Language/locallang_db.xlf:flexform.items
+            Conitems = 1
+            # cat=plugin.tx_nsnewsslider_owlcarousel/1111/006; type=options[true,false]; label=LLL:EXT:ns_news_slider/Resources/Private/Language/locallang_db.xlf:flexform.lazyLoad
+            ConlazyLoad = true
+            # cat=plugin.tx_nsnewsslider_owlcarousel/1111/007; type=options[true,false]; label=LLL:EXT:ns_news_slider/Resources/Private/Language/locallang_db.xlf:flexform.mouseDrag
+            ConmouseDrag = true
+            # cat=plugin.tx_nsnewsslider_owlcarousel/1111/008; type=options[true,false]; label=LLL:EXT:ns_news_slider/Resources/Private/Language/locallang_db.xlf:flexform.touchDrag
+            ContouchDrag = true
+            # cat=plugin.tx_nsnewsslider_owlcarousel/1111/009; type=int; label=LLL:EXT:ns_news_slider/Resources/Private/Language/locallang_db.xlf:flexform.margin
+            Conmargin = 0
+            # cat=plugin.tx_nsnewsslider_owlcarousel/1111/010; type=options[true,false]; label=LLL:EXT:ns_news_slider/Resources/Private/Language/locallang_db.xlf:flexform.loop
+            Conloop = false
+            # cat=plugin.tx_nsnewsslider_owlcarousel/1111/011; type=options[true,false]; label=LLL:EXT:ns_news_slider/Resources/Private/Language/locallang_db.xlf:flexform.center
+            Concenter = false
+            # cat=plugin.tx_nsnewsslider_owlcarousel/1111/012; type=options[true,false]; label=LLL:EXT:ns_news_slider/Resources/Private/Language/locallang_db.xlf:flexform.pullDrag
+            ConpullDrag = true
+            # cat=plugin.tx_nsnewsslider_owlcarousel/1111/013; type=options[true,false]; label=LLL:EXT:ns_news_slider/Resources/Private/Language/locallang_db.xlf:flexform.freeDrag
+            ConfreeDrag = false
+            # cat=plugin.tx_nsnewsslider_owlcarousel/1111/014; type=int; label=LLL:EXT:ns_news_slider/Resources/Private/Language/locallang_db.xlf:flexform.stagePadding
+            ConstagePadding = 0
+            # cat=plugin.tx_nsnewsslider_owlcarousel/1111/014; type=options[true,false]; label=LLL:EXT:ns_news_slider/Resources/Private/Language/locallang_db.xlf:flexform.merge
+            Conmerge = false
+            # cat=plugin.tx_nsnewsslider_owlcarousel/1111/015; type=options[true,false]; label=LLL:EXT:ns_news_slider/Resources/Private/Language/locallang_db.xlf:flexform.mergeFit
+            ConmergeFit = true
+            # cat=plugin.tx_nsnewsslider_owlcarousel/1111/016; type=options[true,false]; label=LLL:EXT:ns_news_slider/Resources/Private/Language/locallang_db.xlf:flexform.autoWidth
+            ConautoWidth = false
+            # cat=plugin.tx_nsnewsslider_owlcarousel/1111/017; type=int; label=LLL:EXT:ns_news_slider/Resources/Private/Language/locallang_db.xlf:flexform.startPosition
+            ConstartPosition = 0
+            # cat=plugin.tx_nsnewsslider_owlcarousel/1111/018; type=options[true,false]; label=LLL:EXT:ns_news_slider/Resources/Private/Language/locallang_db.xlf:flexform.URLhashListener
+            ConURLhashListener = false
+            # cat=plugin.tx_nsnewsslider_owlcarousel/1111/019; type=options[true,false]; label=LLL:EXT:ns_news_slider/Resources/Private/Language/locallang_db.xlf:flexform.rewind
+            Conrewind = true
+            # cat=plugin.tx_nsnewsslider_owlcarousel/1111/020; type=string; label=LLL:EXT:ns_news_slider/Resources/Private/Language/locallang_db.xlf:flexform.navElement
+            ConnavElement = div
+            # cat=plugin.tx_nsnewsslider_owlcarousel/1111/021; type=int; label=LLL:EXT:ns_news_slider/Resources/Private/Language/locallang_db.xlf:flexform.slideBy
+            ConslideBy = 1
+            # cat=plugin.tx_nsnewsslider_owlcarousel/1111/022; type=string; label=LLL:EXT:ns_news_slider/Resources/Private/Language/locallang_db.xlf:flexform.slideTransition
+            ConslideTransition =
+            # cat=plugin.tx_nsnewsslider_owlcarousel/1111/023; type=options[true,false]; label=LLL:EXT:ns_news_slider/Resources/Private/Language/locallang_db.xlf:flexform.dots
+            Condots = true
+            # cat=plugin.tx_nsnewsslider_owlcarousel/1111/024; type=options[true,false]; label=LLL:EXT:ns_news_slider/Resources/Private/Language/locallang_db.xlf:flexform.dotsEach
+            CondotsEach = false
+            # cat=plugin.tx_nsnewsslider_owlcarousel/1111/025; type=options[true,false]; label=LLL:EXT:ns_news_slider/Resources/Private/Language/locallang_db.xlf:flexform.dotsData
+            CondotsData = false
+            # cat=plugin.tx_nsnewsslider_owlcarousel/1111/026; type=int; label=LLL:EXT:ns_news_slider/Resources/Private/Language/locallang_db.xlf:flexform.lazyLoadEager
+            ConlazyLoadEager = 0
+            # cat=plugin.tx_nsnewsslider_owlcarousel/1111/027; type=int; label=LLL:EXT:ns_news_slider/Resources/Private/Language/locallang_db.xlf:flexform.autoplayTimeout
+            ConautoplayTimeout = 5000
+            # cat=plugin.tx_nsnewsslider_owlcarousel/1111/028; type=options[true,false]; label=LLL:EXT:ns_news_slider/Resources/Private/Language/locallang_db.xlf:flexform.autoplayHoverPause
+            ConautoplayHoverPause = false
+            # cat=plugin.tx_nsnewsslider_owlcarousel/1111/029; type=string; label=LLL:EXT:ns_news_slider/Resources/Private/Language/locallang_db.xlf:flexform.autoplaySpeed
+            ConautoplaySpeed = 3000
+            # cat=plugin.tx_nsnewsslider_owlcarousel/1111/030; type=string; label=LLL:EXT:ns_news_slider/Resources/Private/Language/locallang_db.xlf:flexform.navSpeed
+            ConnavSpeed = 3000
+            # cat=plugin.tx_nsnewsslider_owlcarousel/1111/031; type=type=options[true,false]; label=LLL:EXT:ns_news_slider/Resources/Private/Language/locallang_db.xlf:flexform.dotsSpeed
+            CondotsSpeed = false
+            # cat=plugin.tx_nsnewsslider_owlcarousel/1111/032; type=options[true,false]; label=LLL:EXT:ns_news_slider/Resources/Private/Language/locallang_db.xlf:flexform.dragEndSpeed
+            CondragEndSpeed = false
+            # cat=plugin.tx_nsnewsslider_owlcarousel/1111/033; type=options[flipInX,slideOutDown]; label=LLL:EXT:ns_news_slider/Resources/Private/Language/locallang_db.xlf:flexform.animateOut
+            ConanimateOut = slideOutDown
+            # cat=plugin.tx_nsnewsslider_owlcarousel/1111/034; type=options[flipInX,slideOutDown]; label=LLL:EXT:ns_news_slider/Resources/Private/Language/locallang_db.xlf:flexform.animateIn
+            ConanimateIn = flipInX
+            # cat=plugin.tx_nsnewsslider_owlcarousel/1111/035; type=string; label=LLL:EXT:ns_news_slider/Resources/Private/Language/locallang_db.xlf:flexform.fallbackEasing
+            ConfallbackEasing = swing
+            # cat=plugin.tx_nsnewsslider_owlcarousel/1111/036; type=string; label=LLL:EXT:ns_news_slider/Resources/Private/Language/locallang_db.xlf:flexform.info
+            Coninfo = false
+            # cat=plugin.tx_nsnewsslider_owlcarousel/1111/037; type=string; label=LLL:EXT:ns_news_slider/Resources/Private/Language/locallang_db.xlf:flexform.nestedItemSelector
+            ConnestedItemSelector = false
+            # cat=plugin.tx_nsnewsslider_owlcarousel/1111/038; type=string; label=LLL:EXT:ns_news_slider/Resources/Private/Language/locallang_db.xlf:flexform.itemElement
+            ConitemElement = div
+            # cat=plugin.tx_nsnewsslider_owlcarousel/1111/039; type=string; label=LLL:EXT:ns_news_slider/Resources/Private/Language/locallang_db.xlf:flexform.navContainer
+            ConnavContainer = false
+            # cat=plugin.tx_nsnewsslider_owlcarousel/1111/040; type=string; label=LLL:EXT:ns_news_slider/Resources/Private/Language/locallang_db.xlf:flexform.dotsContainer
+            CondotsContainer = false
+            # cat=plugin.tx_nsnewsslider_owlcarousel/1111/041; type=options[true,false]; label=LLL:EXT:ns_news_slider/Resources/Private/Language/locallang_db.xlf:flexform.checkVisible
+            ConcheckVisible = true
+        }
 
+    }
+    tx_nsnewsslider_nivoslider {
+        settings {
+            # cat=plugin.tx_nsnewsslider_nivoslider/2222/001; type=boolean; label=LLL:EXT:ns_news_slider/Resources/Private/Language/locallang_db.xlf:flexform.jQuery
+            jQuery = 0
+            # cat=plugin.tx_nsnewsslider_nivoslider/2222/002; type=options[true,false]; label=LLL:EXT:ns_news_slider/Resources/Private/Language/locallang_db.xlf:flexform.nivo.arrow
+            nivonavagation_arrow = true
+            # cat=plugin.tx_nsnewsslider_nivoslider/2222/003; type=boolean; label=LLL:EXT:ns_news_slider/Resources/Private/Language/locallang_db.xlf:flexform.nivo.height
+            height = 500
+            # cat=plugin.tx_nsnewsslider_nivoslider/2222/004; type=boolean; label=LLL:EXT:ns_news_slider/Resources/Private/Language/locallang_db.xlf:flexform.nivo.imageWidth
+            imageWidth = 800
+            # cat=plugin.tx_nsnewsslider_nivoslider/2222/005; type=options[sliceDown, sliceDownLeft, sliceUp, sliceUpLeft, sliceUpDown, sliceUpDownLeft, fold, fade, random, slideInRight, slideInLeft, boxRandom, boxRain, boxRainReverse, boxRainGrow, boxRainGrowReverse]; label=LLL:EXT:ns_news_slider/Resources/Private/Language/locallang_db.xlf:flexform.nivo.effect
+            effect = random
+            # cat=plugin.tx_nsnewsslider_nivoslider/2222/006; type=int; label=LLL:EXT:ns_news_slider/Resources/Private/Language/locallang_db.xlf:flexform.nivo.slices
+            slices = 15
+            # cat=plugin.tx_nsnewsslider_nivoslider/2222/007; type=int; label=LLL:EXT:ns_news_slider/Resources/Private/Language/locallang_db.xlf:flexform.nivo.boxCols
+            boxCols = 8
+            # cat=plugin.tx_nsnewsslider_nivoslider/2222/008; type=int; label=LLL:EXT:ns_news_slider/Resources/Private/Language/locallang_db.xlf:flexform.nivo.boxRows
+            boxRows = 4
+            # cat=plugin.tx_nsnewsslider_nivoslider/2222/009; type=int; label=LLL:EXT:ns_news_slider/Resources/Private/Language/locallang_db.xlf:flexform.nivo.animSpeed
+            animSpeed = 500
+            # cat=plugin.tx_nsnewsslider_nivoslider/2222/010; type=int; label=LLL:EXT:ns_news_slider/Resources/Private/Language/locallang_db.xlf:flexform.nivo.pauseTime
+            pauseTime = 3000
+            # cat=plugin.tx_nsnewsslider_nivoslider/2222/011; type=int; label=LLL:EXT:ns_news_slider/Resources/Private/Language/locallang_db.xlf:flexform.nivo.startSlide
+            startSlide = 0
+            # cat=plugin.tx_nsnewsslider_nivoslider/2222/012;  type=options[true,false]; label=LLL:EXT:ns_news_slider/Resources/Private/Language/locallang_db.xlf:flexform.nivo.controlNav
+            controlNav = true
+            # cat=plugin.tx_nsnewsslider_nivoslider/2222/013;  type=options[true,false]; label=LLL:EXT:ns_news_slider/Resources/Private/Language/locallang_db.xlf:flexform.nivo.controlNavThumbs
+            controlNavThumbs = false
+            # cat=plugin.tx_nsnewsslider_nivoslider/2222/014; type=options[true,false]; label=LLL:EXT:ns_news_slider/Resources/Private/Language/locallang_db.xlf:flexform.nivo.pauseOnHover
+            pauseOnHover = true
+            # cat=plugin.tx_nsnewsslider_nivoslider/2222/015; type=options[true,false]; label=LLL:EXT:ns_news_slider/Resources/Private/Language/locallang_db.xlf:flexform.nivo.manualAdvance
+            manualAdvance = false
+            # cat=plugin.tx_nsnewsslider_nivoslider/2222/016; type=options[true,false]; label=LLL:EXT:ns_news_slider/Resources/Private/Language/locallang_db.xlf:flexform.nivo.randomStart
+            randomStart = false
+        }
     }
     tx_nsnewsslider_royalslider {
         settings {
@@ -54,7 +178,7 @@ plugin {
             startSlideId = 1
             # cat=plugin.tx_nsnewsslider_royalslider/3333/019; type=options[false,true]; label=LLL:EXT:ns_news_slider/Resources/Private/Language/locallang_db.xlf:flexform.autoPlay
             autoPlay = false
-            # cat=plugin.tx_nsnewsslider_royalslider/3333/020; type=options[Move=move,Fade=fade];; label=LLL:EXT:ns_news_slider/Resources/Private/Language/locallang_db.xlf:flexform.transitionType
+            # cat=plugin.tx_nsnewsslider_royalslider/3333/020; type=options[Move=move,Fade=fade]; label=LLL:EXT:ns_news_slider/Resources/Private/Language/locallang_db.xlf:flexform.transitionType
             transitionType = move
             # cat=plugin.tx_nsnewsslider_royalslider/3333/021; type=options[false,true]; label=LLL:EXT:ns_news_slider/Resources/Private/Language/locallang_db.xlf:flexform.globalCaption
             globalCaption = true
@@ -136,5 +260,121 @@ plugin {
             autoPlay_delay = 3000
         }
     }
-}
+    tx_nsnewsslider_slickslider {
+        settings {
+            # cat=plugin.tx_nsnewsslider_slickslider/4444/001; type=boolean; label=LLL:EXT:ns_news_slider/Resources/Private/Language/locallang_db.xlf:flexform.jQuery
+            jQuery = 0
+            # cat=plugin.tx_nsnewsslider_slickslider/4444/002; type=string; label=LLL:EXT:ns_news_slider/Resources/Private/Language/locallang_db.xlf:flexform.slidewidthpercentage
+            slideWidth = 80
+            # cat=plugin.tx_nsnewsslider_slickslider/4444/003; type=options[true,false]; label=LLL:EXT:ns_news_slider/Resources/Private/Language/locallang_db.xlf:flexform.dots
+            dots = true
+            # cat=plugin.tx_nsnewsslider_slickslider/4444/004; type=string; label=LLL:EXT:ns_news_slider/Resources/Private/Language/locallang_db.xlf:flexform.speed
+            speed = 1000
+            # cat=plugin.tx_nsnewsslider_slickslider/4444/005; type=options[true,false]; label=LLL:EXT:ns_news_slider/Resources/Private/Language/locallang_db.xlf:flexform.autoPlay
+            autoplay = true
+            # cat=plugin.tx_nsnewsslider_slickslider/4444/006; type=string; label=LLL:EXT:ns_news_slider/Resources/Private/Language/locallang_db.xlf:flexform.autospeed
+            autoplaySpeed = 2000
+            # cat=plugin.tx_nsnewsslider_slickslider/4444/007; type=options[true,false]; label=LLL:EXT:ns_news_slider/Resources/Private/Language/locallang_db.xlf:flexform.accessibility
+            accessibility = true
+            # cat=plugin.tx_nsnewsslider_slickslider/4444/008; type=options[true,false]; label=LLL:EXT:ns_news_slider/Resources/Private/Language/locallang_db.xlf:flexform.adaptiveHeight
+            adaptiveHeight = true
+            # cat=plugin.tx_nsnewsslider_slickslider/4444/009; type=options[true,false]; label=LLL:EXT:ns_news_slider/Resources/Private/Language/locallang_db.xlf:flexform.arrows
+            arrows = true
+            # cat=plugin.tx_nsnewsslider_slickslider/4444/010; type=string; label=LLL:EXT:ns_news_slider/Resources/Private/Language/locallang_db.xlf:flexform.centerPadding
+            centerPadding = 50px
+            # cat=plugin.tx_nsnewsslider_slickslider/4444/011; type=string; label=LLL:EXT:ns_news_slider/Resources/Private/Language/locallang_db.xlf:flexform.cssEase
+            cssEase = ease
+            # cat=plugin.tx_nsnewsslider_slickslider/4444/012; type=options[true,false]; label=LLL:EXT:ns_news_slider/Resources/Private/Language/locallang_db.xlf:flexform.draggable
+            draggable = false
+            # cat=plugin.tx_nsnewsslider_slickslider/4444/013; type=options[true,false]; label=LLL:EXT:ns_news_slider/Resources/Private/Language/locallang_db.xlf:flexform.fade
+            fade = false
+            # cat=plugin.tx_nsnewsslider_slickslider/4444/014; type=options[true,false]; label=LLL:EXT:ns_news_slider/Resources/Private/Language/locallang_db.xlf:flexform.focusOnSelect
+            focusOnSelect = false
+            # cat=plugin.tx_nsnewsslider_slickslider/4444/015; type=options[true,false]; label=LLL:EXT:ns_news_slider/Resources/Private/Language/locallang_db.xlf:flexform.infinite
+            infinite = false
+            # cat=plugin.tx_nsnewsslider_slickslider/4444/016; type=int; label=LLL:EXT:ns_news_slider/Resources/Private/Language/locallang_db.xlf:flexform.initialSlide
+            initialSlide = 0
+            # cat=plugin.tx_nsnewsslider_slickslider/4444/017; type=options[true,false]; label=LLL:EXT:ns_news_slider/Resources/Private/Language/locallang_db.xlf:flexform.mobileFirst
+            mobileFirst = false
+            # cat=plugin.tx_nsnewsslider_slickslider/4444/018; type=options[true,false]; label=LLL:EXT:ns_news_slider/Resources/Private/Language/locallang_db.xlf:flexform.pauseOnFocus
+            pauseOnFocus = false
+            # cat=plugin.tx_nsnewsslider_slickslider/4444/019; type=options[true,false]; label=LLL:EXT:ns_news_slider/Resources/Private/Language/locallang_db.xlf:flexform.pauseOnHover
+            pauseOnHover = false
+            # cat=plugin.tx_nsnewsslider_slickslider/4444/020; type=options[true,false]; label=LLL:EXT:ns_news_slider/Resources/Private/Language/locallang_db.xlf:flexform.pauseOnDotsHover
+            pauseOnDotsHover = false
+            # cat=plugin.tx_nsnewsslider_slickslider/4444/021; type=int; label=LLL:EXT:ns_news_slider/Resources/Private/Language/locallang_db.xlf:flexform.slidesToShow
+            slidesToShow = 1
+            # cat=plugin.tx_nsnewsslider_slickslider/4444/022; type=int; label=LLL:EXT:ns_news_slider/Resources/Private/Language/locallang_db.xlf:flexform.slidesToScroll
+            slidesToScroll = 1
+            # cat=plugin.tx_nsnewsslider_slickslider/4444/023; type=options[true,false]; label=LLL:EXT:ns_news_slider/Resources/Private/Language/locallang_db.xlf:flexform.swipe
+            swipe = false
+            # cat=plugin.tx_nsnewsslider_slickslider/4444/024; type=options[true,false]; label=LLL:EXT:ns_news_slider/Resources/Private/Language/locallang_db.xlf:flexform.swipeToSlide
+            swipeToSlide = false
+            # cat=plugin.tx_nsnewsslider_slickslider/4444/025; type=options[true,false]; label=LLL:EXT:ns_news_slider/Resources/Private/Language/locallang_db.xlf:flexform.touchMove
+            touchMove = false
+            # cat=plugin.tx_nsnewsslider_slickslider/4444/026; type=options[true,false]; label=LLL:EXT:ns_news_slider/Resources/Private/Language/locallang_db.xlf:flexform.touchThreshold
+            touchThreshold = false
+            # cat=plugin.tx_nsnewsslider_slickslider/4444/027; type=options[true,false]; label=LLL:EXT:ns_news_slider/Resources/Private/Language/locallang_db.xlf:flexform.useCSS
+            useCSS = false
+            # cat=plugin.tx_nsnewsslider_slickslider/4444/028; type=options[true,false]; label=LLL:EXT:ns_news_slider/Resources/Private/Language/locallang_db.xlf:flexform.useTransform
+            useTransform = false
+            # cat=plugin.tx_nsnewsslider_slickslider/4444/029; type=options[true,false]; label=LLL:EXT:ns_news_slider/Resources/Private/Language/locallang_db.xlf:flexform.variableWidth
+            variableWidth = false
+            # cat=plugin.tx_nsnewsslider_slickslider/4444/030; type=options[true,false]; label=LLL:EXT:ns_news_slider/Resources/Private/Language/locallang_db.xlf:flexform.rtl
+            rtl = false
+            # cat=plugin.tx_nsnewsslider_slickslider/4444/031; type=options[true,false]; label=LLL:EXT:ns_news_slider/Resources/Private/Language/locallang_db.xlf:flexform.waitForAnimate
+            waitForAnimate = false
+            # cat=plugin.tx_nsnewsslider_slickslider/4444/032; type=options[true,false]; label=LLL:EXT:ns_news_slider/Resources/Private/Language/locallang_db.xlf:flexform.vertical
+            vertical = false
+            # cat=plugin.tx_nsnewsslider_slickslider/4444/033; type=options[true,false]; label=LLL:EXT:ns_news_slider/Resources/Private/Language/locallang_db.xlf:flexform.verticalSwiping
+            verticalSwiping = false
+            # cat=plugin.tx_nsnewsslider_slickslider/4444/034; type=options[true,false]; label=LLL:EXT:ns_news_slider/Resources/Private/Language/locallang_db.xlf:flexform.centerMode
+            centerMode = true
+            # cat=plugin.tx_nsnewsslider_slickslider/4444/035; type=options[ondemand,progressive]; label=LLL:EXT:ns_news_slider/Resources/Private/Language/locallang_db.xlf:flexform.lazyLoad
+            lazyLoad = ondemand
+        }
+    }
+    tx_nsnewsslider_sliderjs {
+        settings {
+            # cat=plugin.tx_nsnewsslider_sliderjs/5555/001; type=boolean; label=LLL:EXT:ns_news_slider/Resources/Private/Language/locallang_db.xlf:flexform.jQuery
+            jQuery = 0
+            # cat=plugin.tx_nsnewsslider_sliderjs/5555/002; type=string; label=LLL:EXT:ns_news_slider/Resources/Private/Language/locallang_db.xlf:flexform.slidewidth
+            Conslidewidth = 940
+            # cat=plugin.tx_nsnewsslider_sliderjs/5555/003; type=string; label= LLL:EXT:ns_news_slider/Resources/Private/Language/locallang_db.xlf:flexform.slideheight
+            Conslideheight = 228
+            # cat=plugin.tx_nsnewsslider_sliderjs/5555/004; type=string; label= LLL:EXT:ns_news_slider/Resources/Private/Language/locallang_db.xlf:flexform.start
+            Constart = 1
+            # cat=plugin.tx_nsnewsslider_sliderjs/5555/005; type=options[true,false]; label=LLL:EXT:ns_news_slider/Resources/Private/Language/locallang_db.xlf:flexform.navigationActive
+            ConnavigationActive = true
+            # cat=plugin.tx_nsnewsslider_sliderjs/5555/006; type=options[fade,slide]; label= LLL:EXT:ns_news_slider/Resources/Private/Language/locallang_db.xlf:flexform.navigation_effect
+            Connavigation_effect = slide
+            # cat=plugin.tx_nsnewsslider_sliderjs/5555/007; type=options[fade,slide]; label=LLL:EXT:ns_news_slider/Resources/Private/Language/locallang_db.xlf:flexform.pagination_effect
+            Conpagination_effect = fade
+            # cat=plugin.tx_nsnewsslider_sliderjs/5555/008; type=options[true,false]; label=LLL:EXT:ns_news_slider/Resources/Private/Language/locallang_db.xlf:flexform.pagination
+            ConpaginationActive = true
+            # cat=plugin.tx_nsnewsslider_sliderjs/5555/009; type=string; label=LLL:EXT:ns_news_slider/Resources/Private/Language/locallang_db.xlf:flexform.ConeffectSlideSpeed
+            ConeffectSlideSpeed = 200
+            # cat=plugin.tx_nsnewsslider_sliderjs/5555/010; type=options[true,false]; label=LLL:EXT:ns_news_slider/Resources/Private/Language/locallang_db.xlf:flexform.crossFade
+            Coneffect_cross_fade = false
+            # cat=plugin.tx_nsnewsslider_sliderjs/5555/011; type=string; label=LLL:EXT:ns_news_slider/Resources/Private/Language/locallang_db.xlf:flexform.effect_fade_speed
+            Coneffect_fade_speed = 300
+            # cat=plugin.tx_nsnewsslider_sliderjs/5555/012; type=options[true,false]; label= LLL:EXT:ns_news_slider/Resources/Private/Language/locallang_db.xlf:flexform.play_active
+            Conplay_active = true
+            # cat=plugin.tx_nsnewsslider_sliderjs/5555/013; type=options[true,false]; label=LLL:EXT:ns_news_slider/Resources/Private/Language/locallang_db.xlf:flexform.play_auto
+            Conplay_auto = true
+            # cat=plugin.tx_nsnewsslider_sliderjs/5555/014; type=options[true,false]; label=LLL:EXT:ns_news_slider/Resources/Private/Language/locallang_db.xlf:flexform.play_swap
+            Conplay_swap = true
+            # cat=plugin.tx_nsnewsslider_sliderjs/5555/015; type=string; label= LLL:EXT:ns_news_slider/Resources/Private/Language/locallang_db.xlf:flexform.play_interval
+            Conplay_interval = 4010
+            # cat=plugin.tx_nsnewsslider_sliderjs/5555/016; type=options[true,false]; label= LLL:EXT:ns_news_slider/Resources/Private/Language/locallang_db.xlf:flexform.play_pauseOnHover
+            ConplayPauseOnHover = false
+            # cat=plugin.tx_nsnewsslider_sliderjs/5555/017; type=options[fade,slide]; label=LLL:EXT:ns_news_slider/Resources/Private/Language/locallang_db.xlf:flexform.play_effect
+            ConplayEffect = fade
+            # cat=plugin.tx_nsnewsslider_sliderjs/5555/018; type=int; label=LLL:EXT:ns_news_slider/Resources/Private/Language/locallang_db.xlf:flexform.play_restartDelay
+            ConrestartDelay = 2500
+            # cat=plugin.tx_nsnewsslider_sliderjs/5555/019; type=options[fade,slide]; label=Play effect
+            Conplay_effect = fade
+        }
 
+    }
+}

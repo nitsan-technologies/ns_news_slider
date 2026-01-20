@@ -1,0 +1,1062 @@
+<T3DataStructure>
+	<meta>
+		<langDisable>1</langDisable>
+	</meta>
+	<sheets>
+		<!--################################
+			  SHEET General Settings
+			################################-->
+		<sDEF>
+			<ROOT>
+					<sheetTitle>LLL:EXT:news/Resources/Private/Language/locallang_be.xlf:flexforms_tab.settings</sheetTitle>
+				<type>array</type>
+				<el>
+					<!-- order -->
+					<settings.orderBy>
+							<label>LLL:EXT:news/Resources/Private/Language/locallang_be.xlf:flexforms_general.orderBy</label>
+							<config>
+								<type>select</type>
+								<itemsProcFunc>GeorgRinger\News\Hooks\ItemsProcFunc->user_orderBy</itemsProcFunc>
+								<renderType>selectSingle</renderType>
+								<items>
+									<numIndex index="0" type="array">
+										<numIndex index="0"></numIndex>
+										<numIndex index="1"></numIndex>
+									</numIndex>
+									<numIndex index="1">
+										<numIndex index="0">LLL:EXT:news/Resources/Private/Language/locallang_be.xlf:flexforms_general.orderBy.tstamp</numIndex>
+										<numIndex index="1">tstamp</numIndex>
+									</numIndex>
+									<numIndex index="2">
+										<numIndex index="0">LLL:EXT:news/Resources/Private/Language/locallang_be.xlf:flexforms_general.orderBy.datetime</numIndex>
+										<numIndex index="1">datetime</numIndex>
+									</numIndex>
+									<numIndex index="3">
+										<numIndex index="0">LLL:EXT:news/Resources/Private/Language/locallang_be.xlf:flexforms_general.orderBy.crdate</numIndex>
+										<numIndex index="1">crdate</numIndex>
+									</numIndex>
+									<numIndex index="4">
+										<numIndex index="0">LLL:EXT:news/Resources/Private/Language/locallang_be.xlf:flexforms_general.orderBy.title</numIndex>
+										<numIndex index="1">title</numIndex>
+									</numIndex>
+								</items>
+							</config>
+					</settings.orderBy>
+
+					<!-- order direction  -->
+					<settings.orderDirection>
+							<label>LLL:EXT:news/Resources/Private/Language/locallang_be.xlf:flexforms_general.orderDirection</label>
+							<config>
+								<type>select</type>
+								<renderType>selectSingle</renderType>
+								<items>
+									<numIndex index="0" type="array">
+										<numIndex index="0"></numIndex>
+										<numIndex index="1"></numIndex>
+									</numIndex>
+									<numIndex index="1">
+										<numIndex index="0">LLL:EXT:news/Resources/Private/Language/locallang_be.xlf:flexforms_general.orderDirection.asc</numIndex>
+										<numIndex index="1">asc</numIndex>
+									</numIndex>
+									<numIndex index="2">
+										<numIndex index="0">LLL:EXT:news/Resources/Private/Language/locallang_be.xlf:flexforms_general.orderDirection.desc</numIndex>
+										<numIndex index="1">desc</numIndex>
+									</numIndex>
+								</items>
+							</config>
+					</settings.orderDirection>
+
+					<!-- datefield: select relevant file dateMenu  -->
+					<settings.dateField>
+							<label>LLL:EXT:news/Resources/Private/Language/locallang_be.xlf:flexforms_general.dateField</label>
+							<config>
+								<type>select</type>
+								<renderType>selectSingle</renderType>
+								<items>
+									<numIndex index="0" type="array">
+										<numIndex index="0"></numIndex>
+										<numIndex index="1"></numIndex>
+									</numIndex>
+									<numIndex index="1">
+										<numIndex index="0">LLL:EXT:news/Resources/Private/Language/locallang_be.xlf:flexforms_general.dateField.datetime</numIndex>
+										<numIndex index="1">datetime</numIndex>
+									</numIndex>
+									<numIndex index="2">
+										<numIndex index="0">LLL:EXT:news/Resources/Private/Language/locallang_be.xlf:flexforms_general.dateField.archive</numIndex>
+										<numIndex index="1">archive</numIndex>
+									</numIndex>
+								</items>
+							</config>
+					</settings.dateField>
+
+					<!-- Category Mode -->
+					<settings.categoryConjunction>
+							<label>LLL:EXT:news/Resources/Private/Language/locallang_be.xlf:flexforms_general.categoryConjunction</label>
+							<config>
+								<type>select</type>
+								<renderType>selectSingle</renderType>
+								<items>
+									<numIndex index="0" type="array">
+										<numIndex index="0">LLL:EXT:news/Resources/Private/Language/locallang_be.xlf:flexforms_general.categoryConjunction.all</numIndex>
+										<numIndex index="1"></numIndex>
+									</numIndex>
+									<numIndex index="1">
+										<numIndex index="0">LLL:EXT:news/Resources/Private/Language/locallang_be.xlf:flexforms_general.categoryConjunction.or</numIndex>
+										<numIndex index="1">or</numIndex>
+									</numIndex>
+									<numIndex index="2">
+										<numIndex index="0">LLL:EXT:news/Resources/Private/Language/locallang_be.xlf:flexforms_general.categoryConjunction.and</numIndex>
+										<numIndex index="1">and</numIndex>
+									</numIndex>
+									<numIndex index="3">
+										<numIndex index="0">LLL:EXT:news/Resources/Private/Language/locallang_be.xlf:flexforms_general.categoryConjunction.notor</numIndex>
+										<numIndex index="1">notor</numIndex>
+									</numIndex>
+									<numIndex index="4">
+										<numIndex index="0">LLL:EXT:news/Resources/Private/Language/locallang_be.xlf:flexforms_general.categoryConjunction.notand</numIndex>
+										<numIndex index="1">notand</numIndex>
+									</numIndex>
+								</items>
+							</config>
+					</settings.categoryConjunction>
+
+					<!-- Category -->
+					<settings.categories>
+							<label>LLL:EXT:news/Resources/Private/Language/locallang_be.xlf:flexforms_general.categories</label>
+							<config>
+								<type>select</type>
+								<renderMode>tree</renderMode>
+								<renderType>selectTree</renderType>
+								<treeConfig>
+									<dataProvider>GeorgRinger\News\TreeProvider\DatabaseTreeDataProvider</dataProvider>
+									<parentField>parent</parentField>
+									<appearance>
+										<maxLevels>99</maxLevels>
+										<expandAll>TRUE</expandAll>
+										<showHeader>TRUE</showHeader>
+									</appearance>
+								</treeConfig>
+								<foreign_table>sys_category</foreign_table>
+								<foreign_table_where>AND (sys_category.sys_language_uid = 0 OR sys_category.l10n_parent = 0) ORDER BY sys_category.sorting</foreign_table_where>
+								<size>15</size>
+								<minitems>0</minitems>
+								<maxitems>99</maxitems>
+							</config>
+					</settings.categories>
+
+					<!-- Include sub categories -->
+					<settings.includeSubCategories>
+							<label>LLL:EXT:news/Resources/Private/Language/locallang_be.xlf:flexforms_general.includeSubCategories</label>
+							<config>
+								<type>check</type>
+							</config>
+					</settings.includeSubCategories>
+
+					<!-- Archive -->
+					<settings.archiveRestriction>
+							<label>LLL:EXT:news/Resources/Private/Language/locallang_be.xlf:flexforms_general.archiveRestriction</label>
+							<config>
+								<type>select</type>
+								<renderType>selectSingle</renderType>
+								<items>
+									<numIndex index="0" type="array">
+										<numIndex index="0">LLL:EXT:news/Resources/Private/Language/locallang_be.xlf:flexforms_general.no-constraint</numIndex>
+										<numIndex index="1"></numIndex>
+									</numIndex>
+									<numIndex index="1">
+										<numIndex index="0">LLL:EXT:news/Resources/Private/Language/locallang_be.xlf:flexforms_general.archiveRestriction.active</numIndex>
+										<numIndex index="1">active</numIndex>
+									</numIndex>
+									<numIndex index="2">
+										<numIndex index="0">LLL:EXT:news/Resources/Private/Language/locallang_be.xlf:flexforms_general.archiveRestriction.archived</numIndex>
+										<numIndex index="1">archived</numIndex>
+									</numIndex>
+								</items>
+							</config>
+					</settings.archiveRestriction>
+
+					<!-- Time limit Low -->
+					<settings.timeRestriction>
+							<label>LLL:EXT:news/Resources/Private/Language/locallang_be.xlf:flexforms_general.timeRestriction</label>
+							<config>
+								<checkbox>1</checkbox>
+								<default></default>
+								<type>input</type>
+								<size>15</size>
+							</config>
+					</settings.timeRestriction>
+
+					<!-- Time limit High -->
+					<settings.timeRestrictionHigh>
+							<label>LLL:EXT:news/Resources/Private/Language/locallang_be.xlf:flexforms_general.timeRestrictionHigh</label>
+							<config>
+								<checkbox>1</checkbox>
+								<default></default>
+								<type>input</type>
+								<size>15</size>
+							</config>
+					</settings.timeRestrictionHigh>
+
+					<!-- Top News -->
+					<settings.topNewsRestriction>
+							<label>LLL:EXT:news/Resources/Private/Language/locallang_be.xlf:flexforms_general.topNewsRestriction</label>
+							<config>
+								<type>select</type>
+								<renderType>selectSingle</renderType>
+								<items>
+									<numIndex index="0" type="array">
+										<numIndex index="0">LLL:EXT:news/Resources/Private/Language/locallang_be.xlf:flexforms_general.no-constraint</numIndex>
+										<numIndex index="1"></numIndex>
+									</numIndex>
+									<numIndex index="1">
+										<numIndex index="0">LLL:EXT:news/Resources/Private/Language/locallang_be.xlf:flexforms_general.topNewsRestriction.1</numIndex>
+										<numIndex index="1">1</numIndex>
+									</numIndex>
+									<numIndex index="2">
+										<numIndex index="0">LLL:EXT:news/Resources/Private/Language/locallang_be.xlf:flexforms_general.topNewsRestriction.2</numIndex>
+										<numIndex index="1">2</numIndex>
+									</numIndex>
+								</items>
+							</config>
+					</settings.topNewsRestriction>
+
+					<!-- startingpoint -->
+					<settings.startingpoint>
+							<label>LLL:EXT:ns_news_slider/Resources/Private/Language/locallang_db.xlf:flexform.startingPoint</label>
+							<config>
+								<type>group</type>
+								<internal_type>db</internal_type>
+								<allowed>pages</allowed>
+								<size>3</size>
+								<maxitems>50</maxitems>
+								<minitems>0</minitems>
+							</config>
+					</settings.startingpoint>
+
+					<!-- recursive -->
+					<settings.recursive>
+							<label>LLL:EXT:ns_news_slider/Resources/Private/Language/locallang_db.xlf:flexform.recursive</label>
+							<config>
+								<type>select</type>
+								<renderType>selectSingle</renderType>
+								<items type="array">
+									<numIndex index="1" type="array">
+										<numIndex index="0">LLL:EXT:news/Resources/Private/Language/locallang_be.xlf:flexforms_general.recursive.I.inherit</numIndex>
+										<numIndex index="1"></numIndex>
+									</numIndex>
+									<numIndex index="2" type="array">
+										<numIndex index="0">LLL:EXT:frontend/Resources/Private/Language/locallang_ttc.xlf:recursive.I.0</numIndex>
+										<numIndex index="1">0</numIndex>
+									</numIndex>
+									<numIndex index="3" type="array">
+										<numIndex index="0">LLL:EXT:frontend/Resources/Private/Language/locallang_ttc.xlf:recursive.I.1</numIndex>
+										<numIndex index="1">1</numIndex>
+									</numIndex>
+									<numIndex index="4" type="array">
+										<numIndex index="0">LLL:EXT:frontend/Resources/Private/Language/locallang_ttc.xlf:recursive.I.2</numIndex>
+										<numIndex index="1">2</numIndex>
+									</numIndex>
+									<numIndex index="5" type="array">
+										<numIndex index="0">LLL:EXT:frontend/Resources/Private/Language/locallang_ttc.xlf:recursive.I.3</numIndex>
+										<numIndex index="1">3</numIndex>
+									</numIndex>
+									<numIndex index="6" type="array">
+										<numIndex index="0">LLL:EXT:frontend/Resources/Private/Language/locallang_ttc.xlf:recursive.I.4</numIndex>
+										<numIndex index="1">4</numIndex>
+									</numIndex>
+									<numIndex index="7" type="array">
+										<numIndex index="0">LLL:EXT:frontend/Resources/Private/Language/locallang_ttc.xlf:recursive.I.5</numIndex>
+										<numIndex index="1">250</numIndex>
+									</numIndex>
+								</items>
+							</config>
+					</settings.recursive>
+
+					<!-- selectedList -->
+					<settings.selectedList>
+							<label>LLL:EXT:news/Resources/Private/Language/locallang_be.xlf:flexforms_general.selectedList</label>
+							<config>
+								<type>group</type>
+								<internal_type>db</internal_type>
+								<allowed>tx_news_domain_model_news</allowed>
+								<size>3</size>
+								<maxitems>50</maxitems>
+								<minitems>0</minitems>
+
+							</config>
+					</settings.selectedList>
+				</el>
+			</ROOT>
+		</sDEF>
+
+		<!--################################
+			  SHEET Additional
+			################################-->
+		<additional>
+			<ROOT>
+					<sheetTitle>LLL:EXT:news/Resources/Private/Language/locallang_be.xlf:flexforms_tab.additional</sheetTitle>
+				<type>array</type>
+				<el>
+					<!-- PID Single Page -->
+					<settings.detailPid>
+							<label>LLL:EXT:news/Resources/Private/Language/locallang_be.xlf:flexforms_additional.detailPid</label>
+							<config>
+								<type>group</type>
+								<internal_type>db</internal_type>
+								<allowed>pages</allowed>
+								<size>1</size>
+								<maxitems>1</maxitems>
+								<minitems>0</minitems>
+								<show_thumbs>1</show_thumbs>
+								<wizards>
+									<suggest>
+										<type>suggest</type>
+										<default>
+											<searchWholePhrase>1</searchWholePhrase>
+										</default>
+									</suggest>
+								</wizards>
+							</config>
+					</settings.detailPid>
+
+					<!-- Limit Start -->
+					<settings.limit>
+							<label>LLL:EXT:news/Resources/Private/Language/locallang_be.xlf:flexforms_additional.limit</label>
+							<config>
+								<type>input</type>
+								<size>5</size>
+								<eval>num</eval>
+							</config>
+					</settings.limit>
+
+					<!-- Offset -->
+					<settings.offset>
+							<label>LLL:EXT:news/Resources/Private/Language/locallang_be.xlf:flexforms_additional.offset</label>
+							<config>
+								<type>input</type>
+								<size>5</size>
+								<eval>num</eval>
+							</config>
+					</settings.offset>
+
+					<!-- Tags -->
+					<settings.tags>
+							<label>LLL:EXT:news/Resources/Private/Language/locallang_be.xlf:flexforms_additional.tags</label>
+							<config>
+								<type>group</type>
+								<internal_type>db</internal_type>
+								<allowed>tx_news_domain_model_tag</allowed>
+								<size>3</size>
+								<minitems>0</minitems>
+								<maxitems>99</maxitems>
+								<wizards>
+									<suggest>
+										<type>suggest</type>
+										<default>
+											<searchWholePhrase>1</searchWholePhrase>
+										</default>
+									</suggest>
+								</wizards>
+							</config>
+					</settings.tags>
+
+					<!-- topNewsFirst -->
+					<settings.topNewsFirst>
+							<label>LLL:EXT:news/Resources/Private/Language/locallang_be.xlf:flexforms_additional.topNewsFirst</label>
+							<config>
+								<type>check</type>
+							</config>
+					</settings.topNewsFirst>
+
+					<!-- only not displayed news -->
+					<settings.excludeAlreadyDisplayedNews>
+							<label>LLL:EXT:news/Resources/Private/Language/locallang_be.xlf:flexforms_additional.excludeAlreadyDisplayedNews</label>
+							<config>
+								<type>check</type>
+							</config>
+					</settings.excludeAlreadyDisplayedNews>
+
+					<!-- disable overrideDemand -->
+					<settings.disableOverrideDemand>
+							<label>LLL:EXT:news/Resources/Private/Language/locallang_be.xlf:flexforms_additional.disableOverrideDemand</label>
+							<config>
+								<type>check</type>
+								<default>1</default>
+							</config>
+					</settings.disableOverrideDemand>
+				</el>
+			</ROOT>
+		</additional>
+
+		<!--
+			################################
+			  SHEET Template
+			################################
+		-->
+		<template>
+			<ROOT>
+					<sheetTitle>LLL:EXT:news/Resources/Private/Language/locallang_be.xlf:flexforms_tab.template</sheetTitle>
+				<type>array</type>
+				<el>
+
+					<!-- Image Width -->
+					<settings.media.maxWidth>
+							<label>LLL:EXT:news/Resources/Private/Language/locallang_be.xlf:flexforms_template.mediaMaxWidth</label>
+							<config>
+								<type>input</type>
+								<size>5</size>
+								<eval>num</eval>
+							</config>
+					</settings.media.maxWidth>
+
+					<!-- Image Height -->
+					<settings.media.maxHeight>
+							<label>LLL:EXT:news/Resources/Private/Language/locallang_be.xlf:flexforms_template.mediaMaxHeight</label>
+							<config>
+								<type>input</type>
+								<size>5</size>
+								<eval>num</eval>
+							</config>
+					</settings.media.maxHeight>
+
+					<!-- crop length Teaser -->
+					<settings.cropMaxCharacters>
+							<label>LLL:EXT:news/Resources/Private/Language/locallang_be.xlf:flexforms_template.cropMaxCharacters</label>
+							<config>
+								<type>input</type>
+								<size>5</size>
+								<eval>num</eval>
+							</config>
+					</settings.cropMaxCharacters>
+
+					<!-- Template Layout -->
+					<settings.templateLayout>
+							<label>LLL:EXT:news/Resources/Private/Language/locallang_be.xlf:flexforms_template.templateLayout</label>
+							<config>
+								<type>select</type>
+								<itemsProcFunc>GeorgRinger\News\Hooks\ItemsProcFunc->user_templateLayout</itemsProcFunc>
+								<renderType>selectSingle</renderType>
+								<items>
+									<numIndex index="0" type="array">
+										<numIndex index="0"></numIndex>
+										<numIndex index="1"></numIndex>
+									</numIndex>
+								</items>
+							</config>
+					</settings.templateLayout>
+				</el>
+			</ROOT>
+		</template>
+
+		<!--########################################
+			  SHEET Owlcarousel Slider Configuration
+			########################################-->
+		<owlcarouselSlider>
+			<ROOT>
+					<sheetTitle>LLL:EXT:ns_news_slider/Resources/Private/Language/locallang_db.xlf:flexforms_tab.owlSlider</sheetTitle>
+				<type>array</type>
+				<el>
+					<settings.owlrefLink>
+							<label>LLL:EXT:ns_news_slider/Resources/Private/Language/locallang_db.xlf:flexform.refLink</label>
+							<config>
+								<type>input</type>
+								<eval>string</eval>
+								<default>https://owlcarousel2.github.io/OwlCarousel2/docs/api-options.html</default>
+								<readOnly>1</readOnly>
+							</config>
+					</settings.owlrefLink>
+					<settings.owlheight>
+							<label>LLL:EXT:ns_news_slider/Resources/Private/Language/locallang_db.xlf:flexform.nivo.height</label>
+							<config>
+								<type>input</type>
+								<eval>string</eval>
+								<placeholder>500</placeholder>
+								<size>5</size>
+							</config>
+					</settings.owlheight>
+					<settings.owlimageWidth>
+							<label>LLL:EXT:ns_news_slider/Resources/Private/Language/locallang_db.xlf:flexform.nivo.imageWidth</label>
+							<config>
+								<type>input</type>
+								<eval>string</eval>
+								<placeholder>900</placeholder>
+								<size>5</size>
+							</config>
+					</settings.owlimageWidth>
+					<settings.owlautoPlay>
+							<label>LLL:EXT:ns_news_slider/Resources/Private/Language/locallang_db.xlf:flexform.autoPlay</label>
+							<config>
+								<type>select</type>
+                                <renderType>selectSingle</renderType>
+								<items>
+									<numIndex index="0">
+										<numIndex index="0">LLL:EXT:ns_news_slider/Resources/Private/Language/locallang_db.xlf:flexform.selAction</numIndex>
+										<numIndex index="1"></numIndex>
+									</numIndex>
+									<numIndex index="1">
+										<numIndex index="0">LLL:EXT:ns_news_slider/Resources/Private/Language/locallang_db.xlf:flexform.true</numIndex>
+										<numIndex index="1">true</numIndex>
+									</numIndex>
+									<numIndex index="2">
+										<numIndex index="0">LLL:EXT:ns_news_slider/Resources/Private/Language/locallang_db.xlf:flexform.false</numIndex>
+										<numIndex index="1">false</numIndex>
+									</numIndex>
+								</items>
+							</config>
+					</settings.owlautoPlay>
+					<settings.owlitems>
+							<label>LLL:EXT:ns_news_slider/Resources/Private/Language/locallang_db.xlf:flexform.items</label>
+							<config>
+								<type>input</type>
+								<placeholder>1</placeholder>
+								<eval>string</eval>
+								<size>5</size>
+							</config>
+					</settings.owlitems>
+					<settings.owlnavigation>
+							<label>LLL:EXT:ns_news_slider/Resources/Private/Language/locallang_db.xlf:flexform.navigation</label>
+							<config>
+								<type>select</type>
+                                <renderType>selectSingle</renderType>
+								<items>
+									<numIndex index="0">
+										<numIndex index="0">LLL:EXT:ns_news_slider/Resources/Private/Language/locallang_db.xlf:flexform.selAction</numIndex>
+										<numIndex index="1"></numIndex>
+									</numIndex>
+									<numIndex index="1">
+										<numIndex index="0">LLL:EXT:ns_news_slider/Resources/Private/Language/locallang_db.xlf:flexform.true</numIndex>
+										<numIndex index="1">true</numIndex>
+									</numIndex>
+									<numIndex index="2">
+										<numIndex index="0">LLL:EXT:ns_news_slider/Resources/Private/Language/locallang_db.xlf:flexform.false</numIndex>
+										<numIndex index="1">false</numIndex>
+									</numIndex>
+								</items>
+							</config>
+					</settings.owlnavigation>
+					<settings.owllazyLoad>
+							<label>LLL:EXT:ns_news_slider/Resources/Private/Language/locallang_db.xlf:flexform.lazyLoad</label>
+							<config>
+								<type>select</type>
+                                <renderType>selectSingle</renderType>
+								<items>
+									<numIndex index="0">
+										<numIndex index="0">LLL:EXT:ns_news_slider/Resources/Private/Language/locallang_db.xlf:flexform.selAction</numIndex>
+										<numIndex index="1"></numIndex>
+									</numIndex>
+									<numIndex index="1">
+										<numIndex index="0">LLL:EXT:ns_news_slider/Resources/Private/Language/locallang_db.xlf:flexform.true</numIndex>
+										<numIndex index="1">true</numIndex>
+									</numIndex>
+									<numIndex index="2">
+										<numIndex index="0">LLL:EXT:ns_news_slider/Resources/Private/Language/locallang_db.xlf:flexform.false</numIndex>
+										<numIndex index="1">false</numIndex>
+									</numIndex>
+								</items>
+							</config>
+					</settings.owllazyLoad>
+					<settings.owlmouseDrag>
+					        <label>LLL:EXT:ns_news_slider/Resources/Private/Language/locallang_db.xlf:flexform.mouseDrag</label>
+					       	<config>
+								<type>select</type>
+                                <renderType>selectSingle</renderType>
+								<items>
+									<numIndex index="0">
+										<numIndex index="0">LLL:EXT:ns_news_slider/Resources/Private/Language/locallang_db.xlf:flexform.selAction</numIndex>
+										<numIndex index="1"></numIndex>
+									</numIndex>
+									<numIndex index="1">
+										<numIndex index="0">LLL:EXT:ns_news_slider/Resources/Private/Language/locallang_db.xlf:flexform.true</numIndex>
+										<numIndex index="1">true</numIndex>
+									</numIndex>
+									<numIndex index="2">
+										<numIndex index="0">LLL:EXT:ns_news_slider/Resources/Private/Language/locallang_db.xlf:flexform.false</numIndex>
+										<numIndex index="1">false</numIndex>
+									</numIndex>
+								</items>
+							</config>
+					</settings.owlmouseDrag>
+					<settings.owltouchDrag>
+					        <label>LLL:EXT:ns_news_slider/Resources/Private/Language/locallang_db.xlf:flexform.touchDrag</label>
+					        <config>
+								<type>select</type>
+                                <renderType>selectSingle</renderType>
+								<items>
+									<numIndex index="0">
+										<numIndex index="0">LLL:EXT:ns_news_slider/Resources/Private/Language/locallang_db.xlf:flexform.selAction</numIndex>
+										<numIndex index="1"></numIndex>
+									</numIndex>
+									<numIndex index="1">
+										<numIndex index="0">LLL:EXT:ns_news_slider/Resources/Private/Language/locallang_db.xlf:flexform.true</numIndex>
+										<numIndex index="1">true</numIndex>
+									</numIndex>
+									<numIndex index="2">
+										<numIndex index="0">LLL:EXT:ns_news_slider/Resources/Private/Language/locallang_db.xlf:flexform.false</numIndex>
+										<numIndex index="1">false</numIndex>
+									</numIndex>
+								</items>
+							</config>
+					</settings.owltouchDrag>
+					<settings.owlmargin>
+							<label>LLL:EXT:ns_news_slider/Resources/Private/Language/locallang_db.xlf:flexform.margin</label>
+							<config>
+								<type>input</type>
+								<placeholder>0</placeholder>
+								<eval>string</eval>
+								<size>5</size>
+							</config>
+					</settings.owlmargin>
+					<settings.owlloop>
+							<label>LLL:EXT:ns_news_slider/Resources/Private/Language/locallang_db.xlf:flexform.loop</label>
+							<config>
+								<type>select</type>
+                                <renderType>selectSingle</renderType>
+								<items>
+									<numIndex index="0">
+										<numIndex index="0">LLL:EXT:ns_news_slider/Resources/Private/Language/locallang_db.xlf:flexform.selAction</numIndex>
+										<numIndex index="1"></numIndex>
+									</numIndex>
+									<numIndex index="1">
+										<numIndex index="0">LLL:EXT:ns_news_slider/Resources/Private/Language/locallang_db.xlf:flexform.true</numIndex>
+										<numIndex index="1">true</numIndex>
+									</numIndex>
+									<numIndex index="2">
+										<numIndex index="0">LLL:EXT:ns_news_slider/Resources/Private/Language/locallang_db.xlf:flexform.false</numIndex>
+										<numIndex index="1">false</numIndex>
+									</numIndex>
+								</items>
+							</config>
+					</settings.owlloop>
+					<settings.owlcenter>
+							<label>LLL:EXT:ns_news_slider/Resources/Private/Language/locallang_db.xlf:flexform.center</label>
+							<config>
+								<type>select</type>
+                                <renderType>selectSingle</renderType>
+								<items>
+									<numIndex index="0">
+										<numIndex index="0">LLL:EXT:ns_news_slider/Resources/Private/Language/locallang_db.xlf:flexform.selAction</numIndex>
+										<numIndex index="1"></numIndex>
+									</numIndex>
+									<numIndex index="1">
+										<numIndex index="0">LLL:EXT:ns_news_slider/Resources/Private/Language/locallang_db.xlf:flexform.true</numIndex>
+										<numIndex index="1">true</numIndex>
+									</numIndex>
+									<numIndex index="2">
+										<numIndex index="0">LLL:EXT:ns_news_slider/Resources/Private/Language/locallang_db.xlf:flexform.false</numIndex>
+										<numIndex index="1">false</numIndex>
+									</numIndex>
+								</items>
+							</config>
+					</settings.owlcenter>
+					<settings.owlpullDrag>
+							<label>LLL:EXT:ns_news_slider/Resources/Private/Language/locallang_db.xlf:flexform.pullDrag</label>
+							<config>
+								<type>select</type>
+                                <renderType>selectSingle</renderType>
+								<items>
+									<numIndex index="0">
+										<numIndex index="0">LLL:EXT:ns_news_slider/Resources/Private/Language/locallang_db.xlf:flexform.selAction</numIndex>
+										<numIndex index="1"></numIndex>
+									</numIndex>
+									<numIndex index="1">
+										<numIndex index="0">LLL:EXT:ns_news_slider/Resources/Private/Language/locallang_db.xlf:flexform.true</numIndex>
+										<numIndex index="1">true</numIndex>
+									</numIndex>
+									<numIndex index="2">
+										<numIndex index="0">LLL:EXT:ns_news_slider/Resources/Private/Language/locallang_db.xlf:flexform.false</numIndex>
+										<numIndex index="1">false</numIndex>
+									</numIndex>
+								</items>
+							</config>
+					</settings.owlpullDrag>
+					<settings.owlfreeDrag>
+							<label>LLL:EXT:ns_news_slider/Resources/Private/Language/locallang_db.xlf:flexform.freeDrag</label>
+							<config>
+								<type>select</type>
+                                <renderType>selectSingle</renderType>
+								<items>
+									<numIndex index="0">
+										<numIndex index="0">LLL:EXT:ns_news_slider/Resources/Private/Language/locallang_db.xlf:flexform.selAction</numIndex>
+										<numIndex index="1"></numIndex>
+									</numIndex>
+									<numIndex index="1">
+										<numIndex index="0">LLL:EXT:ns_news_slider/Resources/Private/Language/locallang_db.xlf:flexform.true</numIndex>
+										<numIndex index="1">true</numIndex>
+									</numIndex>
+									<numIndex index="2">
+										<numIndex index="0">LLL:EXT:ns_news_slider/Resources/Private/Language/locallang_db.xlf:flexform.false</numIndex>
+										<numIndex index="1">false</numIndex>
+									</numIndex>
+								</items>
+							</config>
+					</settings.owlfreeDrag>
+					<settings.owlstagePadding>
+							<label>LLL:EXT:ns_news_slider/Resources/Private/Language/locallang_db.xlf:flexform.stagePadding</label>
+							<config>
+								<type>input</type>
+								<placeholder>0</placeholder>
+								<eval>string</eval>
+								<size>5</size>
+							</config>
+					</settings.owlstagePadding>
+					<settings.owlmerge>
+							<label>LLL:EXT:ns_news_slider/Resources/Private/Language/locallang_db.xlf:flexform.merge</label>
+							<config>
+								<type>select</type>
+                                <renderType>selectSingle</renderType>
+								<items>
+									<numIndex index="0">
+										<numIndex index="0">LLL:EXT:ns_news_slider/Resources/Private/Language/locallang_db.xlf:flexform.selAction</numIndex>
+										<numIndex index="1"></numIndex>
+									</numIndex>
+									<numIndex index="1">
+										<numIndex index="0">LLL:EXT:ns_news_slider/Resources/Private/Language/locallang_db.xlf:flexform.true</numIndex>
+										<numIndex index="1">true</numIndex>
+									</numIndex>
+									<numIndex index="2">
+										<numIndex index="0">LLL:EXT:ns_news_slider/Resources/Private/Language/locallang_db.xlf:flexform.false</numIndex>
+										<numIndex index="1">false</numIndex>
+									</numIndex>
+								</items>
+							</config>
+					</settings.owlmerge>
+					<settings.owlmergeFit>
+							<label>LLL:EXT:ns_news_slider/Resources/Private/Language/locallang_db.xlf:flexform.mergeFit</label>
+							<config>
+								<type>select</type>
+                                <renderType>selectSingle</renderType>
+								<items>
+									<numIndex index="0">
+										<numIndex index="0">LLL:EXT:ns_news_slider/Resources/Private/Language/locallang_db.xlf:flexform.selAction</numIndex>
+										<numIndex index="1"></numIndex>
+									</numIndex>
+									<numIndex index="1">
+										<numIndex index="0">LLL:EXT:ns_news_slider/Resources/Private/Language/locallang_db.xlf:flexform.true</numIndex>
+										<numIndex index="1">true</numIndex>
+									</numIndex>
+									<numIndex index="2">
+										<numIndex index="0">LLL:EXT:ns_news_slider/Resources/Private/Language/locallang_db.xlf:flexform.false</numIndex>
+										<numIndex index="1">false</numIndex>
+									</numIndex>
+								</items>
+							</config>
+					</settings.owlmergeFit>
+					<settings.owlstartPosition>
+							<label>LLL:EXT:ns_news_slider/Resources/Private/Language/locallang_db.xlf:flexform.startPosition</label>
+							<config>
+								<type>input</type>
+								<placeholder>0</placeholder>
+								<eval>string</eval>
+								<size>5</size>
+							</config>
+					</settings.owlstartPosition>
+					<settings.owlURLhashListener>
+							<label>LLL:EXT:ns_news_slider/Resources/Private/Language/locallang_db.xlf:flexform.URLhashListener</label>
+							<config>
+								<type>select</type>
+                                <renderType>selectSingle</renderType>
+								<items>
+									<numIndex index="0">
+										<numIndex index="0">LLL:EXT:ns_news_slider/Resources/Private/Language/locallang_db.xlf:flexform.selAction</numIndex>
+										<numIndex index="1"></numIndex>
+									</numIndex>
+									<numIndex index="1">
+										<numIndex index="0">LLL:EXT:ns_news_slider/Resources/Private/Language/locallang_db.xlf:flexform.true</numIndex>
+										<numIndex index="1">true</numIndex>
+									</numIndex>
+									<numIndex index="2">
+										<numIndex index="0">LLL:EXT:ns_news_slider/Resources/Private/Language/locallang_db.xlf:flexform.false</numIndex>
+										<numIndex index="1">false</numIndex>
+									</numIndex>
+								</items>
+							</config>
+					</settings.owlURLhashListener>
+					<settings.owlrewind>
+							<label>LLL:EXT:ns_news_slider/Resources/Private/Language/locallang_db.xlf:flexform.rewind</label>
+							<config>
+								<type>select</type>
+                                <renderType>selectSingle</renderType>
+								<items>
+									<numIndex index="0">
+										<numIndex index="0">LLL:EXT:ns_news_slider/Resources/Private/Language/locallang_db.xlf:flexform.selAction</numIndex>
+										<numIndex index="1"></numIndex>
+									</numIndex>
+									<numIndex index="1">
+										<numIndex index="0">LLL:EXT:ns_news_slider/Resources/Private/Language/locallang_db.xlf:flexform.true</numIndex>
+										<numIndex index="1">true</numIndex>
+									</numIndex>
+									<numIndex index="2">
+										<numIndex index="0">LLL:EXT:ns_news_slider/Resources/Private/Language/locallang_db.xlf:flexform.false</numIndex>
+										<numIndex index="1">false</numIndex>
+									</numIndex>
+								</items>
+							</config>
+					</settings.owlrewind>
+					<settings.owlnavElement>
+							<label>LLL:EXT:ns_news_slider/Resources/Private/Language/locallang_db.xlf:flexform.navElement</label>
+							<config>
+								<type>input</type>
+								<placeholder>div</placeholder>
+								<eval>string</eval>
+								<size>20</size>
+							</config>
+					</settings.owlnavElement>
+					<settings.owlslideBy>
+							<label>LLL:EXT:ns_news_slider/Resources/Private/Language/locallang_db.xlf:flexform.slideBy</label>
+							<config>
+								<type>input</type>
+								<placeholder>1</placeholder>
+								<eval>string</eval>
+								<size>20</size>
+							</config>
+					</settings.owlslideBy>
+					<settings.owlslideTransition>
+							<label>LLL:EXT:ns_news_slider/Resources/Private/Language/locallang_db.xlf:flexform.slideTransition</label>
+							<config>
+								<type>input</type>
+								<placeholder>linear</placeholder>
+								<eval>string</eval>
+								<size>20</size>
+							</config>
+					</settings.owlslideTransition>
+					<settings.owldots>
+							<label>LLL:EXT:ns_news_slider/Resources/Private/Language/locallang_db.xlf:flexform.dots</label>
+							<config>
+								<type>select</type>
+                                <renderType>selectSingle</renderType>
+								<items>
+									<numIndex index="0">
+										<numIndex index="0">LLL:EXT:ns_news_slider/Resources/Private/Language/locallang_db.xlf:flexform.selAction</numIndex>
+										<numIndex index="1"></numIndex>
+									</numIndex>
+									<numIndex index="1">
+										<numIndex index="0">LLL:EXT:ns_news_slider/Resources/Private/Language/locallang_db.xlf:flexform.true</numIndex>
+										<numIndex index="1">true</numIndex>
+									</numIndex>
+									<numIndex index="2">
+										<numIndex index="0">LLL:EXT:ns_news_slider/Resources/Private/Language/locallang_db.xlf:flexform.false</numIndex>
+										<numIndex index="1">false</numIndex>
+									</numIndex>
+								</items>
+							</config>
+					</settings.owldots>
+					<settings.owldotsEach>
+							<label>LLL:EXT:ns_news_slider/Resources/Private/Language/locallang_db.xlf:flexform.dotsEach</label>
+							<config>
+								<type>select</type>
+                                <renderType>selectSingle</renderType>
+								<items>
+									<numIndex index="0">
+										<numIndex index="0">LLL:EXT:ns_news_slider/Resources/Private/Language/locallang_db.xlf:flexform.selAction</numIndex>
+										<numIndex index="1"></numIndex>
+									</numIndex>
+									<numIndex index="1">
+										<numIndex index="0">LLL:EXT:ns_news_slider/Resources/Private/Language/locallang_db.xlf:flexform.true</numIndex>
+										<numIndex index="1">true</numIndex>
+									</numIndex>
+									<numIndex index="2">
+										<numIndex index="0">LLL:EXT:ns_news_slider/Resources/Private/Language/locallang_db.xlf:flexform.false</numIndex>
+										<numIndex index="1">false</numIndex>
+									</numIndex>
+								</items>
+							</config>
+					</settings.owldotsEach>
+					<settings.owllazyLoadEager>
+							<label>LLL:EXT:ns_news_slider/Resources/Private/Language/locallang_db.xlf:flexform.lazyLoadEager</label>
+							<config>
+								<type>input</type>
+								<placeholder>0</placeholder>
+								<eval>string</eval>
+								<size>20</size>
+							</config>
+					</settings.owllazyLoadEager>
+					<settings.owlautoplayTimeout>
+							<label>LLL:EXT:ns_news_slider/Resources/Private/Language/locallang_db.xlf:flexform.autoplayTimeout</label>
+							<config>
+								<type>input</type>
+								<placeholder>5000</placeholder>
+								<eval>string</eval>
+								<size>20</size>
+							</config>
+					</settings.owlautoplayTimeout>
+					<settings.owlautoplayHoverPause>
+							<label>LLL:EXT:ns_news_slider/Resources/Private/Language/locallang_db.xlf:flexform.autoplayHoverPause</label>
+							<config>
+								<type>select</type>
+                                <renderType>selectSingle</renderType>
+								<items>
+									<numIndex index="0">
+										<numIndex index="0">LLL:EXT:ns_news_slider/Resources/Private/Language/locallang_db.xlf:flexform.selAction</numIndex>
+										<numIndex index="1"></numIndex>
+									</numIndex>
+									<numIndex index="1">
+										<numIndex index="0">LLL:EXT:ns_news_slider/Resources/Private/Language/locallang_db.xlf:flexform.true</numIndex>
+										<numIndex index="1">true</numIndex>
+									</numIndex>
+									<numIndex index="2">
+										<numIndex index="0">LLL:EXT:ns_news_slider/Resources/Private/Language/locallang_db.xlf:flexform.false</numIndex>
+										<numIndex index="1">false</numIndex>
+									</numIndex>
+								</items>
+							</config>
+					</settings.owlautoplayHoverPause>
+					<settings.owlolwautoplaySpeed>
+							<label>LLL:EXT:ns_news_slider/Resources/Private/Language/locallang_db.xlf:flexform.autoplaySpeed</label>
+							<config>
+								<type>input</type>
+								<placeholder>1000</placeholder>
+								<eval>string</eval>
+								<size>20</size>
+							</config>
+					</settings.owlolwautoplaySpeed>
+					<settings.owlnavSpeed>
+							<label>LLL:EXT:ns_news_slider/Resources/Private/Language/locallang_db.xlf:flexform.navSpeed</label>
+							<config>
+								<type>input</type>
+								<placeholder>1000</placeholder>
+								<eval>string</eval>
+								<size>20</size>
+							</config>
+					</settings.owlnavSpeed>
+					<settings.owldotsSpeed>
+							<label>LLL:EXT:ns_news_slider/Resources/Private/Language/locallang_db.xlf:flexform.dotsSpeed</label>
+							<config>
+								<type>input</type>
+								<placeholder>1000</placeholder>
+								<eval>string</eval>
+								<size>20</size>
+							</config>
+					</settings.owldotsSpeed>
+					<settings.owldragEndSpeed>
+							<label>LLL:EXT:ns_news_slider/Resources/Private/Language/locallang_db.xlf:flexform.dragEndSpeed</label>
+							<config>
+								<type>select</type>
+                                <renderType>selectSingle</renderType>
+								<items>
+									<numIndex index="0">
+										<numIndex index="0">LLL:EXT:ns_news_slider/Resources/Private/Language/locallang_db.xlf:flexform.selAction</numIndex>
+										<numIndex index="1"></numIndex>
+									</numIndex>
+									<numIndex index="1">
+										<numIndex index="0">LLL:EXT:ns_news_slider/Resources/Private/Language/locallang_db.xlf:flexform.true</numIndex>
+										<numIndex index="1">true</numIndex>
+									</numIndex>
+									<numIndex index="2">
+										<numIndex index="0">LLL:EXT:ns_news_slider/Resources/Private/Language/locallang_db.xlf:flexform.false</numIndex>
+										<numIndex index="1">false</numIndex>
+									</numIndex>
+								</items>
+							</config>
+					</settings.owldragEndSpeed>
+					<settings.owlanimateOut>
+							<label>LLL:EXT:ns_news_slider/Resources/Private/Language/locallang_db.xlf:flexform.animateOut</label>
+							<config>
+								<type>input</type>
+								<placeholder>slideOutDown</placeholder>
+								<eval>string</eval>
+								<size>20</size>
+							</config>
+					</settings.owlanimateOut>
+					<settings.owlanimateIn>
+							<label>LLL:EXT:ns_news_slider/Resources/Private/Language/locallang_db.xlf:flexform.animateIn</label>
+							<config>
+								<type>input</type>
+								<placeholder>flipInX</placeholder>
+								<eval>string</eval>
+								<size>20</size>
+							</config>
+					</settings.owlanimateIn>
+					<settings.owlfallbackEasing>
+							<label>LLL:EXT:ns_news_slider/Resources/Private/Language/locallang_db.xlf:flexform.fallbackEasing</label>
+							<config>
+								<type>input</type>
+								<placeholder>swing</placeholder>
+								<eval>string</eval>
+								<size>20</size>
+							</config>
+					</settings.owlfallbackEasing>
+					<settings.owlinfo>
+							<label>LLL:EXT:ns_news_slider/Resources/Private/Language/locallang_db.xlf:flexform.info</label>
+							<config>
+								<type>input</type>
+								<placeholder>false</placeholder>
+								<eval>string</eval>
+								<size>20</size>
+							</config>
+					</settings.owlinfo>
+					<settings.owlnestedItemSelector>
+							<label>LLL:EXT:ns_news_slider/Resources/Private/Language/locallang_db.xlf:flexform.nestedItemSelector</label>
+							<config>
+								<type>input</type>
+								<placeholder>String/Class</placeholder>
+								<eval>string</eval>
+								<size>20</size>
+							</config>
+					</settings.owlnestedItemSelector>
+					<settings.owlitemElement>
+							<label>LLL:EXT:ns_news_slider/Resources/Private/Language/locallang_db.xlf:flexform.itemElement</label>
+							<config>
+								<type>input</type>
+								<placeholder>div</placeholder>
+								<eval>string</eval>
+								<size>20</size>
+							</config>
+					</settings.owlitemElement>
+					<settings.owlnavContainer>
+							<label>LLL:EXT:ns_news_slider/Resources/Private/Language/locallang_db.xlf:flexform.navContainer</label>
+							<config>
+								<type>input</type>
+								<placeholder>String/Class/ID/Boolean</placeholder>
+								<eval>string</eval>
+								<size>20</size>
+							</config>
+					</settings.owlnavContainer>
+					<settings.owldotsContainer>
+							<label>LLL:EXT:ns_news_slider/Resources/Private/Language/locallang_db.xlf:flexform.dotsContainer</label>
+							<config>
+								<type>input</type>
+								<placeholder>String/Class/ID/Boolean</placeholder>
+								<eval>string</eval>
+								<size>20</size>
+							</config>
+					</settings.owldotsContainer>
+					<settings.owlcheckVisible>
+							<label>LLL:EXT:ns_news_slider/Resources/Private/Language/locallang_db.xlf:flexform.checkVisible</label>
+							<config>
+								<type>select</type>
+                                <renderType>selectSingle</renderType>
+								<items>
+									<numIndex index="0">
+										<numIndex index="0">LLL:EXT:ns_news_slider/Resources/Private/Language/locallang_db.xlf:flexform.selAction</numIndex>
+										<numIndex index="1"></numIndex>
+									</numIndex>
+									<numIndex index="1">
+										<numIndex index="0">LLL:EXT:ns_news_slider/Resources/Private/Language/locallang_db.xlf:flexform.true</numIndex>
+										<numIndex index="1">true</numIndex>
+									</numIndex>
+									<numIndex index="2">
+										<numIndex index="0">LLL:EXT:ns_news_slider/Resources/Private/Language/locallang_db.xlf:flexform.false</numIndex>
+										<numIndex index="1">false</numIndex>
+									</numIndex>
+								</items>
+							</config>
+					</settings.owlcheckVisible>
+					<settings.owllightbox>
+					        <label>LLL:EXT:ns_news_slider/Resources/Private/Language/locallang_db.xlf:flexform.lightbox</label>
+					        <config>
+					            <type>check</type>
+					            <default>0</default>
+					        </config>
+					</settings.owllightbox>
+					<settings.owlthumbs>
+					        <label>LLL:EXT:ns_news_slider/Resources/Private/Language/locallang_db.xlf:flexform.thumbs</label>
+					        <config>
+					            <type>check</type>
+					            <default>0</default>
+					        </config>
+					</settings.owlthumbs>
+				</el>
+			</ROOT>
+		</owlcarouselSlider>
+	</sheets>
+</T3DataStructure>

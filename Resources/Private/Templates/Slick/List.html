@@ -1,0 +1,22 @@
+<html data-namespace-typo3-fluid="true"
+      data-namespace-typo3-fluid="true" xmlns:f="http://typo3.org/ns/TYPO3/CMS/Fluid/ViewHelpers"
+      xmlns:n="http://typo3.org/ns/GeorgRinger/News/ViewHelpers">
+
+<f:layout name="Default"/>
+<f:section name="main">
+    <f:flashMessages />
+    <f:if condition="{news}">
+        <style>.slick-prev:before,.slick-next:before {color: black;}</style>
+        <f:variable name="sliderWidth">{f:if(condition: settings.slicksldwidth, then: '{settings.slicksldwidth}', else: '{settings.slideWidth}')}</f:variable>
+        <f:variable name="sliderrtl">{f:if(condition: '{settings.slickrtl} == true', then: '{settings.slickrtl}', else: '{settings.rtl}')}</f:variable>
+        <div id="{settings.sliderType}-{contentObjectData.uid}" dir="{sliderrtl}" class="{settings.sliderType} slider vertical-center-4-{contentObjectData.uid}" style="width:{sliderWidth}%" >
+            <f:for as="newsItem" each="{news}" iteration="i">
+                <div>
+                    <n:excludeDisplayedNews newsItem="{newsItem}"/>
+                    <f:render partial="SlickSlider/Items" arguments="{_all}" />
+                </div>
+            </f:for>
+        </div>
+    </f:if>
+</f:section>
+</html>
