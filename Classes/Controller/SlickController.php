@@ -71,29 +71,33 @@ class SlickController extends SliderBaseController
         ]);
 
         $extensionKey = $this->request->getControllerExtensionKey();
-        $additionalHeaderData = &$GLOBALS['TSFE']->additionalHeaderData;
+        //
 
         if (Environment::isComposerMode()) {
             $assetPath = $this->getPath('/', 'ns_news_slider');
             $extpath = GeneralUtility::getIndpEnv('TYPO3_SITE_URL') . $assetPath;
             $cssPath = 'slider/Slick-Slider/css/';
             $jsPath = 'slider/Slick-Slider/js/';
+            $ajax1 = $extpath . $jsPath . 'slick.js';
         } else {
             $extpath = PathUtility::stripPathSitePrefix(ExtensionManagementUtility::extPath('ns_news_slider'));
             $cssPath = 'Resources/Public/slider/Slick-Slider/css/';
             $jsPath = 'Resources/Public/slider/Slick-Slider/js/';
+            $ajax1 = 'EXT:ns_news_slider/' . $jsPath . 'slick.js';
         }
 
         $pageRenderer = GeneralUtility::makeInstance(PageRenderer::class);
 
-        $additionalHeaderData[$extensionKey . 'slick'] = '<link rel="stylesheet" type="text/css" href="' . $extpath . $cssPath . 'slick.css" />';
-        $additionalHeaderData[$extensionKey . 'slick-theme'] = '<link rel="stylesheet" type="text/css" href="' . $extpath . $cssPath . 'slick-theme.css" />';
-        $additionalHeaderData[$extensionKey . 'slick-custom'] = '<link rel="stylesheet" type="text/css" href="' . $extpath . $cssPath . 'slick-custom.css" />';
-
-        $ajax1 = $extpath . $jsPath . 'slick.js';
+        // $additionalHeaderData[$extensionKey . 'slick'] = '<link rel="stylesheet" type="text/css" href="' . $extpath . $cssPath . 'slick.css" />';
+        // $additionalHeaderData[$extensionKey . 'slick-theme'] = '<link rel="stylesheet" type="text/css" href="' . $extpath . $cssPath . 'slick-theme.css" />';
+        // $additionalHeaderData[$extensionKey . 'slick-custom'] = '<link rel="stylesheet" type="text/css" href="' . $extpath . $cssPath . 'slick-custom.css" />';
+        $pageRenderer->addHeaderData('<link rel="stylesheet" type="text/css" href="' . $extpath . $cssPath . 'slick.css" />');
+        $pageRenderer->addHeaderData('<link rel="stylesheet" type="text/css" href="' . $extpath . $cssPath . 'slick-theme.css" />');
+        $pageRenderer->addHeaderData('<link rel="stylesheet" type="text/css" href="' . $extpath . $cssPath . 'slick-custom.css" />');
 
 
         $pluginName = $this->request->getPluginName();
+        // @extensionScannerIgnoreLine
         $getContentId = $this->request->getAttribute('currentContentObject')->data['uid'];
 
         // set js value for slider
@@ -147,8 +151,7 @@ class SlickController extends SliderBaseController
             ';
 
         $this->extKey = $this->extKey ?? '';
-        $GLOBALS['TSFE']->additionalFooterData[$this->extKey] = $GLOBALS['TSFE']->additionalFooterData[$this->extKey] ?? '';
-        $GLOBALS['TSFE']->additionalFooterData[$this->extKey] .= "<script>
+        $footerData= "<script>
                 if (typeof jQuery == 'undefined') {
                     alert('Please include Jquery library first!');
                 }
@@ -158,6 +161,8 @@ class SlickController extends SliderBaseController
                       });
                 })(jQuery);
              </script>';
+
+        $pageRenderer->addFooterData($footerData);
 
         //variable saved in flexform
         $this->view->assign('settings', $this->settings);

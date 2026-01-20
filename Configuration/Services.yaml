@@ -6,10 +6,3 @@ services:
 
   NITSAN\NsNewsSlider\:
     resource: '../Classes/*'
-  
-  NITSAN\NsNewsSlider\Event\BackendUserLogin:
-    tags:
-      - name: event.listener
-        identifier: 'ns-news-slider-backend-login'
-        method: 'dispatch'
-        event: TYPO3\CMS\Core\Authentication\Event\AfterUserLoggedInEvent

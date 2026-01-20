@@ -73,9 +73,10 @@ class OwlController extends SliderBaseController
         ]);
         $pageRenderer = GeneralUtility::makeInstance(PageRenderer::class);
         $extensionKey = $this->request->getControllerExtensionKey();
-        $additionalHeaderData = &$GLOBALS['TSFE']->additionalHeaderData;
+        //$additionalHeaderData = &$GLOBALS['TSFE']->additionalHeaderData;
 
-        $additionalHeaderData[$extensionKey . 'CSS1'] = '<link href="https://fonts.googleapis.com/css2?family=Open+Sans:ital,wght@0,300;0,400;0,600;0,700;1,400&display=swap" rel="stylesheet"> ';
+        //$additionalHeaderData[$extensionKey . 'CSS1'] = '<link href="https://fonts.googleapis.com/css2?family=Open+Sans:ital,wght@0,300;0,400;0,600;0,700;1,400&display=swap" rel="stylesheet"> ';
+        $pageRenderer->addHeaderData('<link href="https://fonts.googleapis.com/css2?family=Open+Sans:ital,wght@0,300;0,400;0,600;0,700;1,400&display=swap" rel="stylesheet">');
 
         if (Environment::isComposerMode()) {
             $assetPath = $this->getPath('/', 'ns_news_slider');
@@ -101,17 +102,20 @@ class OwlController extends SliderBaseController
         }
 
         foreach ($cssFiles as $index => $cssFile) {
-            $additionalHeaderData[$extensionKey . 'CSS' . ($index + 3)] = '<link rel="stylesheet" type="text/css" href="' . $extpath . $cssFile . '" />';
+            //$additionalHeaderData[$extensionKey . 'CSS' . ($index + 3)] = '<link rel="stylesheet" type="text/css" href="' . $extpath . $cssFile . '" />';
+            $pageRenderer->addHeaderData('<link rel="stylesheet" type="text/css" href="' . $extpath . $cssFile . '" />');
         }
 
         if (isset($this->settings['owllightbox']) && $this->settings['owllightbox']) {
-            $additionalHeaderData[$extensionKey . 'CSS9'] = '<link rel="stylesheet" type="text/css" href="' . $extpath . (Environment::isComposerMode() ? 'slider/Fancybox/jquery.fancybox.min.css' : 'Resources/Public/slider/Fancybox/jquery.fancybox.min.css') . '" />';
+            //$additionalHeaderData[$extensionKey . 'CSS9'] = '<link rel="stylesheet" type="text/css" href="' . $extpath . (Environment::isComposerMode() ? 'slider/Fancybox/jquery.fancybox.min.css' : 'Resources/Public/slider/Fancybox/jquery.fancybox.min.css') . '" />';
+            $pageRenderer->addHeaderData('<link rel="stylesheet" type="text/css" href="' . $extpath . (Environment::isComposerMode() ? 'slider/Fancybox/jquery.fancybox.min.css' : 'Resources/Public/slider/Fancybox/jquery.fancybox.min.css') . '" />');
         }
 
         $pluginName = $this->request->getPluginName();
         $configurationManager = GeneralUtility::makeInstance(ConfigurationManagerInterface::class);
         $typoScriptSetup = $configurationManager->getConfiguration(ConfigurationManagerInterface::CONFIGURATION_TYPE_FULL_TYPOSCRIPT);
         $constant = $typoScriptSetup['plugin.']['tx_nsnewsslider_owlcarousel.']['settings.'];
+        // @extensionScannerIgnoreLine
         $getContentId = $this->request->getAttribute('currentContentObject')->data['uid'];
 
         // add js at footer
@@ -134,8 +138,7 @@ class OwlController extends SliderBaseController
         }
 
         $this->extKey = $this->extKey ?? '';
-        $GLOBALS['TSFE']->additionalFooterData[$this->extKey] = $GLOBALS['TSFE']->additionalFooterData[$this->extKey] ?? '';
-        $GLOBALS['TSFE']->additionalFooterData[$this->extKey] .= "
+        $footerData= "
                 <script>
                     if (typeof jQuery == 'undefined') {
                         alert('Please include Jquery library first!');
@@ -203,7 +206,7 @@ class OwlController extends SliderBaseController
 
         $this->settings['owllightbox'] = $this->settings['owllightbox'] ?? '';
         if ($this->settings['owllightbox']) {
-            $GLOBALS['TSFE']->additionalFooterData[$this->extKey] .= "
+            $footerData .= "
                     <script>
                         $().fancybox({
                           selector : '.owl-item:not(.cloned) a img',
@@ -211,6 +214,7 @@ class OwlController extends SliderBaseController
                         });
                     </script>";
         }
+        $pageRenderer->addFooterData($footerData);
         $this->settings['owllazyLoad']=  isset($this->settings['owllazyLoad']) && $this->settings['owllazyLoad'] != '' ? $this->settings['owllazyLoad'] : $constant['ConlazyLoad'];
 
         //variable saved in flexform

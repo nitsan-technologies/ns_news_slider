@@ -1,7 +1,7 @@
 {
   "name": "nitsan/ns-news-slider",
   "type": "typo3-cms-extension",
-  "description": "The TYPO3 News Slider extension lets you create an attractive news slider for your website. It offers several popular JQuery slider plugins like Owlcarousel Slider, Royal Slider, Slidejs Slider, and Slick Slider. It's an easy and convenient way to add a news slider to your site!",
+  "description": "TYPO3 News Slider - The TYPO3 News Slider extension lets you create an attractive news slider for your website. It offers several popular JQuery slider plugins like Owlcarousel Slider, Royal Slider, Slidejs Slider, and Slick Slider. It's an easy and convenient way to add a news slider to your site!",
   "homepage": "https://t3planet.com/typo3-news-slider-extension",
   "license": "GPL-2.0+",
   "keywords": [
@@ -15,8 +15,8 @@
     "issues": "https://github.com/nitsan-technologies/ns_news_slider/issues"
   },
   "require": {
-    "typo3/cms-core": "^12 || ^13",
-    "georgringer/news": "^12"
+    "typo3/cms-core": "^12.4.40 || ^13 || ^14",
+    "georgringer/news": "^14"
   },
   "autoload": {
     "psr-4": {

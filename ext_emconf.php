@@ -15,8 +15,8 @@ $EM_CONF['ns_news_slider'] = [
     'version' => '13.1.0',
     'constraints' => [
         'depends' => [
-            'typo3' => '12.0.0-13.9.99',
-            'news' => '12.0.0-12.9.99',
+            'typo3' => '12.4.40-14.9.99',
+            'news' => '12.0.0-14.9.99',
         ],
         'conflicts' => [],
         'suggests' => [],

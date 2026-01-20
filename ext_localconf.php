@@ -18,7 +18,8 @@ ExtensionUtility::configurePlugin(
     // non-cacheable actions
     [
         NivoController::class => 'list',
-    ]
+    ],
+    ExtensionUtility::PLUGIN_TYPE_CONTENT_ELEMENT,
 );
 
 ExtensionUtility::configurePlugin(
@@ -30,7 +31,8 @@ ExtensionUtility::configurePlugin(
     // non-cacheable actions
     [
         OwlController::class => 'list',
-    ]
+    ],
+    ExtensionUtility::PLUGIN_TYPE_CONTENT_ELEMENT,
 );
 
 ExtensionUtility::configurePlugin(
@@ -42,7 +44,8 @@ ExtensionUtility::configurePlugin(
     // non-cacheable actions
     [
         RoyalController::class => 'list',
-    ]
+    ],
+    ExtensionUtility::PLUGIN_TYPE_CONTENT_ELEMENT,
 );
 
 ExtensionUtility::configurePlugin(
@@ -54,7 +57,8 @@ ExtensionUtility::configurePlugin(
     // non-cacheable actions
     [
         SliderjsController::class => 'list',
-    ]
+    ],
+    ExtensionUtility::PLUGIN_TYPE_CONTENT_ELEMENT,
 );
 
 ExtensionUtility::configurePlugin(
@@ -66,7 +70,8 @@ ExtensionUtility::configurePlugin(
     // non-cacheable actions
     [
         SlickController::class => 'list',
-    ]
+    ],
+    ExtensionUtility::PLUGIN_TYPE_CONTENT_ELEMENT,
 );
 
 // Hook for override news demand.

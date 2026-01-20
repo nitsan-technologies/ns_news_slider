@@ -70,30 +70,32 @@ class RoyalController extends SliderBaseController
             'settings' => $settings
         ]);
 
-        $extensionKey = $this->request->getControllerExtensionKey();
-        $additionalHeaderData = &$GLOBALS['TSFE']->additionalHeaderData;
+        $pageRenderer = GeneralUtility::makeInstance(PageRenderer::class);
 
         if (Environment::isComposerMode()) {
             $assetPath = $this->getPath('/', 'ns_news_slider');
             $extpath = GeneralUtility::getIndpEnv('TYPO3_SITE_URL') . $assetPath;
             $cssPath = 'slider/Royal-Slider/css/';
             $jsPath = 'slider/Royal-Slider/js/vendor/';
+            $ajax2 = $extpath . $jsPath . 'jquery.royalslider.min.js';
+            $ajax3 = $extpath . $jsPath . 'jquery.easing.js';
         } else {
             $extpath = PathUtility::stripPathSitePrefix(ExtensionManagementUtility::extPath('ns_news_slider'));
             $cssPath = 'Resources/Public/slider/Royal-Slider/css/';
             $jsPath = 'Resources/Public/slider/Royal-Slider/js/vendor/';
+            $ajax2 = 'EXT:ns_news_slider/' . $jsPath . 'jquery.royalslider.min.js';
+            $ajax3 = 'EXT:ns_news_slider/' . $jsPath . 'jquery.easing.js';
         }
 
-        $additionalHeaderData[$extensionKey . 'CSS1'] = '<link rel="stylesheet" type="text/css" href="' . $extpath . $cssPath . 'style.css" />';
-        $additionalHeaderData[$extensionKey . 'CSS2'] = '<link rel="stylesheet" type="text/css" href="' . $extpath . $cssPath . 'vendor/royalslider.css" />';
-        $additionalHeaderData[$extensionKey . 'CSS3'] = '<link rel="stylesheet" type="text/css" href="' . $extpath . $cssPath . 'vendor/skins/minimal-white/rs-minimal-white.css" />';
-
-        $ajax2 = $extpath . $jsPath . 'jquery.royalslider.min.js';
-        $ajax3 = $extpath . $jsPath . 'jquery.easing.js';
+        //$additionalHeaderData[$extensionKey . 'CSS1'] = '<link rel="stylesheet" type="text/css" href="' . $extpath . $cssPath . 'style.css" />';
+        $pageRenderer->addHeaderData('<link rel="stylesheet" type="text/css" href="' . $extpath . $cssPath . 'style.css" />');
+        $pageRenderer->addHeaderData('<link rel="stylesheet" type="text/css" href="' . $extpath . $cssPath . 'vendor/royalslider.css" />');
+        $pageRenderer->addHeaderData('<link rel="stylesheet" type="text/css" href="' . $extpath . $cssPath . 'vendor/skins/minimal-white/rs-minimal-white.css" />');
 
         $pluginName = $this->request->getPluginName();
 
         $pageRenderer = GeneralUtility::makeInstance(PageRenderer::class);
+        // @extensionScannerIgnoreLine
         $getContentId = $this->request->getAttribute('currentContentObject')->data['uid'];
 
         // set js value for slider
@@ -195,13 +197,13 @@ class RoyalController extends SliderBaseController
         }
 
         $this->extKey = $this->extKey ?? '';
-        $GLOBALS['TSFE']->additionalFooterData[$this->extKey] = $GLOBALS['TSFE']->additionalFooterData[$this->extKey] ?? '';
-        $GLOBALS['TSFE']->additionalFooterData[$this->extKey] .= "<script>
+        $footerData = $footerData ?? '';
+        $footerData .= "<script>
             if (typeof jQuery == 'undefined') {
                 alert('Please include Jquery library first!');
             }
         </script>";
-        $GLOBALS['TSFE']->additionalFooterData[$this->extKey] .= '<script>
+        $footerData .= '<script>
                     ' . $id . '
                         arrowsNav: ' . (isset($this->settings['arrowsNav']) && $this->settings['arrowsNav'] != '' ? $this->settings['arrowsNav'] : $constant['arrowsNav']) . ',
                         loop: ' . (isset($this->settings['loop']) && $this->settings['loop'] != '' ? $this->settings['loop'] : $constant['loop']) . ',
@@ -249,6 +251,7 @@ class RoyalController extends SliderBaseController
                 })(jQuery);
             </script>';
 
+        $pageRenderer->addFooterData($footerData);
 
         //variable saved in flexform
         $this->view->assign('settings', $this->settings);

@@ -77,6 +77,7 @@ class SliderjsController extends SliderBaseController
         $pluginName = $this->request->getPluginName();
 
         $pageRenderer = GeneralUtility::makeInstance(PageRenderer::class);
+        // @extensionScannerIgnoreLine
         $getContentId = $this->request->getAttribute('currentContentObject')->data['uid'];
 
         // set js value for slider
@@ -88,7 +89,7 @@ class SliderjsController extends SliderBaseController
             $pageRenderer->addJsFooterFile('EXT:ns_news_slider/Resources/Public/Js/jquery-3.6.0.min.js', 'text/javascript', false, false, '');
         }
 
-        $ajax2 = $extpath . 'slider/Slides-SlidesJS/source/jquery.slides.min.js';
+        $ajax2 = 'EXT:ns_news_slider/Resources/Public/slider/Slides-SlidesJS/source/jquery.slides.min.js';
 
         $pageRenderer->addJsFooterFile($ajax2, 'text/javascript', false, false, '');
 
@@ -107,12 +108,12 @@ class SliderjsController extends SliderBaseController
                 },
                 ";
 
-        $GLOBALS['TSFE']->additionalHeaderData[$this->request->getControllerExtensionKey() . 'CSS5'] = '<link rel="stylesheet" type="text/css" href="' . $extpath . 'slider/Slides-SlidesJS/css/custom.css" />';
+        $pageRenderer->addHeaderData('<link rel="stylesheet" type="text/css" href="' . $extpath . 'slider/Slides-SlidesJS/css/custom.css" />');
 
         if ($slider_type == 'fade') {
-            $GLOBALS['TSFE']->additionalHeaderData[$this->request->getControllerExtensionKey() . 'CSS1'] = '<link rel="stylesheet" type="text/css" href="' . $extpath . 'slider/Slides-SlidesJS/types/standard/css/example.css" />';
-            $GLOBALS['TSFE']->additionalHeaderData[$this->request->getControllerExtensionKey() . 'CSS2'] = '<link rel="stylesheet" type="text/css" href="' . $extpath . 'slider/Slides-SlidesJS/types/standard/css/font-awesome.min.css" />';
-            $GLOBALS['TSFE']->additionalHeaderData[$this->request->getControllerExtensionKey() . 'CSS3'] = '<link rel="stylesheet" type="text/css" href="' . $extpath . 'slider/Slides-SlidesJS/types/standard/css/custom.css" />';
+            $pageRenderer->addHeaderData('<link rel="stylesheet" type="text/css" href="' . $extpath . 'slider/Slides-SlidesJS/types/standard/css/example.css" />');
+            $pageRenderer->addHeaderData('<link rel="stylesheet" type="text/css" href="' . $extpath . 'slider/Slides-SlidesJS/types/standard/css/font-awesome.min.css" />');
+            $pageRenderer->addHeaderData('<link rel="stylesheet" type="text/css" href="' . $extpath . 'slider/Slides-SlidesJS/types/standard/css/custom.css" />');
 
             $type =
                 $basicOpt . '
@@ -124,16 +125,16 @@ class SliderjsController extends SliderBaseController
                 }';
         } elseif ($slider_type == 'slide') {
             // add css js in header
-            $GLOBALS['TSFE']->additionalHeaderData[$this->request->getControllerExtensionKey() . 'CSS1'] = '<link rel="stylesheet" type="text/css" href="' . $extpath . 'slider/Slides-SlidesJS/types/standard/css/example.css" />';
-            $GLOBALS['TSFE']->additionalHeaderData[$this->request->getControllerExtensionKey() . 'CSS2'] = '<link rel="stylesheet" type="text/css" href="' . $extpath . 'slider/Slides-SlidesJS/types/standard/css/font-awesome.min.css" />';
-            $GLOBALS['TSFE']->additionalHeaderData[$this->request->getControllerExtensionKey() . 'CSS3'] = '<link rel="stylesheet" type="text/css" href="' . $extpath . 'slider/Slides-SlidesJS/types/standard/css/custom.css" />';
+            $pageRenderer->addHeaderData('<link rel="stylesheet" type="text/css" href="' . $extpath . 'slider/Slides-SlidesJS/types/standard/css/example.css" />');
+            $pageRenderer->addHeaderData('<link rel="stylesheet" type="text/css" href="' . $extpath . 'slider/Slides-SlidesJS/types/standard/css/font-awesome.min.css" />');
+            $pageRenderer->addHeaderData('<link rel="stylesheet" type="text/css" href="' . $extpath . 'slider/Slides-SlidesJS/types/standard/css/custom.css" />');
 
             $type = $basicOpt;
         } elseif ($slider_type == 'playing') {
             // add css js in header
-            $GLOBALS['TSFE']->additionalHeaderData[$this->request->getControllerExtensionKey() . 'CSS1'] = '<link rel="stylesheet" type="text/css" href="' . $extpath . 'slider/Slides-SlidesJS/types/playing/css/example.css" />';
-            $GLOBALS['TSFE']->additionalHeaderData[$this->request->getControllerExtensionKey() . 'CSS2'] = '<link rel="stylesheet" type="text/css" href="' . $extpath . 'slider/Slides-SlidesJS/types/playing/css/font-awesome.min.css" />';
-            $GLOBALS['TSFE']->additionalHeaderData[$this->request->getControllerExtensionKey() . 'CSS3'] = '<link rel="stylesheet" type="text/css" href="' . $extpath . 'slider/Slides-SlidesJS/types/playing/css/custom.css" />';
+            $pageRenderer->addHeaderData('<link rel="stylesheet" type="text/css" href="' . $extpath . 'slider/Slides-SlidesJS/types/playing/css/example.css" />');
+            $pageRenderer->addHeaderData('<link rel="stylesheet" type="text/css" href="' . $extpath . 'slider/Slides-SlidesJS/types/playing/css/font-awesome.min.css" />');
+            $pageRenderer->addHeaderData('<link rel="stylesheet" type="text/css" href="' . $extpath . 'slider/Slides-SlidesJS/types/playing/css/custom.css" />');
 
             $type =
                 $basicOpt . '
@@ -150,8 +151,7 @@ class SliderjsController extends SliderBaseController
         }
 
         $this->extKey = $this->extKey ?? '';
-        $GLOBALS['TSFE']->additionalFooterData[$this->extKey] = $GLOBALS['TSFE']->additionalFooterData[$this->extKey] ?? '';
-        $GLOBALS['TSFE']->additionalFooterData[$this->extKey] .= "
+        $footerData= "
                 <script>
                     if (typeof jQuery == 'undefined') {
                         alert('Please include Jquery library first!');
@@ -164,6 +164,8 @@ class SliderjsController extends SliderBaseController
                       });
                     })(jQuery);
                 </script>';
+
+        $pageRenderer->addFooterData($footerData);
 
         //variable saved in flexform
         $this->view->assign('settings', $this->settings);

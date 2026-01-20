@@ -65,25 +65,22 @@ class NivoController extends SliderBaseController
             'settings' => $settings
         ]);
 
-        $extensionKey = $this->request->getControllerExtensionKey();
-        $additionalHeaderData = &$GLOBALS['TSFE']->additionalHeaderData;
-
         if (Environment::isComposerMode()) {
             $assetPath = $this->getPath('/', 'ns_news_slider');
             $extpath = GeneralUtility::getIndpEnv('TYPO3_SITE_URL') . $assetPath;
             $cssPath = 'slider/Nivo-Slider/';
             $jsPath = 'slider/Nivo-Slider/';
+            $ajax1 = $extpath . $jsPath . 'jquery.nivo.slider.js';
         } else {
             $extpath = PathUtility::stripPathSitePrefix(ExtensionManagementUtility::extPath('ns_news_slider'));
             $cssPath = 'Resources/Public/slider/Nivo-Slider/';
             $jsPath = 'Resources/Public/slider/Nivo-Slider/';
+            $ajax1 = 'EXT:ns_news_slider/' . $jsPath . 'jquery.nivo.slider.js';
         }
 
         $pageRenderer = GeneralUtility::makeInstance(PageRenderer::class);
-
-        $additionalHeaderData[$extensionKey . 'CSS1'] = '<link rel="stylesheet" type="text/css" href="' . $extpath . $cssPath . 'themes/default/default.css" />';
-        $additionalHeaderData[$extensionKey . 'CSS2'] = '<link rel="stylesheet" type="text/css" href="' .  $extpath . $cssPath . 'nivo-slider.css" />';
-        $ajax1 = $extpath . $jsPath . 'jquery.nivo.slider.js';
+        $pageRenderer->addHeaderData('<link rel="stylesheet" type="text/css" href="' . $extpath . $cssPath . 'themes/default/default.css" />');
+        $pageRenderer->addHeaderData('<link rel="stylesheet" type="text/css" href="' .  $extpath . $cssPath . 'nivo-slider.css" />');
 
         $pluginName = $this->request->getPluginName();
 
@@ -96,8 +93,7 @@ class NivoController extends SliderBaseController
             $pageRenderer->addJsFooterFile('EXT:ns_news_slider/Resources/Public/Js/jquery-3.6.0.min.js', 'text/javascript', false, false, '');
         }
         $pageRenderer->addJsFooterFile($ajax1, 'text/javascript', false, false, '');
-        $GLOBALS['TSFE']->additionalFooterData[$this->request->getControllerExtensionKey()] = isset($GLOBALS['TSFE']->additionalFooterData[$this->request->getControllerExtensionKey()]) ? $GLOBALS['TSFE']->additionalFooterData[$this->request->getControllerExtensionKey()] : '';
-        $GLOBALS['TSFE']->additionalFooterData[$this->request->getControllerExtensionKey()] .= "
+        $footerData= "
             <script>
                 if (typeof jQuery == 'undefined') {
                     alert('Please include Jquery library first!');
@@ -123,6 +119,8 @@ class NivoController extends SliderBaseController
                     });
                 })(jQuery);
             </script>';
+
+        $pageRenderer->addFooterData($footerData);
         //variable saved in flexform
         $this->view->assign('settings', $this->settings);
         // show arrwo in slider
