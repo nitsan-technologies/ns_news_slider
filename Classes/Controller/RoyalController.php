@@ -87,7 +87,6 @@ class RoyalController extends SliderBaseController
             $ajax3 = 'EXT:ns_news_slider/' . $jsPath . 'jquery.easing.js';
         }
 
-        //$additionalHeaderData[$extensionKey . 'CSS1'] = '<link rel="stylesheet" type="text/css" href="' . $extpath . $cssPath . 'style.css" />';
         $pageRenderer->addHeaderData('<link rel="stylesheet" type="text/css" href="' . $extpath . $cssPath . 'style.css" />');
         $pageRenderer->addHeaderData('<link rel="stylesheet" type="text/css" href="' . $extpath . $cssPath . 'vendor/royalslider.css" />');
         $pageRenderer->addHeaderData('<link rel="stylesheet" type="text/css" href="' . $extpath . $cssPath . 'vendor/skins/minimal-white/rs-minimal-white.css" />');
@@ -196,9 +195,7 @@ class RoyalController extends SliderBaseController
                         }';
         }
 
-        $this->extKey = $this->extKey ?? '';
-        $footerData = $footerData ?? '';
-        $footerData .= "<script>
+        $footerData = "<script>
             if (typeof jQuery == 'undefined') {
                 alert('Please include Jquery library first!');
             }

@@ -70,9 +70,6 @@ class SlickController extends SliderBaseController
             'settings' => $settings
         ]);
 
-        $extensionKey = $this->request->getControllerExtensionKey();
-        //
-
         if (Environment::isComposerMode()) {
             $assetPath = $this->getPath('/', 'ns_news_slider');
             $extpath = GeneralUtility::getIndpEnv('TYPO3_SITE_URL') . $assetPath;
@@ -87,10 +84,6 @@ class SlickController extends SliderBaseController
         }
 
         $pageRenderer = GeneralUtility::makeInstance(PageRenderer::class);
-
-        // $additionalHeaderData[$extensionKey . 'slick'] = '<link rel="stylesheet" type="text/css" href="' . $extpath . $cssPath . 'slick.css" />';
-        // $additionalHeaderData[$extensionKey . 'slick-theme'] = '<link rel="stylesheet" type="text/css" href="' . $extpath . $cssPath . 'slick-theme.css" />';
-        // $additionalHeaderData[$extensionKey . 'slick-custom'] = '<link rel="stylesheet" type="text/css" href="' . $extpath . $cssPath . 'slick-custom.css" />';
         $pageRenderer->addHeaderData('<link rel="stylesheet" type="text/css" href="' . $extpath . $cssPath . 'slick.css" />');
         $pageRenderer->addHeaderData('<link rel="stylesheet" type="text/css" href="' . $extpath . $cssPath . 'slick-theme.css" />');
         $pageRenderer->addHeaderData('<link rel="stylesheet" type="text/css" href="' . $extpath . $cssPath . 'slick-custom.css" />');
@@ -150,7 +143,6 @@ class SlickController extends SliderBaseController
                 infinite: ' . (isset($this->settings['slickinfinite']) && $this->settings['slickinfinite'] != '' ? $this->settings['slickinfinite'] : $constant['infinite']) . '
             ';
 
-        $this->extKey = $this->extKey ?? '';
         $footerData= "<script>
                 if (typeof jQuery == 'undefined') {
                     alert('Please include Jquery library first!');

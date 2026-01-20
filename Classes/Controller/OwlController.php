@@ -72,10 +72,6 @@ class OwlController extends SliderBaseController
             'settings' => $settings
         ]);
         $pageRenderer = GeneralUtility::makeInstance(PageRenderer::class);
-        $extensionKey = $this->request->getControllerExtensionKey();
-        //$additionalHeaderData = &$GLOBALS['TSFE']->additionalHeaderData;
-
-        //$additionalHeaderData[$extensionKey . 'CSS1'] = '<link href="https://fonts.googleapis.com/css2?family=Open+Sans:ital,wght@0,300;0,400;0,600;0,700;1,400&display=swap" rel="stylesheet"> ';
         $pageRenderer->addHeaderData('<link href="https://fonts.googleapis.com/css2?family=Open+Sans:ital,wght@0,300;0,400;0,600;0,700;1,400&display=swap" rel="stylesheet">');
 
         if (Environment::isComposerMode()) {
@@ -102,12 +98,10 @@ class OwlController extends SliderBaseController
         }
 
         foreach ($cssFiles as $index => $cssFile) {
-            //$additionalHeaderData[$extensionKey . 'CSS' . ($index + 3)] = '<link rel="stylesheet" type="text/css" href="' . $extpath . $cssFile . '" />';
             $pageRenderer->addHeaderData('<link rel="stylesheet" type="text/css" href="' . $extpath . $cssFile . '" />');
         }
 
         if (isset($this->settings['owllightbox']) && $this->settings['owllightbox']) {
-            //$additionalHeaderData[$extensionKey . 'CSS9'] = '<link rel="stylesheet" type="text/css" href="' . $extpath . (Environment::isComposerMode() ? 'slider/Fancybox/jquery.fancybox.min.css' : 'Resources/Public/slider/Fancybox/jquery.fancybox.min.css') . '" />';
             $pageRenderer->addHeaderData('<link rel="stylesheet" type="text/css" href="' . $extpath . (Environment::isComposerMode() ? 'slider/Fancybox/jquery.fancybox.min.css' : 'Resources/Public/slider/Fancybox/jquery.fancybox.min.css') . '" />');
         }
 
