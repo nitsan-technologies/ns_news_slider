@@ -15,7 +15,7 @@
     "issues": "https://github.com/nitsan-technologies/ns_news_slider/issues"
   },
   "require": {
-    "typo3/cms-core": "^12.4.40 || ^13 || ^14",
+    "typo3/cms-core": "^12.4.37 || ^13 || ^14",
     "georgringer/news": "^14"
   },
   "autoload": {
