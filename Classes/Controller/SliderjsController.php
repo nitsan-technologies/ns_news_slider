@@ -120,7 +120,7 @@ class SliderjsController extends SliderBaseController
                 effect: {
                   fade: {
                     speed: ' . (isset($this->settings['effect_fade_speed']) && $this->settings['effect_fade_speed'] != '' ? $this->settings['effect_fade_speed'] : $constant['Coneffect_fade_speed']) . ',
-                    crossfade: ' . (isset($this->settings['crossFade']) && $this->settings['crossFade'] != '' ? $this->settings['crossFade'] : $constant['Coneffect_cross_fade']) . ',
+                    crossfade: ' . (isset($this->settings['crossFade']) && $this->settings['crossFade'] != '' ? $this->settings['crossFade'] : (($constant['Coneffect_cross_fade'] ?? '') === '' ? 'false' : $constant['Coneffect_cross_fade'])) . ',
                   }
                 }';
         } elseif ($slider_type == 'slide') {

@@ -375,6 +375,5 @@ plugin {
             # cat=plugin.tx_nsnewsslider_sliderjs/5555/019; type=options[fade,slide]; label=Play effect
             Conplay_effect = fade
         }
-
     }
 }

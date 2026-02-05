@@ -111,10 +111,10 @@ class NivoController extends SliderBaseController
                             startSlide: ' . (isset($this->settings['nivostartSlide']) && $this->settings['nivostartSlide'] != '' ? $this->settings['nivostartSlide'] : $constant['startSlide']) . ',
                             directionNav: ' . (isset($this->settings['nivonavagation_arrow']) && $this->settings['nivonavagation_arrow'] != '' ? $this->settings['nivonavagation_arrow'] : $constant['nivonavagation_arrow']) . ',
                             controlNav: ' . (isset($this->settings['nivocontrolNav']) && $this->settings['nivocontrolNav'] != '' ? $this->settings['nivocontrolNav'] : $constant['controlNav']) . ',
-                            controlNavThumbs: ' . (isset($this->settings['nivocontrolNavThumbs']) && $this->settings['nivocontrolNavThumbs'] != '' ? $this->settings['nivocontrolNavThumbs'] : $constant['controlNavThumbs']) . ',
+                            controlNavThumbs: ' . (isset($this->settings['nivocontrolNavThumbs']) && $this->settings['nivocontrolNavThumbs'] != '' ? $this->settings['nivocontrolNavThumbs'] : (($constant['controlNavThumbs'] ?? '') === '' ? 'false' : $constant['controlNavThumbs'])) . ',
                             pauseOnHover: ' . (isset($this->settings['nivopauseOnHover']) && $this->settings['nivopauseOnHover'] != '' ? $this->settings['nivopauseOnHover'] : $constant['pauseOnHover']) . ',
-                            manualAdvance: ' . (isset($this->settings['nivomanualAdvance']) && $this->settings['nivomanualAdvance'] != '' ? $this->settings['nivomanualAdvance'] : $constant['manualAdvance']) . ',
-                            randomStart: ' . (isset($this->settings['nivorandomStart']) && $this->settings['nivorandomStart'] != '' ? $this->settings['nivorandomStart'] : $constant['randomStart']) . '
+                            manualAdvance: ' . (isset($this->settings['nivomanualAdvance']) && $this->settings['nivomanualAdvance'] != '' ? $this->settings['nivomanualAdvance'] : (($constant['manualAdvance'] ?? '') === '' ? 'false' : $constant['manualAdvance'])) . ',
+                            randomStart: ' . (isset($this->settings['nivorandomStart']) && $this->settings['nivorandomStart'] != '' ? $this->settings['nivorandomStart'] : (($constant['randomStart'] ?? '') === '' ? 'false' : $constant['randomStart'])) . '
                         });
                     });
                 })(jQuery);

@@ -1,0 +1,219 @@
+@import 'EXT:ns_news_slider/Configuration/TypoScript/setup.typoscript'
+config.contentObjectExceptionHandler = 0
+plugin {
+    tx_nsnewsslider_nsnewsslider {
+        view {
+            templateRootPaths {
+                1 = {$ns_newsslider.view.templateRootPath}
+            }
+
+            partialRootPaths {
+                1 = {$ns_newsslider.view.partialRootPath}
+            }
+
+            layoutRootPaths {
+                1 = {$ns_newsslider.view.layoutRootPath}
+            }
+        }
+
+        persistence {
+            storagePid = {$ns_newsslider.persistence.storagePid}
+            #recursive = 1
+        }
+    }
+    tx_nsnewsslider_owlcarousel {
+        settings {
+            jQuery = {$ns_newsslider.owl.jQuery}
+            Connavigation = {$ns_newsslider.owl.Connavigation}
+            ConAutoPlay = {$ns_newsslider.owl.ConAutoPlay}
+            Conitems = {$ns_newsslider.owl.Conitems}
+            ConlazyLoad = {$ns_newsslider.owl.ConlazyLoad}
+            ConmouseDrag = {$ns_newsslider.owl.ConmouseDrag}
+            ContouchDrag = {$ns_newsslider.owl.ContouchDrag}
+            Conmargin = {$ns_newsslider.owl.Conmargin}
+            Conloop = {$ns_newsslider.owl.Conloop}
+            Concenter = {$ns_newsslider.owl.Concenter}
+            ConpullDrag = {$ns_newsslider.owl.ConpullDrag}
+            ConfreeDrag = {$ns_newsslider.owl.ConfreeDrag}
+            ConstagePadding = {$ns_newsslider.owl.ConstagePadding}
+            Conmerge = {$ns_newsslider.owl.Conmerge}
+            ConmergeFit = {$ns_newsslider.owl.ConmergeFit}
+            ConautoWidth = {$ns_newsslider.owl.ConautoWidth}
+            ConstartPosition = {$ns_newsslider.owl.ConstartPosition}
+            ConURLhashListener = {$ns_newsslider.owl.ConURLhashListener}
+            Conrewind = {$ns_newsslider.owl.Conrewind}
+            ConnavElement = {$ns_newsslider.owl.ConnavElement}
+            ConslideBy = {$ns_newsslider.owl.ConslideBy}
+            ConslideTransition = {$ns_newsslider.owl.ConslideTransition}
+            Condots = {$ns_newsslider.owl.Condots}
+            CondotsEach = {$ns_newsslider.owl.CondotsEach}
+            CondotsData = {$ns_newsslider.owl.CondotsData}
+            ConlazyLoadEager = {$ns_newsslider.owl.ConlazyLoadEager}
+            ConautoplayTimeout = {$ns_newsslider.owl.ConautoplayTimeout}
+            ConautoplayHoverPause = {$ns_newsslider.owl.ConautoplayHoverPause}
+            ConautoplaySpeed = {$ns_newsslider.owl.ConautoplaySpeed}
+            ConnavSpeed = {$ns_newsslider.owl.ConnavSpeed}
+            CondotsSpeed = {$ns_newsslider.owl.CondotsSpeed}
+            CondragEndSpeed = {$ns_newsslider.owl.CondragEndSpeed}
+            ConanimateOut = {$ns_newsslider.owl.ConanimateOut}
+            ConanimateIn = {$ns_newsslider.owl.ConanimateIn}
+            ConfallbackEasing = {$ns_newsslider.owl.ConfallbackEasing}
+            Coninfo = {$ns_newsslider.owl.Coninfo}
+            ConnestedItemSelector = {$ns_newsslider.owl.ConnestedItemSelector}
+            ConitemElement = {$ns_newsslider.owl.ConitemElement}
+            ConnavContainer = {$ns_newsslider.owl.ConnavContainer}
+            CondotsContainer = {$ns_newsslider.owl.CondotsContainer}
+            ConcheckVisible = {$ns_newsslider.owl.ConcheckVisible}
+        }
+    }
+
+    tx_nsnewsslider_nivoslider {
+        settings {
+            jQuery = {$ns_newsslider.nivo.jQuery}
+            nivonavagation_arrow = {$ns_newsslider.nivo.nivonavagation_arrow}
+            height = {$ns_newsslider.nivo.height}
+            imageWidth = {$ns_newsslider.nivo.imageWidth}
+            effect = {$ns_newsslider.nivo.effect}
+            slices = {$ns_newsslider.nivo.slices}
+            boxCols = {$ns_newsslider.nivo.boxCols}
+            boxRows = {$ns_newsslider.nivo.boxRows}
+            animSpeed = {$ns_newsslider.nivo.animSpeed}
+            pauseTime = {$ns_newsslider.nivo.pauseTime}
+            startSlide = {$ns_newsslider.nivo.startSlide}
+            controlNav = {$ns_newsslider.nivo.controlNav}
+            controlNavThumbs = {$ns_newsslider.nivo.controlNavThumbs}
+            pauseOnHover = {$ns_newsslider.nivo.pauseOnHover}
+            manualAdvance = {$ns_newsslider.nivo.manualAdvance}
+            randomStart = {$ns_newsslider.nivo.randomStart}
+        }
+    }
+
+    tx_nsnewsslider_royalslider {
+        settings {
+            jQuery = {$ns_newsslider.royal.jQuery}
+            deeplinking_enabled = {$ns_newsslider.royal.deeplinking_enabled}
+            deeplinking_change = {$ns_newsslider.royal.deeplinking_change}
+            deeplinking_prefix = {$ns_newsslider.royal.deeplinking_prefix}
+            thumbs_appendSpan = {$ns_newsslider.royal.thumbs_appendSpan}
+            thumbs_firstMargin = {$ns_newsslider.royal.thumbs_firstMargin}
+            arrowsNav = {$ns_newsslider.royal.arrowsNav}
+            loop = {$ns_newsslider.royal.loop}
+            keyboardNavEnabled = {$ns_newsslider.royal.keyboardNavEnabled}
+            controlsInside = {$ns_newsslider.royal.controlsInside}
+            imageScaleMode = {$ns_newsslider.royal.imageScaleMode}
+            arrowsNavAutoHide = {$ns_newsslider.royal.arrowsNavAutoHide}
+            autoScaleSlider = {$ns_newsslider.royal.autoScaleSlider}
+            autoScaleSliderWidth = {$ns_newsslider.royal.autoScaleSliderWidth}
+            autoScaleSliderHeight = {$ns_newsslider.royal.autoScaleSliderHeight}
+            controlNavigation = {$ns_newsslider.royal.controlNavigation}
+            navigateByClick = {$ns_newsslider.royal.navigateByClick}
+            startSlideId = {$ns_newsslider.royal.startSlideId}
+            autoPlay = {$ns_newsslider.royal.autoPlay}
+            transitionType = {$ns_newsslider.royal.transitionType}
+            globalCaption = {$ns_newsslider.royal.globalCaption}
+            arrowsNavHideOnTouch = {$ns_newsslider.royal.arrowsNavHideOnTouch}
+            imageAlignCenter = {$ns_newsslider.royal.imageAlignCenter}
+            imgWidth = {$ns_newsslider.royal.imgWidth}
+            imgHeight = {$ns_newsslider.royal.imgHeight}
+            slidesSpacing = {$ns_newsslider.royal.slidesSpacing}
+            loopRewind = {$ns_newsslider.royal.loopRewind}
+            randomizeSlides = {$ns_newsslider.royal.randomizeSlides}
+            numImagesToPreload = {$ns_newsslider.royal.numImagesToPreload}
+            usePreloader = {$ns_newsslider.royal.usePreloader}
+            slidesOrientation = {$ns_newsslider.royal.slidesOrientation}
+            transitionSpeed = {$ns_newsslider.royal.transitionSpeed}
+            easeInOut = {$ns_newsslider.royal.easeInOut}
+            easeOut = {$ns_newsslider.royal.easeOut}
+            sliderDrag = {$ns_newsslider.royal.sliderDrag}
+            sliderTouch = {$ns_newsslider.royal.sliderTouch}
+            fadeinLoadedSlide = {$ns_newsslider.royal.fadeinLoadedSlide}
+            allowCSS3 = {$ns_newsslider.royal.allowCSS3}
+            addActiveClass = {$ns_newsslider.royal.addActiveClass}
+            minSlideOffset = {$ns_newsslider.royal.minSlideOffset}
+            autoHeight = {$ns_newsslider.royal.autoHeight}
+            thumb_drag = {$ns_newsslider.royal.thumb_drag}
+            thumb_touch = {$ns_newsslider.royal.thumb_touch}
+            thumb_orientation = {$ns_newsslider.royal.thumb_orientation}
+            thumb_arrows = {$ns_newsslider.royal.thumb_arrows}
+            thumb_spacing = {$ns_newsslider.royal.thumb_spacing}
+            thumb_arrowsAutoHide = {$ns_newsslider.royal.thumb_arrowsAutoHide}
+            thumb_autoCenter = {$ns_newsslider.royal.thumb_autoCenter}
+            thumb_transitionSpeed = {$ns_newsslider.royal.thumb_transitionSpeed}
+            thumb_fitInViewport = {$ns_newsslider.royal.thumb_fitInViewport}
+            thumb_arrowLeft = {$ns_newsslider.royal.thumb_arrowLeft}
+            thumb_arrowRight = {$ns_newsslider.royal.thumb_arrowRight}
+            fullScreen_enabled = {$ns_newsslider.royal.fullScreen_enabled}
+            fullScreen_keyboardNav = {$ns_newsslider.royal.fullScreen_keyboardNav}
+            fullScreen_buttonFS = {$ns_newsslider.royal.fullScreen_buttonFS}
+            fullScreen_nativeFS = {$ns_newsslider.royal.fullScreen_nativeFS}
+            autoPlay_stopAtAction = {$ns_newsslider.royal.autoPlay_stopAtAction}
+            autoPlay_pauseOnHover = {$ns_newsslider.royal.autoPlay_pauseOnHover}
+            autoPlay_delay = {$ns_newsslider.royal.autoPlay_delay}
+        }
+    }
+
+    tx_nsnewsslider_slickslider {
+        settings {
+            jQuery = {$ns_newsslider.slick.jQuery}
+            slideWidth = {$ns_newsslider.slick.slideWidth}
+            dots = {$ns_newsslider.slick.dots}
+            speed = {$ns_newsslider.slick.speed}
+            autoplay = {$ns_newsslider.slick.autoplay}
+            autoplaySpeed = {$ns_newsslider.slick.autoplaySpeed}
+            accessibility = {$ns_newsslider.slick.accessibility}
+            adaptiveHeight = {$ns_newsslider.slick.adaptiveHeight}
+            arrows = {$ns_newsslider.slick.arrows}
+            centerPadding = {$ns_newsslider.slick.centerPadding}
+            cssEase = {$ns_newsslider.slick.cssEase}
+            draggable = {$ns_newsslider.slick.draggable}
+            fade = {$ns_newsslider.slick.fade}
+            focusOnSelect = {$ns_newsslider.slick.focusOnSelect}
+            infinite = {$ns_newsslider.slick.infinite}
+            initialSlide = {$ns_newsslider.slick.initialSlide}
+            mobileFirst = {$ns_newsslider.slick.mobileFirst}
+            pauseOnFocus = {$ns_newsslider.slick.pauseOnFocus}
+            pauseOnHover = {$ns_newsslider.slick.pauseOnHover}
+            pauseOnDotsHover = {$ns_newsslider.slick.pauseOnDotsHover}
+            slidesToShow = {$ns_newsslider.slick.slidesToShow}
+            slidesToScroll = {$ns_newsslider.slick.slidesToScroll}
+            swipe = {$ns_newsslider.slick.swipe}
+            swipeToSlide = {$ns_newsslider.slick.swipeToSlide}
+            touchMove = {$ns_newsslider.slick.touchMove}
+            touchThreshold = {$ns_newsslider.slick.touchThreshold}
+            useCSS = {$ns_newsslider.slick.useCSS}
+            useTransform = {$ns_newsslider.slick.useTransform}
+            variableWidth = {$ns_newsslider.slick.variableWidth}
+            rtl = {$ns_newsslider.slick.rtl}
+            waitForAnimate = {$ns_newsslider.slick.waitForAnimate}
+            vertical = {$ns_newsslider.slick.vertical}
+            verticalSwiping = {$ns_newsslider.slick.verticalSwiping}
+            centerMode = {$ns_newsslider.slick.centerMode}
+            lazyLoad = {$ns_newsslider.slick.lazyLoad}
+        }
+    }
+
+    tx_nsnewsslider_sliderjs {
+        settings {
+            jQuery = {$ns_newsslider.sliderjs.jQuery}
+            Conslidewidth = {$ns_newsslider.sliderjs.Conslidewidth}
+            Conslideheight = {$ns_newsslider.sliderjs.Conslideheight}
+            ConnavigationActive = {$ns_newsslider.sliderjs.ConnavigationActive}
+            Connavigation_effect = {$ns_newsslider.sliderjs.Connavigation_effect}
+            Conpagination_effect = {$ns_newsslider.sliderjs.Conpagination_effect}
+            Coneffect_cross_fade = {$ns_newsslider.sliderjs.Coneffect_cross_fade}
+            Coneffect_fade_speed = {$ns_newsslider.sliderjs.Coneffect_fade_speed}
+            Conplay_active = {$ns_newsslider.sliderjs.Conplay_active}
+            Conplay_auto = {$ns_newsslider.sliderjs.Conplay_auto}
+            Conplay_swap = {$ns_newsslider.sliderjs.Conplay_swap}
+            Conplay_interval = {$ns_newsslider.sliderjs.Conplay_interval}
+
+            Constart = {$ns_newsslider.sliderjs.Constart}
+            ConpaginationActive = {$ns_newsslider.sliderjs.ConpaginationActive}
+            ConeffectSlideSpeed = {$ns_newsslider.sliderjs.ConeffectSlideSpeed}
+            ConplayPauseOnHover = {$ns_newsslider.sliderjs.ConplayPauseOnHover}
+            ConplayEffect = {$ns_newsslider.sliderjs.ConplayEffect}
+            ConrestartDelay = {$ns_newsslider.sliderjs.ConrestartDelay}
+            Conplay_effect = {$ns_newsslider.sliderjs.Conplay_effect}
+        }
+    }
+}

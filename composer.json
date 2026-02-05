@@ -16,7 +16,7 @@
   },
   "require": {
     "typo3/cms-core": "^12.4.37 || ^13 || ^14",
-    "georgringer/news": "^14"
+    "georgringer/news": "^13 || ^14"
   },
   "autoload": {
     "psr-4": {
