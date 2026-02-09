@@ -99,12 +99,12 @@ class SliderjsController extends SliderBaseController
         $basicOpt = "
                 start:'" . (isset($this->settings['start']) && $this->settings['start'] > 0 ? $this->settings['start'] : $constant['Constart']) . "',
                 navigation: {
-                    active: " . (isset($this->settings['navigation']) && $this->settings['navigation'] != '' ? $this->settings['navigation'] : $constant['ConnavigationActive']) . ",
-                    effect: '" . (isset($this->settings['navigation_effect']) && $this->settings['navigation_effect'] != '' ? $this->settings['navigation_effect'] : $constant['Connavigation_effect']) . "'
+                    active: " . (isset($this->settings['navigation']) && $this->settings['navigation'] != '' ? $this->settings['navigation'] : (($constant['ConnavigationActive'] ?? '') === '' ? '1' : $constant['ConnavigationActive'])) . ",
+                    effect: '" . (isset($this->settings['navigation_effect']) && $this->settings['navigation_effect'] != '' ? $this->settings['navigation_effect'] : (($constant['Connavigation_effect'] ?? '') === '' ? '1' : $constant['Connavigation_effect'])) . "',
                 },
                 pagination: {
-                  active: " . (isset($this->settings['pagination']) && $this->settings['pagination'] != '' ? $this->settings['pagination'] : $constant['ConpaginationActive']) . ",
-                  effect: '" . (isset($this->settings['pagination_effect']) && $this->settings['pagination_effect'] != '' ? $this->settings['pagination_effect'] : $constant['Conpagination_effect']) . "'
+                  active: " . (isset($this->settings['pagination']) && $this->settings['pagination'] != '' ? $this->settings['pagination'] : (($constant['ConpaginationActive'] ?? '') === '' ? '1' : $constant['ConpaginationActive'])) . ",
+                  effect: '" . (isset($this->settings['pagination_effect']) && $this->settings['pagination_effect'] != '' ? $this->settings['pagination_effect'] : (($constant['Conpagination_effect'] ?? '') === '' ? '1' : $constant['Conpagination_effect'])) . "',
                 },
                 ";
 
@@ -119,7 +119,7 @@ class SliderjsController extends SliderBaseController
                 $basicOpt . '
                 effect: {
                   fade: {
-                    speed: ' . (isset($this->settings['effect_fade_speed']) && $this->settings['effect_fade_speed'] != '' ? $this->settings['effect_fade_speed'] : $constant['Coneffect_fade_speed']) . ',
+                    speed: ' . (isset($this->settings['effect_fade_speed']) && $this->settings['effect_fade_speed'] != '' ? $this->settings['effect_fade_speed'] : (($constant['Coneffect_fade_speed'] ?? '') === '' ? 'false' : $constant['Coneffect_fade_speed'])) . ',
                     crossfade: ' . (isset($this->settings['crossFade']) && $this->settings['crossFade'] != '' ? $this->settings['crossFade'] : (($constant['Coneffect_cross_fade'] ?? '') === '' ? 'false' : $constant['Coneffect_cross_fade'])) . ',
                   }
                 }';
@@ -139,14 +139,13 @@ class SliderjsController extends SliderBaseController
             $type =
                 $basicOpt . '
                 play: {
-                  active: ' . (isset($this->settings['play_active'])  && $this->settings['play_active'] != '' ? $this->settings['play_active'] : $constant['Conplay_active']) . ',
-                  auto: ' . (isset($this->settings['play_auto']) && $this->settings['play_auto'] != '' ? $this->settings['play_auto'] : $constant['Conplay_auto']) . ',
-                  interval: ' . (isset($this->settings['play_interval']) && $this->settings['play_interval'] != '' ? $this->settings['play_interval'] : $constant['Conplay_interval']) . ',
-                  swap: ' . (isset($this->settings['play_swap'])  && $this->settings['play_swap'] != '' ? $this->settings['play_swap'] : $constant['Conplay_swap']) . ',
-                  pauseOnHover: ' . (isset($this->settings['play_pauseOnHover']) && $this->settings['play_pauseOnHover'] != '' ? $this->settings['play_pauseOnHover'] : $constant['ConplayPauseOnHover']) . ",
-                  restartDelay:'" . (isset($this->settings['play_restartDelay']) && $this->settings['play_restartDelay'] != '' ? $this->settings['play_restartDelay'] : $constant['ConrestartDelay']) . "',
-                  effect: '" . (isset($this->settings['play_effect']) && $this->settings['play_effect'] != '' ? $this->settings['play_effect'] : $constant['Conplay_effect']) . "'
-
+                  active: ' . (isset($this->settings['play_active'])  && $this->settings['play_active'] != '' ? $this->settings['play_active'] : (($constant['Conplay_active'] ?? '') === '' ? '1' : $constant['Conplay_active'])) . ',
+                  auto: ' . (isset($this->settings['play_auto']) && $this->settings['play_auto'] != '' ? $this->settings['play_auto'] : (($constant['Conplay_auto'] ?? '') === '' ? '1' : $constant['Conplay_auto'])) . ',
+                  interval: ' . (isset($this->settings['play_interval']) && $this->settings['play_interval'] != '' ? $this->settings['play_interval'] : (($constant['Conplay_interval'] ?? '') === '' ? '1' : $constant['Conplay_interval'])) . ',
+                  swap: ' . (isset($this->settings['play_swap'])  && $this->settings['play_swap'] != '' ? $this->settings['play_swap'] : (($constant['Conplay_swap'] ?? '') === '' ? '1' : $constant['Conplay_swap'])) . ',
+                  pauseOnHover: ' . (isset($this->settings['play_pauseOnHover']) && $this->settings['play_pauseOnHover'] != '' ? $this->settings['play_pauseOnHover'] : (($constant['ConplayPauseOnHover'] ?? '') === '' ? '1' : $constant['ConplayPauseOnHover'])) . ",
+                  restartDelay:'" . (isset($this->settings['play_restartDelay']) && $this->settings['play_restartDelay'] != '' ? $this->settings['play_restartDelay'] : (($constant['ConrestartDelay'] ?? '') === '' ? '1' : $constant['ConrestartDelay'])) . ",
+                  effect: '" . (isset($this->settings['play_effect']) && $this->settings['play_effect'] != '' ? $this->settings['play_effect'] : (($constant['Conplay_effect'] ?? '') === '' ? '1' : $constant['Conplay_effect'])) . ",
                 }";
         }
 
@@ -158,8 +157,8 @@ class SliderjsController extends SliderBaseController
                     }
                     (function($) {
                       $('#slides-" . $getContentId . "').slidesjs({
-                          width: " . (isset($this->settings['slidewidth']) && $this->settings['slidewidth'] != '' ? $this->settings['slidewidth'] : $constant['Conslidewidth']) . ',
-                          height: ' . (isset($this->settings['slideheight']) && $this->settings['slideheight'] != '' ? $this->settings['slideheight'] : $constant['Conslideheight']) . ',
+                          width: " . (isset($this->settings['slidewidth']) && $this->settings['slidewidth'] != '' ? $this->settings['slidewidth'] : (($constant['Conslidewidth'] ?? '') === '' ? '1' : $constant['Conslidewidth'])) . ',
+                          height: ' . (isset($this->settings['slideheight']) && $this->settings['slideheight'] != '' ? $this->settings['slideheight'] : (($constant['Conslideheight'] ?? '') === '' ? '1' : $constant['Conslideheight'])) . ',
                           ' . $type . '
                       });
                     })(jQuery);

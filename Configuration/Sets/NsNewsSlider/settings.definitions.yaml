@@ -353,7 +353,24 @@ settings:
     label: LLL:EXT:ns_news_slider/Resources/Private/Language/locallang_db.xlf:flexform.nivo.effect
     category: ns_newsslider.nivo
     type: string
-    default: 'random'
+    default: random
+    enum:
+      sliceDown: sliceDown
+      sliceDownLeft: sliceDownLeft
+      sliceUp: sliceUp
+      sliceUpLeft: sliceUpLeft
+      sliceUpDown: sliceUpDown
+      sliceUpDownLeft: sliceUpDownLeft
+      fold: fold
+      fade: fade
+      random: random
+      slideInRight: slideInRight
+      slideInLeft: slideInLeft
+      boxRandom: boxRandom
+      boxRain: boxRain
+      boxRainReverse: boxRainReverse
+      boxRainGrow: boxRainGrow
+      boxRainGrowReverse: boxRainGrowReverse
 
   ns_newsslider.nivo.slices:
     label: LLL:EXT:ns_news_slider/Resources/Private/Language/locallang_db.xlf:flexform.nivo.slices
@@ -489,7 +506,11 @@ settings:
     label: LLL:EXT:ns_news_slider/Resources/Private/Language/locallang_db.xlf:flexform.imageScaleMode
     category: ns_newsslider.royal
     type: string
-    default: 'fit-if-smaller'
+    default: fit-if-smaller
+    enum:
+      fill: Fill
+      none: None
+      fit-if-smaller: Fit if smaller
 
   ns_newsslider.royal.arrowsNavAutoHide:
     label: LLL:EXT:ns_news_slider/Resources/Private/Language/locallang_db.xlf:flexform.arrowsNavAutoHide
@@ -519,7 +540,11 @@ settings:
     label: LLL:EXT:ns_news_slider/Resources/Private/Language/locallang_db.xlf:flexform.controlNavigation
     category: ns_newsslider.royal
     type: string
-    default: 'thumbnails'
+    default: thumbnails
+    enum:
+      thumbnails: thumbnails
+      tabs: tabs
+      none: none
 
   ns_newsslider.royal.navigateByClick:
     label: LLL:EXT:ns_news_slider/Resources/Private/Language/locallang_db.xlf:flexform.navigateByClick
@@ -610,6 +635,9 @@ settings:
     category: ns_newsslider.royal
     type: string
     default: horizontal
+    enum:
+      vertical: vertical
+      horizontal: horizontal
 
   ns_newsslider.royal.transitionSpeed:
     label: LLL:EXT:ns_news_slider/Resources/Private/Language/locallang_db.xlf:flexform.transitionSpeed
@@ -621,13 +649,21 @@ settings:
     label: LLL:EXT:ns_news_slider/Resources/Private/Language/locallang_db.xlf:flexform.easeInOut
     category: ns_newsslider.royal
     type: string
-    default: 'easeInOutSine'
+    default: easeInOutSine
+    enum:
+      easeOutSine: easeOutSine
+      easeInOutSine: easeInOutSine
+      linear: linear
 
   ns_newsslider.royal.easeOut:
     label: LLL:EXT:ns_news_slider/Resources/Private/Language/locallang_db.xlf:flexform.easeOut
     category: ns_newsslider.royal
     type: string
-    default: 'easeOutSine'
+    default: easeOutSine
+    enum:
+      easeOutSine: easeOutSine
+      easeInOutSine: easeInOutSine
+      linear: linear
 
   ns_newsslider.royal.sliderDrag:
     label: LLL:EXT:ns_news_slider/Resources/Private/Language/locallang_db.xlf:flexform.sliderDrag
@@ -687,7 +723,10 @@ settings:
     label: LLL:EXT:ns_news_slider/Resources/Private/Language/locallang_db.xlf:flexform.thumb_orientation
     category: ns_newsslider.royal
     type: string
-    default: 'horizontal'
+    default: horizontal
+    enum:
+      vertical: vertical
+      horizontal: horizontal
 
   ns_newsslider.royal.thumb_arrows:
     label: LLL:EXT:ns_news_slider/Resources/Private/Language/locallang_db.xlf:flexform.thumb_arrows

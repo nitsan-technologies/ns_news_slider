@@ -139,53 +139,61 @@ class OwlController extends SliderBaseController
                     } 
                     (function($) {
                         var owl = $('.owl-demo-" . $getContentId . "');
-                            owl.owlCarousel({
-                               autoplay : " . (isset($this->settings['owlautoPlay']) && $this->settings['owlautoPlay'] != '' ? $this->settings['owlautoPlay'] : $constant['ConAutoPlay']) . ',
-                            nav : ' . (isset($this->settings['owlnavigation']) && $this->settings['owlnavigation'] != '' ? $this->settings['owlnavigation'] : $constant['Connavigation']) . ',
-                            items : ' . (isset($this->settings['owlitems']) && $this->settings['owlitems'] != '' ? $this->settings['owlitems'] : $constant['Conitems']) . ',
-                            lazyLoad : ' . (isset($this->settings['owllazyLoad']) && $this->settings['owllazyLoad'] != '' ? $this->settings['owllazyLoad'] : $constant['ConlazyLoad']) . ',
-                            mouseDrag:' . (isset($this->settings['owlmouseDrag']) && $this->settings['owlmouseDrag'] != '' ? $this->settings['owlmouseDrag'] : $constant['ConmouseDrag']) . ',
-                            touchDrag:' . (isset($this->settings['owltouchDrag']) && $this->settings['owltouchDrag'] != '' ? $this->settings['owltouchDrag'] : $constant['ContouchDrag']) . ',
+                        owl.owlCarousel({
+                            autoplay : " . (isset($this->settings['owlautoPlay']) && $this->settings['owlautoPlay'] != '' ? $this->settings['owlautoPlay'] : (($constant['ConAutoPlay'] ?? '') === '' ? 'false' : $constant['ConAutoPlay'])) . ',
+                            nav : ' . (isset($this->settings['owlnavigation']) && $this->settings['owlnavigation'] != '' ? $this->settings['owlnavigation'] : (($constant['Connavigation'] ?? '') === '' ? 'false' : $constant['Connavigation'])) . ',
+                            items : ' . (isset($this->settings['owlitems']) && $this->settings['owlitems'] != '' ? $this->settings['owlitems'] : (($constant['Conitems'] ?? '') === '' ? 'false' : $constant['Conitems'])) . ',
+                            lazyLoad : ' . (isset($this->settings['owllazyLoad']) && $this->settings['owllazyLoad'] != '' ? $this->settings['owllazyLoad'] : (($constant['ConlazyLoad'] ?? '') === '' ? 'false' : $constant['ConlazyLoad'])) . ',
+                            mouseDrag:' . (isset($this->settings['owlmouseDrag']) && $this->settings['owlmouseDrag'] != '' ? $this->settings['owlmouseDrag'] : (($constant['ConmouseDrag'] ?? '') === '' ? 'false' : $constant['ConmouseDrag'])) . ',
+                            touchDrag:' . (isset($this->settings['owltouchDrag']) && $this->settings['owltouchDrag'] != '' ? $this->settings['owltouchDrag'] : (($constant['ContouchDrag'] ?? '') === '' ? 'false' : $constant['ContouchDrag'])) . ',
 
-                            margin:' . (isset($this->settings['owlmargin']) && $this->settings['owlmargin'] != '' ? $this->settings['owlmargin'] : $constant['Conmargin']) . ',
+                            margin:' . (isset($this->settings['owlmargin']) && $this->settings['owlmargin'] != '' ? $this->settings['owlmargin'] : (($constant['Conmargin'] ?? '') === '' ? 'false' : $constant['Conmargin'])) . ',
                             loop:' . (isset($this->settings['owlloop']) && $this->settings['owlloop'] != '' ? $this->settings['owlloop'] : (($constant['Conloop'] ?? '') === '' ? 'false' : $constant['Conloop'])) . ',
 
+                            pullDrag:' . (isset($this->settings['owlpullDrag']) && $this->settings['owlpullDrag'] != '' ? $this->settings['owlpullDrag'] : (($constant['ConpullDrag'] ?? '') === '' ? 'false' : $constant['ConpullDrag'])) . ',
+                            freeDrag:' . (isset($this->settings['owlfreeDrag']) && $this->settings['owlfreeDrag'] != '' ? $this->settings['owlfreeDrag'] : (($constant['ConfreeDrag'] ?? '') === '' ? 'false' : $constant['ConfreeDrag'])) . ',
+                            stagePadding:' . (isset($this->settings['owlstagePadding']) && $this->settings['owlstagePadding'] != '' ? $this->settings['owlstagePadding'] : (($constant['ConstagePadding'] ?? '') === '' ? 'false' : $constant['ConstagePadding'])) . ',
+                            merge:' . (isset($this->settings['owlmerge']) && $this->settings['owlmerge'] != '' ? $this->settings['owlmerge'] : (($constant['Conmerge'] ?? '') === '' ? 'false' : $constant['Conmerge'])) . ',
+                            mergeFit:' . (isset($this->settings['owlmergeFit']) && $this->settings['owlmergeFit'] != '' ? $this->settings['owlmergeFit'] : (($constant['ConmergeFit'] ?? '') === '' ? 'false' : $constant['ConmergeFit'])) . ',
 
-                            pullDrag:' . (isset($this->settings['owlpullDrag']) && $this->settings['owlpullDrag'] != '' ? $this->settings['owlpullDrag'] : $constant['ConpullDrag']) . ',
-                            freeDrag:' . (isset($this->settings['owlfreeDrag']) && $this->settings['owlfreeDrag'] != '' ? $this->settings['owlfreeDrag'] : $constant['ConfreeDrag']) . ',
-                            stagePadding:' . (isset($this->settings['owlstagePadding']) && $this->settings['owlstagePadding'] != '' ? $this->settings['owlstagePadding'] : $constant['ConstagePadding']) . ',
-                            merge:' . (isset($this->settings['owlmerge']) && $this->settings['owlmerge'] != '' ? $this->settings['owlmerge'] : $constant['Conmerge']) . ',
-                            mergeFit:' . (isset($this->settings['owlmergeFit']) && $this->settings['owlmergeFit'] != '' ? $this->settings['owlmergeFit'] : $constant['ConmergeFit']) . ',
-                            startPosition: "' . (isset($this->settings['owlstartPosition']) && $this->settings['owlstartPosition'] != '' ? $this->settings['owlstartPosition'] : $constant['ConstartPosition']) . '",
-                            URLhashListener:' . (isset($this->settings['owlURLhashListener']) && $this->settings['owlURLhashListener'] != '' ? $this->settings['owlURLhashListener'] : $constant['ConURLhashListener']) . ',
-                            rewind:' . (isset($this->settings['owlrewind']) && $this->settings['owlrewind'] != '' ? $this->settings['owlrewind'] : $constant['Conrewind']) . ",
-                            navElement:'" . (isset($this->settings['owlnavElement']) && $this->settings['owlnavElement'] != '' ? $this->settings['owlnavElement'] : $constant['ConnavElement']) . "',
-                            slideBy:" . (isset($this->settings['owlslideBy']) && $this->settings['owlslideBy'] != '' ? $this->settings['owlslideBy'] : $constant['ConslideBy']) . ",
-                            slideTransition:'" . (isset($this->settings['owlslideTransition']) && $this->settings['owlslideTransition'] != '' ? $this->settings['owlslideTransition'] : $constant['ConslideTransition']) . "',
-                            dots:" . (isset($this->settings['owldots']) && $this->settings['owldots'] != '' ? $this->settings['owldots'] : $constant['Condots']) . ',
+                            startPosition: "' . (isset($this->settings['owlstartPosition']) && $this->settings['owlstartPosition'] != '' ? $this->settings['owlstartPosition'] : (($constant['ConstartPosition'] ?? '') === '' ? 'false' : $constant['ConstartPosition'])) . '",
+
+                            URLhashListener:' . (isset($this->settings['owlURLhashListener']) && $this->settings['owlURLhashListener'] != '' ? $this->settings['owlURLhashListener'] : (($constant['ConURLhashListener'] ?? '') === '' ? 'false' : $constant['ConURLhashListener'])) . ',
+                            rewind:' . (isset($this->settings['owlrewind']) && $this->settings['owlrewind'] != '' ? $this->settings['owlrewind'] : (($constant['Conrewind'] ?? '') === '' ? 'false' : $constant['Conrewind'])) . ',
+
+                            navElement:"' . (isset($this->settings['owlnavElement']) && $this->settings['owlnavElement'] != '' ? $this->settings['owlnavElement'] : (($constant['ConnavElement'] ?? '') === '' ? 'false' : $constant['ConnavElement'])) . '",
+                            slideBy:' . (isset($this->settings['owlslideBy']) && $this->settings['owlslideBy'] != '' ? $this->settings['owlslideBy'] : (($constant['ConslideBy'] ?? '') === '' ? 'false' : $constant['ConslideBy'])) . ',
+                            slideTransition:"' . (isset($this->settings['owlslideTransition']) && $this->settings['owlslideTransition'] != '' ? $this->settings['owlslideTransition'] : (($constant['ConslideTransition'] ?? '') === '' ? 'false' : $constant['ConslideTransition'])) . '",
+
+                            dots:' . (isset($this->settings['owldots']) && $this->settings['owldots'] != '' ? $this->settings['owldots'] : (($constant['Condots'] ?? '') === '' ? 'false' : $constant['Condots'])) . ',
                             dotsEach:' . (isset($this->settings['owldotsEach']) && $this->settings['owldotsEach'] != '' ? $this->settings['owldotsEach'] : (($constant['CondotsEach'] ?? '') === '' ? 'false' : $constant['CondotsEach'])) . ',
-                            lazyLoadEager:' . (isset($this->settings['owllazyLoadEager']) && $this->settings['owllazyLoadEager'] != '' ? $this->settings['owllazyLoadEager'] : $constant['ConlazyLoadEager']) . ',
-                            autoplayTimeout:' . (isset($this->settings['owlautoplayTimeout']) && $this->settings['owlautoplayTimeout'] != '' ? $this->settings['owlautoplayTimeout'] : $constant['ConautoplayTimeout']) . ',
+
+                            lazyLoadEager:' . (isset($this->settings['owllazyLoadEager']) && $this->settings['owllazyLoadEager'] != '' ? $this->settings['owllazyLoadEager'] : (($constant['ConlazyLoadEager'] ?? '') === '' ? 'false' : $constant['ConlazyLoadEager'])) . ',
+                            autoplayTimeout:' . (isset($this->settings['owlautoplayTimeout']) && $this->settings['owlautoplayTimeout'] != '' ? $this->settings['owlautoplayTimeout'] : (($constant['ConautoplayTimeout'] ?? '') === '' ? 'false' : $constant['ConautoplayTimeout'])) . ',
                             autoplayHoverPause:' . (isset($this->settings['owlautoplayHoverPause']) && $this->settings['owlautoplayHoverPause'] != '' ? $this->settings['owlautoplayHoverPause'] : (($constant['ConautoplayHoverPause'] ?? '') === '' ? 'false' : $constant['ConautoplayHoverPause'])) . ',
-                            autoplaySpeed:' . (isset($this->settings['owlolwautoplaySpeed']) && $this->settings['owlolwautoplaySpeed'] != '' ? $this->settings['owlolwautoplaySpeed'] : $constant['ConautoplaySpeed']) . ',
-                            navSpeed:' . (isset($this->settings['owlnavSpeed']) && $this->settings['owlnavSpeed'] != '' ? $this->settings['owlnavSpeed'] : $constant['ConnavSpeed']) . ',
+
+                            autoplaySpeed:' . (isset($this->settings['owlolwautoplaySpeed']) && $this->settings['owlolwautoplaySpeed'] != '' ? $this->settings['owlolwautoplaySpeed'] : (($constant['ConautoplaySpeed'] ?? '') === '' ? 'false' : $constant['ConautoplaySpeed'])) . ',
+                            navSpeed:' . (isset($this->settings['owlnavSpeed']) && $this->settings['owlnavSpeed'] != '' ? $this->settings['owlnavSpeed'] : (($constant['ConnavSpeed'] ?? '') === '' ? 'false' : $constant['ConnavSpeed'])) . ',
                             dotsSpeed:' . (isset($this->settings['owldotsSpeed']) && $this->settings['owldotsSpeed'] != '' ? $this->settings['owldotsSpeed'] : (($constant['CondotsSpeed'] ?? '') === '' ? 'false' : $constant['CondotsSpeed'])) . ',
-                            dragEndSpeed:' . (isset($this->settings['owldragEndSpeed']) && $this->settings['owldragEndSpeed'] != '' ? $this->settings['owldragEndSpeed'] : (($constant['CondragEndSpeed'] ?? '') === '' ? 'false' : $constant['CondragEndSpeed'])) . ",
+                            dragEndSpeed:' . (isset($this->settings['owldragEndSpeed']) && $this->settings['owldragEndSpeed'] != '' ? $this->settings['owldragEndSpeed'] : (($constant['CondragEndSpeed'] ?? '') === '' ? 'false' : $constant['CondragEndSpeed'])) . ',
+
                             smartSpeed: 450,
-                            animateOut:'" . (isset($this->settings['owlanimateOut']) && $this->settings['owlanimateOut'] != '' ? $this->settings['owlanimateOut'] : $constant['ConanimateOut']) . "',
-                            animateIn:'" . (isset($this->settings['owlanimateIn']) && $this->settings['owlanimateIn'] != '' ? $this->settings['owlanimateIn'] : $constant['ConanimateIn']) . "',
-                            fallbackEasing:'" . (isset($this->settings['owlfallbackEasing']) && $this->settings['owlfallbackEasing'] != '' ? $this->settings['owlfallbackEasing'] : $constant['ConfallbackEasing']) . "',
-                            info:" . (isset($this->settings['owlinfo']) && $this->settings['owlinfo'] != '' ? $this->settings['owlinfo'] : (($constant['Coninfo'] ?? '') === '' ? 'false' : $constant['Coninfo'])) . ',
-                            nestedItemSelector: ' . (isset($this->settings['owlnestedItemSelector']) && $this->settings['owlnestedItemSelector'] != '' ? "'" . $this->settings['owlnestedItemSelector'] . "'" : (($constant['ConnestedItemSelector'] ?? '') === '' ? 'false' : $constant['ConnestedItemSelector'])) . ",
 
-                            itemElement:'" . (isset($this->settings['owlitemElement']) && $this->settings['owlitemElement'] != '' ? $this->settings['owlitemElement'] : $constant['ConitemElement']) . "',
-                            navContainer:" . (isset($this->settings['owlnavContainer']) && $this->settings['owlnavContainer'] != '' ? $this->settings['owlnavContainer'] : (($constant['ConnavContainer'] ?? '') === '' ? 'false' : $constant['ConnavContainer'])) . ',
+                            animateOut:"' . (isset($this->settings['owlanimateOut']) && $this->settings['owlanimateOut'] != '' ? $this->settings['owlanimateOut'] : (($constant['ConanimateOut'] ?? '') === '' ? 'false' : $constant['ConanimateOut'])) . '",
+                            animateIn:"' . (isset($this->settings['owlanimateIn']) && $this->settings['owlanimateIn'] != '' ? $this->settings['owlanimateIn'] : (($constant['ConanimateIn'] ?? '') === '' ? 'false' : $constant['ConanimateIn'])) . '",
+                            fallbackEasing:"' . (isset($this->settings['owlfallbackEasing']) && $this->settings['owlfallbackEasing'] != '' ? $this->settings['owlfallbackEasing'] : (($constant['ConfallbackEasing'] ?? '') === '' ? 'false' : $constant['ConfallbackEasing'])) . '",
+
+                            info:' . (isset($this->settings['owlinfo']) && $this->settings['owlinfo'] != '' ? $this->settings['owlinfo'] : (($constant['Coninfo'] ?? '') === '' ? 'false' : $constant['Coninfo'])) . ',
+
+                            nestedItemSelector:' . (isset($this->settings['owlnestedItemSelector']) && $this->settings['owlnestedItemSelector'] != '' ? "'" . $this->settings['owlnestedItemSelector'] . "'" : (($constant['ConnestedItemSelector'] ?? '') === '' ? 'false' : $constant['ConnestedItemSelector'])) . ',
+
+                            itemElement:"' . (isset($this->settings['owlitemElement']) && $this->settings['owlitemElement'] != '' ? $this->settings['owlitemElement'] : (($constant['ConitemElement'] ?? '') === '' ? 'false' : $constant['ConitemElement'])) . '",
+                            navContainer:' . (isset($this->settings['owlnavContainer']) && $this->settings['owlnavContainer'] != '' ? $this->settings['owlnavContainer'] : (($constant['ConnavContainer'] ?? '') === '' ? 'false' : $constant['ConnavContainer'])) . ',
                             center:' . (isset($this->settings['owlcenter']) && $this->settings['owlcenter'] != '' ? $this->settings['owlcenter'] : (($constant['Concenter'] ?? '') === '' ? 'false' : $constant['Concenter'])) . ',
-
                             dotsContainer:' . (isset($this->settings['owldotsContainer']) && $this->settings['owldotsContainer'] != '' ? $this->settings['owldotsContainer'] : (($constant['CondotsContainer'] ?? '') === '' ? 'false' : $constant['CondotsContainer'])) . ',
-                            checkVisible:' . (isset($this->settings['owlcheckVisible']) && $this->settings['owlcheckVisible'] != '' ? $this->settings['owlcheckVisible'] : $constant['ConcheckVisible']) . ',
+                            checkVisible:' . (isset($this->settings['owlcheckVisible']) && $this->settings['owlcheckVisible'] != '' ? $this->settings['owlcheckVisible'] : (($constant['ConcheckVisible'] ?? '') === '' ? 'false' : $constant['ConcheckVisible'])) . ',
                             ' . $thumbs . "
-                            });
+                        });
                      })(jQuery);
                     function makePages() {
                         $.each(this.owl.userItems, function(i) {

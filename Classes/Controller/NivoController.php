@@ -102,17 +102,17 @@ class NivoController extends SliderBaseController
                 (function($) {
                     $(window).on('load',function() {
                         $('#slider').nivoSlider({
-                            effect: '" . (isset($this->settings['nivoeffect']) && $this->settings['nivoeffect'] != '' ? $this->settings['nivoeffect'] : $constant['effect']) . "',
-                            slices: " . (isset($this->settings['nivoslices']) && $this->settings['nivoslices'] != '' ? $this->settings['nivoslices'] : $constant['slices']) . ',
-                            boxCols: ' . (isset($this->settings['nivoboxCols']) && $this->settings['nivoboxCols'] != '' ? $this->settings['nivoboxCols'] : $constant['boxCols']) . ',
-                            boxRows: ' . (isset($this->settings['nivoboxRows']) && $this->settings['nivoboxRows'] != '' ? $this->settings['nivoboxRows'] : $constant['boxRows']) . ',
-                            animSpeed: ' . (isset($this->settings['nivoanimSpeed']) && $this->settings['nivoanimSpeed'] != '' ? $this->settings['nivoanimSpeed'] : $constant['animSpeed']) . ',
-                            pauseTime: ' . (isset($this->settings['nivopauseTime']) && $this->settings['nivopauseTime'] != '' ? $this->settings['nivopauseTime'] : $constant['pauseTime']) . ',
-                            startSlide: ' . (isset($this->settings['nivostartSlide']) && $this->settings['nivostartSlide'] != '' ? $this->settings['nivostartSlide'] : $constant['startSlide']) . ',
-                            directionNav: ' . (isset($this->settings['nivonavagation_arrow']) && $this->settings['nivonavagation_arrow'] != '' ? $this->settings['nivonavagation_arrow'] : $constant['nivonavagation_arrow']) . ',
-                            controlNav: ' . (isset($this->settings['nivocontrolNav']) && $this->settings['nivocontrolNav'] != '' ? $this->settings['nivocontrolNav'] : $constant['controlNav']) . ',
+                            effect: '" . (isset($this->settings['nivoeffect']) && $this->settings['nivoeffect'] != '' ? $this->settings['nivoeffect'] : (($constant['effect'] ?? '') === '' ? 'false' : $constant['effect'])) . "',
+                            slices: " . (isset($this->settings['nivoslices']) && $this->settings['nivoslices'] != '' ? $this->settings['nivoslices'] : (($constant['slices'] ?? '') === '' ? 'false' : $constant['slices'])) . ',
+                            boxCols: ' . (isset($this->settings['nivoboxCols']) && $this->settings['nivoboxCols'] != '' ? $this->settings['nivoboxCols'] : (($constant['boxCols'] ?? '') === '' ? 'false' : $constant['boxCols'])) . ',
+                            boxRows: ' . (isset($this->settings['nivoboxRows']) && $this->settings['nivoboxRows'] != '' ? $this->settings['nivoboxRows'] : (($constant['boxRows'] ?? '') === '' ? 'false' : $constant['boxRows'])) . ',
+                            animSpeed: ' . (isset($this->settings['nivoanimSpeed']) && $this->settings['nivoanimSpeed'] != '' ? $this->settings['nivoanimSpeed'] : (($constant['animSpeed'] ?? '') === '' ? 'false' : $constant['animSpeed'])) . ',
+                            pauseTime: ' . (isset($this->settings['nivopauseTime']) && $this->settings['nivopauseTime'] != '' ? $this->settings['nivopauseTime'] : (($constant['pauseTime'] ?? '') === '' ? 'false' : $constant['pauseTime'])) . ',
+                            startSlide: ' . (isset($this->settings['nivostartSlide']) && $this->settings['nivostartSlide'] != '' ? $this->settings['nivostartSlide'] : (($constant['startSlide'] ?? '') === '' ? 'false' : $constant['startSlide'])) . ',
+                            directionNav: ' . (isset($this->settings['nivonavagation_arrow']) && $this->settings['nivonavagation_arrow'] != '' ? $this->settings['nivonavagation_arrow'] : (($constant['nivonavagation_arrow'] ?? '') === '' ? 'false' : $constant['nivonavagation_arrow'])) . ',
+                            controlNav: ' . (isset($this->settings['nivocontrolNav']) && $this->settings['nivocontrolNav'] != '' ? $this->settings['nivocontrolNav'] : (($constant['controlNav'] ?? '') === '' ? 'false' : $constant['controlNav'])) . ',
                             controlNavThumbs: ' . (isset($this->settings['nivocontrolNavThumbs']) && $this->settings['nivocontrolNavThumbs'] != '' ? $this->settings['nivocontrolNavThumbs'] : (($constant['controlNavThumbs'] ?? '') === '' ? 'false' : $constant['controlNavThumbs'])) . ',
-                            pauseOnHover: ' . (isset($this->settings['nivopauseOnHover']) && $this->settings['nivopauseOnHover'] != '' ? $this->settings['nivopauseOnHover'] : $constant['pauseOnHover']) . ',
+                            pauseOnHover: ' . (isset($this->settings['nivopauseOnHover']) && $this->settings['nivopauseOnHover'] != '' ? $this->settings['nivopauseOnHover'] : (($constant['pauseOnHover'] ?? '') === '' ? 'false' : $constant['pauseOnHover'])) . ',
                             manualAdvance: ' . (isset($this->settings['nivomanualAdvance']) && $this->settings['nivomanualAdvance'] != '' ? $this->settings['nivomanualAdvance'] : (($constant['manualAdvance'] ?? '') === '' ? 'false' : $constant['manualAdvance'])) . ',
                             randomStart: ' . (isset($this->settings['nivorandomStart']) && $this->settings['nivorandomStart'] != '' ? $this->settings['nivorandomStart'] : (($constant['randomStart'] ?? '') === '' ? 'false' : $constant['randomStart'])) . '
                         });
