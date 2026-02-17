@@ -119,8 +119,8 @@ class RoyalController extends SliderBaseController
                     $('#full-width-slider-" . $getContentId . "').royalSlider({";
             $type = '
                     deeplinking: {
-                        enabled: ' . (isset($this->settings['deeplinking_enabled']) && $this->settings['deeplinking_enabled'] != '' ? $this->settings['deeplinking_enabled'] : (($constant['deeplinking_enabled'] ?? '') === '' ? 'false' : $constant['deeplinking_enabled'])) . ',
-                        change: ' . (isset($this->settings['deeplinking_change']) && $this->settings['deeplinking_change'] != '' ? $this->settings['deeplinking_change'] : (($constant['deeplinking_change'] ?? '') === '' ? 'false' : $constant['deeplinking_change'])) . ",
+                        enabled: ' . (isset($this->settings['deeplinking_enabled']) && $this->settings['deeplinking_enabled'] != '' ? $this->settings['deeplinking_enabled'] : (($constant['deeplinking_enabled'] ?? '') === '' ? 'false' : 'true')) . ',
+                        change: ' . (isset($this->settings['deeplinking_change']) && $this->settings['deeplinking_change'] != '' ? $this->settings['deeplinking_change'] : (($constant['deeplinking_change'] ?? '') === '' ? 'false' : 'true')) . ",
                         prefix: '" . (isset($this->settings['deeplinking_prefix']) && $this->settings['deeplinking_prefix'] != '' ? $this->settings['deeplinking_prefix'] : (($constant['deeplinking_prefix'] ?? '') === '' ? 'false' : $constant['deeplinking_prefix'])) . "'
                     },
 
@@ -128,30 +128,30 @@ class RoyalController extends SliderBaseController
                     imgHeight: ' . (isset($this->settings['imgHeight']) && $this->settings['imgHeight'] != '' ? $this->settings['imgHeight'] : (($constant['imgHeight'] ?? '') === '' ? 'false' : $constant['imgHeight'])) . ',
 
                     thumbs: {
-                        appendSpan: ' . (isset($this->settings['thumbs_appendSpan']) && $this->settings['thumbs_appendSpan'] != '' ? $this->settings['thumbs_appendSpan'] : (($constant['thumbs_appendSpan'] ?? '') === '' ? 'false' : $constant['thumbs_appendSpan'])) . ',
-                        firstMargin: ' . (isset($this->settings['thumbs_firstMargin']) && $this->settings['thumbs_firstMargin'] != '' ? $this->settings['thumbs_firstMargin'] : (($constant['thumbs_firstMargin'] ?? '') === '' ? 'false' : $constant['thumbs_firstMargin'])) . ',
+                        appendSpan: ' . (isset($this->settings['thumbs_appendSpan']) && $this->settings['thumbs_appendSpan'] != '' ? $this->settings['thumbs_appendSpan'] : (($constant['thumbs_appendSpan'] ?? '') === '' ? 'false' : 'true')) . ',
+                        firstMargin: ' . (isset($this->settings['thumbs_firstMargin']) && $this->settings['thumbs_firstMargin'] != '' ? $this->settings['thumbs_firstMargin'] : (($constant['thumbs_firstMargin'] ?? '') === '' ? 'false' : 'true')) . ',
 
-                        drag: ' . (isset($this->settings['thumb_drag']) && $this->settings['thumb_drag'] != '' ? $this->settings['thumb_drag'] : (($constant['thumb_drag'] ?? '') === '' ? 'false' : $constant['thumb_drag'])) . ',
+                        drag: ' . (isset($this->settings['thumb_drag']) && $this->settings['thumb_drag'] != '' ? $this->settings['thumb_drag'] : (($constant['thumb_drag'] ?? '') === '' ? 'false' : 'true')) . ',
 
-                        touch: ' . (isset($this->settings['thumb_touch']) && $this->settings['thumb_touch'] != '' ? $this->settings['thumb_touch'] : (($constant['thumb_touch'] ?? '') === '' ? 'false' : $constant['thumb_touch'])) . ",
+                        touch: ' . (isset($this->settings['thumb_touch']) && $this->settings['thumb_touch'] != '' ? $this->settings['thumb_touch'] : (($constant['thumb_touch'] ?? '') === '' ? 'false' : 'true')) . ",
 
                         orientation: '" . (isset($this->settings['thumb_orientation']) && $this->settings['thumb_orientation'] != '' ? $this->settings['thumb_orientation'] : (($constant['thumb_orientation'] ?? '') === '' ? 'false' : $constant['thumb_orientation'])) . "',
 
-                        arrows: " . (isset($this->settings['thumb_arrows']) && $this->settings['thumb_arrows'] != '' ? $this->settings['thumb_arrows'] : (($constant['thumb_arrows'] ?? '') === '' ? 'false' : $constant['thumb_arrows'])) . ',
+                        arrows: " . (isset($this->settings['thumb_arrows']) && $this->settings['thumb_arrows'] != '' ? $this->settings['thumb_arrows'] : (($constant['thumb_arrows'] ?? '') === '' ? 'false' : 'true')) . ',
 
                         spacing: ' . (isset($this->settings['thumb_spacing']) && $this->settings['thumb_spacing'] != '' ? $this->settings['thumb_spacing'] : (($constant['thumb_spacing'] ?? '') === '' ? 'false' : $constant['thumb_spacing'])) . ',
 
-                        arrowsAutoHide: ' . (isset($this->settings['thumb_arrowsAutoHide']) && $this->settings['thumb_arrowsAutoHide'] != '' ? $this->settings['thumb_arrowsAutoHide'] : (($constant['thumb_arrowsAutoHide'] ?? '') === '' ? 'false' : $constant['thumb_arrowsAutoHide'])) . ',
+                        arrowsAutoHide: ' . (isset($this->settings['thumb_arrowsAutoHide']) && $this->settings['thumb_arrowsAutoHide'] != '' ? $this->settings['thumb_arrowsAutoHide'] : (($constant['thumb_arrowsAutoHide'] ?? '') === '' ? 'false' : 'true')) . ',
 
-                        autoCenter: ' . (isset($this->settings['thumb_autoCenter']) && $this->settings['thumb_autoCenter'] != '' ? $this->settings['thumb_autoCenter'] : (($constant['thumb_autoCenter'] ?? '') === '' ? 'false' : $constant['thumb_autoCenter'])) . ',
+                        autoCenter: ' . (isset($this->settings['thumb_autoCenter']) && $this->settings['thumb_autoCenter'] != '' ? $this->settings['thumb_autoCenter'] : (($constant['thumb_autoCenter'] ?? '') === '' ? 'false' : 'true')) . ',
 
                         transitionSpeed: ' . (isset($this->settings['thumb_transitionSpeed']) && $this->settings['thumb_transitionSpeed'] != '' ? $this->settings['thumb_transitionSpeed'] : (($constant['thumb_transitionSpeed'] ?? '') === '' ? 'false' : $constant['thumb_transitionSpeed'])) . ',
 
-                        fitInViewport: ' . (isset($this->settings['thumb_fitInViewport']) && $this->settings['thumb_fitInViewport'] != '' ? $this->settings['thumb_fitInViewport'] : (($constant['thumb_fitInViewport'] ?? '') === '' ? 'false' : $constant['thumb_fitInViewport'])) . ',
+                        fitInViewport: ' . (isset($this->settings['thumb_fitInViewport']) && $this->settings['thumb_fitInViewport'] != '' ? $this->settings['thumb_fitInViewport'] : (($constant['thumb_fitInViewport'] ?? '') === '' ? 'false' : 'true')) . ',
 
-                        arrowLeft: ' . (isset($this->settings['thumb_arrowLeft']) && $this->settings['thumb_arrowLeft'] != '' ? "$('" . $this->settings['thumb_arrowLeft'] . "')" : (($constant['thumb_arrowLeft'] ?? '') === '' ? 'false' : $constant['thumb_arrowLeft'])) . ',
+                        arrowLeft: ' . (isset($this->settings['thumb_arrowLeft']) && $this->settings['thumb_arrowLeft'] != '' ? "$('" . $this->settings['thumb_arrowLeft'] . "')" : (($constant['thumb_arrowLeft'] ?? '') === '' ? '0' : $constant['thumb_arrowLeft'])) . ',
 
-                        arrowRight: ' . (isset($this->settings['thumb_arrowRight']) && $this->settings['thumb_arrowRight'] != '' ? "$('" . $this->settings['thumb_arrowRight'] . "')" : (($constant['thumb_arrowRight'] ?? '') === '' ? 'false' : $constant['thumb_arrowRight'])) . ',
+                        arrowRight: ' . (isset($this->settings['thumb_arrowRight']) && $this->settings['thumb_arrowRight'] != '' ? "$('" . $this->settings['thumb_arrowRight'] . "')" : (($constant['thumb_arrowRight'] ?? '') === '' ? '0' : $constant['thumb_arrowRight'])) . ',
                     }
 
                     ';
@@ -252,19 +252,19 @@ class RoyalController extends SliderBaseController
                     ' . $id . '
                     arrowsNav: ' . (!empty($this->settings['arrowsNav'])
                         ? $this->settings['arrowsNav']
-                        : (($constant['arrowsNav'] ?? '') === '' ? 'false' : $constant['arrowsNav'])) . ',
+                        : (($constant['arrowsNav'] ?? '') === '' ? 'false' : 'true')) . ',
 
                     loop: ' . (!empty($this->settings['loop'])
                         ? $this->settings['loop']
-                        : (($constant['loop'] ?? '') === '' ? 'false' : $constant['loop'])) . ',
+                        : (($constant['loop'] ?? '') === '' ? 'false' : 'true')) . ',
 
                     keyboardNavEnabled: ' . (!empty($this->settings['keyboardNavEnabled'])
                         ? $this->settings['keyboardNavEnabled']
-                        : (($constant['keyboardNavEnabled'] ?? '') === '' ? 'false' : $constant['keyboardNavEnabled'])) . ',
+                        : (($constant['keyboardNavEnabled'] ?? '') === '' ? 'false' : 'true')) . ',
 
                     controlsInside: ' . (!empty($this->settings['controlsInside'])
                         ? $this->settings['controlsInside']
-                        : (($constant['controlsInside'] ?? '') === '' ? 'false' : $constant['controlsInside'])) . ",
+                        : (($constant['controlsInside'] ?? '') === '' ? 'false' : 'true')) . ",
 
                     imageScaleMode: '" . (!empty($this->settings['imageScaleMode'])
                         ? $this->settings['imageScaleMode']
@@ -272,11 +272,11 @@ class RoyalController extends SliderBaseController
 
                     arrowsNavAutoHide: " . (!empty($this->settings['arrowsNavAutoHide'])
                         ? $this->settings['arrowsNavAutoHide']
-                        : (($constant['arrowsNavAutoHide'] ?? '') === '' ? 'false' : $constant['arrowsNavAutoHide'])) . ',
+                        : (($constant['arrowsNavAutoHide'] ?? '') === '' ? 'false' : 'true')) . ',
 
                     autoScaleSlider: ' . (!empty($this->settings['autoScaleSlider'])
                         ? $this->settings['autoScaleSlider']
-                        : (($constant['autoScaleSlider'] ?? '') === '' ? 'false' : $constant['autoScaleSlider'])) . ',
+                        : (($constant['autoScaleSlider'] ?? '') === '' ? 'false' : 'true')) . ',
 
                     autoScaleSliderWidth: ' . (!empty($this->settings['autoScaleSliderWidth'])
                         ? $this->settings['autoScaleSliderWidth']
@@ -292,7 +292,7 @@ class RoyalController extends SliderBaseController
 
                     navigateByClick: " . (!empty($this->settings['navigateByClick'])
                         ? $this->settings['navigateByClick']
-                        : (($constant['navigateByClick'] ?? '') === '' ? 'false' : $constant['navigateByClick'])) . ',
+                        : (($constant['navigateByClick'] ?? '') === '' ? 'false' : 'true')) . ',
 
                     startSlideId: ' . (!empty($this->settings['startSlideId'])
                         ? $this->settings['startSlideId']
@@ -304,11 +304,11 @@ class RoyalController extends SliderBaseController
 
                     globalCaption: " . (!empty($this->settings['globalCaption'])
                         ? $this->settings['globalCaption']
-                        : (($constant['globalCaption'] ?? '') === '' ? 'false' : $constant['globalCaption'])) . ',
+                        : (($constant['globalCaption'] ?? '') === '' ? 'false' : 'true')) . ',
 
                     imageAlignCenter: ' . (!empty($this->settings['imageAlignCenter'])
                         ? $this->settings['imageAlignCenter']
-                        : (($constant['imageAlignCenter'] ?? '') === '' ? 'false' : $constant['imageAlignCenter'])) . ',
+                        : (($constant['imageAlignCenter'] ?? '') === '' ? 'false' : 'true')) . ',
 
                     slidesSpacing: ' . (!empty($this->settings['slidesSpacing'])
                         ? $this->settings['slidesSpacing']
@@ -316,7 +316,7 @@ class RoyalController extends SliderBaseController
 
                     loopRewind: ' . (!empty($this->settings['loopRewind'])
                         ? $this->settings['loopRewind']
-                        : (($constant['loopRewind'] ?? '') === '' ? 'false' : $constant['loopRewind'])) . ',
+                        : (($constant['loopRewind'] ?? '') === '' ? 'false' : 'true')) . ',
 
                     randomizeSlides: ' . (!empty($this->settings['randomizeSlides'])
                         ? $this->settings['randomizeSlides']
@@ -348,11 +348,11 @@ class RoyalController extends SliderBaseController
 
                     sliderDrag: " . (!empty($this->settings['sliderDrag'])
                         ? $this->settings['sliderDrag']
-                        : (($constant['sliderDrag'] ?? '') === '' ? 'false' : $constant['sliderDrag'])) . ',
+                        : (($constant['sliderDrag'] ?? '') === '' ? 'false' : 'true')) . ',
 
                     sliderTouch: ' . (!empty($this->settings['sliderTouch'])
                         ? $this->settings['sliderTouch']
-                        : (($constant['sliderTouch'] ?? '') === '' ? 'false' : $constant['sliderTouch'])) . ',
+                        : (($constant['sliderTouch'] ?? '') === '' ? 'false' : 'true')) . ',
 
                     allowCSS3: ' . (!empty($this->settings['allowCSS3'])
                         ? $this->settings['allowCSS3']
@@ -368,20 +368,20 @@ class RoyalController extends SliderBaseController
 
                     autoHeight: ' . (!empty($this->settings['autoHeight'])
                         ? $this->settings['autoHeight']
-                        : (($constant['autoHeight'] ?? '') === '' ? 'false' : $constant['autoHeight'])) . ',
+                        : (($constant['autoHeight'] ?? '') === '' ? 'false' : 'true')) . ',
 
                     autoPlay: {
                         enabled: ' . (!empty($this->settings['autoPlay'])
                             ? $this->settings['autoPlay']
-                            : (($constant['autoPlay'] ?? '') === '' ? 'false' : $constant['autoPlay'])) . ',
+                            : (($constant['autoPlay'] ?? '') === '' ? 'false' : 'true')) . ',
 
                         stopAtAction: ' . (!empty($this->settings['autoPlay_stopAtAction'])
                             ? $this->settings['autoPlay_stopAtAction']
-                            : (($constant['autoPlay_stopAtAction'] ?? '') === '' ? 'false' : $constant['autoPlay_stopAtAction'])) . ',
+                            : (($constant['autoPlay_stopAtAction'] ?? '') === '' ? 'false' : 'true')) . ',
 
                         pauseOnHover: ' . (!empty($this->settings['autoPlay_pauseOnHover'])
                             ? $this->settings['autoPlay_pauseOnHover']
-                            : (($constant['autoPlay_pauseOnHover'] ?? '') === '' ? 'false' : $constant['autoPlay_pauseOnHover'])) . ',
+                            : (($constant['autoPlay_pauseOnHover'] ?? '') === '' ? 'false' : 'true')) . ',
 
                         delay: ' . (!empty($this->settings['autoPlay_delay'])
                             ? $this->settings['autoPlay_delay']

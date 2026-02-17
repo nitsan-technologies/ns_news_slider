@@ -138,15 +138,16 @@ class SliderjsController extends SliderBaseController
 
             $type =
                 $basicOpt . '
-                play: {
-                  active: ' . (isset($this->settings['play_active'])  && $this->settings['play_active'] != '' ? $this->settings['play_active'] : (($constant['Conplay_active'] ?? '') === '' ? '1' : $constant['Conplay_active'])) . ',
-                  auto: ' . (isset($this->settings['play_auto']) && $this->settings['play_auto'] != '' ? $this->settings['play_auto'] : (($constant['Conplay_auto'] ?? '') === '' ? '1' : $constant['Conplay_auto'])) . ',
-                  interval: ' . (isset($this->settings['play_interval']) && $this->settings['play_interval'] != '' ? $this->settings['play_interval'] : (($constant['Conplay_interval'] ?? '') === '' ? '1' : $constant['Conplay_interval'])) . ',
-                  swap: ' . (isset($this->settings['play_swap'])  && $this->settings['play_swap'] != '' ? $this->settings['play_swap'] : (($constant['Conplay_swap'] ?? '') === '' ? '1' : $constant['Conplay_swap'])) . ',
-                  pauseOnHover: ' . (isset($this->settings['play_pauseOnHover']) && $this->settings['play_pauseOnHover'] != '' ? $this->settings['play_pauseOnHover'] : (($constant['ConplayPauseOnHover'] ?? '') === '' ? '1' : $constant['ConplayPauseOnHover'])) . ",
-                  restartDelay:'" . (isset($this->settings['play_restartDelay']) && $this->settings['play_restartDelay'] != '' ? $this->settings['play_restartDelay'] : (($constant['ConrestartDelay'] ?? '') === '' ? '1' : $constant['ConrestartDelay'])) . ",
-                  effect: '" . (isset($this->settings['play_effect']) && $this->settings['play_effect'] != '' ? $this->settings['play_effect'] : (($constant['Conplay_effect'] ?? '') === '' ? '1' : $constant['Conplay_effect'])) . ",
-                }";
+                    play: {
+                    active: ' . (isset($this->settings['play_active'])  && $this->settings['play_active'] != '' ? $this->settings['play_active'] : (($constant['Conplay_active'] ?? '') === '' ? '1' : $constant['Conplay_active'])) . ',
+                    auto: ' . (isset($this->settings['play_auto']) && $this->settings['play_auto'] != '' ? $this->settings['play_auto'] : (($constant['Conplay_auto'] ?? '') === '' ? '1' : $constant['Conplay_auto'])) . ',
+                    interval: ' . (isset($this->settings['play_interval']) && $this->settings['play_interval'] != '' ? $this->settings['play_interval'] : (($constant['Conplay_interval'] ?? '') === '' ? '1' : $constant['Conplay_interval'])) . ',
+                    swap: ' . (isset($this->settings['play_swap'])  && $this->settings['play_swap'] != '' ? $this->settings['play_swap'] : (($constant['Conplay_swap'] ?? '') === '' ? '1' : $constant['Conplay_swap'])) . ',
+                    pauseOnHover: ' . (isset($this->settings['play_pauseOnHover']) && $this->settings['play_pauseOnHover'] != '' ? $this->settings['play_pauseOnHover'] : (($constant['ConplayPauseOnHover'] ?? '') === '' ? '1' : $constant['ConplayPauseOnHover'])) . ',
+                    restartDelay:"' . (isset($this->settings['play_restartDelay']) && $this->settings['play_restartDelay'] != '' ? $this->settings['play_restartDelay'] : (($constant['ConrestartDelay'] ?? '') === '' ? '1' : $constant['ConrestartDelay'])) . '",
+                    effect: "' . (isset($this->settings['play_effect']) && $this->settings['play_effect'] != '' ? $this->settings['play_effect'] : (($constant['Conplay_effect'] ?? '') === '' ? '1' : $constant['Conplay_effect'])) . '",
+                    }
+                ';
         }
 
         $this->extKey = $this->extKey ?? '';
