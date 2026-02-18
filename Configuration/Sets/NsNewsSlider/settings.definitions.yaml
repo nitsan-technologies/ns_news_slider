@@ -86,12 +86,6 @@ settings:
     type: bool
     default: true
 
-  ns_newsslider.owl.ConsingleItem:
-    label: LLL:EXT:ns_news_slider/Resources/Private/Language/locallang_db.xlf:flexform.singleItem
-    category: ns_newsslider.owl
-    type: bool
-    default: true
-
   ns_newsslider.owl.Conitems:
     label: LLL:EXT:ns_news_slider/Resources/Private/Language/locallang_db.xlf:flexform.items
     category: ns_newsslider.owl

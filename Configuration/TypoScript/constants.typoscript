@@ -21,8 +21,6 @@ plugin {
             Connavigation = true
             # cat=plugin.tx_nsnewsslider_owlcarousel/1111/003; type=options[true,false]; label=LLL:EXT:ns_news_slider/Resources/Private/Language/locallang_db.xlf:flexform.autoPlay
             ConAutoPlay = true
-            # cat=plugin.tx_nsnewsslider_owlcarousel/1111/004; type=options[true,false]; label=LLL:EXT:ns_news_slider/Resources/Private/Language/locallang_db.xlf:flexform.singleItem
-            ConsingleItem = true
             # cat=plugin.tx_nsnewsslider_owlcarousel/1111/005; type=string; label=LLL:EXT:ns_news_slider/Resources/Private/Language/locallang_db.xlf:flexform.items
             Conitems = 1
             # cat=plugin.tx_nsnewsslider_owlcarousel/1111/006; type=options[true,false]; label=LLL:EXT:ns_news_slider/Resources/Private/Language/locallang_db.xlf:flexform.lazyLoad
@@ -77,7 +75,7 @@ plugin {
             ConautoplaySpeed = 3000
             # cat=plugin.tx_nsnewsslider_owlcarousel/1111/030; type=string; label=LLL:EXT:ns_news_slider/Resources/Private/Language/locallang_db.xlf:flexform.navSpeed
             ConnavSpeed = 3000
-            # cat=plugin.tx_nsnewsslider_owlcarousel/1111/031; type=type=options[true,false]; label=LLL:EXT:ns_news_slider/Resources/Private/Language/locallang_db.xlf:flexform.dotsSpeed
+            # cat=plugin.tx_nsnewsslider_owlcarousel/1111/031; type=options[true,false]; label=LLL:EXT:ns_news_slider/Resources/Private/Language/locallang_db.xlf:flexform.dotsSpeed
             CondotsSpeed = false
             # cat=plugin.tx_nsnewsslider_owlcarousel/1111/032; type=options[true,false]; label=LLL:EXT:ns_news_slider/Resources/Private/Language/locallang_db.xlf:flexform.dragEndSpeed
             CondragEndSpeed = false
