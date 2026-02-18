@@ -1025,6 +1025,9 @@ settings:
     category: ns_newsslider.slick
     type: string
     default: 'ondemand'
+    enum:
+      ondemand: ondemand
+      progressive: progressive
     
   ##################################################
   # SliderJS
@@ -1065,12 +1068,18 @@ settings:
     category: ns_newsslider.sliderjs
     type: string
     default: 'slide'
+    enum:
+      fade: fade
+      slide: slide
 
   ns_newsslider.sliderjs.Conpagination_effect:
     label: LLL:EXT:ns_news_slider/Resources/Private/Language/locallang_db.xlf:flexform.pagination_effect
     category: ns_newsslider.sliderjs
     type: string
     default: 'fade'
+    enum:
+      fade: fade
+      slide: slide
 
   ns_newsslider.sliderjs.ConpaginationActive:
     label: LLL:EXT:ns_news_slider/Resources/Private/Language/locallang_db.xlf:flexform.pagination
@@ -1131,6 +1140,9 @@ settings:
     category: ns_newsslider.sliderjs
     type: string
     default: 'fade'
+    enum:
+      fade: fade
+      slide: slide
 
   ns_newsslider.sliderjs.ConrestartDelay:
     label: LLL:EXT:ns_news_slider/Resources/Private/Language/locallang_db.xlf:flexform.play_restartDelay
@@ -1143,3 +1155,6 @@ settings:
     category: ns_newsslider.sliderjs
     type: string
     default: 'fade'
+    enum:
+      fade: fade
+      slide: slide

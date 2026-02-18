@@ -456,15 +456,6 @@
 					<sheetTitle>LLL:EXT:ns_news_slider/Resources/Private/Language/locallang_db.xlf:flexforms_tab.sliderJs</sheetTitle>
 				<type>array</type>
 				<el>
-					<settings.refLink>
-							<label>LLL:EXT:ns_news_slider/Resources/Private/Language/locallang_db.xlf:flexform.refLink</label>
-							<config>
-								<type>input</type>
-								<eval>string</eval>
-								<default>https://slidesjs.com/</default>
-								<readOnly>1</readOnly>
-							</config>
-					</settings.refLink>
 					<settings.slider_type>
 							<label>LLL:EXT:ns_news_slider/Resources/Private/Language/locallang_db.xlf:flexform.type</label>
 							<onChange>reload</onChange>

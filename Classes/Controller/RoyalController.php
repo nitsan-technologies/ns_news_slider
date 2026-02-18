@@ -233,13 +233,9 @@ class RoyalController extends SliderBaseController
                             ? $this->settings['thumb_fitInViewport']
                             : (($constant['thumb_fitInViewport'] ?? '') === '' ? 'false' : $constant['thumb_fitInViewport'])) . ',
 
-                        arrowLeft: ' . (!empty($this->settings['thumb_arrowLeft'])
-                            ? "$('" . $this->settings['thumb_arrowLeft'] . "')"
-                            : (($constant['thumb_arrowLeft'] ?? '') === '' ? 'false' : $constant['thumb_arrowLeft'])) . ',
+                        arrowLeft: ' . (isset($this->settings['thumb_arrowLeft']) && $this->settings['thumb_arrowLeft'] != '' ? "$('" . $this->settings['thumb_arrowLeft'] . "')" : (($constant['thumb_arrowLeft'] ?? '') === '' ? '0' : "$('" .$constant['thumb_arrowLeft']. "')")) . ',
 
-                        arrowRight: ' . (!empty($this->settings['thumb_arrowRight'])
-                            ? "$('" . $this->settings['thumb_arrowRight'] . "')"
-                            : (($constant['thumb_arrowRight'] ?? '') === '' ? 'false' : $constant['thumb_arrowRight'])) . ',
+                        arrowRight: ' . (isset($this->settings['thumb_arrowRight']) && $this->settings['thumb_arrowRight'] != '' ? "$('" . $this->settings['thumb_arrowRight'] . "')" : (($constant['thumb_arrowRight'] ?? '') === '' ? '0' : "$('" .$constant['thumb_arrowRight']. "')")) . ',
                     }';
         }
 

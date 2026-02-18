@@ -136,7 +136,7 @@ class SlickController extends SliderBaseController
                 centerMode:' . (isset($this->settings['slickdisplay']) && $this->settings['slickdisplay'] != '' ? $this->settings['slickdisplay'] : (empty($constant['centerMode']) || $constant['centerMode'] == 'false' ? 'false' : 'true')) . ",
                 lazyLoad:'" . (isset($this->settings['slicklazyLoad']) && $this->settings['slicklazyLoad'] != '' ? $this->settings['slicklazyLoad'] : (($constant['lazyLoad'] ?? '') === '' ? 'false' : $constant['lazyLoad'])) . "',
                 slidesToShow:" . (isset($this->settings['slickslidesToShow']) && $this->settings['slickslidesToShow'] > 0 ? $this->settings['slickslidesToShow'] : (($constant['slidesToShow'] ?? '') === '' ? 'false' : $constant['slidesToShow'])) . ',
-                slidesToScroll: ' . (isset($this->settings['slickslidesToScroll']) && $this->settings['slickslidesToScroll'] != '' ? $this->settings['slickslidesToScroll'] : (($constant['slidesToScroll'] ?? '') === '' ? 'false' : $constant['slidesToScroll'])) . ',
+                slidesToScroll: ' . (isset($this->settings['slickslidesToScroll']) && $this->settings['slickslidesToScroll'] >= 1 ? $this->settings['slickslidesToScroll'] : (($constant['slidesToScroll'] ?? '') === '' ? 'false' : $constant['slidesToScroll'])) . ',
                 infinite: ' . (isset($this->settings['slickinfinite']) && $this->settings['slickinfinite'] != '' ? $this->settings['slickinfinite'] : (empty($constant['infinite']) || $constant['infinite'] == 'false' ? 'false' : 'true')) . '
             ';
 
