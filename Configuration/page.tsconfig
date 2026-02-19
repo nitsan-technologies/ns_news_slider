@@ -55,7 +55,16 @@ mod.wizards.newContentElement.wizardItems.NsNewsSlider {
 }
 
 mod.web_layout.tt_content.preview.list.nsnewsslider_nivoslider = EXT:ns_news_slider/Resources/Private/Templates/Backend/NivoSlider.html
+mod.web_layout.tt_content.preview.nsnewsslider_nivoslider = EXT:ns_news_slider/Resources/Private/Templates/Backend/NivoSlider14.html
+
 mod.web_layout.tt_content.preview.list.nsnewsslider_owlcarouselslider = EXT:ns_news_slider/Resources/Private/Templates/Backend/OwlCarouselSlider.html
+mod.web_layout.tt_content.preview.nsnewsslider_owlcarouselslider = EXT:ns_news_slider/Resources/Private/Templates/Backend/OwlCarouselSlider14.html
+
 mod.web_layout.tt_content.preview.list.nsnewsslider_royalslider = EXT:ns_news_slider/Resources/Private/Templates/Backend/RoyalSlider.html
+mod.web_layout.tt_content.preview.nsnewsslider_royalslider = EXT:ns_news_slider/Resources/Private/Templates/Backend/RoyalSlider14.html
+
 mod.web_layout.tt_content.preview.list.nsnewsslider_sliderjsslider = EXT:ns_news_slider/Resources/Private/Templates/Backend/SliderjsSlider.html
+mod.web_layout.tt_content.preview.nsnewsslider_sliderjsslider = EXT:ns_news_slider/Resources/Private/Templates/Backend/SliderjsSlider14.html
+
 mod.web_layout.tt_content.preview.list.nsnewsslider_slickslider = EXT:ns_news_slider/Resources/Private/Templates/Backend/SlickSlider.html
+mod.web_layout.tt_content.preview.nsnewsslider_slickslider = EXT:ns_news_slider/Resources/Private/Templates/Backend/SlickSlider14.html

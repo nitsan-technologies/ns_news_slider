@@ -741,7 +741,7 @@
 				<source>Playing effect</source>
 			</trans-unit>
 			<trans-unit id="flexform.navigationActive">
-				<source>Eneble navigation</source>
+				<source>Enable navigation</source>
 			</trans-unit>
 			<trans-unit id="flexform.ConeffectSlideSpeed">
 				<source>Slide effect speed</source>

@@ -77,6 +77,7 @@ class SliderjsController extends SliderBaseController
         $pluginName = $this->request->getPluginName();
 
         $pageRenderer = GeneralUtility::makeInstance(PageRenderer::class);
+        // @extensionScannerIgnoreLine
         $getContentId = $this->request->getAttribute('currentContentObject')->data['uid'];
 
         // set js value for slider
@@ -88,7 +89,7 @@ class SliderjsController extends SliderBaseController
             $pageRenderer->addJsFooterFile('EXT:ns_news_slider/Resources/Public/Js/jquery-3.6.0.min.js', 'text/javascript', false, false, '');
         }
 
-        $ajax2 = $extpath . 'slider/Slides-SlidesJS/source/jquery.slides.min.js';
+        $ajax2 = 'EXT:ns_news_slider/Resources/Public/slider/Slides-SlidesJS/source/jquery.slides.min.js';
 
         $pageRenderer->addJsFooterFile($ajax2, 'text/javascript', false, false, '');
 
@@ -98,72 +99,73 @@ class SliderjsController extends SliderBaseController
         $basicOpt = "
                 start:'" . (isset($this->settings['start']) && $this->settings['start'] > 0 ? $this->settings['start'] : $constant['Constart']) . "',
                 navigation: {
-                    active: " . (isset($this->settings['navigation']) && $this->settings['navigation'] != '' ? $this->settings['navigation'] : $constant['ConnavigationActive']) . ",
-                    effect: '" . (isset($this->settings['navigation_effect']) && $this->settings['navigation_effect'] != '' ? $this->settings['navigation_effect'] : $constant['Connavigation_effect']) . "'
+                    active: " . (isset($this->settings['navigation']) && $this->settings['navigation'] != '' ? $this->settings['navigation'] : (empty($constant['ConnavigationActive']) || $constant['ConnavigationActive'] == 'false' ? 'false' : 'true')) . ",
+                    effect: '" . (isset($this->settings['navigation_effect']) && $this->settings['navigation_effect'] != '' ? $this->settings['navigation_effect'] : (($constant['Connavigation_effect'] ?? '') === '' ? '1' : $constant['Connavigation_effect'])) . "',
                 },
                 pagination: {
-                  active: " . (isset($this->settings['pagination']) && $this->settings['pagination'] != '' ? $this->settings['pagination'] : $constant['ConpaginationActive']) . ",
-                  effect: '" . (isset($this->settings['pagination_effect']) && $this->settings['pagination_effect'] != '' ? $this->settings['pagination_effect'] : $constant['Conpagination_effect']) . "'
+                  active: " . (isset($this->settings['pagination']) && $this->settings['pagination'] != '' ? $this->settings['pagination'] : (empty($constant['ConpaginationActive']) || $constant['ConpaginationActive'] == 'false' ? 'false' : 'true')) . ",
+                  effect: '" . (isset($this->settings['pagination_effect']) && $this->settings['pagination_effect'] != '' ? $this->settings['pagination_effect'] : (($constant['Conpagination_effect'] ?? '') === '' ? '1' : $constant['Conpagination_effect'])) . "',
                 },
                 ";
 
-        $GLOBALS['TSFE']->additionalHeaderData[$this->request->getControllerExtensionKey() . 'CSS5'] = '<link rel="stylesheet" type="text/css" href="' . $extpath . 'slider/Slides-SlidesJS/css/custom.css" />';
+        $pageRenderer->addHeaderData('<link rel="stylesheet" type="text/css" href="' . $extpath . 'slider/Slides-SlidesJS/css/custom.css" />');
 
         if ($slider_type == 'fade') {
-            $GLOBALS['TSFE']->additionalHeaderData[$this->request->getControllerExtensionKey() . 'CSS1'] = '<link rel="stylesheet" type="text/css" href="' . $extpath . 'slider/Slides-SlidesJS/types/standard/css/example.css" />';
-            $GLOBALS['TSFE']->additionalHeaderData[$this->request->getControllerExtensionKey() . 'CSS2'] = '<link rel="stylesheet" type="text/css" href="' . $extpath . 'slider/Slides-SlidesJS/types/standard/css/font-awesome.min.css" />';
-            $GLOBALS['TSFE']->additionalHeaderData[$this->request->getControllerExtensionKey() . 'CSS3'] = '<link rel="stylesheet" type="text/css" href="' . $extpath . 'slider/Slides-SlidesJS/types/standard/css/custom.css" />';
+            $pageRenderer->addHeaderData('<link rel="stylesheet" type="text/css" href="' . $extpath . 'slider/Slides-SlidesJS/types/standard/css/example.css" />');
+            $pageRenderer->addHeaderData('<link rel="stylesheet" type="text/css" href="' . $extpath . 'slider/Slides-SlidesJS/types/standard/css/font-awesome.min.css" />');
+            $pageRenderer->addHeaderData('<link rel="stylesheet" type="text/css" href="' . $extpath . 'slider/Slides-SlidesJS/types/standard/css/custom.css" />');
 
             $type =
                 $basicOpt . '
                 effect: {
                   fade: {
-                    speed: ' . (isset($this->settings['effect_fade_speed']) && $this->settings['effect_fade_speed'] != '' ? $this->settings['effect_fade_speed'] : $constant['Coneffect_fade_speed']) . ',
-                    crossfade: ' . (isset($this->settings['crossFade']) && $this->settings['crossFade'] != '' ? $this->settings['crossFade'] : $constant['Coneffect_cross_fade']) . ',
+                    speed: ' . (isset($this->settings['effect_fade_speed']) && $this->settings['effect_fade_speed'] != '' ? $this->settings['effect_fade_speed'] : (($constant['Coneffect_fade_speed'] ?? '') === '' ? 'false' : $constant['Coneffect_fade_speed'])) . ',
+                    crossfade: ' . (isset($this->settings['crossFade']) && $this->settings['crossFade'] != '' ? $this->settings['crossFade'] : (empty($constant['Coneffect_cross_fade']) || $constant['Coneffect_cross_fade'] == 'false' ? 'false' : 'true')) . ',
                   }
                 }';
         } elseif ($slider_type == 'slide') {
             // add css js in header
-            $GLOBALS['TSFE']->additionalHeaderData[$this->request->getControllerExtensionKey() . 'CSS1'] = '<link rel="stylesheet" type="text/css" href="' . $extpath . 'slider/Slides-SlidesJS/types/standard/css/example.css" />';
-            $GLOBALS['TSFE']->additionalHeaderData[$this->request->getControllerExtensionKey() . 'CSS2'] = '<link rel="stylesheet" type="text/css" href="' . $extpath . 'slider/Slides-SlidesJS/types/standard/css/font-awesome.min.css" />';
-            $GLOBALS['TSFE']->additionalHeaderData[$this->request->getControllerExtensionKey() . 'CSS3'] = '<link rel="stylesheet" type="text/css" href="' . $extpath . 'slider/Slides-SlidesJS/types/standard/css/custom.css" />';
+            $pageRenderer->addHeaderData('<link rel="stylesheet" type="text/css" href="' . $extpath . 'slider/Slides-SlidesJS/types/standard/css/example.css" />');
+            $pageRenderer->addHeaderData('<link rel="stylesheet" type="text/css" href="' . $extpath . 'slider/Slides-SlidesJS/types/standard/css/font-awesome.min.css" />');
+            $pageRenderer->addHeaderData('<link rel="stylesheet" type="text/css" href="' . $extpath . 'slider/Slides-SlidesJS/types/standard/css/custom.css" />');
 
             $type = $basicOpt;
         } elseif ($slider_type == 'playing') {
             // add css js in header
-            $GLOBALS['TSFE']->additionalHeaderData[$this->request->getControllerExtensionKey() . 'CSS1'] = '<link rel="stylesheet" type="text/css" href="' . $extpath . 'slider/Slides-SlidesJS/types/playing/css/example.css" />';
-            $GLOBALS['TSFE']->additionalHeaderData[$this->request->getControllerExtensionKey() . 'CSS2'] = '<link rel="stylesheet" type="text/css" href="' . $extpath . 'slider/Slides-SlidesJS/types/playing/css/font-awesome.min.css" />';
-            $GLOBALS['TSFE']->additionalHeaderData[$this->request->getControllerExtensionKey() . 'CSS3'] = '<link rel="stylesheet" type="text/css" href="' . $extpath . 'slider/Slides-SlidesJS/types/playing/css/custom.css" />';
+            $pageRenderer->addHeaderData('<link rel="stylesheet" type="text/css" href="' . $extpath . 'slider/Slides-SlidesJS/types/playing/css/example.css" />');
+            $pageRenderer->addHeaderData('<link rel="stylesheet" type="text/css" href="' . $extpath . 'slider/Slides-SlidesJS/types/playing/css/font-awesome.min.css" />');
+            $pageRenderer->addHeaderData('<link rel="stylesheet" type="text/css" href="' . $extpath . 'slider/Slides-SlidesJS/types/playing/css/custom.css" />');
 
             $type =
                 $basicOpt . '
-                play: {
-                  active: ' . (isset($this->settings['play_active'])  && $this->settings['play_active'] != '' ? $this->settings['play_active'] : $constant['Conplay_active']) . ',
-                  auto: ' . (isset($this->settings['play_auto']) && $this->settings['play_auto'] != '' ? $this->settings['play_auto'] : $constant['Conplay_auto']) . ',
-                  interval: ' . (isset($this->settings['play_interval']) && $this->settings['play_interval'] != '' ? $this->settings['play_interval'] : $constant['Conplay_interval']) . ',
-                  swap: ' . (isset($this->settings['play_swap'])  && $this->settings['play_swap'] != '' ? $this->settings['play_swap'] : $constant['Conplay_swap']) . ',
-                  pauseOnHover: ' . (isset($this->settings['play_pauseOnHover']) && $this->settings['play_pauseOnHover'] != '' ? $this->settings['play_pauseOnHover'] : $constant['ConplayPauseOnHover']) . ",
-                  restartDelay:'" . (isset($this->settings['play_restartDelay']) && $this->settings['play_restartDelay'] != '' ? $this->settings['play_restartDelay'] : $constant['ConrestartDelay']) . "',
-                  effect: '" . (isset($this->settings['play_effect']) && $this->settings['play_effect'] != '' ? $this->settings['play_effect'] : $constant['Conplay_effect']) . "'
-
-                }";
+                    play: {
+                        active: ' . (isset($this->settings['play_active'])  && $this->settings['play_active'] != '' ? $this->settings['play_active'] : (empty($constant['Conplay_active']) || $constant['Conplay_active'] == 'false' ? 'false' : 'true')) . ',
+                        auto: ' . (isset($this->settings['play_auto']) && $this->settings['play_auto'] != '' ? $this->settings['play_auto'] : (empty($constant['Conplay_auto']) || $constant['Conplay_auto'] == 'false' ? 'false' : 'true')) . ',
+                        interval: ' . (isset($this->settings['play_interval']) && $this->settings['play_interval'] != '' ? $this->settings['play_interval'] : (($constant['Conplay_interval'] ?? '') === '' ? '1' : $constant['Conplay_interval'])) . ',
+                        swap: ' . (isset($this->settings['play_swap'])  && $this->settings['play_swap'] != '' ? $this->settings['play_swap'] : (empty($constant['Conplay_swap']) || $constant['Conplay_swap'] == 'false' ? 'false' : 'true')) . ',
+                        pauseOnHover: ' . (isset($this->settings['play_pauseOnHover']) && $this->settings['play_pauseOnHover'] != '' ? $this->settings['play_pauseOnHover'] : (empty($constant['ConplayPauseOnHover']) || $constant['ConplayPauseOnHover'] == 'false' ? 'false' : 'true')) . ',
+                        restartDelay:"' . (isset($this->settings['play_restartDelay']) && $this->settings['play_restartDelay'] != '' ? $this->settings['play_restartDelay'] : (($constant['ConrestartDelay'] ?? '') === '' ? '1' : $constant['ConrestartDelay'])) . '",
+                        effect: "' . (isset($this->settings['play_effect']) && $this->settings['play_effect'] != '' ? $this->settings['play_effect'] : (($constant['Conplay_effect'] ?? '') === '' ? '1' : $constant['Conplay_effect'])) . '",
+                    }
+                ';
         }
 
         $this->extKey = $this->extKey ?? '';
-        $GLOBALS['TSFE']->additionalFooterData[$this->extKey] = $GLOBALS['TSFE']->additionalFooterData[$this->extKey] ?? '';
-        $GLOBALS['TSFE']->additionalFooterData[$this->extKey] .= "
+        $footerData= "
                 <script>
                     if (typeof jQuery == 'undefined') {
                         alert('Please include Jquery library first!');
                     }
                     (function($) {
                       $('#slides-" . $getContentId . "').slidesjs({
-                          width: " . (isset($this->settings['slidewidth']) && $this->settings['slidewidth'] != '' ? $this->settings['slidewidth'] : $constant['Conslidewidth']) . ',
-                          height: ' . (isset($this->settings['slideheight']) && $this->settings['slideheight'] != '' ? $this->settings['slideheight'] : $constant['Conslideheight']) . ',
+                          width: " . (isset($this->settings['slidewidth']) && $this->settings['slidewidth'] != '' ? $this->settings['slidewidth'] : (($constant['Conslidewidth'] ?? '') === '' ? '1' : $constant['Conslidewidth'])) . ',
+                          height: ' . (isset($this->settings['slideheight']) && $this->settings['slideheight'] != '' ? $this->settings['slideheight'] : (($constant['Conslideheight'] ?? '') === '' ? '1' : $constant['Conslideheight'])) . ',
                           ' . $type . '
                       });
                     })(jQuery);
                 </script>';
+
+        $pageRenderer->addFooterData($footerData);
 
         //variable saved in flexform
         $this->view->assign('settings', $this->settings);

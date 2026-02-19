@@ -65,25 +65,22 @@ class NivoController extends SliderBaseController
             'settings' => $settings
         ]);
 
-        $extensionKey = $this->request->getControllerExtensionKey();
-        $additionalHeaderData = &$GLOBALS['TSFE']->additionalHeaderData;
-
         if (Environment::isComposerMode()) {
             $assetPath = $this->getPath('/', 'ns_news_slider');
             $extpath = GeneralUtility::getIndpEnv('TYPO3_SITE_URL') . $assetPath;
             $cssPath = 'slider/Nivo-Slider/';
             $jsPath = 'slider/Nivo-Slider/';
+            $ajax1 = $extpath . $jsPath . 'jquery.nivo.slider.js';
         } else {
             $extpath = PathUtility::stripPathSitePrefix(ExtensionManagementUtility::extPath('ns_news_slider'));
             $cssPath = 'Resources/Public/slider/Nivo-Slider/';
             $jsPath = 'Resources/Public/slider/Nivo-Slider/';
+            $ajax1 = 'EXT:ns_news_slider/' . $jsPath . 'jquery.nivo.slider.js';
         }
 
         $pageRenderer = GeneralUtility::makeInstance(PageRenderer::class);
-
-        $additionalHeaderData[$extensionKey . 'CSS1'] = '<link rel="stylesheet" type="text/css" href="' . $extpath . $cssPath . 'themes/default/default.css" />';
-        $additionalHeaderData[$extensionKey . 'CSS2'] = '<link rel="stylesheet" type="text/css" href="' .  $extpath . $cssPath . 'nivo-slider.css" />';
-        $ajax1 = $extpath . $jsPath . 'jquery.nivo.slider.js';
+        $pageRenderer->addHeaderData('<link rel="stylesheet" type="text/css" href="' . $extpath . $cssPath . 'themes/default/default.css" />');
+        $pageRenderer->addHeaderData('<link rel="stylesheet" type="text/css" href="' .  $extpath . $cssPath . 'nivo-slider.css" />');
 
         $pluginName = $this->request->getPluginName();
 
@@ -96,8 +93,7 @@ class NivoController extends SliderBaseController
             $pageRenderer->addJsFooterFile('EXT:ns_news_slider/Resources/Public/Js/jquery-3.6.0.min.js', 'text/javascript', false, false, '');
         }
         $pageRenderer->addJsFooterFile($ajax1, 'text/javascript', false, false, '');
-        $GLOBALS['TSFE']->additionalFooterData[$this->request->getControllerExtensionKey()] = isset($GLOBALS['TSFE']->additionalFooterData[$this->request->getControllerExtensionKey()]) ? $GLOBALS['TSFE']->additionalFooterData[$this->request->getControllerExtensionKey()] : '';
-        $GLOBALS['TSFE']->additionalFooterData[$this->request->getControllerExtensionKey()] .= "
+        $footerData= "
             <script>
                 if (typeof jQuery == 'undefined') {
                     alert('Please include Jquery library first!');
@@ -106,23 +102,25 @@ class NivoController extends SliderBaseController
                 (function($) {
                     $(window).on('load',function() {
                         $('#slider').nivoSlider({
-                            effect: '" . (isset($this->settings['nivoeffect']) && $this->settings['nivoeffect'] != '' ? $this->settings['nivoeffect'] : $constant['effect']) . "',
-                            slices: " . (isset($this->settings['nivoslices']) && $this->settings['nivoslices'] != '' ? $this->settings['nivoslices'] : $constant['slices']) . ',
-                            boxCols: ' . (isset($this->settings['nivoboxCols']) && $this->settings['nivoboxCols'] != '' ? $this->settings['nivoboxCols'] : $constant['boxCols']) . ',
-                            boxRows: ' . (isset($this->settings['nivoboxRows']) && $this->settings['nivoboxRows'] != '' ? $this->settings['nivoboxRows'] : $constant['boxRows']) . ',
-                            animSpeed: ' . (isset($this->settings['nivoanimSpeed']) && $this->settings['nivoanimSpeed'] != '' ? $this->settings['nivoanimSpeed'] : $constant['animSpeed']) . ',
-                            pauseTime: ' . (isset($this->settings['nivopauseTime']) && $this->settings['nivopauseTime'] != '' ? $this->settings['nivopauseTime'] : $constant['pauseTime']) . ',
-                            startSlide: ' . (isset($this->settings['nivostartSlide']) && $this->settings['nivostartSlide'] != '' ? $this->settings['nivostartSlide'] : $constant['startSlide']) . ',
-                            directionNav: ' . (isset($this->settings['nivonavagation_arrow']) && $this->settings['nivonavagation_arrow'] != '' ? $this->settings['nivonavagation_arrow'] : $constant['nivonavagation_arrow']) . ',
-                            controlNav: ' . (isset($this->settings['nivocontrolNav']) && $this->settings['nivocontrolNav'] != '' ? $this->settings['nivocontrolNav'] : $constant['controlNav']) . ',
-                            controlNavThumbs: ' . (isset($this->settings['nivocontrolNavThumbs']) && $this->settings['nivocontrolNavThumbs'] != '' ? $this->settings['nivocontrolNavThumbs'] : $constant['controlNavThumbs']) . ',
-                            pauseOnHover: ' . (isset($this->settings['nivopauseOnHover']) && $this->settings['nivopauseOnHover'] != '' ? $this->settings['nivopauseOnHover'] : $constant['pauseOnHover']) . ',
-                            manualAdvance: ' . (isset($this->settings['nivomanualAdvance']) && $this->settings['nivomanualAdvance'] != '' ? $this->settings['nivomanualAdvance'] : $constant['manualAdvance']) . ',
-                            randomStart: ' . (isset($this->settings['nivorandomStart']) && $this->settings['nivorandomStart'] != '' ? $this->settings['nivorandomStart'] : $constant['randomStart']) . '
+                            effect: '" . (isset($this->settings['nivoeffect']) && $this->settings['nivoeffect'] != '' ? $this->settings['nivoeffect'] : (($constant['effect'] ?? '') === '' ? 'false' : $constant['effect'])) . "',
+                            slices: " . (isset($this->settings['nivoslices']) && $this->settings['nivoslices'] != '' ? $this->settings['nivoslices'] : (($constant['slices'] ?? '') === '' ? 'false' : $constant['slices'])) . ',
+                            boxCols: ' . (isset($this->settings['nivoboxCols']) && $this->settings['nivoboxCols'] != '' ? $this->settings['nivoboxCols'] : (($constant['boxCols'] ?? '') === '' ? 'false' : $constant['boxCols'])) . ',
+                            boxRows: ' . (isset($this->settings['nivoboxRows']) && $this->settings['nivoboxRows'] != '' ? $this->settings['nivoboxRows'] : (($constant['boxRows'] ?? '') === '' ? 'false' : $constant['boxRows'])) . ',
+                            animSpeed: ' . (isset($this->settings['nivoanimSpeed']) && $this->settings['nivoanimSpeed'] != '' ? $this->settings['nivoanimSpeed'] : (($constant['animSpeed'] ?? '') === '' ? 'false' : $constant['animSpeed'])) . ',
+                            pauseTime: ' . (isset($this->settings['nivopauseTime']) && $this->settings['nivopauseTime'] != '' ? $this->settings['nivopauseTime'] : (($constant['pauseTime'] ?? '') === '' ? 'false' : $constant['pauseTime'])) . ',
+                            startSlide: ' . (isset($this->settings['nivostartSlide']) && $this->settings['nivostartSlide'] != '' ? $this->settings['nivostartSlide'] : (($constant['startSlide'] ?? '') === '' ? 'false' : $constant['startSlide'])) . ',
+                            directionNav: ' . (isset($this->settings['nivonavagation_arrow']) && $this->settings['nivonavagation_arrow'] != '' ? $this->settings['nivonavagation_arrow'] : (($constant['nivonavagation_arrow'] ?? '') === '' ? 'false' : $constant['nivonavagation_arrow'])) . ',
+                            controlNav: ' . (isset($this->settings['nivocontrolNav']) && $this->settings['nivocontrolNav'] != '' ? $this->settings['nivocontrolNav'] : (empty($constant['controlNav']) || $constant['controlNav'] == 'false' ? 'false' : 'true')) . ',
+                            controlNavThumbs: ' . (isset($this->settings['nivocontrolNavThumbs']) && $this->settings['nivocontrolNavThumbs'] != '' ? $this->settings['nivocontrolNavThumbs'] : (empty($constant['controlNavThumbs']) || $constant['controlNavThumbs'] == 'false' ? 'false' : 'true')) . ',
+                            pauseOnHover: ' . (isset($this->settings['nivopauseOnHover']) && $this->settings['nivopauseOnHover'] != '' ? $this->settings['nivopauseOnHover'] : (empty($constant['pauseOnHover']) || $constant['pauseOnHover'] == 'false' ? 'false' : 'true')) . ',
+                            manualAdvance: ' . (isset($this->settings['nivomanualAdvance']) && $this->settings['nivomanualAdvance'] != '' ? $this->settings['nivomanualAdvance'] : (empty($constant['manualAdvance']) || $constant['manualAdvance'] == 'false' ? 'false' : 'true')) . ',
+                            randomStart: ' . (isset($this->settings['nivorandomStart']) && $this->settings['nivorandomStart'] != '' ? $this->settings['nivorandomStart'] : (empty($constant['randomStart']) || $constant['randomStart'] == 'false' ? 'false' : 'true')) . '
                         });
                     });
                 })(jQuery);
             </script>';
+
+        $pageRenderer->addFooterData($footerData);
         //variable saved in flexform
         $this->view->assign('settings', $this->settings);
         // show arrwo in slider

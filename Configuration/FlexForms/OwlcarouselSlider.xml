@@ -741,6 +741,27 @@
 								</items>
 							</config>
 					</settings.owlmergeFit>
+					<settings.owlautoWidth>
+							<label>LLL:EXT:ns_news_slider/Resources/Private/Language/locallang_db.xlf:flexform.autoWidth</label>
+							<config>
+								<type>select</type>
+                                <renderType>selectSingle</renderType>
+								<items>
+									<numIndex index="0">
+										<numIndex index="0">LLL:EXT:ns_news_slider/Resources/Private/Language/locallang_db.xlf:flexform.selAction</numIndex>
+										<numIndex index="1"></numIndex>
+									</numIndex>
+									<numIndex index="1">
+										<numIndex index="0">LLL:EXT:ns_news_slider/Resources/Private/Language/locallang_db.xlf:flexform.true</numIndex>
+										<numIndex index="1">true</numIndex>
+									</numIndex>
+									<numIndex index="2">
+										<numIndex index="0">LLL:EXT:ns_news_slider/Resources/Private/Language/locallang_db.xlf:flexform.false</numIndex>
+										<numIndex index="1">false</numIndex>
+									</numIndex>
+								</items>
+							</config>
+					</settings.owlautoWidth>
 					<settings.owlstartPosition>
 							<label>LLL:EXT:ns_news_slider/Resources/Private/Language/locallang_db.xlf:flexform.startPosition</label>
 							<config>

@@ -1,0 +1,1160 @@
+categories:
+  ns_newsslider:
+    label: News Slider
+  ns_newsslider.view:
+    label: View Settings
+    parent: ns_newsslider
+  ns_newsslider.persistence:
+    label: Persistence
+    parent: ns_newsslider
+
+  ns_newsslider.owl:
+    label: Owl Carousel
+    parent: ns_newsslider
+
+  ns_newsslider.nivo:
+    label: Nivo Slider
+    parent: ns_newsslider
+
+  ns_newsslider.royal:
+    label: Royal Slider
+    parent: ns_newsslider
+
+  ns_newsslider.slick:
+    label: Slick Slider
+    parent: ns_newsslider
+
+  ns_newsslider.sliderjs:
+    label: SliderJS
+    parent: ns_newsslider
+
+
+settings:
+
+  ##################################################
+  # View
+  ##################################################
+
+  ns_newsslider.view.templateRootPath:
+    label: Template Root Path
+    category: ns_newsslider.view
+    type: string
+    default: 'EXT:ns_news_slider/Resources/Private/Templates/'
+
+  ns_newsslider.view.partialRootPath:
+    label: Partial Root Path
+    category: ns_newsslider.view
+    type: string
+    default: 'EXT:ns_news_slider/Resources/Private/Partials/'
+
+  ns_newsslider.view.layoutRootPath:
+    label: Layout Root Path
+    category: ns_newsslider.view
+    type: string
+    default: 'EXT:ns_news_slider/Resources/Private/Layouts/'
+
+  ##################################################
+  # Persistence
+  ##################################################
+
+  ns_newsslider.persistence.storagePid:
+    label: Storage PID
+    category: ns_newsslider.persistence
+    type: int
+    default: 0
+
+
+  ##################################################
+  # Owl Carousel
+  ##################################################
+
+  ns_newsslider.owl.jQuery:
+    label: LLL:EXT:ns_news_slider/Resources/Private/Language/locallang_db.xlf:flexform.jQuery
+    category: ns_newsslider.owl
+    type: bool
+    default: false
+
+  ns_newsslider.owl.Connavigation:
+    label: LLL:EXT:ns_news_slider/Resources/Private/Language/locallang_db.xlf:flexform.navigation
+    category: ns_newsslider.owl
+    type: bool
+    default: true
+
+  ns_newsslider.owl.ConAutoPlay:
+    label: LLL:EXT:ns_news_slider/Resources/Private/Language/locallang_db.xlf:flexform.autoPlay
+    category: ns_newsslider.owl
+    type: bool
+    default: true
+
+  ns_newsslider.owl.Conitems:
+    label: LLL:EXT:ns_news_slider/Resources/Private/Language/locallang_db.xlf:flexform.items
+    category: ns_newsslider.owl
+    type: int
+    default: 1
+
+  ns_newsslider.owl.ConlazyLoad:
+    label: LLL:EXT:ns_news_slider/Resources/Private/Language/locallang_db.xlf:flexform.lazyLoad
+    category: ns_newsslider.owl
+    type: bool
+    default: true
+
+  ns_newsslider.owl.ConmouseDrag:
+    label: LLL:EXT:ns_news_slider/Resources/Private/Language/locallang_db.xlf:flexform.mouseDrag
+    category: ns_newsslider.owl
+    type: bool
+    default: true
+
+  ns_newsslider.owl.ContouchDrag:
+    label: LLL:EXT:ns_news_slider/Resources/Private/Language/locallang_db.xlf:flexform.touchDrag
+    category: ns_newsslider.owl
+    type: bool
+    default: true
+
+  ns_newsslider.owl.Conmargin:
+    label: LLL:EXT:ns_news_slider/Resources/Private/Language/locallang_db.xlf:flexform.margin
+    category: ns_newsslider.owl
+    type: int
+    default: 0
+
+  ns_newsslider.owl.Conloop:
+    label: LLL:EXT:ns_news_slider/Resources/Private/Language/locallang_db.xlf:flexform.loop
+    category: ns_newsslider.owl
+    type: bool
+    default: false
+
+  ns_newsslider.owl.Concenter:
+    label: LLL:EXT:ns_news_slider/Resources/Private/Language/locallang_db.xlf:flexform.center
+    category: ns_newsslider.owl
+    type: bool
+    default: false
+
+  ns_newsslider.owl.ConpullDrag:
+    label: LLL:EXT:ns_news_slider/Resources/Private/Language/locallang_db.xlf:flexform.pullDrag
+    category: ns_newsslider.owl
+    type: bool
+    default: true
+
+  ns_newsslider.owl.ConfreeDrag:
+    label: LLL:EXT:ns_news_slider/Resources/Private/Language/locallang_db.xlf:flexform.freeDrag
+    category: ns_newsslider.owl
+    type: bool
+    default: true
+
+  ns_newsslider.owl.ConstagePadding:
+    label: LLL:EXT:ns_news_slider/Resources/Private/Language/locallang_db.xlf:flexform.stagePadding
+    category: ns_newsslider.owl
+    type: int
+    default: 0
+
+  ns_newsslider.owl.Conmerge:
+    label: LLL:EXT:ns_news_slider/Resources/Private/Language/locallang_db.xlf:flexform.merge
+    category: ns_newsslider.owl
+    type: bool
+    default: true
+
+  ns_newsslider.owl.ConmergeFit:
+    label: LLL:EXT:ns_news_slider/Resources/Private/Language/locallang_db.xlf:flexform.mergeFit
+    category: ns_newsslider.owl
+    type: bool
+    default: true
+
+  ns_newsslider.owl.ConautoWidth:
+    label: LLL:EXT:ns_news_slider/Resources/Private/Language/locallang_db.xlf:flexform.autoWidth
+    category: ns_newsslider.owl
+    type: bool
+    default: true
+
+  ns_newsslider.owl.ConstartPosition:
+    label: LLL:EXT:ns_news_slider/Resources/Private/Language/locallang_db.xlf:flexform.startPosition
+    category: ns_newsslider.owl
+    type: int
+    default: 0
+
+  ns_newsslider.owl.Conrewind:
+    label: LLL:EXT:ns_news_slider/Resources/Private/Language/locallang_db.xlf:flexform.rewind
+    category: ns_newsslider.owl
+    type: bool
+    default: true
+
+  ns_newsslider.owl.ConURLhashListener:
+    label: LLL:EXT:ns_news_slider/Resources/Private/Language/locallang_db.xlf:flexform.URLhashListener
+    category: ns_newsslider.owl
+    type: bool
+    default: true
+
+  ns_newsslider.owl.ConnavElement:
+    label: LLL:EXT:ns_news_slider/Resources/Private/Language/locallang_db.xlf:flexform.navElement
+    category: ns_newsslider.owl
+    type: string
+    default: 'div'
+
+  ns_newsslider.owl.ConslideBy:
+    label: LLL:EXT:ns_news_slider/Resources/Private/Language/locallang_db.xlf:flexform.slideBy
+    category: ns_newsslider.owl
+    type: int
+    default: 1
+
+  ns_newsslider.owl.ConslideTransition:
+    label: LLL:EXT:ns_news_slider/Resources/Private/Language/locallang_db.xlf:flexform.slideTransition
+    category: ns_newsslider.owl
+    type: string
+    default: ''
+
+  ns_newsslider.owl.Condots:
+    label: LLL:EXT:ns_news_slider/Resources/Private/Language/locallang_db.xlf:flexform.dots
+    category: ns_newsslider.owl
+    type: bool
+    default: true
+
+  ns_newsslider.owl.CondotsEach:
+    label: LLL:EXT:ns_news_slider/Resources/Private/Language/locallang_db.xlf:flexform.dotsEach
+    category: ns_newsslider.owl
+    type: bool
+    default: false
+
+  ns_newsslider.owl.CondotsData:
+    label: LLL:EXT:ns_news_slider/Resources/Private/Language/locallang_db.xlf:flexform.dotsData
+    category: ns_newsslider.owl
+    type: bool
+    default: false
+
+  ns_newsslider.owl.ConlazyLoadEager:
+    label: LLL:EXT:ns_news_slider/Resources/Private/Language/locallang_db.xlf:flexform.lazyLoadEager
+    category: ns_newsslider.owl
+    type: int
+    default: 0
+
+  ns_newsslider.owl.ConautoplayTimeout:
+    label: LLL:EXT:ns_news_slider/Resources/Private/Language/locallang_db.xlf:flexform.autoplayTimeout
+    category: ns_newsslider.owl
+    type: int
+    default: 5000
+
+  ns_newsslider.owl.ConautoplayHoverPause:
+    label: LLL:EXT:ns_news_slider/Resources/Private/Language/locallang_db.xlf:flexform.autoplayHoverPause
+    category: ns_newsslider.owl
+    type: bool
+    default: false
+
+  ns_newsslider.owl.ConautoplaySpeed:
+    label: Autoplay Speed
+    category: ns_newsslider.owl
+    type: int
+    default: 3000
+
+  ns_newsslider.owl.ConnavSpeed:
+    label: Nav Speed
+    category: ns_newsslider.owl
+    type: int
+    default: 3000
+
+  ns_newsslider.owl.CondotsSpeed:
+    label: LLL:EXT:ns_news_slider/Resources/Private/Language/locallang_db.xlf:flexform.dotsSpeed
+    category: ns_newsslider.owl
+    type: bool
+    default: false
+
+  ns_newsslider.owl.CondragEndSpeed:
+    label: LLL:EXT:ns_news_slider/Resources/Private/Language/locallang_db.xlf:flexform.dragEndSpeed
+    category: ns_newsslider.owlcarousel
+    type: bool
+    default: false
+
+  ns_newsslider.owl.ConanimateOut:
+    label: LLL:EXT:ns_news_slider/Resources/Private/Language/locallang_db.xlf:flexform.animateOut
+    category: ns_newsslider.owlcarousel
+    type: string
+    default: 'slideOutDown'
+
+  ns_newsslider.owl.ConanimateIn:
+    label: LLL:EXT:ns_news_slider/Resources/Private/Language/locallang_db.xlf:flexform.animateIn
+    category: ns_newsslider.owlcarousel
+    type: string
+    default: 'flipInX'
+
+  ns_newsslider.owl.ConfallbackEasing:
+    label: LLL:EXT:ns_news_slider/Resources/Private/Language/locallang_db.xlf:flexform.fallbackEasing
+    category: ns_newsslider.owlcarousel
+    type: string
+    default: 'swing'
+
+  ns_newsslider.owl.Coninfo:
+    label: LLL:EXT:ns_news_slider/Resources/Private/Language/locallang_db.xlf:flexform.info
+    category: ns_newsslider.owlcarousel
+    type: bool
+    default: false
+
+  ns_newsslider.owl.ConnestedItemSelector:
+    label: LLL:EXT:ns_news_slider/Resources/Private/Language/locallang_db.xlf:flexform.nestedItemSelector
+    category: ns_newsslider.owlcarousel
+    type: string
+    default: ''
+
+  ns_newsslider.owl.ConitemElement:
+    label: LLL:EXT:ns_news_slider/Resources/Private/Language/locallang_db.xlf:flexform.itemElement
+    category: ns_newsslider.owlcarousel
+    type: string
+    default: 'div'
+
+  ns_newsslider.owl.ConnavContainer:
+    label: LLL:EXT:ns_news_slider/Resources/Private/Language/locallang_db.xlf:flexform.navContainer
+    category: ns_newsslider.owlcarousel
+    type: string
+    default: ''
+
+  ns_newsslider.owl.CondotsContainer:
+    label: LLL:EXT:ns_news_slider/Resources/Private/Language/locallang_db.xlf:flexform.dotsContainer
+    category: ns_newsslider.owlcarousel
+    type: string
+    default: ''
+
+  ns_newsslider.owl.ConcheckVisible:
+    label: LLL:EXT:ns_news_slider/Resources/Private/Language/locallang_db.xlf:flexform.checkVisible
+    category: ns_newsslider.owlcarousel
+    type: bool
+    default: true
+
+
+  ##################################################
+  # Nivo Slider
+  ##################################################
+
+  ns_newsslider.nivo.jQuery:
+    label: LLL:EXT:ns_news_slider/Resources/Private/Language/locallang_db.xlf:flexform.jQuery
+    category: ns_newsslider.nivo
+    type: bool
+    default: false
+
+  ns_newsslider.nivo.nivonavagation_arrow:
+    label: LLL:EXT:ns_news_slider/Resources/Private/Language/locallang_db.xlf:flexform.nivo.arrow
+    category: ns_newsslider.nivo
+    type: bool
+    default: true
+
+  ns_newsslider.nivo.height:
+    label: LLL:EXT:ns_news_slider/Resources/Private/Language/locallang_db.xlf:flexform.nivo.height
+    category: ns_newsslider.nivo
+    type: int
+    default: 500
+
+  ns_newsslider.nivo.imageWidth:
+    label: LLL:EXT:ns_news_slider/Resources/Private/Language/locallang_db.xlf:flexform.nivo.imageWidth
+    category: ns_newsslider.nivo
+    type: int
+    default: 800
+
+  ns_newsslider.nivo.effect:
+    label: LLL:EXT:ns_news_slider/Resources/Private/Language/locallang_db.xlf:flexform.nivo.effect
+    category: ns_newsslider.nivo
+    type: string
+    default: random
+    enum:
+      sliceDown: sliceDown
+      sliceDownLeft: sliceDownLeft
+      sliceUp: sliceUp
+      sliceUpLeft: sliceUpLeft
+      sliceUpDown: sliceUpDown
+      sliceUpDownLeft: sliceUpDownLeft
+      fold: fold
+      fade: fade
+      random: random
+      slideInRight: slideInRight
+      slideInLeft: slideInLeft
+      boxRandom: boxRandom
+      boxRain: boxRain
+      boxRainReverse: boxRainReverse
+      boxRainGrow: boxRainGrow
+      boxRainGrowReverse: boxRainGrowReverse
+
+  ns_newsslider.nivo.slices:
+    label: LLL:EXT:ns_news_slider/Resources/Private/Language/locallang_db.xlf:flexform.nivo.slices
+    category: ns_newsslider.nivo
+    type: int
+    default: 15
+
+  ns_newsslider.nivo.boxCols:
+    label: LLL:EXT:ns_news_slider/Resources/Private/Language/locallang_db.xlf:flexform.nivo.boxCols
+    category: ns_newsslider.nivo
+    type: int
+    default: 8
+
+  ns_newsslider.nivo.boxRows:
+    label: LLL:EXT:ns_news_slider/Resources/Private/Language/locallang_db.xlf:flexform.nivo.boxRows
+    category: ns_newsslider.nivo
+    type: int
+    default: 4
+
+  ns_newsslider.nivo.animSpeed:
+    label: LLL:EXT:ns_news_slider/Resources/Private/Language/locallang_db.xlf:flexform.nivo.animSpeed
+    category: ns_newsslider.nivo
+    type: int
+    default: 500
+
+  ns_newsslider.nivo.pauseTime:
+    label: LLL:EXT:ns_news_slider/Resources/Private/Language/locallang_db.xlf:flexform.nivo.pauseTime
+    category: ns_newsslider.nivo
+    type: int
+    default: 3000
+
+  ns_newsslider.nivo.startSlide:
+    label: LLL:EXT:ns_news_slider/Resources/Private/Language/locallang_db.xlf:flexform.nivo.startSlide
+    category: ns_newsslider.nivo
+    type: int
+    default: 0
+
+  ns_newsslider.nivo.controlNav:
+    label: LLL:EXT:ns_news_slider/Resources/Private/Language/locallang_db.xlf:flexform.nivo.controlNav
+    category: ns_newsslider.nivo
+    type: bool
+    default: true
+
+  ns_newsslider.nivo.controlNavThumbs:
+    label: LLL:EXT:ns_news_slider/Resources/Private/Language/locallang_db.xlf:flexform.nivo.controlNavThumbs
+    category: ns_newsslider.nivo
+    type: bool
+    default: false
+
+  ns_newsslider.nivo.pauseOnHover:
+    label: LLL:EXT:ns_news_slider/Resources/Private/Language/locallang_db.xlf:flexform.nivo.pauseOnHover
+    category: ns_newsslider.nivo
+    type: bool
+    default: true
+
+  ns_newsslider.nivo.manualAdvance:
+    label: LLL:EXT:ns_news_slider/Resources/Private/Language/locallang_db.xlf:flexform.nivo.manualAdvance
+    category: ns_newsslider.nivo
+    type: bool
+    default: false
+
+  ns_newsslider.nivo.randomStart:
+    label: LLL:EXT:ns_news_slider/Resources/Private/Language/locallang_db.xlf:flexform.nivo.randomStart
+    category: ns_newsslider.nivo
+    type: bool
+    default: false
+
+  ##################################################
+  # Royal Slider
+  ##################################################
+
+  ns_newsslider.royal.jQuery:
+    label: LLL:EXT:ns_news_slider/Resources/Private/Language/locallang_db.xlf:flexform.jQuery
+    category: ns_newsslider.royal
+    type: bool
+    default: false
+
+  ns_newsslider.royal.deeplinking_enabled:
+    label: LLL:EXT:ns_news_slider/Resources/Private/Language/locallang_db.xlf:flexform.deeplinking_enabled
+    category: ns_newsslider.royal
+    type: bool
+    default: true
+
+  ns_newsslider.royal.deeplinking_change:
+    label: LLL:EXT:ns_news_slider/Resources/Private/Language/locallang_db.xlf:flexform.deeplinking_change
+    category: ns_newsslider.royal
+    type: bool
+    default: false
+
+  ns_newsslider.royal.deeplinking_prefix:
+    label: LLL:EXT:ns_news_slider/Resources/Private/Language/locallang_db.xlf:flexform.deeplinking_prefix
+    category: ns_newsslider.royal
+    type: string
+    default: 'gallery-'
+
+  ns_newsslider.royal.thumbs_appendSpan:
+    label: LLL:EXT:ns_news_slider/Resources/Private/Language/locallang_db.xlf:flexform.thumbs_appendSpan
+    category: ns_newsslider.royal
+    type: bool
+    default: true
+
+  ns_newsslider.royal.thumbs_firstMargin:
+    label: LLL:EXT:ns_news_slider/Resources/Private/Language/locallang_db.xlf:flexform.thumbs_firstMargin
+    category: ns_newsslider.royal
+    type: bool
+    default: true
+
+  ns_newsslider.royal.arrowsNav:
+    label: LLL:EXT:ns_news_slider/Resources/Private/Language/locallang_db.xlf:flexform.arrowsNav
+    category: ns_newsslider.royal
+    type: bool
+    default: true
+
+  ns_newsslider.royal.loop:
+    label: LLL:EXT:ns_news_slider/Resources/Private/Language/locallang_db.xlf:flexform.loop
+    category: ns_newsslider.royal
+    type: bool
+    default: true
+
+  ns_newsslider.royal.keyboardNavEnabled:
+    label: LLL:EXT:ns_news_slider/Resources/Private/Language/locallang_db.xlf:flexform.keyboardNavEnabled
+    category: ns_newsslider.royal
+    type: bool
+    default: true
+
+  ns_newsslider.royal.controlsInside:
+    label: LLL:EXT:ns_news_slider/Resources/Private/Language/locallang_db.xlf:flexform.controlsInside
+    category: ns_newsslider.royal
+    type: bool
+    default: false
+
+  ns_newsslider.royal.imageScaleMode:
+    label: LLL:EXT:ns_news_slider/Resources/Private/Language/locallang_db.xlf:flexform.imageScaleMode
+    category: ns_newsslider.royal
+    type: string
+    default: fit-if-smaller
+    enum:
+      fill: Fill
+      none: None
+      fit-if-smaller: Fit if smaller
+
+  ns_newsslider.royal.arrowsNavAutoHide:
+    label: LLL:EXT:ns_news_slider/Resources/Private/Language/locallang_db.xlf:flexform.arrowsNavAutoHide
+    category: ns_newsslider.royal
+    type: bool
+    default: true
+
+  ns_newsslider.royal.autoScaleSlider:
+    label: LLL:EXT:ns_news_slider/Resources/Private/Language/locallang_db.xlf:flexform.autoScaleSlider
+    category: ns_newsslider.royal
+    type: bool
+    default: true
+
+  ns_newsslider.royal.autoScaleSliderWidth:
+    label: LLL:EXT:ns_news_slider/Resources/Private/Language/locallang_db.xlf:flexform.autoScaleSliderWidth
+    category: ns_newsslider.royal
+    type: string
+    default: '960'
+
+  ns_newsslider.royal.autoScaleSliderHeight:
+    label: LLL:EXT:ns_news_slider/Resources/Private/Language/locallang_db.xlf:flexform.autoScaleSliderHeight
+    category: ns_newsslider.royal
+    type: string
+    default: '350'
+
+  ns_newsslider.royal.controlNavigation:
+    label: LLL:EXT:ns_news_slider/Resources/Private/Language/locallang_db.xlf:flexform.controlNavigation
+    category: ns_newsslider.royal
+    type: string
+    default: thumbnails
+    enum:
+      thumbnails: thumbnails
+      tabs: tabs
+      none: none
+
+  ns_newsslider.royal.navigateByClick:
+    label: LLL:EXT:ns_news_slider/Resources/Private/Language/locallang_db.xlf:flexform.navigateByClick
+    category: ns_newsslider.royal
+    type: bool
+    default: true
+
+  ns_newsslider.royal.startSlideId:
+    label: LLL:EXT:ns_news_slider/Resources/Private/Language/locallang_db.xlf:flexform.startSlideId
+    category: ns_newsslider.royal
+    type: string
+    default: '1'
+
+  ns_newsslider.royal.autoPlay:
+    label: LLL:EXT:ns_news_slider/Resources/Private/Language/locallang_db.xlf:flexform.autoPlay
+    category: ns_newsslider.royal
+    type: bool
+    default: false
+
+  ns_newsslider.royal.transitionType:
+    label: LLL:EXT:ns_news_slider/Resources/Private/Language/locallang_db.xlf:flexform.transitionType
+    category: ns_newsslider.royal
+    type: string
+    default: 'move'
+
+  ns_newsslider.royal.globalCaption:
+    label: LLL:EXT:ns_news_slider/Resources/Private/Language/locallang_db.xlf:flexform.globalCaption
+    category: ns_newsslider.royal
+    type: bool
+    default: true
+
+  ns_newsslider.royal.arrowsNavHideOnTouch:
+    label: LLL:EXT:ns_news_slider/Resources/Private/Language/locallang_db.xlf:flexform.arrowsNavHideOnTouch
+    category: ns_newsslider.royal
+    type: bool
+    default: true
+
+  ns_newsslider.royal.imageAlignCenter:
+    label: LLL:EXT:ns_news_slider/Resources/Private/Language/locallang_db.xlf:flexform.imageAlignCenter
+    category: ns_newsslider.royal
+    type: bool
+    default: true
+
+  ns_newsslider.royal.imgWidth:
+    label: LLL:EXT:ns_news_slider/Resources/Private/Language/locallang_db.xlf:flexform.imgWidth
+    category: ns_newsslider.royal
+    type: string
+    default: '800'
+
+  ns_newsslider.royal.imgHeight:
+    label: LLL:EXT:ns_news_slider/Resources/Private/Language/locallang_db.xlf:flexform.imgHeight
+    category: ns_newsslider.royal
+    type: string
+    default: '500'
+
+  ns_newsslider.royal.slidesSpacing:
+    label: LLL:EXT:ns_news_slider/Resources/Private/Language/locallang_db.xlf:flexform.slidesSpacing
+    category: ns_newsslider.royal
+    type: int
+    default: 8
+
+  ns_newsslider.royal.loopRewind:
+    label: LLL:EXT:ns_news_slider/Resources/Private/Language/locallang_db.xlf:flexform.loopRewind
+    category: ns_newsslider.royal
+    type: bool
+    default: false
+
+  ns_newsslider.royal.randomizeSlides:
+    label: LLL:EXT:ns_news_slider/Resources/Private/Language/locallang_db.xlf:flexform.randomizeSlides
+    category: ns_newsslider.royal
+    type: bool
+    default: false
+
+  ns_newsslider.royal.numImagesToPreload:
+    label: LLL:EXT:ns_news_slider/Resources/Private/Language/locallang_db.xlf:flexform.numImagesToPreload
+    category: ns_newsslider.royal
+    type: int
+    default: 4
+
+  ns_newsslider.royal.usePreloader:
+    label: LLL:EXT:ns_news_slider/Resources/Private/Language/locallang_db.xlf:flexform.usePreloader
+    category: ns_newsslider.royal
+    type: bool
+    default: false
+
+  ns_newsslider.royal.slidesOrientation:
+    label: LLL:EXT:ns_news_slider/Resources/Private/Language/locallang_db.xlf:flexform.slidesOrientation
+    category: ns_newsslider.royal
+    type: string
+    default: horizontal
+    enum:
+      vertical: vertical
+      horizontal: horizontal
+
+  ns_newsslider.royal.transitionSpeed:
+    label: LLL:EXT:ns_news_slider/Resources/Private/Language/locallang_db.xlf:flexform.transitionSpeed
+    category: ns_newsslider.royal
+    type: int
+    default: 600
+
+  ns_newsslider.royal.easeInOut:
+    label: LLL:EXT:ns_news_slider/Resources/Private/Language/locallang_db.xlf:flexform.easeInOut
+    category: ns_newsslider.royal
+    type: string
+    default: easeInOutSine
+    enum:
+      easeOutSine: easeOutSine
+      easeInOutSine: easeInOutSine
+      linear: linear
+
+  ns_newsslider.royal.easeOut:
+    label: LLL:EXT:ns_news_slider/Resources/Private/Language/locallang_db.xlf:flexform.easeOut
+    category: ns_newsslider.royal
+    type: string
+    default: easeOutSine
+    enum:
+      easeOutSine: easeOutSine
+      easeInOutSine: easeInOutSine
+      linear: linear
+
+  ns_newsslider.royal.sliderDrag:
+    label: LLL:EXT:ns_news_slider/Resources/Private/Language/locallang_db.xlf:flexform.sliderDrag
+    category: ns_newsslider.royal
+    type: bool
+    default: false
+
+  ns_newsslider.royal.sliderTouch:
+    label: LLL:EXT:ns_news_slider/Resources/Private/Language/locallang_db.xlf:flexform.sliderTouch
+    category: ns_newsslider.royal
+    type: bool
+    default: false
+
+  ns_newsslider.royal.fadeinLoadedSlide:
+    label: LLL:EXT:ns_news_slider/Resources/Private/Language/locallang_db.xlf:flexform.fadeinLoadedSlide
+    category: ns_newsslider.royal
+    type: bool
+    default: true
+
+  ns_newsslider.royal.allowCSS3:
+    label: LLL:EXT:ns_news_slider/Resources/Private/Language/locallang_db.xlf:flexform.allowCSS3
+    category: ns_newsslider.royal
+    type: bool
+    default: true
+
+  ns_newsslider.royal.addActiveClass:
+    label: LLL:EXT:ns_news_slider/Resources/Private/Language/locallang_db.xlf:flexform.addActiveClass
+    category: ns_newsslider.royal
+    type: bool
+    default: false
+
+  ns_newsslider.royal.minSlideOffset:
+    label: LLL:EXT:ns_news_slider/Resources/Private/Language/locallang_db.xlf:flexform.minSlideOffset
+    category: ns_newsslider.royal
+    type: int
+    default: 10
+
+  ns_newsslider.royal.autoHeight:
+    label: LLL:EXT:ns_news_slider/Resources/Private/Language/locallang_db.xlf:flexform.autoHeight
+    category: ns_newsslider.royal
+    type: bool
+    default: false
+
+  ns_newsslider.royal.thumb_drag:
+    label: LLL:EXT:ns_news_slider/Resources/Private/Language/locallang_db.xlf:flexform.thumb_drag
+    category: ns_newsslider.royal
+    type: bool
+    default: true
+
+  ns_newsslider.royal.thumb_touch:
+    label: LLL:EXT:ns_news_slider/Resources/Private/Language/locallang_db.xlf:flexform.thumb_touch
+    category: ns_newsslider.royal
+    type: bool
+    default: true
+
+  ns_newsslider.royal.thumb_orientation:
+    label: LLL:EXT:ns_news_slider/Resources/Private/Language/locallang_db.xlf:flexform.thumb_orientation
+    category: ns_newsslider.royal
+    type: string
+    default: horizontal
+    enum:
+      vertical: vertical
+      horizontal: horizontal
+
+  ns_newsslider.royal.thumb_arrows:
+    label: LLL:EXT:ns_news_slider/Resources/Private/Language/locallang_db.xlf:flexform.thumb_arrows
+    category: ns_newsslider.royal
+    type: bool
+    default: true
+
+  ns_newsslider.royal.thumb_spacing:
+    label: LLL:EXT:ns_news_slider/Resources/Private/Language/locallang_db.xlf:flexform.thumb_spacing
+    category: ns_newsslider.royal
+    type: int
+    default: 4
+
+  ns_newsslider.royal.thumb_arrowsAutoHide:
+    label: LLL:EXT:ns_news_slider/Resources/Private/Language/locallang_db.xlf:flexform.thumb_arrowsAutoHide
+    category: ns_newsslider.royal
+    type: bool
+    default: false
+
+  ns_newsslider.royal.thumb_autoCenter:
+    label: LLL:EXT:ns_news_slider/Resources/Private/Language/locallang_db.xlf:flexform.thumb_autoCenter
+    category: ns_newsslider.royal
+    type: bool
+    default: true
+
+  ns_newsslider.royal.thumb_transitionSpeed:
+    label: LLL:EXT:ns_news_slider/Resources/Private/Language/locallang_db.xlf:flexform.thumb_transitionSpeed
+    category: ns_newsslider.royal
+    type: int
+    default: 600
+
+  ns_newsslider.royal.thumb_fitInViewport:
+    label: LLL:EXT:ns_news_slider/Resources/Private/Language/locallang_db.xlf:flexform.thumb_fitInViewport
+    category: ns_newsslider.royal
+    type: bool
+    default: true
+
+  ns_newsslider.royal.thumb_arrowLeft:
+    label: LLL:EXT:ns_news_slider/Resources/Private/Language/locallang_db.xlf:flexform.thumb_arrowLeft
+    category: ns_newsslider.royal
+    type: string
+    default: ''
+
+  ns_newsslider.royal.thumb_arrowRight:
+    label: LLL:EXT:ns_news_slider/Resources/Private/Language/locallang_db.xlf:flexform.thumb_arrowRight
+    category: ns_newsslider.royal
+    type: string
+    default: ''
+
+  ns_newsslider.royal.fullScreen_enabled:
+    label: LLL:EXT:ns_news_slider/Resources/Private/Language/locallang_db.xlf:flexform.fullScreen_enabled
+    category: ns_newsslider.royal
+    type: bool
+    default: false
+
+  ns_newsslider.royal.fullScreen_keyboardNav:
+    label: LLL:EXT:ns_news_slider/Resources/Private/Language/locallang_db.xlf:flexform.fullScreen_keyboardNav
+    category: ns_newsslider.royal
+    type: bool
+    default: true
+
+  ns_newsslider.royal.fullScreen_buttonFS:
+    label: LLL:EXT:ns_news_slider/Resources/Private/Language/locallang_db.xlf:flexform.fullScreen_buttonFS
+    category: ns_newsslider.royal
+    type: bool
+    default: true
+
+  ns_newsslider.royal.fullScreen_nativeFS:
+    label: LLL:EXT:ns_news_slider/Resources/Private/Language/locallang_db.xlf:flexform.fullScreen_nativeFS
+    category: ns_newsslider.royal
+    type: bool
+    default: false
+
+  ns_newsslider.royal.autoPlay_stopAtAction:
+    label: LLL:EXT:ns_news_slider/Resources/Private/Language/locallang_db.xlf:autoPlay_stopAtAction
+    category: ns_newsslider.royal
+    type: bool
+    default: true
+
+  ns_newsslider.royal.autoPlay_pauseOnHover:
+    label: LLL:EXT:ns_news_slider/Resources/Private/Language/locallang_db.xlf:autoPlay_pauseOnHover
+    category: ns_newsslider.royal
+    type: bool
+    default: true
+
+  ns_newsslider.royal.autoPlay_delay:
+    label: LLL:EXT:ns_news_slider/Resources/Private/Language/locallang_db.xlf:autoPlay_delay
+    category: ns_newsslider.royal
+    type: string
+    default: '3000'
+
+  ##################################################
+  # Slick Slider
+  ##################################################
+
+  ns_newsslider.slick.jQuery:
+    label: LLL:EXT:ns_news_slider/Resources/Private/Language/locallang_db.xlf:flexform.jQuery
+    category: ns_newsslider.slick
+    type: bool
+    default: false
+
+  ns_newsslider.slick.slideWidth:
+    label: LLL:EXT:ns_news_slider/Resources/Private/Language/locallang_db.xlf:flexform.slidewidthpercentage
+    category: ns_newsslider.slick
+    type: string
+    default: '80'
+
+  ns_newsslider.slick.dots:
+    label: LLL:EXT:ns_news_slider/Resources/Private/Language/locallang_db.xlf:flexform.dots
+    category: ns_newsslider.slick
+    type: bool
+    default: true
+
+  ns_newsslider.slick.speed:
+    label: LLL:EXT:ns_news_slider/Resources/Private/Language/locallang_db.xlf:flexform.speed
+    category: ns_newsslider.slick
+    type: string
+    default: '1000'
+
+  ns_newsslider.slick.autoplay:
+    label: LLL:EXT:ns_news_slider/Resources/Private/Language/locallang_db.xlf:flexform.autoPlay
+    category: ns_newsslider.slick
+    type: bool
+    default: true
+
+  ns_newsslider.slick.autoplaySpeed:
+    label: LLL:EXT:ns_news_slider/Resources/Private/Language/locallang_db.xlf:flexform.autospeed
+    category: ns_newsslider.slick
+    type: string
+    default: '2000'
+
+  ns_newsslider.slick.accessibility:
+    label: LLL:EXT:ns_news_slider/Resources/Private/Language/locallang_db.xlf:flexform.accessibility
+    category: ns_newsslider.slick
+    type: bool
+    default: true
+
+  ns_newsslider.slick.adaptiveHeight:
+    label: LLL:EXT:ns_news_slider/Resources/Private/Language/locallang_db.xlf:flexform.adaptiveHeight
+    category: ns_newsslider.slick
+    type: bool
+    default: true
+
+  ns_newsslider.slick.arrows:
+    label: LLL:EXT:ns_news_slider/Resources/Private/Language/locallang_db.xlf:flexform.arrows
+    category: ns_newsslider.slick
+    type: bool
+    default: true
+
+  ns_newsslider.slick.centerPadding:
+    label: LLL:EXT:ns_news_slider/Resources/Private/Language/locallang_db.xlf:flexform.centerPadding
+    category: ns_newsslider.slick
+    type: string
+    default: '50px'
+
+  ns_newsslider.slick.cssEase:
+    label: LLL:EXT:ns_news_slider/Resources/Private/Language/locallang_db.xlf:flexform.cssEase
+    category: ns_newsslider.slick
+    type: string
+    default: 'ease'
+
+  ns_newsslider.slick.draggable:
+    label: LLL:EXT:ns_news_slider/Resources/Private/Language/locallang_db.xlf:flexform.draggable
+    category: ns_newsslider.slick
+    type: bool
+    default: false
+
+  ns_newsslider.slick.fade:
+    label: LLL:EXT:ns_news_slider/Resources/Private/Language/locallang_db.xlf:flexform.fade
+    category: ns_newsslider.slick
+    type: bool
+    default: false
+
+  ns_newsslider.slick.focusOnSelect:
+    label: LLL:EXT:ns_news_slider/Resources/Private/Language/locallang_db.xlf:flexform.focusOnSelect
+    category: ns_newsslider.slick
+    type: bool
+    default: false
+
+  ns_newsslider.slick.infinite:
+    label: LLL:EXT:ns_news_slider/Resources/Private/Language/locallang_db.xlf:flexform.infinite
+    category: ns_newsslider.slick
+    type: bool
+    default: false
+
+  ns_newsslider.slick.initialSlide:
+    label: LLL:EXT:ns_news_slider/Resources/Private/Language/locallang_db.xlf:flexform.initialSlide
+    category: ns_newsslider.slick
+    type: int
+    default: 0
+
+  ns_newsslider.slick.mobileFirst:
+    label: LLL:EXT:ns_news_slider/Resources/Private/Language/locallang_db.xlf:flexform.mobileFirst
+    category: ns_newsslider.slick
+    type: bool
+    default: false
+
+  ns_newsslider.slick.pauseOnFocus:
+    label: LLL:EXT:ns_news_slider/Resources/Private/Language/locallang_db.xlf:flexform.pauseOnFocus
+    category: ns_newsslider.slick
+    type: bool
+    default: false
+
+  ns_newsslider.slick.pauseOnHover:
+    label: LLL:EXT:ns_news_slider/Resources/Private/Language/locallang_db.xlf:flexform.pauseOnHover
+    category: ns_newsslider.slick
+    type: bool
+    default: false
+
+  ns_newsslider.slick.pauseOnDotsHover:
+    label: LLL:EXT:ns_news_slider/Resources/Private/Language/locallang_db.xlf:flexform.pauseOnDotsHover
+    category: ns_newsslider.slick
+    type: bool
+    default: false
+
+  ns_newsslider.slick.slidesToShow:
+    label: LLL:EXT:ns_news_slider/Resources/Private/Language/locallang_db.xlf:flexform.slidesToShow
+    category: ns_newsslider.slick
+    type: int
+    default: 1
+
+  ns_newsslider.slick.slidesToScroll:
+    label: LLL:EXT:ns_news_slider/Resources/Private/Language/locallang_db.xlf:flexform.slidesToScroll
+    category: ns_newsslider.slick
+    type: int
+    default: 1
+
+  ns_newsslider.slick.swipe:
+    label: LLL:EXT:ns_news_slider/Resources/Private/Language/locallang_db.xlf:flexform.swipe
+    category: ns_newsslider.slick
+    type: bool
+    default: false
+
+  ns_newsslider.slick.swipeToSlide:
+    label: LLL:EXT:ns_news_slider/Resources/Private/Language/locallang_db.xlf:flexform.swipeToSlide
+    category: ns_newsslider.slick
+    type: bool
+    default: false
+
+  ns_newsslider.slick.touchMove:
+    label: LLL:EXT:ns_news_slider/Resources/Private/Language/locallang_db.xlf:flexform.touchMove
+    category: ns_newsslider.slick
+    type: bool
+    default: false
+
+  ns_newsslider.slick.touchThreshold:
+    label: LLL:EXT:ns_news_slider/Resources/Private/Language/locallang_db.xlf:flexform.touchThreshold
+    category: ns_newsslider.slick
+    type: bool
+    default: false
+
+  ns_newsslider.slick.useCSS:
+    label: LLL:EXT:ns_news_slider/Resources/Private/Language/locallang_db.xlf:flexform.useCSS
+    category: ns_newsslider.slick
+    type: bool
+    default: false
+
+  ns_newsslider.slick.useTransform:
+    label: LLL:EXT:ns_news_slider/Resources/Private/Language/locallang_db.xlf:flexform.useTransform
+    category: ns_newsslider.slick
+    type: bool
+    default: false
+
+  ns_newsslider.slick.variableWidth:
+    label: LLL:EXT:ns_news_slider/Resources/Private/Language/locallang_db.xlf:flexform.variableWidth
+    category: ns_newsslider.slick
+    type: bool
+    default: false
+
+  ns_newsslider.slick.rtl:
+    label: LLL:EXT:ns_news_slider/Resources/Private/Language/locallang_db.xlf:flexform.rtl
+    category: ns_newsslider.slick
+    type: bool
+    default: false
+
+  ns_newsslider.slick.waitForAnimate:
+    label: LLL:EXT:ns_news_slider/Resources/Private/Language/locallang_db.xlf:flexform.waitForAnimate
+    category: ns_newsslider.slick
+    type: bool
+    default: false
+
+  ns_newsslider.slick.vertical:
+    label: LLL:EXT:ns_news_slider/Resources/Private/Language/locallang_db.xlf:flexform.vertical
+    category: ns_newsslider.slick
+    type: bool
+    default: false
+
+  ns_newsslider.slick.verticalSwiping:
+    label: LLL:EXT:ns_news_slider/Resources/Private/Language/locallang_db.xlf:flexform.verticalSwiping
+    category: ns_newsslider.slick
+    type: bool
+    default: false
+
+  ns_newsslider.slick.centerMode:
+    label: LLL:EXT:ns_news_slider/Resources/Private/Language/locallang_db.xlf:flexform.centerMode
+    category: ns_newsslider.slick
+    type: bool
+    default: true
+
+  ns_newsslider.slick.lazyLoad:
+    label: LLL:EXT:ns_news_slider/Resources/Private/Language/locallang_db.xlf:flexform.lazyLoad
+    category: ns_newsslider.slick
+    type: string
+    default: 'ondemand'
+    enum:
+      ondemand: ondemand
+      progressive: progressive
+    
+  ##################################################
+  # SliderJS
+  ##################################################
+
+  ns_newsslider.sliderjs.jQuery:
+    label: LLL:EXT:ns_news_slider/Resources/Private/Language/locallang_db.xlf:flexform.jQuery
+    category: ns_newsslider.sliderjs
+    type: bool
+    default: false
+
+  ns_newsslider.sliderjs.Conslidewidth:
+    label: LLL:EXT:ns_news_slider/Resources/Private/Language/locallang_db.xlf:flexform.slidewidth
+    category: ns_newsslider.sliderjs
+    type: string
+    default: '940'
+
+  ns_newsslider.sliderjs.Conslideheight:
+    label: LLL:EXT:ns_news_slider/Resources/Private/Language/locallang_db.xlf:flexform.slideheight
+    category: ns_newsslider.sliderjs
+    type: string
+    default: '228'
+
+  ns_newsslider.sliderjs.Constart:
+    label: LLL:EXT:ns_news_slider/Resources/Private/Language/locallang_db.xlf:flexform.start
+    category: ns_newsslider.sliderjs
+    type: string
+    default: '1'
+
+  ns_newsslider.sliderjs.ConnavigationActive:
+    label: LLL:EXT:ns_news_slider/Resources/Private/Language/locallang_db.xlf:flexform.navigationActive
+    category: ns_newsslider.sliderjs
+    type: bool
+    default: true
+
+  ns_newsslider.sliderjs.Connavigation_effect:
+    label: LLL:EXT:ns_news_slider/Resources/Private/Language/locallang_db.xlf:flexform.navigation_effect
+    category: ns_newsslider.sliderjs
+    type: string
+    default: 'slide'
+    enum:
+      fade: fade
+      slide: slide
+
+  ns_newsslider.sliderjs.Conpagination_effect:
+    label: LLL:EXT:ns_news_slider/Resources/Private/Language/locallang_db.xlf:flexform.pagination_effect
+    category: ns_newsslider.sliderjs
+    type: string
+    default: 'fade'
+    enum:
+      fade: fade
+      slide: slide
+
+  ns_newsslider.sliderjs.ConpaginationActive:
+    label: LLL:EXT:ns_news_slider/Resources/Private/Language/locallang_db.xlf:flexform.pagination
+    category: ns_newsslider.sliderjs
+    type: bool
+    default: true
+
+  ns_newsslider.sliderjs.ConeffectSlideSpeed:
+    label: LLL:EXT:ns_news_slider/Resources/Private/Language/locallang_db.xlf:flexform.ConeffectSlideSpeed
+    category: ns_newsslider.sliderjs
+    type: string
+    default: '200'
+
+  ns_newsslider.sliderjs.Coneffect_cross_fade:
+    label: LLL:EXT:ns_news_slider/Resources/Private/Language/locallang_db.xlf:flexform.crossFade
+    category: ns_newsslider.sliderjs
+    type: bool
+    default: false
+
+  ns_newsslider.sliderjs.Coneffect_fade_speed:
+    label: LLL:EXT:ns_news_slider/Resources/Private/Language/locallang_db.xlf:flexform.effect_fade_speed
+    category: ns_newsslider.sliderjs
+    type: string
+    default: '300'
+
+  ns_newsslider.sliderjs.Conplay_active:
+    label: LLL:EXT:ns_news_slider/Resources/Private/Language/locallang_db.xlf:flexform.play_active
+    category: ns_newsslider.sliderjs
+    type: bool
+    default: true
+
+  ns_newsslider.sliderjs.Conplay_auto:
+    label: LLL:EXT:ns_news_slider/Resources/Private/Language/locallang_db.xlf:flexform.play_auto
+    category: ns_newsslider.sliderjs
+    type: bool
+    default: true
+
+  ns_newsslider.sliderjs.Conplay_swap:
+    label: LLL:EXT:ns_news_slider/Resources/Private/Language/locallang_db.xlf:flexform.play_swap
+    category: ns_newsslider.sliderjs
+    type: bool
+    default: true
+
+  ns_newsslider.sliderjs.Conplay_interval:
+    label: LLL:EXT:ns_news_slider/Resources/Private/Language/locallang_db.xlf:flexform.play_interval
+    category: ns_newsslider.sliderjs
+    type: string
+    default: '4010'
+
+  ns_newsslider.sliderjs.ConplayPauseOnHover:
+    label: LLL:EXT:ns_news_slider/Resources/Private/Language/locallang_db.xlf:flexform.play_pauseOnHover
+    category: ns_newsslider.sliderjs
+    type: bool
+    default: false
+
+  ns_newsslider.sliderjs.ConplayEffect:
+    label: LLL:EXT:ns_news_slider/Resources/Private/Language/locallang_db.xlf:flexform.play_effect
+    category: ns_newsslider.sliderjs
+    type: string
+    default: 'fade'
+    enum:
+      fade: fade
+      slide: slide
+
+  ns_newsslider.sliderjs.ConrestartDelay:
+    label: LLL:EXT:ns_news_slider/Resources/Private/Language/locallang_db.xlf:flexform.play_restartDelay
+    category: ns_newsslider.sliderjs
+    type: int
+    default: 2500
+
+  ns_newsslider.sliderjs.Conplay_effect:
+    label: Play effect
+    category: ns_newsslider.sliderjs
+    type: string
+    default: 'fade'
+    enum:
+      fade: fade
+      slide: slide

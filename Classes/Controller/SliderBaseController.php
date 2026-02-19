@@ -44,6 +44,7 @@ class SliderBaseController extends NewsController
         $arguments = ['path' => $path, 'extensionName' => $extName];
         $path = $arguments['path'];
         $publicPath = sprintf('EXT:%s/Resources/Public/%s', $arguments['extensionName'], ltrim($path, '/'));
+        // @extensionScannerIgnoreLine
         $uri = PathUtility::getPublicResourceWebPath($publicPath);
         return substr($uri, 1);
     }

@@ -70,30 +70,27 @@ class SlickController extends SliderBaseController
             'settings' => $settings
         ]);
 
-        $extensionKey = $this->request->getControllerExtensionKey();
-        $additionalHeaderData = &$GLOBALS['TSFE']->additionalHeaderData;
-
         if (Environment::isComposerMode()) {
             $assetPath = $this->getPath('/', 'ns_news_slider');
             $extpath = GeneralUtility::getIndpEnv('TYPO3_SITE_URL') . $assetPath;
             $cssPath = 'slider/Slick-Slider/css/';
             $jsPath = 'slider/Slick-Slider/js/';
+            $ajax1 = $extpath . $jsPath . 'slick.js';
         } else {
             $extpath = PathUtility::stripPathSitePrefix(ExtensionManagementUtility::extPath('ns_news_slider'));
             $cssPath = 'Resources/Public/slider/Slick-Slider/css/';
             $jsPath = 'Resources/Public/slider/Slick-Slider/js/';
+            $ajax1 = 'EXT:ns_news_slider/' . $jsPath . 'slick.js';
         }
 
         $pageRenderer = GeneralUtility::makeInstance(PageRenderer::class);
-
-        $additionalHeaderData[$extensionKey . 'slick'] = '<link rel="stylesheet" type="text/css" href="' . $extpath . $cssPath . 'slick.css" />';
-        $additionalHeaderData[$extensionKey . 'slick-theme'] = '<link rel="stylesheet" type="text/css" href="' . $extpath . $cssPath . 'slick-theme.css" />';
-        $additionalHeaderData[$extensionKey . 'slick-custom'] = '<link rel="stylesheet" type="text/css" href="' . $extpath . $cssPath . 'slick-custom.css" />';
-
-        $ajax1 = $extpath . $jsPath . 'slick.js';
+        $pageRenderer->addHeaderData('<link rel="stylesheet" type="text/css" href="' . $extpath . $cssPath . 'slick.css" />');
+        $pageRenderer->addHeaderData('<link rel="stylesheet" type="text/css" href="' . $extpath . $cssPath . 'slick-theme.css" />');
+        $pageRenderer->addHeaderData('<link rel="stylesheet" type="text/css" href="' . $extpath . $cssPath . 'slick-custom.css" />');
 
 
         $pluginName = $this->request->getPluginName();
+        // @extensionScannerIgnoreLine
         $getContentId = $this->request->getAttribute('currentContentObject')->data['uid'];
 
         // set js value for slider
@@ -106,49 +103,44 @@ class SlickController extends SliderBaseController
         }
 
         $pageRenderer->addJsFooterFile($ajax1, 'text/javascript', false, false, '');
-        $sliderOption = '';
-        $sliderOption .= '
-                slideWidth: ' . (isset($this->settings['slicksldwidth']) && $this->settings['slicksldwidth'] != '' ? $this->settings['slicksldwidth'] : $constant['slideWidth']) . ',
-                dots: ' . (isset($this->settings['slickdots']) && $this->settings['slickdots'] != '' ? $this->settings['slickdots'] : $constant['dots']) . ',
-
-                autoplay: ' . (isset($this->settings['slickautoplay']) && $this->settings['slickautoplay'] != '' ? $this->settings['slickautoplay'] : $constant['autoplay']) . ',
-                autoplaySpeed:' . (isset($this->settings['slickautoplaySpeed']) && $this->settings['slickautoplaySpeed'] != '' ? $this->settings['slickautoplaySpeed'] : $constant['autoplaySpeed']) . ',
-
-                speed: ' . (isset($this->settings['slickspeed']) && $this->settings['slickspeed'] != '' ? $this->settings['slickspeed'] : $constant['speed']) . ',
-                accessibility: ' . (isset($this->settings['slickaccessibility']) && $this->settings['slickaccessibility'] != '' ? $this->settings['slickaccessibility'] : $constant['accessibility']) . ',
-                adaptiveHeight: ' . (isset($this->settings['slickadaptiveHeight']) && $this->settings['slickadaptiveHeight'] != '' ? $this->settings['slickadaptiveHeight'] : $constant['adaptiveHeight']) . ',
-                arrows: ' . (isset($this->settings['slickarrows']) && $this->settings['slickarrows'] != '' ? $this->settings['slickarrows'] : $constant['arrows']) . ",
-                centerPadding: '" . (isset($this->settings['slickcenterPadding']) && $this->settings['slickcenterPadding'] != '' ? $this->settings['slickcenterPadding'] : $constant['centerPadding']) . "',
-                cssEase: '" . (isset($this->settings['slickcssEase']) && $this->settings['slickcssEase'] != '' ? $this->settings['slickcssEase'] : $constant['cssEase']) . "',
-                draggable: " . (isset($this->settings['slickdraggable']) && $this->settings['slickdraggable'] != '' ? $this->settings['slickdraggable'] : $constant['draggable']) . ',
-                fade: ' . (isset($this->settings['slickfade']) && $this->settings['slickfade'] != '' ? $this->settings['slickfade'] : $constant['fade']) . ',
-                focusOnSelect: ' . (isset($this->settings['slickfocusOnSelect']) && $this->settings['slickfocusOnSelect'] != '' ? $this->settings['slickfocusOnSelect'] : $constant['focusOnSelect']) . ',
-                initialSlide: ' . (isset($this->settings['slickinitialSlide']) && $this->settings['slickinitialSlide'] > 0 ? $this->settings['slickinitialSlide'] : $constant['initialSlide']) . ',
-                mobileFirst: ' . (isset($this->settings['slickmobileFirst']) && $this->settings['slickmobileFirst'] != '' ? $this->settings['slickmobileFirst'] : $constant['mobileFirst']) . ',
-                pauseOnFocus: ' . (isset($this->settings['slickpauseOnFocus']) && $this->settings['slickpauseOnFocus'] != '' ? $this->settings['slickpauseOnFocus'] : $constant['pauseOnFocus']) . ',
-                pauseOnHover: ' . (isset($this->settings['slickpauseOnHover']) && $this->settings['slickpauseOnHover'] != '' ? $this->settings['slickpauseOnHover'] : $constant['pauseOnHover']) . ',
-                pauseOnDotsHover: ' . (isset($this->settings['slickpauseOnDotsHover']) && $this->settings['slickpauseOnDotsHover'] != '' ? $this->settings['slickpauseOnDotsHover'] : $constant['pauseOnDotsHover']) . ',
-                slidesToScroll: ' . (isset($this->settings['slickslidesToScroll']) && $this->settings['slickslidesToScroll'] != '' ? $this->settings['slickslidesToScroll'] : $constant['slidesToScroll']) . ',
-                swipe: ' . (isset($this->settings['slickswipe']) && $this->settings['slickswipe'] != '' ? $this->settings['slickswipe'] : $constant['swipe']) . ',
-                swipeToSlide: ' . (isset($this->settings['slickswipeToSlide']) && $this->settings['slickswipeToSlide'] != '' ? $this->settings['slickswipeToSlide'] : $constant['swipeToSlide']) . ',
-                touchMove: ' . (isset($this->settings['slicktouchMove']) && $this->settings['slicktouchMove'] != '' ? $this->settings['slicktouchMove'] : $constant['touchMove']) . ',
-                touchThreshold: ' . (isset($this->settings['slicktouchThreshold']) && $this->settings['slicktouchThreshold'] != '' ? $this->settings['slicktouchThreshold'] : $constant['touchThreshold']) . ',
-                useCSS: ' . (isset($this->settings['slickuseCSS']) && $this->settings['slickuseCSS'] != '' ? $this->settings['slickuseCSS'] : $constant['useCSS']) . ',
-                useTransform: ' . (isset($this->settings['slickuseTransform']) && $this->settings['slickuseTransform'] != '' ? $this->settings['slickuseTransform'] : $constant['useTransform']) . ',
-                variableWidth: ' . (isset($this->settings['slickvariableWidth']) && $this->settings['slickvariableWidth'] != '' ? $this->settings['slickvariableWidth'] : $constant['variableWidth']) . ',
-                rtl: ' . (isset($this->settings['slickrtl']) && $this->settings['slickrtl'] != '' ? $this->settings['slickrtl'] : $constant['rtl']) . ',
-                waitForAnimate: ' . (isset($this->settings['slickwaitForAnimate']) && $this->settings['slickwaitForAnimate'] != '' ? $this->settings['slickwaitForAnimate'] : $constant['waitForAnimate']) . ',
-                vertical: ' . (isset($this->settings['slickvertical']) && $this->settings['slickvertical'] != '' ? $this->settings['slickvertical'] : $constant['vertical']) . ',
-                verticalSwiping: ' . (isset($this->settings['slickverticalSwiping']) && $this->settings['slickverticalSwiping'] != '' ? $this->settings['slickverticalSwiping'] : $constant['verticalSwiping']) . ',
-                centerMode:' . (isset($this->settings['slickdisplay']) && $this->settings['slickdisplay'] != '' ? $this->settings['slickdisplay'] : $constant['centerMode']) . ",
-                lazyLoad:'" . (isset($this->settings['slicklazyLoad']) && $this->settings['slicklazyLoad'] != '' ? $this->settings['slicklazyLoad'] : $constant['lazyLoad']) . "',
-                slidesToShow:" . (isset($this->settings['slickslidesToShow']) && $this->settings['slickslidesToShow'] > 0 ? $this->settings['slickslidesToShow'] : $constant['slidesToShow']) . ',
-                infinite: ' . (isset($this->settings['slickinfinite']) && $this->settings['slickinfinite'] != '' ? $this->settings['slickinfinite'] : $constant['infinite']) . '
+        $sliderOption = '
+                slideWidth: ' . (isset($this->settings['slicksldwidth']) && $this->settings['slicksldwidth'] != '' ? $this->settings['slicksldwidth'] : (($constant['slideWidth'] ?? '') === '' ? 'false' : $constant['slideWidth'])) . ',
+                dots: ' . (isset($this->settings['slickdots']) && $this->settings['slickdots'] != '' ? $this->settings['slickdots'] : (empty($constant['dots']) || $constant['dots'] == 'false' ? 'false' : 'true')) . ',
+                autoplay: ' . (!empty($this->settings['slickautoplay']) ? $this->settings['slickautoplay'] : (empty($constant['autoplay']) || $constant['autoplay'] == 'false' ? 'false' : 'true')) . ',
+                autoplaySpeed:' . (!empty($this->settings['slickautoplaySpeed']) ? $this->settings['slickautoplaySpeed'] : (($constant['autoplaySpeed'] ?? '') === '' ? '0' : $constant['autoplaySpeed'])) . ',
+                speed: ' . (!empty($this->settings['slickspeed']) ? $this->settings['slickspeed'] : (($constant['speed'] ?? '') === '' ? '0' : $constant['speed'])) . ',
+                accessibility: ' . (!empty($this->settings['slickaccessibility']) ? $this->settings['slickaccessibility'] : (empty($constant['accessibility']) || $constant['accessibility'] == 'false' ? 'false' : 'true')) . ',
+                adaptiveHeight: ' . (!empty($this->settings['slickadaptiveHeight']) ? $this->settings['slickadaptiveHeight'] : (empty($constant['adaptiveHeight']) || $constant['adaptiveHeight'] == 'false' ? 'false' : 'true')) .',
+                arrows: ' . (isset($this->settings['slickarrows']) && $this->settings['slickarrows'] != '' ? $this->settings['slickarrows'] : (empty($constant['arrows']) || $constant['arrows'] == 'false' ? 'false' : 'true')) . ',
+                centerPadding: ' . (isset($this->settings['slickcenterPadding']) && $this->settings['slickcenterPadding'] != '' ? $this->settings['slickcenterPadding'] : (empty($constant['centerPadding']) || $constant['centerPadding'] == 'false' ? 'false' : 'true')) . ',
+                cssEase: "' . (isset($this->settings['slickcssEase']) && $this->settings['slickcssEase'] != '' ? $this->settings['slickcssEase'] : (($constant['cssEase'] ?? '') === '' ? 'false' : $constant['cssEase'])) . '",
+                draggable: ' . (isset($this->settings['slickdraggable']) && $this->settings['slickdraggable'] != '' ? $this->settings['slickdraggable'] : (empty($constant['draggable']) || $constant['draggable'] == 'false' ? 'false' : 'true')) . ',
+                fade: ' . (isset($this->settings['slickfade']) && $this->settings['slickfade'] != '' ? $this->settings['slickfade'] : (empty($constant['fade']) || $constant['fade'] == 'false' ? 'false' : 'true')) . ',
+                focusOnSelect: ' . (isset($this->settings['slickfocusOnSelect']) && $this->settings['slickfocusOnSelect'] != '' ? $this->settings['slickfocusOnSelect'] : (empty($constant['focusOnSelect']) || $constant['focusOnSelect'] == 'false' ? 'false' : 'true')) . ',
+                initialSlide: ' . (isset($this->settings['slickinitialSlide']) && $this->settings['slickinitialSlide'] > 0 ? $this->settings['slickinitialSlide'] : (($constant['initialSlide'] ?? '') === '' ? 'false' : $constant['initialSlide'])) . ',
+                mobileFirst: ' . (isset($this->settings['slickmobileFirst']) && $this->settings['slickmobileFirst'] != '' ? $this->settings['slickmobileFirst'] : (($constant['mobileFirst'] ?? '') === '' ? 'false' : 'true')) . ',
+                pauseOnFocus: ' . (isset($this->settings['slickpauseOnFocus']) && $this->settings['slickpauseOnFocus'] != '' ? $this->settings['slickpauseOnFocus'] : (empty($constant['pauseOnFocus']) || $constant['pauseOnFocus'] == 'false' ? 'false' : 'true')) . ',
+                pauseOnHover: ' . (isset($this->settings['slickpauseOnHover']) && $this->settings['slickpauseOnHover'] != '' ? $this->settings['slickpauseOnHover'] : (empty($constant['pauseOnHover']) || $constant['pauseOnHover'] == 'false' ? 'false' : 'true')) . ',
+                pauseOnDotsHover: ' . (isset($this->settings['slickpauseOnDotsHover']) && $this->settings['slickpauseOnDotsHover'] != '' ? $this->settings['slickpauseOnDotsHover'] : (($constant['pauseOnDotsHover'] ?? '') === '' ? 'false' : 'true')) . ',
+                swipe: ' . (isset($this->settings['slickswipe']) && $this->settings['slickswipe'] != '' ? $this->settings['slickswipe'] : (empty($constant['swipe']) || $constant['swipe'] == 'false' ? 'false' : 'true')) . ',
+                swipeToSlide: ' . (isset($this->settings['slickswipeToSlide']) && $this->settings['slickswipeToSlide'] != '' ? $this->settings['slickswipeToSlide'] : (empty($constant['swipeToSlide']) || $constant['swipeToSlide'] == 'false' ? 'false' : 'true')) . ',
+                touchMove: ' . (isset($this->settings['slicktouchMove']) && $this->settings['slicktouchMove'] != '' ? $this->settings['slicktouchMove'] : (empty($constant['touchMove']) || $constant['touchMove'] == 'false' ? 'false' : 'true')) . ',
+                touchThreshold: ' . (isset($this->settings['slicktouchThreshold']) && $this->settings['slicktouchThreshold'] != '' ? $this->settings['slicktouchThreshold'] : (empty($constant['touchThreshold']) || $constant['touchThreshold'] == 'false' ? 'false' : 'true')) . ',
+                useCSS: ' . (isset($this->settings['slickuseCSS']) && $this->settings['slickuseCSS'] != '' ? $this->settings['slickuseCSS'] : (empty($constant['useCSS']) || $constant['useCSS'] == 'false' ? 'false' : 'true')) . ',
+                useTransform: ' . (isset($this->settings['slickuseTransform']) && $this->settings['slickuseTransform'] != '' ? $this->settings['slickuseTransform'] : (empty($constant['useTransform']) || $constant['useTransform'] == 'false' ? 'false' : 'true')) . ',
+                variableWidth: ' . (isset($this->settings['slickvariableWidth']) && $this->settings['slickvariableWidth'] != '' ? $this->settings['slickvariableWidth'] : (empty($constant['variableWidth']) || $constant['variableWidth'] == 'false' ? 'false' : 'true')) . ',
+                rtl: ' . (isset($this->settings['slickrtl']) && $this->settings['slickrtl'] != '' ? $this->settings['slickrtl'] : (empty($constant['rtl']) || $constant['rtl'] == 'false' ? 'false' : 'true')) . ',
+                waitForAnimate: ' . (isset($this->settings['slickwaitForAnimate']) && $this->settings['slickwaitForAnimate'] != '' ? $this->settings['slickwaitForAnimate'] : (empty($constant['waitForAnimate']) || $constant['waitForAnimate'] == 'false' ? 'false' : 'true')) . ',
+                vertical: ' . (isset($this->settings['slickvertical']) && $this->settings['slickvertical'] != '' ? $this->settings['slickvertical'] : (empty($constant['vertical']) || $constant['vertical'] == 'false' ? 'false' : 'true')) . ',
+                verticalSwiping: ' . (isset($this->settings['slickverticalSwiping']) && $this->settings['slickverticalSwiping'] != '' ? $this->settings['slickverticalSwiping'] : (empty($constant['verticalSwiping']) || $constant['verticalSwiping'] == 'false' ? 'false' : 'true')) . ',
+                centerMode:' . (isset($this->settings['slickdisplay']) && $this->settings['slickdisplay'] != '' ? $this->settings['slickdisplay'] : (empty($constant['centerMode']) || $constant['centerMode'] == 'false' ? 'false' : 'true')) . ",
+                lazyLoad:'" . (isset($this->settings['slicklazyLoad']) && $this->settings['slicklazyLoad'] != '' ? $this->settings['slicklazyLoad'] : (($constant['lazyLoad'] ?? '') === '' ? 'false' : $constant['lazyLoad'])) . "',
+                slidesToShow:" . (isset($this->settings['slickslidesToShow']) && $this->settings['slickslidesToShow'] > 0 ? $this->settings['slickslidesToShow'] : (($constant['slidesToShow'] ?? '') === '' ? 'false' : $constant['slidesToShow'])) . ',
+                slidesToScroll: ' . (isset($this->settings['slickslidesToScroll']) && $this->settings['slickslidesToScroll'] >= 1 ? $this->settings['slickslidesToScroll'] : (($constant['slidesToScroll'] ?? '') === '' ? 'false' : $constant['slidesToScroll'])) . ',
+                infinite: ' . (isset($this->settings['slickinfinite']) && $this->settings['slickinfinite'] != '' ? $this->settings['slickinfinite'] : (empty($constant['infinite']) || $constant['infinite'] == 'false' ? 'false' : 'true')) . '
             ';
 
-        $this->extKey = $this->extKey ?? '';
-        $GLOBALS['TSFE']->additionalFooterData[$this->extKey] = $GLOBALS['TSFE']->additionalFooterData[$this->extKey] ?? '';
-        $GLOBALS['TSFE']->additionalFooterData[$this->extKey] .= "<script>
+        $footerData= "<script>
                 if (typeof jQuery == 'undefined') {
                     alert('Please include Jquery library first!');
                 }
@@ -158,6 +150,8 @@ class SlickController extends SliderBaseController
                       });
                 })(jQuery);
              </script>';
+
+        $pageRenderer->addFooterData($footerData);
 
         //variable saved in flexform
         $this->view->assign('settings', $this->settings);
