@@ -59,7 +59,6 @@ plugin {
             ConstagePadding = {$plugin.tx_nsnewsslider_owlcarousel.settings.ConstagePadding}
             Conmerge = {$plugin.tx_nsnewsslider_owlcarousel.settings.Conmerge}
             ConmergeFit = {$plugin.tx_nsnewsslider_owlcarousel.settings.ConmergeFit}
-            ConautoWidth = {$plugin.tx_nsnewsslider_owlcarousel.settings.ConautoWidth}
             ConstartPosition = {$plugin.tx_nsnewsslider_owlcarousel.settings.ConstartPosition}
             ConURLhashListener = {$plugin.tx_nsnewsslider_owlcarousel.settings.ConURLhashListener}
             Conrewind = {$plugin.tx_nsnewsslider_owlcarousel.settings.Conrewind}
