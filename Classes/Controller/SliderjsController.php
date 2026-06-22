@@ -72,7 +72,7 @@ class SliderjsController extends SliderBaseController
             $assetPath = $this->getPath('/', 'ns_news_slider');
             $extpath = GeneralUtility::getIndpEnv('TYPO3_SITE_URL') . $assetPath;
         } else {
-            $extpath = PathUtility::stripPathSitePrefix(ExtensionManagementUtility::extPath('ns_news_slider')).'Resources/Public/';
+            $extpath = '/' . PathUtility::stripPathSitePrefix(ExtensionManagementUtility::extPath('ns_news_slider')).'Resources/Public/';
         }
         $pluginName = $this->request->getPluginName();
 

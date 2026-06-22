@@ -86,7 +86,7 @@ class OwlController extends SliderBaseController
                 'slider/owl.carousel/assets/css/animate.css',
             ];
         } else {
-            $extpath = PathUtility::stripPathSitePrefix(ExtensionManagementUtility::extPath('ns_news_slider'));
+            $extpath = '/' . PathUtility::stripPathSitePrefix(ExtensionManagementUtility::extPath('ns_news_slider'));
             $cssFiles = [
                 'Resources/Public/slider/owl.carousel/assets/css/custom.css',
                 'Resources/Public/slider/owl.carousel/owl-carousel/owl.carousel.css',
