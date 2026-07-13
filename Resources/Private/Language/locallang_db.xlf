@@ -431,9 +431,6 @@
 			<trans-unit id="flexform.mergeFit">
 				<source>Merge fit</source>
 			</trans-unit>
-			<trans-unit id="flexform.autoWidth">
-				<source>Auto width</source>
-			</trans-unit>
 			<trans-unit id="flexform.startPosition">
 				<source>Start position</source>
 			</trans-unit>

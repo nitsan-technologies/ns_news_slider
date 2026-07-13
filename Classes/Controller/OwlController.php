@@ -86,7 +86,7 @@ class OwlController extends SliderBaseController
                 'slider/owl.carousel/assets/css/animate.css',
             ];
         } else {
-            $extpath = PathUtility::stripPathSitePrefix(ExtensionManagementUtility::extPath('ns_news_slider'));
+            $extpath = '/' . PathUtility::stripPathSitePrefix(ExtensionManagementUtility::extPath('ns_news_slider'));
             $cssFiles = [
                 'Resources/Public/slider/owl.carousel/assets/css/custom.css',
                 'Resources/Public/slider/owl.carousel/owl-carousel/owl.carousel.css',
@@ -155,8 +155,6 @@ class OwlController extends SliderBaseController
                             stagePadding:' . (isset($this->settings['owlstagePadding']) && $this->settings['owlstagePadding'] != '' ? $this->settings['owlstagePadding'] : (($constant['ConstagePadding'] ?? '') === '' ? 'false' : $constant['ConstagePadding'])) . ',
                             merge:' . (isset($this->settings['owlmerge']) && $this->settings['owlmerge'] != '' ? $this->settings['owlmerge'] : (empty($constant['Conmerge']) || $constant['Conmerge'] == 'false' ? 'false' : 'true')) . ',
                             mergeFit:' . (isset($this->settings['owlmergeFit']) && $this->settings['owlmergeFit'] != '' ? $this->settings['owlmergeFit'] : (empty($constant['ConmergeFit']) || $constant['ConmergeFit'] == 'false' ? 'false' : 'true')) . ',
-                            autoWidth:' . (isset($this->settings['owlmergeFit']) && $this->settings['owlmergeFit'] != '' ? $this->settings['owlmergeFit'] : (empty($constant['ConautoWidth']) || $constant['ConautoWidth'] == 'false' ? 'false' : 'true')) . ',
-
                             startPosition: "' . (isset($this->settings['owlstartPosition']) && $this->settings['owlstartPosition'] != '' ? $this->settings['owlstartPosition'] : (($constant['ConstartPosition'] ?? '') === '' ? 'false' : $constant['ConstartPosition'])) . '",
 
                             URLhashListener:' . (isset($this->settings['owlURLhashListener']) && $this->settings['owlURLhashListener'] != '' ? $this->settings['owlURLhashListener'] : (empty($constant['ConURLhashListener']) || $constant['ConURLhashListener'] == 'false' ? 'false' : 'true')) . ',

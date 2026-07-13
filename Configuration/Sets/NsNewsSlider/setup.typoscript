@@ -37,7 +37,6 @@ plugin {
             ConstagePadding = {$ns_newsslider.owl.ConstagePadding}
             Conmerge = {$ns_newsslider.owl.Conmerge}
             ConmergeFit = {$ns_newsslider.owl.ConmergeFit}
-            ConautoWidth = {$ns_newsslider.owl.ConautoWidth}
             ConstartPosition = {$ns_newsslider.owl.ConstartPosition}
             ConURLhashListener = {$ns_newsslider.owl.ConURLhashListener}
             Conrewind = {$ns_newsslider.owl.Conrewind}

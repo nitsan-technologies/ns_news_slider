@@ -45,8 +45,6 @@ plugin {
             Conmerge = false
             # cat=plugin.tx_nsnewsslider_owlcarousel/1111/015; type=options[true,false]; label=LLL:EXT:ns_news_slider/Resources/Private/Language/locallang_db.xlf:flexform.mergeFit
             ConmergeFit = true
-            # cat=plugin.tx_nsnewsslider_owlcarousel/1111/016; type=options[true,false]; label=LLL:EXT:ns_news_slider/Resources/Private/Language/locallang_db.xlf:flexform.autoWidth
-            ConautoWidth = false
             # cat=plugin.tx_nsnewsslider_owlcarousel/1111/017; type=int; label=LLL:EXT:ns_news_slider/Resources/Private/Language/locallang_db.xlf:flexform.startPosition
             ConstartPosition = 0
             # cat=plugin.tx_nsnewsslider_owlcarousel/1111/018; type=options[true,false]; label=LLL:EXT:ns_news_slider/Resources/Private/Language/locallang_db.xlf:flexform.URLhashListener

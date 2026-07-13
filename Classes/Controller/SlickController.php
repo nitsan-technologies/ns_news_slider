@@ -77,7 +77,7 @@ class SlickController extends SliderBaseController
             $jsPath = 'slider/Slick-Slider/js/';
             $ajax1 = $extpath . $jsPath . 'slick.js';
         } else {
-            $extpath = PathUtility::stripPathSitePrefix(ExtensionManagementUtility::extPath('ns_news_slider'));
+            $extpath = '/' . PathUtility::stripPathSitePrefix(ExtensionManagementUtility::extPath('ns_news_slider'));
             $cssPath = 'Resources/Public/slider/Slick-Slider/css/';
             $jsPath = 'Resources/Public/slider/Slick-Slider/js/';
             $ajax1 = 'EXT:ns_news_slider/' . $jsPath . 'slick.js';

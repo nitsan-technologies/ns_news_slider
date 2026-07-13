@@ -72,7 +72,7 @@ class NivoController extends SliderBaseController
             $jsPath = 'slider/Nivo-Slider/';
             $ajax1 = $extpath . $jsPath . 'jquery.nivo.slider.js';
         } else {
-            $extpath = PathUtility::stripPathSitePrefix(ExtensionManagementUtility::extPath('ns_news_slider'));
+            $extpath = '/' . PathUtility::stripPathSitePrefix(ExtensionManagementUtility::extPath('ns_news_slider'));
             $cssPath = 'Resources/Public/slider/Nivo-Slider/';
             $jsPath = 'Resources/Public/slider/Nivo-Slider/';
             $ajax1 = 'EXT:ns_news_slider/' . $jsPath . 'jquery.nivo.slider.js';

@@ -80,7 +80,7 @@ class RoyalController extends SliderBaseController
             $ajax2 = $extpath . $jsPath . 'jquery.royalslider.min.js';
             $ajax3 = $extpath . $jsPath . 'jquery.easing.js';
         } else {
-            $extpath = PathUtility::stripPathSitePrefix(ExtensionManagementUtility::extPath('ns_news_slider'));
+            $extpath = '/' . PathUtility::stripPathSitePrefix(ExtensionManagementUtility::extPath('ns_news_slider'));
             $cssPath = 'Resources/Public/slider/Royal-Slider/css/';
             $jsPath = 'Resources/Public/slider/Royal-Slider/js/vendor/';
             $ajax2 = 'EXT:ns_news_slider/' . $jsPath . 'jquery.royalslider.min.js';
