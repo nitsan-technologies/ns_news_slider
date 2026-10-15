@@ -72,3 +72,9 @@ ExtensionUtility::configurePlugin(
 // Hook for override news demand.
 $GLOBALS['TYPO3_CONF_VARS']['EXT']['news']['Domain/Repository/AbstractDemandedRepository.php']['findDemanded']['ns_news_slider'] =
     'NITSAN\\NsNewsSlider\\Hooks\\OverrideNewsDemand->modify';
+
+$GLOBALS['TYPO3_CONF_VARS']['SYS']['formEngine']['nodeResolver'][1792055417] = [
+    'nodeName' => 'flexFormTabsContainer',
+    'priority' => 41,
+    'class' => \NITSAN\NsNewsSlider\Form\Resolver\PremiumStripFlexFormTabsContainerResolver::class,
+];
