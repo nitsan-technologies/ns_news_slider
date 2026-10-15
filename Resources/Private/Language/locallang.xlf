@@ -20,6 +20,15 @@ News slider for easy and handy use!</source>
 			<trans-unit id="fe.nonews">
 				<source>No news at the moment, please add news or set proper storage for the news.</source>
 			</trans-unit>
+			<trans-unit id="premium.strip.headline" xml:space="preserve">
+				<source>You're using the free version of NS News Slider</source>
+			</trans-unit>
+			<trans-unit id="premium.strip.description" xml:space="preserve">
+				<source>Unlock premium features and get more out of NS News Slider.</source>
+			</trans-unit>
+			<trans-unit id="premium.strip.trial" xml:space="preserve">
+				<source>Start Free Trial</source>
+			</trans-unit>
 
 		</body>
 	</file>
